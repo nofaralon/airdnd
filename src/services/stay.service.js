@@ -91,6 +91,7 @@ async function getEmptyStay() {
         imgUrls: ['', ''],
         price: 0,
         summary: '',
+        space:'',
         capacity: 0,
         amenities: [],
         host: {
@@ -105,6 +106,7 @@ async function getEmptyStay() {
             lat: 0,
             lng: 0
         },
+        type:'',
         reviews: ['peepi'],
         likedByUsers: ['weewi']
         
@@ -124,10 +126,38 @@ function _createStays() {
             // _createStay('Train', "train.jpg", ['Baby', 'Outdoor', 'On wheels'], ['WOW!']),
             // _createStay('Truck', "truck.png", ['Baby', 'Outdoor', 'On wheels'], ['Greate!']),
             
-            _createStay('Nice room at Vondelpark', ["https://a0.muscache.com/im/pictures/3f474f76-e7ee-482d-ada4-f02a8aeff609.jpg?im_w=1200","https://a0.muscache.com/im/pictures/109d1e21-0d6c-4fd6-a26d-096393ef425c.jpg?im_w=720","https://a0.muscache.com/im/pictures/dc7dee05-a278-4256-89eb-c7a6425a40df.jpg?im_w=720","https://a0.muscache.com/im/pictures/3bf939b1-4eb5-4f6f-9c4f-74b6d4d44798.jpg?im_w=720","https://a0.muscache.com/im/pictures/538678e9-7f87-46e6-8812-e378fb9601a1.jpg?im_w=720"], "Nice and clean private bedroom near the city center, 15 minutes by bike to Central station, Leidseplein  Several shops, bars, restaurants and transports five minutes from my place.  Balcony, bath, towels, shampoo, shower, wifi, music lounge,", 5,["Internet","Wireless Internet","Kitchen","Heating","Washer","Essentials"]),
-            _createStay('Nice room at Wondelpark', ["https://a0.muscache.com/im/pictures/3f474f76-e7ee-482d-ada4-f02a8aeff609.jpg?im_w=1200","https://a0.muscache.com/im/pictures/109d1e21-0d6c-4fd6-a26d-096393ef425c.jpg?im_w=720","https://a0.muscache.com/im/pictures/dc7dee05-a278-4256-89eb-c7a6425a40df.jpg?im_w=720","https://a0.muscache.com/im/pictures/3bf939b1-4eb5-4f6f-9c4f-74b6d4d44798.jpg?im_w=720","https://a0.muscache.com/im/pictures/538678e9-7f87-46e6-8812-e378fb9601a1.jpg?im_w=720"], "Nice and clean private bedroom near the city center, 15 minutes by bike to Central station, Leidseplein  Several shops, bars, restaurants and transports five minutes from my place.  Balcony, bath, towels, shampoo, shower, wifi, music lounge,", 5,["Internet","Wireless Internet","Kitchen","Heating","Washer","Essentials"]),
-            _createStay('Nice room at Pondelpark', ["https://a0.muscache.com/im/pictures/3f474f76-e7ee-482d-ada4-f02a8aeff609.jpg?im_w=1200","https://a0.muscache.com/im/pictures/109d1e21-0d6c-4fd6-a26d-096393ef425c.jpg?im_w=720","https://a0.muscache.com/im/pictures/dc7dee05-a278-4256-89eb-c7a6425a40df.jpg?im_w=720","https://a0.muscache.com/im/pictures/3bf939b1-4eb5-4f6f-9c4f-74b6d4d44798.jpg?im_w=720","https://a0.muscache.com/im/pictures/538678e9-7f87-46e6-8812-e378fb9601a1.jpg?im_w=720"], "Nice and clean private bedroom near the city center, 15 minutes by bike to Central station, Leidseplein  Several shops, bars, restaurants and transports five minutes from my place.  Balcony, bath, towels, shampoo, shower, wifi, music lounge,", 5,["Internet","Wireless Internet","Kitchen","Heating","Washer","Essentials"]),
-            _createStay('Nice room at Zondelpark', ["https://a0.muscache.com/im/pictures/3f474f76-e7ee-482d-ada4-f02a8aeff609.jpg?im_w=1200","https://a0.muscache.com/im/pictures/109d1e21-0d6c-4fd6-a26d-096393ef425c.jpg?im_w=720","https://a0.muscache.com/im/pictures/dc7dee05-a278-4256-89eb-c7a6425a40df.jpg?im_w=720","https://a0.muscache.com/im/pictures/3bf939b1-4eb5-4f6f-9c4f-74b6d4d44798.jpg?im_w=720","https://a0.muscache.com/im/pictures/538678e9-7f87-46e6-8812-e378fb9601a1.jpg?im_w=720"], "Nice and clean private bedroom near the city center, 15 minutes by bike to Central station, Leidseplein  Several shops, bars, restaurants and transports five minutes from my place.  Balcony, bath, towels, shampoo, shower, wifi, music lounge,", 5,["Internet","Wireless Internet","Kitchen","Heating","Washer","Essentials"]),
+            _createStay('Nice room at Vondelpark', ["https://a0.muscache.com/im/pictures/3f474f76-e7ee-482d-ada4-f02a8aeff609.jpg?im_w=1200","https://a0.muscache.com/im/pictures/109d1e21-0d6c-4fd6-a26d-096393ef425c.jpg?im_w=720","https://a0.muscache.com/im/pictures/dc7dee05-a278-4256-89eb-c7a6425a40df.jpg?im_w=720","https://a0.muscache.com/im/pictures/3bf939b1-4eb5-4f6f-9c4f-74b6d4d44798.jpg?im_w=720","https://a0.muscache.com/im/pictures/538678e9-7f87-46e6-8812-e378fb9601a1.jpg?im_w=720"], "Nice and clean private bedroom near the city center, 15 minutes by bike to Central station, Leidseplein  Several shops, bars, restaurants and transports five minutes from my place.  Balcony, bath, towels, shampoo, shower, wifi, music lounge,","I offer a cuzy, private room in a nice apartment in Amsterdam, access to the bathroom, kichen and wifi. Directly to the public transport. Vondelpark and Supermarket within a minute walking distance.", 5,["Internet","Wireless Internet","Kitchen","Heating","Washer","Essentials"],
+            {
+                country: 'Netherlands',
+                countryCode: 'NL',
+                address: 'Amsterdam, North Holland, Netherlands',
+                lat: 4.862859671199358,
+                lng: 52.35992696894107
+            }, 'apartment'),
+            _createStay('Nice room at Wondelpark', ["https://a0.muscache.com/im/pictures/3f474f76-e7ee-482d-ada4-f02a8aeff609.jpg?im_w=1200","https://a0.muscache.com/im/pictures/109d1e21-0d6c-4fd6-a26d-096393ef425c.jpg?im_w=720","https://a0.muscache.com/im/pictures/dc7dee05-a278-4256-89eb-c7a6425a40df.jpg?im_w=720","https://a0.muscache.com/im/pictures/3bf939b1-4eb5-4f6f-9c4f-74b6d4d44798.jpg?im_w=720","https://a0.muscache.com/im/pictures/538678e9-7f87-46e6-8812-e378fb9601a1.jpg?im_w=720"], "Nice and clean private bedroom near the city center, 15 minutes by bike to Central station, Leidseplein  Several shops, bars, restaurants and transports five minutes from my place.  Balcony, bath, towels, shampoo, shower, wifi, music lounge,","I offer a cuzy, private room in a nice apartment in Amsterdam, access to the bathroom, kichen and wifi. Directly to the public transport. Vondelpark and Supermarket within a minute walking distance.", 5,["Internet","Wireless Internet","Kitchen","Heating","Washer","Essentials"],
+            {
+                country: 'Netherlands',
+                countryCode: 'NL',
+                address: 'Amsterdam, North Holland, Netherlands',
+                lat: 5.362859671199358,
+                lng: 52.35992696894107
+            }, 'apartment'),
+            _createStay('Nice room at Pondelpark', ["https://a0.muscache.com/im/pictures/3f474f76-e7ee-482d-ada4-f02a8aeff609.jpg?im_w=1200","https://a0.muscache.com/im/pictures/109d1e21-0d6c-4fd6-a26d-096393ef425c.jpg?im_w=720","https://a0.muscache.com/im/pictures/dc7dee05-a278-4256-89eb-c7a6425a40df.jpg?im_w=720","https://a0.muscache.com/im/pictures/3bf939b1-4eb5-4f6f-9c4f-74b6d4d44798.jpg?im_w=720","https://a0.muscache.com/im/pictures/538678e9-7f87-46e6-8812-e378fb9601a1.jpg?im_w=720"], "Nice and clean private bedroom near the city center, 15 minutes by bike to Central station, Leidseplein  Several shops, bars, restaurants and transports five minutes from my place.  Balcony, bath, towels, shampoo, shower, wifi, music lounge,","I offer a cuzy, private room in a nice apartment in Amsterdam, access to the bathroom, kichen and wifi. Directly to the public transport. Vondelpark and Supermarket within a minute walking distance.", 5,["Internet","Wireless Internet","Kitchen","Heating","Washer","Essentials"],
+            {
+                country: 'Netherlands',
+                countryCode: 'NL',
+                address: 'Amsterdam, North Holland, Netherlands',
+                lat: 4.92859671199358,
+                lng: 52.45992696894107
+            }, 'apartment'),
+            _createStay('Nice room at Zondelpark', ["https://a0.muscache.com/im/pictures/3f474f76-e7ee-482d-ada4-f02a8aeff609.jpg?im_w=1200","https://a0.muscache.com/im/pictures/109d1e21-0d6c-4fd6-a26d-096393ef425c.jpg?im_w=720","https://a0.muscache.com/im/pictures/dc7dee05-a278-4256-89eb-c7a6425a40df.jpg?im_w=720","https://a0.muscache.com/im/pictures/3bf939b1-4eb5-4f6f-9c4f-74b6d4d44798.jpg?im_w=720","https://a0.muscache.com/im/pictures/538678e9-7f87-46e6-8812-e378fb9601a1.jpg?im_w=720"], "Nice and clean private bedroom near the city center, 15 minutes by bike to Central station, Leidseplein  Several shops, bars, restaurants and transports five minutes from my place.  Balcony, bath, towels, shampoo, shower, wifi, music lounge,","I offer a cuzy, private room in a nice apartment in Amsterdam, access to the bathroom, kichen and wifi. Directly to the public transport. Vondelpark and Supermarket within a minute walking distance.", 5,["Internet","Wireless Internet","Kitchen","Heating","Washer","Essentials"],
+            {
+                country: 'Netherlands',
+                countryCode: 'NL',
+                address: 'Amsterdam, North Holland, Netherlands',
+                lat: 5.162859671199358,
+                lng: 52.25992696894107
+            }, 'apartment'),
             
         ]
         storage.store(STAY_KEY, stays)
@@ -135,13 +165,14 @@ function _createStays() {
     return stays;
 }
 
-function _createStay(name, imgUrls, summary,capacity, amenities,loc) {
+function _createStay(name, imgUrls, summary,capacity, amenities,loc,type) {
     return {
         _id: utilService.makeId(),
         name,
         imgUrls,
         price: utilService.getRandomInt(50, 200),
         summary,
+        space,
         capacity,
         amenities,
         host: {
@@ -150,6 +181,7 @@ function _createStay(name, imgUrls, summary,capacity, amenities,loc) {
             imgUrl: '',
         },
         loc,
+        type,
         reviews: [],
         likedByUsers: []
     }
