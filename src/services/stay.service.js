@@ -13,12 +13,12 @@ export const stayService = {
     getById,
     remove,
     save,
-    getEmptyToy
+    getEmptyStay
+
 
 }
 
-var gstays = _createStays()
-    // _createToys()
+_createStays()
 
 
 async function query(filterBy) {
