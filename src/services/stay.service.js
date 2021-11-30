@@ -6,7 +6,7 @@ import { httpService } from './http.service'
 
 
 const STAY_KEY = 'staysDB';
-// const TOY_URL = 'http://localhost:3000/api/toy/'
+// const STAY_URL = 'http://localhost:3000/api/stay/'
 
 export const stayService = {
     query,
@@ -31,7 +31,7 @@ async function query(filterBy) {
 async function getById(id) {
     return storageService.get(STAY_KEY, id)
         // try {
-        //     const res = await axios.get(TOY_URL + id)
+        //     const res = await axios.get(STAY_URL + id)
         //     return res.data
 
     // } catch (err) {
@@ -47,7 +47,7 @@ async function remove(id) {
     return storageService.remove(STAY_KEY, id)
 
     // try {
-    // const res = await axios.delete(TOY_URL + id)
+    // const res = await axios.delete(STAY_URL + id)
     // return res.data
 
     // } catch (err) {
@@ -61,11 +61,11 @@ async function save(stay) {
     const savedStay = (stay._id) ? storageService.put(STAY_KEY, stay) : storageService.post(STAY_KEY, stay)
     return savedStay;
     // try {
-    //     if (toy._id) {
-    //         const res = await axios.put(TOY_URL + `${toy._id}`, toy)
+    //     if (stay._id) {
+    //         const res = await axios.put(STAY_URL + `${stay._id}`, stay)
     //         return res.data
     //     } else {
-    //         const res = await axios.post(TOY_URL, toy)
+    //         const res = await axios.post(STAY_URL, stay)
     //         return res.data
     //     }
 
@@ -73,16 +73,16 @@ async function save(stay) {
     //     console.log(err);
     // }
 
-    // if (toy._id) {
-    //     const addedToy = await httpService.put(`toy/${toy._id}`, toy)
-    //     return addedToy
+    // if (stay._id) {
+    //     const addedStay = await httpService.put(`stay/${stay._id}`, stay)
+    //     return addedStay
 
     // } else {
-    //     const addedToy = await httpService.post(`toy`, toy)
-    //     return addedToy
+    //     const addedStay = await httpService.post(`stay`, stay)
+    //     return addedStay
     // }
-
-
+    
+    
 }
 async function getEmptyStay() {
     return {
@@ -105,9 +105,9 @@ async function getEmptyStay() {
             lat: 0,
             lng: 0
         },
-        reviews: [],
-        likedByUsers: []
-
+        reviews: ['peepi'],
+        likedByUsers: ['weewi']
+        
     }
 }
 
@@ -115,44 +115,41 @@ function _createStays() {
     var stays = storage.load(STAY_KEY)
     if (!stays || !stays.length) {
         stays = [
-            // _createToy('Ball', "ball.png", ['Baby', 'Outdoor'], ['Greate']),
-            // _createToy('Taddy Bear', "Bear.png.jpg", ['Baby', 'Doll'], ['Amazing!']),
-            // _createToy('Cubes', "Cubes.png", ['Baby', 'Art', 'Box game'], ['WOW!']),
-            // _createToy('Doll', "doll.png", ['Baby', 'Doll'], ['Amazing!']),
-            // _createToy('Drums', "Drums.png", ['Baby', 'Outdoor'], ['Amazing!']),
-            // _createToy('Duck', "duck.png", ['Baby'], ['WOW!']),
-            // _createToy('Airplane', "plan.jpg", ['Baby', 'Outdoor', 'On wheels'], ['Greate!']),
-            // _createToy('Train', "train.jpg", ['Baby', 'Outdoor', 'On wheels'], ['WOW!']),
-            // _createToy('Truck', "truck.png", ['Baby', 'Outdoor', 'On wheels'], ['Greate!']),
-
-
+            // _createStay('Taddy Bear', "Bear.png.jpg", ['Baby', 'Doll'], ['Amazing!']),
+            // _createStay('Cubes', "Cubes.png", ['Baby', 'Art', 'Box game'], ['WOW!']),
+            // _createStay('Doll', "doll.png", ['Baby', 'Doll'], ['Amazing!']),
+            // _createStay('Drums', "Drums.png", ['Baby', 'Outdoor'], ['Amazing!']),
+            // _createStay('Duck', "duck.png", ['Baby'], ['WOW!']),
+            // _createStay('Airplane', "plan.jpg", ['Baby', 'Outdoor', 'On wheels'], ['Greate!']),
+            // _createStay('Train', "train.jpg", ['Baby', 'Outdoor', 'On wheels'], ['WOW!']),
+            // _createStay('Truck', "truck.png", ['Baby', 'Outdoor', 'On wheels'], ['Greate!']),
+            
+            _createStay('Nice room at Vondelpark', ["https://a0.muscache.com/im/pictures/3f474f76-e7ee-482d-ada4-f02a8aeff609.jpg?im_w=1200","https://a0.muscache.com/im/pictures/109d1e21-0d6c-4fd6-a26d-096393ef425c.jpg?im_w=720","https://a0.muscache.com/im/pictures/dc7dee05-a278-4256-89eb-c7a6425a40df.jpg?im_w=720","https://a0.muscache.com/im/pictures/3bf939b1-4eb5-4f6f-9c4f-74b6d4d44798.jpg?im_w=720","https://a0.muscache.com/im/pictures/538678e9-7f87-46e6-8812-e378fb9601a1.jpg?im_w=720"], "Nice and clean private bedroom near the city center, 15 minutes by bike to Central station, Leidseplein  Several shops, bars, restaurants and transports five minutes from my place.  Balcony, bath, towels, shampoo, shower, wifi, music lounge,", 5,["Internet","Wireless Internet","Kitchen","Heating","Washer","Essentials"]),
+            _createStay('Nice room at Wondelpark', ["https://a0.muscache.com/im/pictures/3f474f76-e7ee-482d-ada4-f02a8aeff609.jpg?im_w=1200","https://a0.muscache.com/im/pictures/109d1e21-0d6c-4fd6-a26d-096393ef425c.jpg?im_w=720","https://a0.muscache.com/im/pictures/dc7dee05-a278-4256-89eb-c7a6425a40df.jpg?im_w=720","https://a0.muscache.com/im/pictures/3bf939b1-4eb5-4f6f-9c4f-74b6d4d44798.jpg?im_w=720","https://a0.muscache.com/im/pictures/538678e9-7f87-46e6-8812-e378fb9601a1.jpg?im_w=720"], "Nice and clean private bedroom near the city center, 15 minutes by bike to Central station, Leidseplein  Several shops, bars, restaurants and transports five minutes from my place.  Balcony, bath, towels, shampoo, shower, wifi, music lounge,", 5,["Internet","Wireless Internet","Kitchen","Heating","Washer","Essentials"]),
+            _createStay('Nice room at Pondelpark', ["https://a0.muscache.com/im/pictures/3f474f76-e7ee-482d-ada4-f02a8aeff609.jpg?im_w=1200","https://a0.muscache.com/im/pictures/109d1e21-0d6c-4fd6-a26d-096393ef425c.jpg?im_w=720","https://a0.muscache.com/im/pictures/dc7dee05-a278-4256-89eb-c7a6425a40df.jpg?im_w=720","https://a0.muscache.com/im/pictures/3bf939b1-4eb5-4f6f-9c4f-74b6d4d44798.jpg?im_w=720","https://a0.muscache.com/im/pictures/538678e9-7f87-46e6-8812-e378fb9601a1.jpg?im_w=720"], "Nice and clean private bedroom near the city center, 15 minutes by bike to Central station, Leidseplein  Several shops, bars, restaurants and transports five minutes from my place.  Balcony, bath, towels, shampoo, shower, wifi, music lounge,", 5,["Internet","Wireless Internet","Kitchen","Heating","Washer","Essentials"]),
+            _createStay('Nice room at Zondelpark', ["https://a0.muscache.com/im/pictures/3f474f76-e7ee-482d-ada4-f02a8aeff609.jpg?im_w=1200","https://a0.muscache.com/im/pictures/109d1e21-0d6c-4fd6-a26d-096393ef425c.jpg?im_w=720","https://a0.muscache.com/im/pictures/dc7dee05-a278-4256-89eb-c7a6425a40df.jpg?im_w=720","https://a0.muscache.com/im/pictures/3bf939b1-4eb5-4f6f-9c4f-74b6d4d44798.jpg?im_w=720","https://a0.muscache.com/im/pictures/538678e9-7f87-46e6-8812-e378fb9601a1.jpg?im_w=720"], "Nice and clean private bedroom near the city center, 15 minutes by bike to Central station, Leidseplein  Several shops, bars, restaurants and transports five minutes from my place.  Balcony, bath, towels, shampoo, shower, wifi, music lounge,", 5,["Internet","Wireless Internet","Kitchen","Heating","Washer","Essentials"]),
+            
         ]
         storage.store(STAY_KEY, stays)
     }
     return stays;
 }
 
-function _createStay(name, imgUrls, summary, amenities) {
+function _createStay(name, imgUrls, summary,capacity, amenities,loc) {
     return {
         _id: utilService.makeId(),
         name,
         imgUrls,
         price: utilService.getRandomInt(50, 200),
         summary,
-        capacity: 0,
+        capacity,
         amenities,
         host: {
             _id: '',
             fullname: '',
             imgUrl: '',
         },
-        loc: {
-            country: '',
-            countryCode: '',
-            address: '',
-            lat: 0,
-            lng: 0
-        },
+        loc,
         reviews: [],
         likedByUsers: []
     }
