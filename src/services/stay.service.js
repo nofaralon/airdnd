@@ -1,8 +1,8 @@
 import { storageService } from './async-storage.service'
-// import { storage } from './storage.service'
+import { storage } from './storage.service'
 import { utilService } from './util.service'
 // const axios = require('axios')
-import { httpService } from './http.service'
+// import { httpService } from './http.service'
 
 
 const STAY_KEY = 'staysDB';
