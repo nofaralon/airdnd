@@ -1,5 +1,6 @@
 <template>
   <section class="home-page">
+
     <stay-filter></stay-filter>
     <img src="../assets/imgs/home.jpg" />
     <div class="explore-btn">

@@ -4,12 +4,17 @@ import homePage from '../pages/home-page.vue'
 import explorePage from '../pages/explore-page.vue'
 import stayEdit from '../pages/stay-edit.vue'
 import stayDetails from '../pages/stay-details.vue'
+import userLoggin from '../pages/user-loggin.vue'
 
 Vue.use(VueRouter)
 
 const routes = [{
         path: '/',
         component: homePage
+    },
+    {
+        path: '/login',
+        component: userLoggin
     },
     {
         path: '/stay',

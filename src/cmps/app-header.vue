@@ -4,8 +4,14 @@
     <div class="main-haeder">
       <nav>
         <router-link to="/">Home</router-link> |
-        <router-link to="/stay">Explore</router-link> 
-     
+        <router-link to="/stay">Explore</router-link> |
+        <template v-if="loggedinUser">
+        <router-link to="/login">Login</router-link>
+        </template>
+        <template v-else>
+          <span>Hi, </span>
+        <router-link to="/user/:userId">{{user.username}}</router-link>
+        </template>
       </nav>
     </div>
   </header>
@@ -14,5 +20,16 @@
 
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      loggedInUser:null
+    }
+  },
+  computed:{
+    user(){
+      return this.$store.getters.user
+    }
+  }
+};
 </script>
