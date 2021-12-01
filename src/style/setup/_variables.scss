@@ -1,0 +1,15 @@
+// COLOR PALETTE
+$clr1: rgb(255, 56, 92); //logo & btns
+$clr3: rgb(229, 229, 229); // hover-filter
+$clr2: rgb(34, 34, 34); //font-color
+$clr4: rgb(247, 247, 247); //footer
+$clr5: rgb(135, 1, 147); //explor font btn
+// LAYOUT
+$layoutPadding: 80px;
+// LAYOUT BREAKPOINTS
+$break-narrow: 460px; //margin 30px
+$break-normal: 750px; //margin 30px
+$break-wide: 1100px; //margin-40px
+$padded-break-narrow: $break-narrow+$layoutPadding * 2;
+$padded-break-normal: $break-normal+$layoutPadding * 2;
+$padded-break-wide: $break-wide+$layoutPadding * 2;
