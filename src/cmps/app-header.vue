@@ -5,7 +5,7 @@
       <nav>
         <router-link to="/">Home</router-link> |
         <router-link to="/stay">Explore</router-link> |
-        <template v-if="loggedinUser">
+        <template v-if="!user">
         <router-link to="/login">Login</router-link>
         </template>
         <template v-else>

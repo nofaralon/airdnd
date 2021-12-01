@@ -6,6 +6,9 @@
 <script>
 export default {
   name: "stay-edit",
+  props:{
+    stay:Object
+  },
   data() {
     return {};
   },
