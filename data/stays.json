@@ -1,65 +1,64 @@
-[
-        {
-            "_id": "29092",
-            "name": "Glass cottage with Hot tub Grænn",
-            "imgUrls": [
-                "https://res.cloudinary.com/di0utpbop/image/upload/v1638353763/airdnd/f9ab2331-d196-4a02-b58b-4f2ff8cb5a32_qfxc2i.jpg",
-                "https://res.cloudinary.com/di0utpbop/image/upload/v1638353813/airdnd/795ff2d7-a23a-41db-a749-9e9d24469e0a_iihiyy.jpg",
-                "https://res.cloudinary.com/di0utpbop/image/upload/v1638353775/airdnd/756d44e9-7f41-42ea-b7a0-e2e0b6e3a232_cwkjzz.jpg",
-                "https://res.cloudinary.com/di0utpbop/image/upload/v1638353774/airdnd/48633eb8-6610-44bb-a7ea-6f3e0ab5580e_asacpm.jpg",
-                "https://res.cloudinary.com/di0utpbop/image/upload/v1638353772/airdnd/4dc2184c-d486-4b2a-addc-c3a9cc919045_nwe5eh.jpg",
-                "https://res.cloudinary.com/di0utpbop/image/upload/v1638353769/airdnd/55a0ef5e-d637-48b5-ace1-c7674a125315_eipvdi.jpg",
-                "https://res.cloudinary.com/di0utpbop/image/upload/v1638354067/airdnd/0781019a-fedd-4315-98e9-df9321dee7b6_rlmy66.jpg"
-            ],
-            "sleep": ["https://res.cloudinary.com/di0utpbop/image/upload/v1638353774/airdnd/48633eb8-6610-44bb-a7ea-6f3e0ab5580e_asacpm.jpg"],
-            "price": 1667.00,
-            "summary": "We are located on a lava desert in the south of Iceland. 5 minutes from the small town of Hella, close to all the popular attractions that southern Iceland has to offer, but also in a secret and secluded location.",
-            "space":"The experience we offer is unique. The bedroom is entirely made of glass, You can sleep under the stars in comfort and warmth. The bathroom offers views of the largest Icelandic volcanoes, Hekla, eyjafjallajökull, bláfjöll, tindfjöll…",
-            "capacity": 2,
-            "bedroom": 1,
-            "beds": 1,
-            "bathrooms":1,
-            "amenities": ["Kitchen",
-                "Wireless Internet", "TV","Microwave","Patio or balcony","Hot tub"
-            ],
-            "host": {
-                "_id": "536581",
-                "fullname": "Ari",
-                "imgUrl": "https://source.unsplash.com/random/100x100/?face"
-            },
-            "acces": "A fully equiped condo for you to enjoy the Nordic lifestyle",
-            "note": "We are nor resposible for the nrthen lights, so if you do not get to see it, please understand...",
-            "transit": "Hella is the perfect place to spend the day visiting the south of Iceland. A central position! We are an hour from Vík, Geysir, Gullfoss, and it is also the starting point to get to Landmannalaugar.",
-            "around":"We are located in Hella, a small Icelandic town of 800 inhabitants. We have a swimming pool with jacuzzi, gym, sauna, water slides, gas station, and more!",
-            "loc": {
-                "country": "Iceland",
-                "countryCode": "ISL",
-                "address": "Hella ,Iceland",
-                "lat": -20.39845713535863,
-                "lng": 63.841659597974854
-            },
-            "type": "outdoors",
-            "reviews": [{
-                "id": "157859",
-                "txt": "Place was amazing. We saw the northern lights. Magical. Highly recommend. Hopefully you stay there when there is no overcast so you can see the lights.",
-                "rate": 5,
-                "by": {
-                    "_id": "u100753482399",
-                    "fullname": "James",
-                    "imgUrl": "https://source.unsplash.com/random/100x100/?face"
-                }
-            },{
-                "id": "154559",
-                "txt": "The glass cottage was absolutely beautiful! Unfortunately, we were not blessed with the northern lights but had a lovely view of the stars.",
-                "rate": 5,
-                "by": {
-                    "_id": "u100753482399",
-                    "fullname": "Charlie",
-                    "imgUrl": "https://source.unsplash.com/random/100x100/?face"
-                }
-            }],
-            "likedByUsers": ["Justin", "Racha", "Bjorn","Bobo","James","Charlie"]
+[{
+        "_id": "29092",
+        "name": "Glass cottage with Hot tub Grænn",
+        "imgUrls": [
+            "https://res.cloudinary.com/di0utpbop/image/upload/v1638353763/airdnd/f9ab2331-d196-4a02-b58b-4f2ff8cb5a32_qfxc2i.jpg",
+            "https://res.cloudinary.com/di0utpbop/image/upload/v1638353813/airdnd/795ff2d7-a23a-41db-a749-9e9d24469e0a_iihiyy.jpg",
+            "https://res.cloudinary.com/di0utpbop/image/upload/v1638353775/airdnd/756d44e9-7f41-42ea-b7a0-e2e0b6e3a232_cwkjzz.jpg",
+            "https://res.cloudinary.com/di0utpbop/image/upload/v1638353774/airdnd/48633eb8-6610-44bb-a7ea-6f3e0ab5580e_asacpm.jpg",
+            "https://res.cloudinary.com/di0utpbop/image/upload/v1638353772/airdnd/4dc2184c-d486-4b2a-addc-c3a9cc919045_nwe5eh.jpg",
+            "https://res.cloudinary.com/di0utpbop/image/upload/v1638353769/airdnd/55a0ef5e-d637-48b5-ace1-c7674a125315_eipvdi.jpg",
+            "https://res.cloudinary.com/di0utpbop/image/upload/v1638354067/airdnd/0781019a-fedd-4315-98e9-df9321dee7b6_rlmy66.jpg"
+        ],
+        "sleep": ["https://res.cloudinary.com/di0utpbop/image/upload/v1638353774/airdnd/48633eb8-6610-44bb-a7ea-6f3e0ab5580e_asacpm.jpg"],
+        "price": 1667.00,
+        "summary": "We are located on a lava desert in the south of Iceland. 5 minutes from the small town of Hella, close to all the popular attractions that southern Iceland has to offer, but also in a secret and secluded location.",
+        "space": "The experience we offer is unique. The bedroom is entirely made of glass, You can sleep under the stars in comfort and warmth. The bathroom offers views of the largest Icelandic volcanoes, Hekla, eyjafjallajökull, bláfjöll, tindfjöll…",
+        "capacity": 2,
+        "bedroom": 1,
+        "beds": 1,
+        "bathrooms": 1,
+        "amenities": ["Kitchen",
+            "Wireless Internet", "TV", "Microwave", "Patio or balcony", "Hot tub"
+        ],
+        "host": {
+            "_id": "536581",
+            "fullname": "Ari",
+            "imgUrl": "https://source.unsplash.com/random/100x100/?face"
         },
+        "acces": "A fully equiped condo for you to enjoy the Nordic lifestyle",
+        "note": "We are nor resposible for the nrthen lights, so if you do not get to see it, please understand...",
+        "transit": "Hella is the perfect place to spend the day visiting the south of Iceland. A central position! We are an hour from Vík, Geysir, Gullfoss, and it is also the starting point to get to Landmannalaugar.",
+        "around": "We are located in Hella, a small Icelandic town of 800 inhabitants. We have a swimming pool with jacuzzi, gym, sauna, water slides, gas station, and more!",
+        "loc": {
+            "country": "Iceland",
+            "countryCode": "ISL",
+            "address": "Hella ,Iceland",
+            "lat": -20.39845713535863,
+            "lng": 63.841659597974854
+        },
+        "type": "outdoors",
+        "reviews": [{
+            "id": "157859",
+            "txt": "Place was amazing. We saw the northern lights. Magical. Highly recommend. Hopefully you stay there when there is no overcast so you can see the lights.",
+            "rate": 5,
+            "by": {
+                "_id": "u100753482399",
+                "fullname": "James",
+                "imgUrl": "https://source.unsplash.com/random/100x100/?face"
+            }
+        }, {
+            "id": "154559",
+            "txt": "The glass cottage was absolutely beautiful! Unfortunately, we were not blessed with the northern lights but had a lovely view of the stars.",
+            "rate": 5,
+            "by": {
+                "_id": "u100753482399",
+                "fullname": "Charlie",
+                "imgUrl": "https://source.unsplash.com/random/100x100/?face"
+            }
+        }],
+        "likedByUsers": ["Justin", "Racha", "Bjorn", "Bobo", "James", "Charlie"]
+    },
 
 
 
@@ -78,13 +77,13 @@
         "sleep": ["https://res.cloudinary.com/di0utpbop/image/upload/v1638353012/airdnd/007f6317-3cec-419d-aff4-bc6e8b7013b4_axdpw1.jpg"],
         "price": 667.00,
         "summary": "Want to experience an amazing and cozy atmosphere near the popular Seljalandsfoss Waterfall?! Our brand new cottages are located within 2 kilometers from the waterfall Seljalandsfoss and Gljúfrabúi. The cottages were built late 2019 and are comfortably designed to make you feel home away from home and to enjoy the amazing nature that the south coast of Iceland has to offer. If you are lucky you might even see the Northern Lights dancing in the sky on a cold winter night!",
-        "space":"The cottage are brand new including new appliances. You will have a cozy living room with a flat screen TV, WiFi and a kitchenette with a stove, microwave, kettle, coffee maker, pots and pans and utilities. There are 2 Bedrooms and the cottage can comfortably sleep 4 Guests.",
+        "space": "The cottage are brand new including new appliances. You will have a cozy living room with a flat screen TV, WiFi and a kitchenette with a stove, microwave, kettle, coffee maker, pots and pans and utilities. There are 2 Bedrooms and the cottage can comfortably sleep 4 Guests.",
         "capacity": 4,
         "bedroom": 2,
         "beds": 2,
-        "bathrooms":1,
+        "bathrooms": 1,
         "amenities": ["Kitchen",
-            "Wireless Internet", "TV","Microwave"
+            "Wireless Internet", "TV", "Microwave"
         ],
         "host": {
             "_id": "536581",
@@ -113,7 +112,7 @@
                 "imgUrl": "https://source.unsplash.com/random/100x100/?face"
             }
         }],
-        "likedByUsers": ["Justin", "Racha", "Bjorn","Bobo"]
+        "likedByUsers": ["Justin", "Racha", "Bjorn", "Bobo"]
     },
 
 
@@ -133,11 +132,11 @@
         "sleep": ["https://res.cloudinary.com/di0utpbop/image/upload/v1638351335/airdnd/8c45e3b4-3875-4cca-b4e0-99abcf7a779c_hvrvmr.jpg"],
         "price": 290.00,
         "summary": "The Iglúhús offers you the opportunity to live an original rural stay. By its exceptional location, its unique geodesic shape with glazed sides and roof and the simplicity of its equipment, experience a night 'under' the stars, the Northern Lights or the midnight sun from a warm and cozy bed.",
-        "space":"The Iglúhús is equipped with a king size bed with eider down duvet, pillows and sheets. a table & two chairs kettle, toaster, coffee maker. tea, coffee. dishes, cutlery. water tanks (10L). a little guide book of the region. WiFi connection. toilet in a shed next door.",
+        "space": "The Iglúhús is equipped with a king size bed with eider down duvet, pillows and sheets. a table & two chairs kettle, toaster, coffee maker. tea, coffee. dishes, cutlery. water tanks (10L). a little guide book of the region. WiFi connection. toilet in a shed next door.",
         "capacity": 2,
         "bedroom": 1,
         "beds": 1,
-        "bathrooms":1,
+        "bathrooms": 1,
         "amenities": ["Kitchen",
             "Wireless Internet", "Hot tub"
         ],
@@ -188,11 +187,11 @@
         "sleep": ["https://res.cloudinary.com/di0utpbop/image/upload/v1638348856/airdnd/718c9aa2-e2b0-492e-8b71-60f9d5ff8d5a_o0lmji.jpg"],
         "price": 570.00,
         "summary": "This house is licensed and registered to accept Guests in Quarantine. We provide services such as food and wine delivery while in quarantine. Also we help our Guests with all their questions and inquiries they might have during the process. High performance disinfection process will be performed between Guests according to the Icelandic Health Department and EU legislation.",
-        "space":"Amazing cottage with HOT TUB, warm interior and magical views. From the deck you can see HEKLA VOLCANO, the queen of Icelandic volcanoes. The cottage offers a Home-away-from-Home environment which is a traveler's dream.",
+        "space": "Amazing cottage with HOT TUB, warm interior and magical views. From the deck you can see HEKLA VOLCANO, the queen of Icelandic volcanoes. The cottage offers a Home-away-from-Home environment which is a traveler's dream.",
         "capacity": 4,
         "bedroom": 1,
         "beds": 1,
-        "bathrooms":1,
+        "bathrooms": 1,
         "amenities": ["Kitchen",
             "Wireless Internet", "washer", "Hot tub"
         ],
@@ -225,10 +224,6 @@
         }],
         "likedByUsers": ["ishutzu", "Racha", "Momo"]
     },
-
-
-
-
 
     {
         "_id": "5487332",
@@ -282,9 +277,6 @@
         }],
         "likedByUsers": ["mini-user"]
     },
-
-
-
 
     {
         "_id": "54331",
@@ -341,7 +333,6 @@
         "likedByUsers": ["ishutzu", "Popory"]
     },
 
-
     {
         "_id": "231331",
         "name": "BEAUTIFUL 2BD ★ OVERLOOKING THE OCEAN ★BRICKELL",
@@ -393,7 +384,7 @@
                 "imgUrl": "https://source.unsplash.com/random/100x100/?face"
             }
         }],
-        "likedByUsers": ["shimo", "Racha","Jordan"]
+        "likedByUsers": ["shimo", "Racha", "Jordan"]
     },
 
 
@@ -450,7 +441,7 @@
                 "imgUrl": "https://source.unsplash.com/random/100x100/?face"
             }
         }],
-        "likedByUsers": ["Koko", "Irady","Yarl","Zommen"]
+        "likedByUsers": ["Koko", "Irady", "Yarl", "Zommen"]
     },
 
     {
@@ -503,7 +494,6 @@
         }],
         "likedByUsers": ["Shimi", "freddy"]
     },
-
 
     {
         "_id": "1031755",
@@ -609,8 +599,6 @@
         "likedByUsers": ["Gigi", "Kimbape"]
     },
 
-
-
     {
         "_id": "104016546",
         "name": "Loft Leidsegracht - Private studio + Roof terrace!",
@@ -661,8 +649,6 @@
         }],
         "likedByUsers": ["checko", "Pinko", "Libi", "Karen"]
     },
-
-
 
     {
         "_id": "100165746",
@@ -762,9 +748,8 @@
                 "imgUrl": "https://source.unsplash.com/random/100x100/?face"
             }
         }],
-        "likedByUsers": ["Yorgen", "Philip", "Kiril","Nicole"]
+        "likedByUsers": ["Yorgen", "Philip", "Kiril", "Nicole"]
     },
-
 
     {
         "_id": "1000654755",
