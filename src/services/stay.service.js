@@ -117,50 +117,223 @@ async function getEmptyStay() {
 function _createStays() {
     var stays = storage.load(STAY_KEY)
     if (!stays || !stays.length) {
-        stays = [
-
-            {
-                "_id": "5487331",
-                "name": "★Heated Salt Water Pool★Outdoor Kitchen★1GB★3 Car★",
+        stays = [{
+                "_id": "29092",
+                "name": "Glass cottage with Hot tub Grænn",
                 "imgUrls": [
-                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638310848/airdnd/6dd0374b-eba6-45e3-89f8-66aed336d0e4_dvlt6b.jpg",
-                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638310851/airdnd/50554509-8a4c-439b-9dbe-3156ed9dd2b1_m1jrtw.jpg",
-                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638310848/airdnd/768232aa-219f-4eb7-b23b-b3236fe69527_ljfhkc.jpg",
-                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638310848/airdnd/6772bc39-d5d2-4afa-838a-246819ac238e_hs53sj.jpg",
-                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638310848/airdnd/203812b9-8a7f-4fe7-aff5-6bf8525e066b_i7ebdu.jpg",
-                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638310848/airdnd/27b7ec88-db00-4046-ba64-4c66c6a298d3_vazwgb.jpg",
-                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638310848/airdnd/1758a78e-c9a7-4640-a37f-6196e62cb38a_p9z5ug.jpg"
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638353763/airdnd/f9ab2331-d196-4a02-b58b-4f2ff8cb5a32_qfxc2i.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638353813/airdnd/795ff2d7-a23a-41db-a749-9e9d24469e0a_iihiyy.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638353775/airdnd/756d44e9-7f41-42ea-b7a0-e2e0b6e3a232_cwkjzz.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638353774/airdnd/48633eb8-6610-44bb-a7ea-6f3e0ab5580e_asacpm.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638353772/airdnd/4dc2184c-d486-4b2a-addc-c3a9cc919045_nwe5eh.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638353769/airdnd/55a0ef5e-d637-48b5-ace1-c7674a125315_eipvdi.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638354067/airdnd/0781019a-fedd-4315-98e9-df9321dee7b6_rlmy66.jpg"
                 ],
-                "sleep": ["https://res.cloudinary.com/di0utpbop/image/upload/v1638310848/airdnd/27b7ec88-db00-4046-ba64-4c66c6a298d3_vazwgb.jpg"],
-                "price": 5170.00,
-                "summary": "You will not find a better place. Guaranteed.",
-                "capacity": 9,
-                "bedroom": 4,
-                "beds": 6,
-                "bathrooms": 3,
+                "sleep": ["https://res.cloudinary.com/di0utpbop/image/upload/v1638353774/airdnd/48633eb8-6610-44bb-a7ea-6f3e0ab5580e_asacpm.jpg"],
+                "price": 1667.00,
+                "summary": "We are located on a lava desert in the south of Iceland. 5 minutes from the small town of Hella, close to all the popular attractions that southern Iceland has to offer, but also in a secret and secluded location.",
+                "space": "The experience we offer is unique. The bedroom is entirely made of glass, You can sleep under the stars in comfort and warmth. The bathroom offers views of the largest Icelandic volcanoes, Hekla, eyjafjallajökull, bláfjöll, tindfjöll…",
+                "capacity": 2,
+                "bedroom": 1,
+                "beds": 1,
+                "bathrooms": 1,
                 "amenities": ["Kitchen",
-                    "Wireless Internet", "washer", "Security camera", "pool"
+                    "Wireless Internet", "TV", "Microwave", "Patio or balcony", "Hot tub"
                 ],
                 "host": {
-                    "_id": 5781,
-                    "fullname": "Trina",
+                    "_id": "536581",
+                    "fullname": "Ari",
+                    "imgUrl": "https://source.unsplash.com/random/100x100/?face"
+                },
+                "acces": "A fully equiped condo for you to enjoy the Nordic lifestyle",
+                "note": "We are nor resposible for the nrthen lights, so if you do not get to see it, please understand...",
+                "transit": "Hella is the perfect place to spend the day visiting the south of Iceland. A central position! We are an hour from Vík, Geysir, Gullfoss, and it is also the starting point to get to Landmannalaugar.",
+                "around": "We are located in Hella, a small Icelandic town of 800 inhabitants. We have a swimming pool with jacuzzi, gym, sauna, water slides, gas station, and more!",
+                "loc": {
+                    "country": "Iceland",
+                    "countryCode": "ISL",
+                    "address": "Hella ,Iceland",
+                    "lat": -20.39845713535863,
+                    "lng": 63.841659597974854
+                },
+                "type": "outdoors",
+                "reviews": [{
+                    "id": "157859",
+                    "txt": "Place was amazing. We saw the northern lights. Magical. Highly recommend. Hopefully you stay there when there is no overcast so you can see the lights.",
+                    "rate": 5,
+                    "by": {
+                        "_id": "u100753482399",
+                        "fullname": "James",
+                        "imgUrl": "https://source.unsplash.com/random/100x100/?face"
+                    }
+                }, {
+                    "id": "154559",
+                    "txt": "The glass cottage was absolutely beautiful! Unfortunately, we were not blessed with the northern lights but had a lovely view of the stars.",
+                    "rate": 5,
+                    "by": {
+                        "_id": "u100753482399",
+                        "fullname": "Charlie",
+                        "imgUrl": "https://source.unsplash.com/random/100x100/?face"
+                    }
+                }],
+                "likedByUsers": ["Justin", "Racha", "Bjorn", "Bobo", "James", "Charlie"]
+            },
+
+
+
+            {
+                "_id": "295714092",
+                "name": "Magical Stay near Seljalandsfoss Waterfall",
+                "imgUrls": [
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638353023/airdnd/36119b56-0329-4e7c-9c6a-3870a131ab55_sg81nq.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638353049/airdnd/676d353d-900a-4eed-947d-15ab64e2c8bc_zv29ia.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638353021/airdnd/9e791aab-ed5d-4da7-bf85-44f2e26170f8_jxc9bm.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638353015/airdnd/f142060f-e190-4a3f-bd03-4f8fea943d80_fnyqux.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638353012/airdnd/007f6317-3cec-419d-aff4-bc6e8b7013b4_axdpw1.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638353010/airdnd/2e2591c5-acec-4166-b38a-f3a14a1fef25_avxfi6.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638353010/airdnd/163fbf5d-8ebd-4a32-b76b-67472969888b_qqia33.jpg"
+                ],
+                "sleep": ["https://res.cloudinary.com/di0utpbop/image/upload/v1638353012/airdnd/007f6317-3cec-419d-aff4-bc6e8b7013b4_axdpw1.jpg"],
+                "price": 667.00,
+                "summary": "Want to experience an amazing and cozy atmosphere near the popular Seljalandsfoss Waterfall?! Our brand new cottages are located within 2 kilometers from the waterfall Seljalandsfoss and Gljúfrabúi. The cottages were built late 2019 and are comfortably designed to make you feel home away from home and to enjoy the amazing nature that the south coast of Iceland has to offer. If you are lucky you might even see the Northern Lights dancing in the sky on a cold winter night!",
+                "space": "The cottage are brand new including new appliances. You will have a cozy living room with a flat screen TV, WiFi and a kitchenette with a stove, microwave, kettle, coffee maker, pots and pans and utilities. There are 2 Bedrooms and the cottage can comfortably sleep 4 Guests.",
+                "capacity": 4,
+                "bedroom": 2,
+                "beds": 2,
+                "bathrooms": 1,
+                "amenities": ["Kitchen",
+                    "Wireless Internet", "TV", "Microwave"
+                ],
+                "host": {
+                    "_id": "536581",
+                    "fullname": "Atli",
+                    "imgUrl": "https://source.unsplash.com/random/100x100/?face"
+                },
+                "acces": "Private cottage, Free Wi-Fi, Free Parking, hairdryer, kitchenette. Breakfast can be offered for extra 19 EUR per person, for minimum 2 guests if booked. Please send us a message on Airbnb if you wish to book breakfast. Breakfast request must be sent to us with at least 2 days notice so we can prepare the breakfast for you.",
+                "note": "Please note that we will send you an email 2 days prior arrival with the check in instructions. The email may end up in your junk/spam folder so please check that.",
+                "transit": "It's easier to have a car to go around Islande, though it is possible to travel with buses : the bus 78 (from Akureyri to Siglufjörður) has a stop at 'Litli-Árskógssandur', which is 1.5km from our house.",
+                "around": "Highlights in the area:. Beer spa & restaurant downtown: Bjórböðin. Whale watching & hot tubs by the beach 3km away: Hauganes. Ski resorts: Akureyri, Dalvík. Delicious fish soup in Dalvík: Gisli Eirikur Helgi Kaffihûs. Bird life, Hrísey Island, hiking and walking trails, northern lights and so much more to discover!",
+                "loc": {
+                    "country": "Iceland",
+                    "countryCode": "ISL",
+                    "address": "Hvolsvöllur ,Iceland",
+                    "lat": -20.223351936097036,
+                    "lng": 63.748324634546584
+                },
+                "type": "outdoors",
+                "reviews": [{
+                    "id": "1559",
+                    "txt": "We really enjoyed our stay here. Warm and cozy.",
+                    "rate": 5,
+                    "by": {
+                        "_id": "u100753482399",
+                        "fullname": "Justin",
+                        "imgUrl": "https://source.unsplash.com/random/100x100/?face"
+                    }
+                }],
+                "likedByUsers": ["Justin", "Racha", "Bjorn", "Bobo"]
+            },
+
+
+
+            {
+                "_id": "54856851",
+                "name": "Sky sighting Iglúhús (Stay'in Árbakki)",
+                "imgUrls": [
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638351327/airdnd/e3e6679a-adad-4634-9421-5499244d6391_ij2dw6.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638351317/airdnd/fbaf0eea-4657-4999-81de-973a13cb2f13_s8pm1x.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638351404/airdnd/5e009935-99f0-4947-bc86-3b03f449ae30_sf9u8f.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638351404/airdnd/63f70a0e-562b-42ad-a2bf-ea20f87633f6_iz6qqe.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638351348/airdnd/5ba54302-32b7-4dc4-b5b4-6e8bd9978949_gaa8c4.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638351335/airdnd/8c45e3b4-3875-4cca-b4e0-99abcf7a779c_hvrvmr.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638351323/airdnd/d61331b7-e380-421e-8117-4ebb7a07fc82_itlxll.jpg"
+                ],
+                "sleep": ["https://res.cloudinary.com/di0utpbop/image/upload/v1638351335/airdnd/8c45e3b4-3875-4cca-b4e0-99abcf7a779c_hvrvmr.jpg"],
+                "price": 290.00,
+                "summary": "The Iglúhús offers you the opportunity to live an original rural stay. By its exceptional location, its unique geodesic shape with glazed sides and roof and the simplicity of its equipment, experience a night 'under' the stars, the Northern Lights or the midnight sun from a warm and cozy bed.",
+                "space": "The Iglúhús is equipped with a king size bed with eider down duvet, pillows and sheets. a table & two chairs kettle, toaster, coffee maker. tea, coffee. dishes, cutlery. water tanks (10L). a little guide book of the region. WiFi connection. toilet in a shed next door.",
+                "capacity": 2,
+                "bedroom": 1,
+                "beds": 1,
+                "bathrooms": 1,
+                "amenities": ["Kitchen",
+                    "Wireless Internet", "Hot tub"
+                ],
+                "host": {
+                    "_id": "536581",
+                    "fullname": "LoLa and bjorn",
+                    "imgUrl": "https://source.unsplash.com/random/100x100/?face"
+                },
+                "acces": "Our house is easily accessible with any kind of car, even in winter.",
+                "note": "NOTICE: no running water or shower.",
+                "transit": "It's easier to have a car to go around Islande, though it is possible to travel with buses : the bus 78 (from Akureyri to Siglufjörður) has a stop at 'Litli-Árskógssandur', which is 1.5km from our house.",
+                "around": "Highlights in the area:. Beer spa & restaurant downtown: Bjórböðin. Whale watching & hot tubs by the beach 3km away: Hauganes. Ski resorts: Akureyri, Dalvík. Delicious fish soup in Dalvík: Gisli Eirikur Helgi Kaffihûs. Bird life, Hrísey Island, hiking and walking trails, northern lights and so much more to discover!",
+                "loc": {
+                    "country": "Iceland",
+                    "countryCode": "ISL",
+                    "address": "Árskógssandur, Dalvík,Iceland",
+                    "lat": -18.348283908813563,
+                    "lng": 65.94148107219047
+                },
+                "type": "outdoors",
+                "reviews": [{
+                    "id": "159",
+                    "txt": "Our favorite place in iceland! Lola was very kind.",
+                    "rate": 4,
+                    "by": {
+                        "_id": "u1009",
+                        "fullname": "ishitzu",
+                        "imgUrl": "https://source.unsplash.com/random/100x100/?face"
+                    }
+                }],
+                "likedByUsers": ["ishutzu", "Racha", "Momo"]
+            },
+
+
+
+            {
+                "_id": "548249851",
+                "name": "EYVÍK Cottage (central to the Golden Circle) #A",
+                "imgUrls": [
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638348835/airdnd/e21f81a7-0205-44ed-8515-72ecb84723db_ki7der.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638348834/airdnd/220ef204-1717-414d-80bd-d1b621f4a398_tuwxrm.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638348832/airdnd/2c2bbbd3-8e19-4931-ba79-6158f974da95_be358a.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638348830/airdnd/8246ea4e-e746-4ff1-8cdb-06abdbf6b9a3_kvi3i4.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638348828/airdnd/764805ff-d0af-4038-82d2-663b9d48ee74_ybmz7u.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638348828/airdnd/3d00f1ff-0b00-4188-9c6e-c8d4a3c10b5b_gaio4t.jpg",
+                    "https://res.cloudinary.com/di0utpbop/image/upload/v1638348856/airdnd/718c9aa2-e2b0-492e-8b71-60f9d5ff8d5a_o0lmji.jpg"
+                ],
+                "sleep": ["https://res.cloudinary.com/di0utpbop/image/upload/v1638348856/airdnd/718c9aa2-e2b0-492e-8b71-60f9d5ff8d5a_o0lmji.jpg"],
+                "price": 570.00,
+                "summary": "This house is licensed and registered to accept Guests in Quarantine. We provide services such as food and wine delivery while in quarantine. Also we help our Guests with all their questions and inquiries they might have during the process. High performance disinfection process will be performed between Guests according to the Icelandic Health Department and EU legislation.",
+                "space": "Amazing cottage with HOT TUB, warm interior and magical views. From the deck you can see HEKLA VOLCANO, the queen of Icelandic volcanoes. The cottage offers a Home-away-from-Home environment which is a traveler's dream.",
+                "capacity": 4,
+                "bedroom": 1,
+                "beds": 1,
+                "bathrooms": 1,
+                "amenities": ["Kitchen",
+                    "Wireless Internet", "washer", "Hot tub"
+                ],
+                "host": {
+                    "_id": "57881",
+                    "fullname": "Yohan",
                     "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                 },
                 "acces": "Entire space is included in this rental. Please, make yourself at home.",
-                "note": "Please remember that you're staying in a house, not a hotel. Please treat the space with respect. If any problems arise, we will do our best to take action ASAP, but there is no one living on site 24/7.",
-                "transit": "I highly recommend using ride-sharing services: For $20 in Uber credit, use my code - iyql4. For $20 in Lyft credit, use my code - daniel4661.",
-                "around": "Click 'See Guidebook' below for my personal recommendations.",
+                "note": "Don‘t buy accommodation, buy experience!",
+                "transit": "For the best experience, rent a car.",
+                "around": "The views all around the cottage are magnificent with MOUNTAINS stretching out in the surroundings. There's 30 square meter private deck/patio which lies on two sides of the cottage equipped with a cozy HOT TUB (ready to use all year round) and a BBQ GRILL – Perfect for enjoying the spectacular views, star gazing and catching the NORTHERN LIGHTS. Enjoying the SUNRISE and the NATURE at the deck/patio is a rememberable EXPERIENCE. The cottage has of course FREE PARKING SPACE..",
                 "loc": {
-                    "country": "Miami",
-                    "countryCode": "FL",
-                    "address": "Miami, Florida, United States",
-                    "lat": -80.1978405924635,
-                    "lng": 25.757459320544168
+                    "country": "Iceland",
+                    "countryCode": "ISL",
+                    "address": "Selfoss,Iceland",
+                    "lat": -20.95788025742186,
+                    "lng": 63.96039497240088
                 },
-                "type": "villa",
+                "type": "outdoors",
                 "reviews": [{
-                    "id": "14",
-                    "txt": "Great host, great villa.",
+                    "id": "149",
+                    "txt": "Once in a lifetime experience ",
                     "rate": 4,
                     "by": {
                         "_id": "u1009",
@@ -186,6 +359,7 @@ function _createStays() {
                 "sleep": ["https://res.cloudinary.com/di0utpbop/image/upload/v1638308107/airdnd/470678b7-9e84-40cf-8263-3f373d2b2549_b3kr3v.jpg"],
                 "price": 2200.00,
                 "summary": "This 5 bedrooms, 5.5 bathrooms property is appointed with exquisite finishes and furniture throughout, heated pool, terrace, sonos system, outdoor BBQ and much more. Perfectly located less than 10 minutes driving to the beach and 20 minutes driving to the best of Miami Beach shopping and entertainment.",
+                "space": "Fully equiped villa, any experince you have in mind, we got it, enjoy.",
                 "capacity": 10,
                 "bedroom": 5,
                 "beds": 5,
@@ -194,7 +368,7 @@ function _createStays() {
                     "TV", "Wireless Internet", "Microwave", "Security camera", "pool"
                 ],
                 "host": {
-                    "_id": 511,
+                    "_id": "511",
                     "fullname": "Ferony",
                     "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                 },
@@ -249,7 +423,7 @@ function _createStays() {
                     "TV", "Wireless Internet", "Microwave", "Security camera", "pool"
                 ],
                 "host": {
-                    "_id": 511,
+                    "_id": "511",
                     "fullname": "Raphael",
                     "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                 },
@@ -270,7 +444,7 @@ function _createStays() {
                     "txt": "Such a big house, this is a dream...",
                     "rate": 5,
                     "by": {
-                        "_id": "u102",
+                        "_id": "u102678",
                         "fullname": "shimo",
                         "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                     }
@@ -303,7 +477,7 @@ function _createStays() {
                     "TV", "Wireless Internet", "Microwave", "Security camera", "Hot tub"
                 ],
                 "host": {
-                    "_id": 511,
+                    "_id": "511",
                     "fullname": "Raphael",
                     "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                 },
@@ -324,12 +498,12 @@ function _createStays() {
                     "txt": "Phew, that was awsome!!",
                     "rate": 5,
                     "by": {
-                        "_id": "u102",
-                        "fullname": "shimo",
+                        "_id": "u106782",
+                        "fullname": "Jordan",
                         "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                     }
                 }],
-                "likedByUsers": ["shimo", "Racha"]
+                "likedByUsers": ["shimo", "Racha", "Jordan"]
             },
 
 
@@ -360,7 +534,7 @@ function _createStays() {
                     "TV", "Wireless Internet", "Microwave", "Security camera", "Heating"
                 ],
                 "host": {
-                    "_id": 51100,
+                    "_id": "51100",
                     "fullname": "Rachel",
                     "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                 },
@@ -386,7 +560,7 @@ function _createStays() {
                         "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                     }
                 }],
-                "likedByUsers": ["Koko", "Irady"]
+                "likedByUsers": ["Koko", "Irady", "Yarl", "Zommen"]
             },
 
             {
@@ -411,7 +585,7 @@ function _createStays() {
                 "bathrooms": 1,
                 "amenities": ["Wireless Internet", "Kitchen", "Dryer", "TV", "City skyline view"],
                 "host": {
-                    "_id": 516418,
+                    "_id": "516418",
                     "fullname": "Maya",
                     "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                 },
@@ -515,7 +689,7 @@ function _createStays() {
                 "bathrooms": 1,
                 "amenities": ["Elevator", "TV", "Wireless Internet", "Kitchen", "Security camera", "City skyline view"],
                 "host": {
-                    "_id": 5139841,
+                    "_id": "5139841",
                     "fullname": "Berkley",
                     "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                 },
@@ -566,7 +740,7 @@ function _createStays() {
                 "bathrooms": 1,
                 "amenities": ["TV", "Wireless Internet", "Kitchen", "Dryer", "Microwave", "Patio or balcony"],
                 "host": {
-                    "_id": 51399341,
+                    "_id": "51399341",
                     "fullname": "eric Vökel",
                     "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                 },
@@ -588,7 +762,7 @@ function _createStays() {
                     "rate": 1,
                     "by": {
                         "_id": "u19",
-                        "fullname": "user54",
+                        "fullname": "Fin",
                         "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                     }
                 }],
@@ -617,7 +791,7 @@ function _createStays() {
                 "bathrooms": 2,
                 "amenities": ["Elevator", "TV", "Wireless Internet", "Kitchen", "Dryer", "Washer", "Patio or balcony"],
                 "host": {
-                    "_id": 513982,
+                    "_id": "513982",
                     "fullname": "Missy B.",
                     "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                 },
@@ -638,12 +812,12 @@ function _createStays() {
                     "txt": "The bed was amazing! must come back soon for it!",
                     "rate": 5,
                     "by": {
-                        "_id": "u102",
+                        "_id": "u10273",
                         "fullname": "Uko",
                         "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                     }
                 }],
-                "likedByUsers": ["Fridrich", "Zommen", "Yarl"]
+                "likedByUsers": ["Fridrich", "Zommen", "Yarl", "Roy"]
             },
 
             {
@@ -667,7 +841,7 @@ function _createStays() {
                 "bathrooms": 1,
                 "amenities": ["Elevator", "TV", "Wireless Internet", "Kitchen", "Dryer", "Washer", "Patio or balcony"],
                 "host": {
-                    "_id": 51399381,
+                    "_id": "51399381",
                     "fullname": "eric Vökel",
                     "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                 },
@@ -688,12 +862,12 @@ function _createStays() {
                     "txt": "Had fun. Thank you.",
                     "rate": 3,
                     "by": {
-                        "_id": "u102",
-                        "fullname": "user29",
+                        "_id": "u102342",
+                        "fullname": "Chappi",
                         "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                     }
                 }],
-                "likedByUsers": ["Yorgen", "Philip", "Kiril"]
+                "likedByUsers": ["Yorgen", "Philip", "Kiril", "Nicole"]
             },
 
             {
@@ -719,7 +893,7 @@ function _createStays() {
 
                 "amenities": ["Internet", "Wireless Internet", "Kitchen", "Heating", "Washer", "Essentials"],
                 "host": {
-                    "_id": 51399391,
+                    "_id": "51399391",
                     "fullname": "Davit Pok",
                     "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                 },
@@ -742,7 +916,7 @@ function _createStays() {
                     "txt": "Wont come back,  for sure.",
                     "rate": 2,
                     "by": {
-                        "_id": "u102",
+                        "_id": "u302",
                         "fullname": "Yoram",
                         "imgUrl": "https://source.unsplash.com/random/100x100/?face"
                     }
