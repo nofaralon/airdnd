@@ -1,0 +1,25 @@
+.img-container {
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
+    grid-template-rows: 220px 220px;
+    gap: 8px;
+    & img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    & img:first-child {
+        grid-column: 1/span 2;
+        grid-row: 1/span 2;
+        border-top-left-radius: 13px;
+        border-bottom-left-radius: 13px;
+    }
+    & img:nth-child(3) {
+        border-top-right-radius: 13px;
+    }
+    & img:nth-child(5) {
+        border-bottom-right-radius: 13px;
+    }
+}
