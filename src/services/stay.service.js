@@ -29,6 +29,7 @@ async function query(filterBy) {
 }
 
 async function getById(id) {
+    console.log(typeof id);
     return storageService.get(STAY_KEY, id)
         // try {
         //     const res = await axios.get(STAY_URL + id)
@@ -119,7 +120,7 @@ function _createStays() {
         stays = [
 
             {
-                "_id": 5487331,
+                "_id": "5487331",
                 "name": "★Heated Salt Water Pool★Outdoor Kitchen★1GB★3 Car★",
                 "imgUrls": [
                     "https://res.cloudinary.com/di0utpbop/image/upload/v1638310848/airdnd/6dd0374b-eba6-45e3-89f8-66aed336d0e4_dvlt6b.jpg",
@@ -170,12 +171,8 @@ function _createStays() {
                 "likedByUsers": ["ishutzu", "Racha", "Momo"]
             },
 
-
-
-
-
             {
-                "_id": 5487332,
+                "_id": "5487332",
                 "name": "Best Bayfront View. New construction w/ pool",
                 "imgUrls": [
                     "https://res.cloudinary.com/di0utpbop/image/upload/v1638307941/airdnd/454ce990-c861-4ec2-9c21-160f9e4b8856_eqpdm4.jpg",
@@ -226,11 +223,8 @@ function _createStays() {
                 "likedByUsers": ["mini-user"]
             },
 
-
-
-
             {
-                "_id": 54331,
+                "_id": "54331",
                 "name": "Sextant | 2-Story Waterfront Penthouse | Heated Pool | 10 mins to Beach",
                 "imgUrls": [
                     "https://res.cloudinary.com/di0utpbop/image/upload/v1638306687/airdnd/06dc19df-a748-4799-a557-9911b297351e_tdbbsu.jpg",
@@ -284,9 +278,8 @@ function _createStays() {
                 "likedByUsers": ["ishutzu", "Popory"]
             },
 
-
             {
-                "_id": 231331,
+                "_id": "231331",
                 "name": "BEAUTIFUL 2BD ★ OVERLOOKING THE OCEAN ★BRICKELL",
                 "imgUrls": [
                     "https://res.cloudinary.com/di0utpbop/image/upload/v1638305372/airdnd/91482620-67d1-41e8-a4d7-b032cfaf2a0e_vzmrkc.jpg",
@@ -341,7 +334,7 @@ function _createStays() {
 
 
             {
-                "_id": 103108831,
+                "_id": "103108831",
                 "name": "Exceptional Architect Loft - North Marais !",
                 "imgUrls": [
                     "https://res.cloudinary.com/di0utpbop/image/upload/v1638301163/airdnd/24796636-fd35-4224-bdc0-df36b11bdf1a_pyrvkp.jpg",
@@ -397,7 +390,7 @@ function _createStays() {
             },
 
             {
-                "_id": 10317,
+                "_id": "10317",
                 "name": "Luxury apartment 80m2 with AC center of Marais",
                 "imgUrls": [
                     "https://res.cloudinary.com/di0utpbop/image/upload/v1638300786/airdnd/91fef747-db11-47f0-a1e0-4186fc90d1e2_iboupe.jpg",
@@ -447,9 +440,8 @@ function _createStays() {
                 "likedByUsers": ["Shimi", "freddy"]
             },
 
-
             {
-                "_id": 1031755,
+                "_id": "1031755",
                 "name": "Loft avec terrasse dans le coeur de Paris",
                 "imgUrls": [
                     "https://res.cloudinary.com/di0utpbop/image/upload/v1638298338/airdnd/88523a4d-966a-4be0-8ba6-60f09c97535b_xszkuk.jpg",
@@ -502,7 +494,7 @@ function _createStays() {
             },
 
             {
-                "_id": 103165446,
+                "_id": "103165446",
                 "name": "PARIS INSIDE HOME! 50m2",
                 "imgUrls": [
                     "https://res.cloudinary.com/di0utpbop/image/upload/v1638297053/airdnd/e5acfcfb-6fa5-4607-866c-dec81168db5a_z2krlm.jpg",
@@ -552,10 +544,8 @@ function _createStays() {
                 "likedByUsers": ["Gigi", "Kimbape"]
             },
 
-
-
             {
-                "_id": 104016546,
+                "_id": "104016546",
                 "name": "Loft Leidsegracht - Private studio + Roof terrace!",
                 "imgUrls": [
                     "https://res.cloudinary.com/di0utpbop/image/upload/v1638293951/airdnd/32ea0216-ce57-4051-a045-2af634bb3254_za56c8.jpg",
@@ -605,10 +595,8 @@ function _createStays() {
                 "likedByUsers": ["checko", "Pinko", "Libi", "Karen"]
             },
 
-
-
             {
-                "_id": 100165746,
+                "_id": "100165746",
                 "name": "Catch Apartment",
                 "imgUrls": [
                     "https://res.cloudinary.com/di0utpbop/image/upload/v1638291773/airdnd/9ed552b9-2bd8-40aa-881c-5489b71af06d_cishwy.jpg",
@@ -659,7 +647,7 @@ function _createStays() {
             },
 
             {
-                "_id": 1330006546,
+                "_id": "1330006546",
                 "name": "Central, Exclusive Penthouse with River View",
                 "imgUrls": [
                     "https://res.cloudinary.com/di0utpbop/image/upload/v1638288481/airdnd/208eb96e-897f-4a2d-953a-42e749fd4502_iq8mzs.jpg",
@@ -708,9 +696,8 @@ function _createStays() {
                 "likedByUsers": ["Yorgen", "Philip", "Kiril"]
             },
 
-
             {
-                "_id": 1000654755,
+                "_id": "1000654755",
                 "name": "Cozy, furnished apartament near Lelylaan Station",
                 "imgUrls": [
                     "https://res.cloudinary.com/di0utpbop/image/upload/v1638281929/airdnd/3f474f76-e7ee-482d-ada4-f02a8aeff609_zpai1w.jpg",
