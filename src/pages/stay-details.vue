@@ -1,24 +1,17 @@
 <template>
- <div>stay-details</div>
+  <div>stay-details</div>
 </template>
 
 
 <script>
 export default {
-   name: "stay-details",
+  name: "stay-details",
   data() {
-    return {
-      
-    };
+    return {};
   },
-  computed: {
-    
-  },
-  created() {
-  
-  },
-  methods: {
-   
-  }
+  created() {},
+  methods: {},
+  computed: {},
+  components: {}
 };
 </script>

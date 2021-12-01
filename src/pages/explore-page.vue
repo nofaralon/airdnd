@@ -1,24 +1,33 @@
 <template>
- <div>Explore-page</div>
+  <section class="">
+    <div>Explore-page</div>
+    <p v-if="isLoading">Loading...</p>
+
+    <stay-list v-else :stays="stays"></stay-list>
+  </section>
 </template>
 
 
 <script>
+import stayList from "../cmps/stay-list.vue";
+
 export default {
-   name: "explore-page",
+  name: "explore-page",
   data() {
-    return {
-      
-    };
+    return {};
   },
+  created() {},
+  methods: {},
   computed: {
-    
+    stays() {
+      return this.$store.getters.staysForDisplay;
+    },
+    isLoading() {
+      return this.$store.getters.isLoading;
+    },
   },
-  created() {
-  
+  components: {
+    stayList,
   },
-  methods: {
-   
-  }
 };
 </script>

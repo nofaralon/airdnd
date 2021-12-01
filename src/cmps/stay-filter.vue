@@ -7,18 +7,11 @@
 export default {
    name: "stay-filter",
   data() {
-    return {
-      
-    };
+    return {};
   },
-  computed: {
-    
-  },
-  created() {
-  
-  },
-  methods: {
-   
-  }
+  created() {},
+  methods: {},
+  computed: {},
+  components: {}
 };
 </script>

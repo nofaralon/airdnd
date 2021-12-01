@@ -22,6 +22,10 @@ const routes = [{
     {
         path: '/stay/:stayId',
         component: stayDetails
+    },
+    {
+        path: '*',
+        redirect: '/stay'
     }
 ]
 

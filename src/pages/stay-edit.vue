@@ -1,24 +1,17 @@
 <template>
- <div>Stay-edit</div>
+  <div>Stay-edit</div>
 </template>
 
 
 <script>
 export default {
-   name: "stay-edit",
+  name: "stay-edit",
   data() {
-    return {
-      
-    };
+    return {};
   },
-  computed: {
-    
-  },
-  created() {
-  
-  },
-  methods: {
-   
-  }
+  created() {},
+  methods: {},
+  computed: {},
+  components: {},
 };
 </script>
