@@ -1,0 +1,33 @@
+.home-page {
+    & img {
+        width: 1300px;
+        height: 680px;
+        object-fit: none;
+    }
+    .explore-btn {
+        text-align: center;
+        position: absolute;
+        top: 545px;
+        left: 485px;
+        color: white;
+    }
+}
+
+.top-cities {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    .city {
+        width: 260px;
+        height: 340px;
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        & p {
+            text-align: center;
+        }
+    }
+}

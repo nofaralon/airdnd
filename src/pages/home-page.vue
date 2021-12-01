@@ -1,30 +1,32 @@
 <template>
-  <section>
+  <section class="home-page">
     <stay-filter></stay-filter>
     <img src="../assets/imgs/home.jpg" />
+    <div class="explore-btn">
     <h1>Not sure where to go? Perfect.</h1>
     <button>I'm flexible</button>
+    </div>
 
     <h2>Inspiration for your next trip</h2>
     <div class="top-cities">
-      <div>
+      <div class="city">
         <img src="../assets/imgs/amsterdam.png" />
-        <div>Amsterdam</div>
+        <p>Amsterdam</p>
       </div>
 
-      <div>
+      <div class="city">
         <img src="../assets/imgs/paris.jpg" />
-        <div>Paris</div>
+        <p>Paris</p>
       </div>
 
-      <div>
+      <div class="city">
         <img src="../assets/imgs/miami.jpg" />
-        <div>Miami</div>
+        <p>Miami</p>
       </div>
 
-      <div>
+      <div class="city">
         <img src="../assets/imgs/new-york.png" />
-        <div>New York</div>
+        <p>New York</p>
       </div>
     </div>
 
