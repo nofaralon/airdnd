@@ -159,15 +159,20 @@ function _createStays() {
     return stays;
 }
 
-function _createStay(name, imgUrls, summary,space,capacity, amenities,loc,type,bathrooms) {
+function _createStay(name, imgUrls,price, summary,space,around,notes,transit,capacity,bathrooms,beds,amenities,loc,type,reviews,likedByUsers) {
     return {
         _id: utilService.makeId(),
         name,
         imgUrls,
-        price: utilService.getRandomInt(50, 200),
+        price,
         summary,
         space,
+        around,
+        notes,
+        transit,
         capacity,
+        bathrooms,
+        beds,
         amenities,
         host: {
             _id: '',
@@ -176,9 +181,8 @@ function _createStay(name, imgUrls, summary,space,capacity, amenities,loc,type,b
         },
         loc,
         type,
-        bathrooms,
-        reviews: [],
-        likedByUsers: []
+        reviews,
+        likedByUsers
     }
 
 
