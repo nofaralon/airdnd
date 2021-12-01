@@ -1,7 +1,7 @@
 [
 
     {
-        "_id": "5487331",
+        "_id": 5487331,
         "name": "★Heated Salt Water Pool★Outdoor Kitchen★1GB★3 Car★",
         "imgUrls": [
             "https://res.cloudinary.com/di0utpbop/image/upload/v1638310848/airdnd/6dd0374b-eba6-45e3-89f8-66aed336d0e4_dvlt6b.jpg",
@@ -23,7 +23,7 @@
             "Wireless Internet", "washer", "Security camera", "pool"
         ],
         "host": {
-            "_id": "5781",
+            "_id": 5781,
             "fullname": "Trina",
             "imgUrl": "https://source.unsplash.com/random/100x100/?face"
         },
@@ -57,7 +57,7 @@
 
 
     {
-        "_id": "5487331",
+        "_id": 5487332,
         "name": "Best Bayfront View. New construction w/ pool",
         "imgUrls": [
             "https://res.cloudinary.com/di0utpbop/image/upload/v1638307941/airdnd/454ce990-c861-4ec2-9c21-160f9e4b8856_eqpdm4.jpg",
@@ -79,7 +79,7 @@
             "TV", "Wireless Internet", "Microwave", "Security camera", "pool"
         ],
         "host": {
-            "_id": "511",
+            "_id": 511,
             "fullname": "Ferony",
             "imgUrl": "https://source.unsplash.com/random/100x100/?face"
         },
@@ -112,7 +112,7 @@
 
 
     {
-        "_id": "54331",
+        "_id": 54331,
         "name": "Sextant | 2-Story Waterfront Penthouse | Heated Pool | 10 mins to Beach",
         "imgUrls": [
             "https://res.cloudinary.com/di0utpbop/image/upload/v1638306687/airdnd/06dc19df-a748-4799-a557-9911b297351e_tdbbsu.jpg",
@@ -137,7 +137,7 @@
             "TV", "Wireless Internet", "Microwave", "Security camera", "pool"
         ],
         "host": {
-            "_id": "511",
+            "_id": 511,
             "fullname": "Raphael",
             "imgUrl": "https://source.unsplash.com/random/100x100/?face"
         },
@@ -168,7 +168,7 @@
 
 
     {
-        "_id": "231331",
+        "_id": 231331,
         "name": "BEAUTIFUL 2BD ★ OVERLOOKING THE OCEAN ★BRICKELL",
         "imgUrls": [
             "https://res.cloudinary.com/di0utpbop/image/upload/v1638305372/airdnd/91482620-67d1-41e8-a4d7-b032cfaf2a0e_vzmrkc.jpg",
@@ -192,7 +192,7 @@
             "TV", "Wireless Internet", "Microwave", "Security camera", "Hot tub"
         ],
         "host": {
-            "_id": "511",
+            "_id": 511,
             "fullname": "Raphael",
             "imgUrl": "https://source.unsplash.com/random/100x100/?face"
         },
@@ -223,7 +223,7 @@
 
 
     {
-        "_id": "103108831",
+        "_id": 103108831,
         "name": "Exceptional Architect Loft - North Marais !",
         "imgUrls": [
             "https://res.cloudinary.com/di0utpbop/image/upload/v1638301163/airdnd/24796636-fd35-4224-bdc0-df36b11bdf1a_pyrvkp.jpg",
@@ -249,7 +249,7 @@
             "TV", "Wireless Internet", "Microwave", "Security camera", "Heating"
         ],
         "host": {
-            "_id": "51100",
+            "_id": 51100,
             "fullname": "Rachel",
             "imgUrl": "https://source.unsplash.com/random/100x100/?face"
         },
@@ -279,7 +279,7 @@
     },
 
     {
-        "_id": "10317",
+        "_id": 10317,
         "name": "Luxury apartment 80m2 with AC center of Marais",
         "imgUrls": [
             "https://res.cloudinary.com/di0utpbop/image/upload/v1638300786/airdnd/91fef747-db11-47f0-a1e0-4186fc90d1e2_iboupe.jpg",
@@ -300,7 +300,7 @@
         "bathrooms": 1,
         "amenities": ["Wireless Internet", "Kitchen", "Dryer", "TV", "City skyline view"],
         "host": {
-            "_id": "516418",
+            "_id": 516418,
             "fullname": "Maya",
             "imgUrl": "https://source.unsplash.com/random/100x100/?face"
         },
@@ -331,7 +331,7 @@
 
 
     {
-        "_id": "10317",
+        "_id": 1031755,
         "name": "Loft avec terrasse dans le coeur de Paris",
         "imgUrls": [
             "https://res.cloudinary.com/di0utpbop/image/upload/v1638298338/airdnd/88523a4d-966a-4be0-8ba6-60f09c97535b_xszkuk.jpg",
@@ -354,7 +354,7 @@
         "bathrooms": 1,
         "amenities": ["Wireless Internet", "Kitchen", "Dryer", "Security camera"],
         "host": {
-            "_id": "51641",
+            "_id": 51641,
             "fullname": "Malik",
             "imgUrl": "https://source.unsplash.com/random/100x100/?face"
         },
@@ -384,7 +384,7 @@
     },
 
     {
-        "_id": "10316546",
+        "_id": 103165446,
         "name": "PARIS INSIDE HOME! 50m2",
         "imgUrls": [
             "https://res.cloudinary.com/di0utpbop/image/upload/v1638297053/airdnd/e5acfcfb-6fa5-4607-866c-dec81168db5a_z2krlm.jpg",
@@ -405,7 +405,7 @@
         "bathrooms": 1,
         "amenities": ["Elevator", "TV", "Wireless Internet", "Kitchen", "Security camera", "City skyline view"],
         "host": {
-            "_id": "5139841",
+            "_id": 5139841,
             "fullname": "Berkley",
             "imgUrl": "https://source.unsplash.com/random/100x100/?face"
         },
@@ -437,7 +437,7 @@
 
 
     {
-        "_id": "10016546",
+        "_id": 104016546,
         "name": "Loft Leidsegracht - Private studio + Roof terrace!",
         "imgUrls": [
             "https://res.cloudinary.com/di0utpbop/image/upload/v1638293951/airdnd/32ea0216-ce57-4051-a045-2af634bb3254_za56c8.jpg",
@@ -458,7 +458,7 @@
         "bathrooms": 1,
         "amenities": ["TV", "Wireless Internet", "Kitchen", "Dryer", "Microwave", "Patio or balcony"],
         "host": {
-            "_id": "51399341",
+            "_id": 51399341,
             "fullname": "eric Vökel",
             "imgUrl": "https://source.unsplash.com/random/100x100/?face"
         },
@@ -490,7 +490,7 @@
 
 
     {
-        "_id": "10016546",
+        "_id": 100165746,
         "name": "Catch Apartment",
         "imgUrls": [
             "https://res.cloudinary.com/di0utpbop/image/upload/v1638291773/airdnd/9ed552b9-2bd8-40aa-881c-5489b71af06d_cishwy.jpg",
@@ -511,7 +511,7 @@
         "bathrooms": 2,
         "amenities": ["Elevator", "TV", "Wireless Internet", "Kitchen", "Dryer", "Washer", "Patio or balcony"],
         "host": {
-            "_id": "513982",
+            "_id": 513982,
             "fullname": "Missy B.",
             "imgUrl": "https://source.unsplash.com/random/100x100/?face"
         },
@@ -541,7 +541,7 @@
     },
 
     {
-        "_id": "10006546",
+        "_id": 1330006546,
         "name": "Central, Exclusive Penthouse with River View",
         "imgUrls": [
             "https://res.cloudinary.com/di0utpbop/image/upload/v1638288481/airdnd/208eb96e-897f-4a2d-953a-42e749fd4502_iq8mzs.jpg",
@@ -561,7 +561,7 @@
         "bathrooms": 1,
         "amenities": ["Elevator", "TV", "Wireless Internet", "Kitchen", "Dryer", "Washer", "Patio or balcony"],
         "host": {
-            "_id": "51399381",
+            "_id": 51399381,
             "fullname": "eric Vökel",
             "imgUrl": "https://source.unsplash.com/random/100x100/?face"
         },
@@ -592,7 +592,7 @@
 
 
     {
-        "_id": "10006547",
+        "_id": 1000654755,
         "name": "Cozy, furnished apartament near Lelylaan Station",
         "imgUrls": [
             "https://res.cloudinary.com/di0utpbop/image/upload/v1638281929/airdnd/3f474f76-e7ee-482d-ada4-f02a8aeff609_zpai1w.jpg",
@@ -614,7 +614,7 @@
 
         "amenities": ["Internet", "Wireless Internet", "Kitchen", "Heating", "Washer", "Essentials"],
         "host": {
-            "_id": "51399391",
+            "_id": 51399391,
             "fullname": "Davit Pok",
             "imgUrl": "https://source.unsplash.com/random/100x100/?face"
         },
