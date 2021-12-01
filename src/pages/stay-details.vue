@@ -2,8 +2,8 @@
   <section v-if="stay" class="stay-details">
     <h1>{{ stay.name }}</h1>
     <a href="">{{ stay.loc.address }}</a>
-    <div class="img-container" v-for="(img, index) in imgs" :key="index">
-      <img :src="img" alt="">
+    <div class="img-container">
+      <img  v-for="(img, index) in imgs" :key="index" :src="img" alt="">
     </div>
   </section>
 </template>
