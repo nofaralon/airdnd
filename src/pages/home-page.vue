@@ -1,8 +1,10 @@
 <template>
-  <section class="home-page">
+  <section class="home-page main-layout">
 
     <stay-filter></stay-filter>
+    <div class="home-img-container">
     <img src="../assets/imgs/home.jpg" />
+    </div>
     <div class="explore-btn">
     <h1>Not sure where to go? Perfect.</h1>
     <button>I'm flexible</button>
