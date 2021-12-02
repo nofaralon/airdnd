@@ -9,10 +9,10 @@ import "./style/style.scss";
 import locale from 'element-ui/lib/locale/lang/en'
 import * as VueGoogleMaps from 'vue2-google-maps'
 Vue.use(VueGoogleMaps, {
- load: {
-   key: 'AIzaSyCs-QKtNa_l3qyNxdpxi7YM7rRgpKvTJU8',
-   libraries: 'places', 
- },
+    load: {
+        key: 'AIzaSyCs-QKtNa_l3qyNxdpxi7YM7rRgpKvTJU8',
+        libraries: 'places',
+    },
 })
 
 Vue.config.productionTip = false
