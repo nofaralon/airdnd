@@ -1,5 +1,5 @@
 <template>
-  <section class="explore-layout">
+  <section class="explore-layout main-layout">
     <div>Explore-page</div>
     <p v-if="isLoading">Loading...</p>
 
