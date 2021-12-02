@@ -1,9 +1,7 @@
 .img-container {
-    // width: 80%;
-    // margin: auto;
     display: grid;
     grid-template-columns: repeat(4, minmax(220px, 1fr));
-    grid-template-rows: 220px 220px;
+    // grid-template-rows: 220px 220px;
     gap: 8px;
     & img {
         height: 100%;
@@ -26,15 +24,14 @@
 
 .info-container {
     display: flex;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 .stay-info {
-    // padding-right: 80px;
-    // padding-left: 150px;
     display: flex;
     flex-direction: column;
-    // width: 50%;
+    max-width: 640px;
+    padding-right: 95px;
     .info-header {
         display: flex;
         justify-content: space-between;
@@ -48,6 +45,9 @@
             width: 60px;
             border-radius: 50%;
         }
+        & h2 {
+            font-size: rem(22px);
+        }
     }
     .main-info {
         display: flex;
@@ -58,22 +58,43 @@
         & div:last-child {
             padding-bottom: 20px;
         }
+        & span {
+            font-size: rem(14.5px);
+        }
     }
     .description {
+        border-top: 1px solid #00000029;
         border-bottom: 1px solid #00000029;
         gap: 50px;
         padding-bottom: 20px;
         padding-top: 20px;
         width: 60ch;
+        & h2 {
+            font-size: rem(22px);
+        }
+        & p {
+            font-size: rem(14.5px);
+        }
     }
 }
 
 .order-form {
-    border: 1px solid #00000029;
-    padding: 20px;
+    border: 1px solid #dadada;
+    border-radius: 13px;
+    box-shadow: 0 6px 16px -2px #d8d8d8;
+    padding: 20px 25px 15px;
+    flex-grow: 1;
+    width: 600px;
+    height: 500px;
     .order-price {
         display: flex;
         justify-content: space-between;
+        & p {
+            & span {
+                font-size: rem(22px);
+                font-weight: 700;
+            }
+        }
     }
     .order-picker {
         margin-top: 10px;
@@ -81,10 +102,13 @@
         display: flex;
         flex-direction: column;
         border-radius: 13px;
-        padding: 10px;
+        padding: 20px;
         cursor: pointer;
         .el-date-editor {
             border: none;
+        }
+        & h2 {
+            font-size: rem(14px);
         }
     }
     .reserve {
@@ -106,8 +130,15 @@
         border-radius: 13px;
         box-shadow: 0 3px 8px 0 rgb(0 0 0 / 18%);
         top: 500px;
+        z-index: 2;
         .nof {
             border-bottom: 1px solid rgba(128, 128, 128, 0.513);
+        }
+        & h2 {
+            font-size: rem(14px);
+        }
+        & span {
+            font-size: rem(14px);
         }
         >* {
             display: flex;

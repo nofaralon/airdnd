@@ -1,5 +1,5 @@
 <template>
-  <section v-if="stay" class="stay-details">
+  <section v-if="stay" class="stay-details main-layout">
     <h1>{{ stay.name }}</h1>
     <a href="">{{ stay.loc.address }}</a>
     <div class="img-container">
@@ -61,9 +61,9 @@
 
       <div class="order-form">
         <div class="order-price">
-          <p>
-            {{stayPrice}}/night
-          </p>
+         
+          <p><span>{{stayPrice}}</span>/night</p>
+      
           <span>4.39 <a>(3 reviews)</a></span>
         </div>
 
@@ -82,8 +82,6 @@
             <span> {{ order.guests }} </span>
           </div>
         </div>
-
-        <button class="reserve">Reserve</button>
 
         <div v-if="openModal" class="guest-modal">
           <div class="nof">
@@ -109,6 +107,8 @@
             </div>
           </div>
         </div>
+                <button class="reserve">Reserve</button>
+
       </div>
     </section>
   </section>
