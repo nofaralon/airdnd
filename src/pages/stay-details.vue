@@ -5,6 +5,12 @@
     <div class="img-container">
       <img  v-for="(img, index) in imgs" :key="index" :src="img" alt="">
     </div>
+
+    <div class="stay-info">
+      
+    </div>
+
+
   </section>
 </template>
 
