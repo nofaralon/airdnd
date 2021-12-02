@@ -85,15 +85,21 @@ async function save(stay) {
 
 
 }
-async function getEmptyStay() {
+function getEmptyStay() {
     return {
         _id: '',
         name: '',
         imgUrls: ['', ''],
-        price: 0,
+        price: null,
         summary: '',
         space: '',
-        capacity: 0,
+        acces:"",
+        around:"",
+        notes:"",
+        transit:"",
+        capacity: null,
+        bathrooms:null,
+        beds:null,
         amenities: [],
         host: {
             _id: '',
@@ -104,12 +110,12 @@ async function getEmptyStay() {
             country: '',
             countryCode: '',
             address: '',
-            lat: 0,
-            lng: 0
+            lat: null,
+            lng: null
         },
         type: '',
-        reviews: ['peepi'],
-        likedByUsers: ['weewi']
+        reviews: [],
+        likedByUsers: []
 
     }
 }

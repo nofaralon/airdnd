@@ -1,6 +1,6 @@
 <template>
   <header class="app-header ">
-    <h3>AirD&D</h3>
+    <h3>airdnd</h3>
     <div class="main-haeder">
       <nav>
         <router-link to="/">Home</router-link> |
@@ -10,8 +10,11 @@
         </template>
         <template v-else>
           <span>Hi, </span>
-        <router-link to="/user/:userId">{{user.username}}</router-link>
+        <router-link  to="/user/:userId">{{user.username}}</router-link> |
         </template>
+        <router-link to="/stay/edit">Explore</router-link> 
+        
+
       </nav>
     </div>
   </header>
