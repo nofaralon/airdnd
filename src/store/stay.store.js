@@ -118,6 +118,20 @@ export const stayStore = {
                 return savedStay
             })
         },
+        toggleLike({dispatch, getters}, {stay}){
+            const user=getters.miniUser
+            console.log(user,stay);
+            const wasLiked=stay.likedByUsers.findIndex(reviewer=> reviewer._id ===user._id)
+            if(wasLiked>=0){
+                stay.likedByUsers.splice(wasLiked,1)
+                console.log(stay.likedByUsers);
+            }else{
+                stay.likedByUsers.unshift(user)
+                console.log(stay.likedByUsers);
+            }
+            
+
+        },
         updateStay({ commit }, { stay }) {
             return stayService.save(stay).then((savedStay) => {
                 commit({ type: 'updateStay', stay: savedStay })

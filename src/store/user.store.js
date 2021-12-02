@@ -2,12 +2,22 @@ import {userService} from '../services/user.service.js'
 
 export const userStore={
     state:{
-        user: userService.getLoggedinUser() || null
+        user: userService.getLoggedinUser() || null,
     },
     getters: {
         user(state){
             return state.user
         },
+        miniUser(state){
+            const _id=state.user._id
+            const fullname=state.user.fullname
+            const imgUrl=state.user.imgUrl
+            return {
+                _id,
+                fullname,
+                imgUrl
+            }
+        }
         
 
     },

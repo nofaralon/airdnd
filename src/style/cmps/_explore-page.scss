@@ -1,0 +1,78 @@
+.explore-layout {
+  display: grid;
+  grid-template-columns: $exploreLayoutPadding 1fr $exploreLayoutPadding;
+  > * {
+    grid-column: 2;
+  }
+
+  > *.full {
+    grid-column: 1 / -1;
+  }
+
+  // @include for-narrow-layout {
+  //     @include layoutGTC($break-narrow);
+  // }
+
+  // @include for-normal-layout {
+  //     @include layoutGTC($break-normal);
+  // }
+
+  // @include for-wide-layout {
+  //     @include layoutGTC($break-wide);
+  // }
+}
+
+.card-grid {
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+  // grid-template-rows: repeat(auto-fill 250px);
+  gap: 25px;
+  // grid-auto-flow: dense;
+
+  > * {
+    display: grid;
+
+    // align-items: center;
+    // justify-items: center;
+    list-style: none;
+    .preview-container{
+        position: relative;
+    }
+    img {
+      width: 100%;
+      height: 321px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    .stay-name {
+      width: 21ch;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      font-weight: 600;
+    }
+    .fa-heart {
+        z-index: 1;
+        width: 22px;
+        height: 21px;
+        stroke: gray;
+        stroke-width: 10;
+        position: absolute;
+        right: 18px;
+        top: 18px;
+    }
+    .liked{
+        fill: rgb(255, 56, 92);
+    }
+    .name-price-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 6px;
+    }
+
+    > *:not(label) {
+      grid-area: 1 / 1;
+    }
+  }
+}

@@ -12,7 +12,7 @@
           <span>Hi, </span>
         <router-link  to="/user/:userId">{{user.username}}</router-link> |
         </template>
-        <router-link to="/stay/edit">Explore</router-link> 
+        <router-link to="/stay/edit">Become a host</router-link> 
         
 
       </nav>

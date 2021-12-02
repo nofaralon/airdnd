@@ -1,9 +1,9 @@
 <template>
-  <section class="">
+  <section class="explore-layout">
     <div>Explore-page</div>
     <p v-if="isLoading">Loading...</p>
 
-    <stay-list v-else :stays="stays"></stay-list>
+    <stay-list v-else :stays="stays" @setLiked="setLiked"></stay-list>
   </section>
 </template>
 
@@ -17,7 +17,12 @@ export default {
     return {};
   },
   created() {},
-  methods: {},
+  methods: {
+    setLiked(stay){
+      console.log('explore emited:',stay);
+       this.$store.dispatch({type:'toggleLike',stay})
+    }
+},
   computed: {
     stays() {
       return this.$store.getters.staysForDisplay;
