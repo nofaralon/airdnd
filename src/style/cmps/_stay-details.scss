@@ -23,3 +23,47 @@
         border-bottom-right-radius: 13px;
     }
 }
+
+.info-container {
+    display: flex;
+    padding-top: 100px;
+}
+
+.stay-info {
+    padding-right: 80px;
+    padding-left: 150px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    .info-header {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #00000029;
+        align-items: center;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        & img {
+            object-fit: contain;
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+        }
+    }
+    .main-info {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 20px;
+        border-bottom: 1px solid #00000029;
+        & div:last-child {
+            padding-bottom: 20px;
+        }
+    }
+    .description {
+        border-bottom: 1px solid #00000029;
+        gap: 50px;
+        padding-bottom: 20px;
+        padding-top: 20px;
+        width: 60ch;
+    }
+}
