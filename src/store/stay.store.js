@@ -130,6 +130,9 @@ export const stayStore = {
             })
         },
         getStay({ commit }, { stayId }) {
+            if(!stayId){
+                return stayService.getEmptyStay()
+            }
             return stayService.getById(stayId).then((stay) => {
                 commit({ type: 'getStay', stay })
                 return stay

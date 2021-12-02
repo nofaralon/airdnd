@@ -35,8 +35,8 @@ export const userStore={
 
         },
         async signUser({commit},{user}){
-            const signedUser = await userService.signup(user)
-            commit({type:"setUser", signedUser})
+            await userService.signup(user)
+            commit({type:"setUser", user})
         }
     }
 

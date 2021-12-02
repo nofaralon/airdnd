@@ -56,7 +56,7 @@ async function login(userCred) {
     // if (user) return _saveLocalUser(user)
 }
 async function signup(userCred) {
-    // userCred.score = 10000;
+    userCred.imgUrl ="https://source.unsplash.com/random/100x100/?face"
     const user = await storageService.post('user', userCred)
     // const user = await httpService.post('auth/signup', userCred)
         // socketService.emit('set-user-socket', user._id);
