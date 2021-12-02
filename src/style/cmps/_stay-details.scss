@@ -1,6 +1,6 @@
 .img-container {
-    width: 80%;
-    margin: auto;
+    // width: 80%;
+    // margin: auto;
     display: grid;
     grid-template-columns: repeat(4, minmax(220px, 1fr));
     grid-template-rows: 220px 220px;
@@ -30,11 +30,11 @@
 }
 
 .stay-info {
-    padding-right: 80px;
-    padding-left: 150px;
+    // padding-right: 80px;
+    // padding-left: 150px;
     display: flex;
     flex-direction: column;
-    width: 50%;
+    // width: 50%;
     .info-header {
         display: flex;
         justify-content: space-between;
@@ -65,5 +65,69 @@
         padding-bottom: 20px;
         padding-top: 20px;
         width: 60ch;
+    }
+}
+
+.order-form {
+    border: 1px solid #00000029;
+    padding: 20px;
+    .order-price {
+        display: flex;
+        justify-content: space-between;
+    }
+    .order-picker {
+        margin-top: 10px;
+        border: 1px solid gray;
+        display: flex;
+        flex-direction: column;
+        border-radius: 13px;
+        padding: 10px;
+        cursor: pointer;
+        .el-date-editor {
+            border: none;
+        }
+    }
+    .reserve {
+        margin: 15px 0 10px;
+        width: 100%;
+        border-radius: 13px;
+        background-image: linear-gradient( 90deg, #e61e4d 0, #e31c5f 50%, #d70466);
+        color: #fff;
+        font-size: 16px;
+        padding: 15px;
+        font-family: airbnb-regular, sans-serif;
+    }
+    .guest-modal {
+        position: sticky;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid gray;
+        border-radius: 13px;
+        box-shadow: 0 3px 8px 0 rgb(0 0 0 / 18%);
+        top: 500px;
+        .nof {
+            border-bottom: 1px solid rgba(128, 128, 128, 0.513);
+        }
+        >* {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px;
+            & button {
+                justify-content: center;
+                background-color: #0000;
+                border-radius: 50%;
+                height: 40px;
+                width: 40px;
+                align-items: center;
+                color: #484848;
+                font-size: 1.125rem;
+                border: 1px solid;
+                cursor: pointer;
+            }
+            .guests {
+                padding: 10px;
+            }
+        }
     }
 }

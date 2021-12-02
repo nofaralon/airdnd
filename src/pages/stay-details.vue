@@ -60,19 +60,54 @@
       </div>
 
       <div class="order-form">
-        <div>
-          <p>$ {{ stay.price }}/night</p>
+        <div class="order-price">
+          <p>
+            {{stayPrice}}/night
+          </p>
           <span>4.39 <a>(3 reviews)</a></span>
         </div>
 
-        <div class="block">
-          <el-date-picker
-            v-model="dateVal"
-            type="daterange"
-            start-placeholder="CHECK-IN"
-            end-placeholder="CHECK-OUT"
-          >
-          </el-date-picker>
+        <div class="order-picker">
+          <div class="block">
+            <el-date-picker
+              v-model="order.dateVal"
+              type="daterange"
+              start-placeholder="CHECK-IN"
+              end-placeholder="CHECK-OUT"
+            >
+            </el-date-picker>
+          </div>
+          <div @click="toggleModal">
+            <h2>GUESTS</h2>
+            <span> {{ order.guests }} </span>
+          </div>
+        </div>
+
+        <button class="reserve">Reserve</button>
+
+        <div v-if="openModal" class="guest-modal">
+          <div class="nof">
+            <div>
+              <h2>Adults</h2>
+              <span>Age 13+</span>
+            </div>
+            <div>
+              <button @click="setCountAdults('down')">-</button>
+              <span class="guests">{{ order.adults }}</span>
+              <button @click="setCountAdults('up')">+</button>
+            </div>
+          </div>
+          <div>
+            <div>
+              <h2>Kids</h2>
+              <span>Ages 2–12</span>
+            </div>
+            <div>
+              <button @click="setCountKids('down')">-</button>
+              <span class="guests">{{ order.kids }}</span>
+              <button @click="setCountKids('up')">+</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -87,7 +122,16 @@ export default {
     return {
       stay: null,
       imgs: [],
-      dateVal: null
+      adults: 0,
+      order: {
+        kids: 0,
+        adults: 0,
+        dateVal: null,
+        guests: 0,
+        price: 0
+        
+      },
+      openModal: false,
     };
   },
   created() {
@@ -107,8 +151,50 @@ export default {
       var imgs = this.stay.imgUrls.slice(0, 5);
       this.imgs = imgs;
     },
+    toggleModal() {
+      this.openModal = !this.openModal;
+    },
+    setCountAdults(val) {
+      if (val === "down") {
+        if (this.order.adults === 0) return;
+        this.order.adults -= 1;
+        this.order.guests -= 1;
+      } else {
+        if (this.order.guests === this.stay.capacity) return;
+        this.order.adults += 1;
+        this.order.guests += 1;
+      }
+    },
+    setCountKids(val) {
+      if (val === "down") {
+        if (this.order.kids === 0) return;
+        this.order.kids -= 1;
+        this.order.guests -= 1;
+      } else {
+        if (this.order.guests === this.stay.capacity) return;
+        this.order.kids += 1;
+        this.order.guests += 1;
+      }
+
+    }
   },
-  computed: {},
+  computed: {
+    stayPrice(){
+     var PricePerNight = this.stay.price
+
+      // if(this.order.guests){
+      //   var orderPrice = PricePerNight * this.order.guests
+      // } else orderPrice = PricePerNight
+
+      this.order.price = PricePerNight.toLocaleString("en-US", {
+                currency: "USD",
+                style: "currency",
+                maximumFractionDigits: 0,
+              })
+
+      return this.order.price
+    },
+  },
   components: {},
 };
 </script>
