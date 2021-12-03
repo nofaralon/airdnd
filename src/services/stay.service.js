@@ -85,6 +85,7 @@ async function save(stay) {
 
 
 }
+
 function getEmptyStay() {
     return {
         _id: '',
@@ -93,13 +94,13 @@ function getEmptyStay() {
         price: null,
         summary: '',
         space: '',
-        acces:"",
-        around:"",
-        notes:"",
-        transit:"",
+        acces: "",
+        around: "",
+        notes: "",
+        transit: "",
         capacity: null,
-        bathrooms:null,
-        beds:null,
+        bathrooms: null,
+        beds: null,
         amenities: [],
         host: {
             _id: '',
@@ -159,8 +160,8 @@ function _createStays() {
                     "country": "Iceland",
                     "countryCode": "ISL",
                     "address": "Hella ,Iceland",
-                    "lat": -20.39845713535863,
-                    "lng": 63.841659597974854
+                    "lng": -20.39845713535863,
+                    "lat": 63.841659597974854
                 },
                 "type": "outdoors",
                 "reviews": [{
@@ -223,8 +224,8 @@ function _createStays() {
                     "country": "Iceland",
                     "countryCode": "ISL",
                     "address": "Hvolsvöllur ,Iceland",
-                    "lat": -20.223351936097036,
-                    "lng": 63.748324634546584
+                    "lng": -20.223351936097036,
+                    "lat": 63.748324634546584
                 },
                 "type": "outdoors",
                 "reviews": [{
@@ -278,8 +279,8 @@ function _createStays() {
                     "country": "Iceland",
                     "countryCode": "ISL",
                     "address": "Árskógssandur, Dalvík,Iceland",
-                    "lat": -18.348283908813563,
-                    "lng": 65.94148107219047
+                    "lng": -18.348283908813563,
+                    "lat": 65.94148107219047
                 },
                 "type": "outdoors",
                 "reviews": [{
@@ -333,8 +334,8 @@ function _createStays() {
                     "country": "Iceland",
                     "countryCode": "ISL",
                     "address": "Selfoss,Iceland",
-                    "lat": -20.95788025742186,
-                    "lng": 63.96039497240088
+                    "lng": -20.95788025742186,
+                    "lat": 63.96039497240088
                 },
                 "type": "outdoors",
                 "reviews": [{
@@ -386,8 +387,8 @@ function _createStays() {
                     "country": "Miami",
                     "countryCode": "FL",
                     "address": "Miami, Florida, United States",
-                    "lat": -80.15259684126534,
-                    "lng": 25.845870068762853
+                    "lng": -80.15259684126534,
+                    "lat": 25.845870068762853
                 },
                 "type": "villa",
                 "reviews": [{
@@ -441,8 +442,8 @@ function _createStays() {
                     "country": "Miami",
                     "countryCode": "FL",
                     "address": "Miami, Florida, United States",
-                    "lat": -80.15757502118096,
-                    "lng": 25.853246740692718
+                    "lng": -80.15757502118096,
+                    "lat": 25.853246740692718
                 },
                 "type": "villa",
                 "reviews": [{
@@ -495,8 +496,8 @@ function _createStays() {
                     "country": "Miami",
                     "countryCode": "FL",
                     "address": "Miami, Florida, United States",
-                    "lat": -80.19372162516402,
-                    "lng": 25.77059222791051
+                    "lng": -80.19372162516402,
+                    "lat": 25.77059222791051
                 },
                 "type": "apartment",
                 "reviews": [{
@@ -552,8 +553,8 @@ function _createStays() {
                     "country": "France",
                     "countryCode": "FR",
                     "address": "Paris, Île-de-France, France",
-                    "lat": 2.3439326463706607,
-                    "lng": 48.872852349058235
+                    "lng": 2.3439326463706607,
+                    "lat": 48.872852349058235
                 },
                 "type": "apartment",
                 "reviews": [{
@@ -603,8 +604,8 @@ function _createStays() {
                     "country": "France",
                     "countryCode": "FR",
                     "address": "Paris, Île-de-France, France",
-                    "lat": 2.345412038289177,
-                    "lng": 48.862811614303716
+                    "lng": 2.345412038289177,
+                    "lat": 48.862811614303716
                 },
                 "type": "apartment",
                 "reviews": [{
@@ -656,8 +657,8 @@ function _createStays() {
                     "country": "France",
                     "countryCode": "FR",
                     "address": "Paris, Île-de-France, France",
-                    "lat": 2.345412038289177,
-                    "lng": 48.862811614303716
+                    "lng": 2.345412038289177,
+                    "lat": 48.862811614303716
                 },
                 "type": "loft",
                 "reviews": [{
@@ -707,8 +708,8 @@ function _createStays() {
                     "country": "France",
                     "countryCode": "FR",
                     "address": "Paris, Île-de-France, France",
-                    "lat": 2.309501271442227,
-                    "lng": 48.83918269196788
+                    "lng": 2.309501271442227,
+                    "lat": 48.83918269196788
                 },
                 "type": "apartment",
                 "reviews": [{
@@ -758,8 +759,8 @@ function _createStays() {
                     "country": "Netherlands",
                     "countryCode": "NL",
                     "address": "Amsterdam, North Holland, Netherlands",
-                    "lat": 4.884217719683958,
-                    "lng": 52.36629527416912
+                    "lng": 4.884217719683958,
+                    "lat": 52.36629527416912
                 },
                 "type": "apartment",
                 "reviews": [{
@@ -809,8 +810,8 @@ function _createStays() {
                     "country": "Netherlands",
                     "countryCode": "NL",
                     "address": "Amsterdam, North Holland, Netherlands",
-                    "lat": 4.892340591853418,
-                    "lng": 52.36629067647142
+                    "lng": 4.892340591853418,
+                    "lat": 52.36629067647142
                 },
                 "type": "apartment",
                 "reviews": [{
@@ -859,8 +860,8 @@ function _createStays() {
                     "country": "Netherlands",
                     "countryCode": "NL",
                     "address": "Amsterdam, North Holland, Netherlands",
-                    "lat": 4.90568244605868,
-                    "lng": 52.376798756235814
+                    "lng": 4.90568244605868,
+                    "lat": 52.376798756235814
                 },
                 "type": "apartment",
                 "reviews": [{
@@ -907,8 +908,8 @@ function _createStays() {
                     "country": "Netherlands",
                     "countryCode": "NL",
                     "address": "Amsterdam, North Holland, Netherlands",
-                    "lat": 4.862859671199358,
-                    "lng": 52.35992696894107
+                    "lng": 4.862859671199358,
+                    "lat": 52.35992696894107
                 },
                 "type": "apartment",
                 "bathrooms": 1,
