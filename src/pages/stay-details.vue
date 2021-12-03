@@ -1,10 +1,10 @@
 <template>
-  <section v-if="stay" class="stay-details main-layout">
+  <section v-if="stay" class="stay-details details-layout">
     <h1>{{ stay.name }}</h1>
     <div class="detsils-header">
       <a href="">{{ stay.loc.address }}</a>
       <span>Superhost</span>
-      <span>4.39 <a>(3 reviews)</a></span>
+      <span>4.39 <a>({{stay.reviews.length}} {{setReviews}})</a></span>
     </div>
 
     <div class="img-container">
@@ -16,8 +16,8 @@
           <div>
             <h2>{{ stay.type }} hosted by {{ stay.host.fullname }}</h2>
             <span
-              >{{ stay.capacity }} Guests • {{ stay.bedroom }} Bedrooms •
-              {{ stay.beds }} Beds • {{ stay.bathrooms }} Baths
+              >{{ stay.capacity }} Guests • {{ stay.bedroom }} {{setBedrooms}} •
+              {{ stay.beds }} {{setBeds}} • {{ stay.bathrooms }} {{setBaths}}
             </span>
           </div>
           <img :src="`${stay.host.imgUrl}`" />
@@ -71,7 +71,7 @@
             >/night
           </p>
 
-          <span>4.39 <a>(3 reviews)</a></span>
+          <span>4.39 <a>({{stay.reviews.length }} {{setReviews}})</a></span>
         </div>
 
         <div class="order-picker">
@@ -221,6 +221,22 @@ export default {
 
       return this.order.price;
     },
+    setReviews(){
+      if(this.stay.reviews.length>1) return 'reviews'
+      else return 'review'
+    },
+    setBedrooms(){
+      if(this.stay.bedroom>1) return 'bedrooms'
+      else return 'bedroom'
+    },
+    setBeds(){
+      if(this.stay.beds>1) return 'beds'
+      else return 'bed'
+    },
+    setBaths(){
+      if(this.stay.bathrooms>1) return 'baths'
+      else return 'bath'
+    }
   },
   components: {
     GmapMap,
