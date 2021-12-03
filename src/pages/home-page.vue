@@ -13,7 +13,8 @@
     </div>
     </div>
     </div>
-    <h2>Inspiration for your next trip</h2>
+
+    <h2 class="inspirations">Inspiration for your next trip</h2>
 
     <div class="top-cities">
       <div class="city">
@@ -42,6 +43,17 @@
         <div class="paris-text city-txt">
         <p>Paris</p>
         </div>
+      </div>
+    </div>
+
+
+    <div class="host-img-container">
+      <img src="https://res.cloudinary.com/di0utpbop/image/upload/v1638544563/airdnd/64f39605-fef0-4ef0-a0f8-caa6c6e011f2_1_abv9oz.webp" alt="">
+      <div class="on-host-img">
+        <div>
+      <h1>Questions</h1> <h1>about</h1>  <h1>hosting?</h1>
+        </div>
+      <button>Ask a superhost</button>
       </div>
     </div>
 
