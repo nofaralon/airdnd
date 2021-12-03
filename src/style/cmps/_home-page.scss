@@ -1,36 +1,104 @@
 .home-page {
-    & img {
-        width: 100%;
-        height: 680px;
-        object-fit: cover;
+  & img {
+    width: 100%;
+    height: 680px;
+    border-radius: 20px 20px 0 0;
+    object-fit: cover;
+  }
+  .explore-btn {
+    position: absolute;
+    top: 655px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: white;
+    & button {
+      width: 157px;
+      height: 52px;
+      border: none;
+      color: transparent;
+
+      background-color: white;
+      border-radius: 30px;
+      font-weight: 800;
+      line-height: 20px;
+      font-size: 1.125rem;
+      & span {
+        background-image: linear-gradient(
+          to right,
+          rgb(113, 1, 156),
+          rgb(216, 1, 195)
+        );
+        background-clip: text;
+      }
     }
-    .home-img-container{
-        padding: 0;
-    }
-    .explore-btn {
-        text-align: center;
-        position: absolute;
-        top: 545px;
-        left: 485px;
-        color: white;
-    }
+  }
+  .opening-screen {
+    background-color: black;
+    padding-bottom: 95px;
+  }
+  .opening-sentence {
+    font-size: 3rem;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.02rem;
+    line-height: 53px;
+    margin-bottom: 25px;
+  }
 }
 
 .top-cities {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  .city {
+    width: 321px;
+    height: 428px;
+    position: relative;
     display: flex;
-    justify-content: space-around;
-    margin-bottom: 50px;
-    margin-top: 50px;
-    .city {
-        width: 260px;
-        height: 340px;
-        & img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        & p {
-            text-align: center;
-        }
+    flex-wrap: nowrap;
+    flex-direction: column;
+
+    & :hover {
+      cursor: pointer;
     }
+    & img {
+      width: 100%;
+      height: 85%;
+      object-fit: cover;
+    }
+    .city-txt{
+        display: flex;
+        justify-content: center;
+        height: 15%;
+      align-items: center;
+      border-radius: 0 0 20px 20px;
+    }
+    .amsterdam-text{
+        background-image: linear-gradient(
+            to bottom,
+            rgb(140, 100, 30),
+            rgb(64, 34, 30))
+    }
+    .miami-text{
+        background-image: linear-gradient(
+            to bottom,
+            rgb(111, 160,188),
+            rgb(84, 180, 158))
+    }
+    .iceland-text{
+        background-image: linear-gradient(
+            to bottom,
+            rgb(180, 156, 18),
+            rgb(50, 85, 14))
+    }
+    .paris-text{
+        background-image: linear-gradient(
+          to bottom,
+          rgb(231, 193, 63),
+          rgb(50, 22, 13))
+    }
+  }
 }

@@ -1,5 +1,8 @@
 <template>
- <div>stay-filter</div>
+ <div class="filter">
+  <p> Filter!</p>
+
+  </div> 
 </template>
 
 

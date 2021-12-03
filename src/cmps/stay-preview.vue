@@ -11,6 +11,10 @@
       <p class="stay-name">{{ stay.name }}</p>
       <span>{{ stay.price.toLocaleString('en-US',{ currency:'USD',style:'currency',maximumFractionDigits: 0}) }}/night</span>
     </div>
+    <div class="preview-footer">
+      <p>{{distance.toLocaleString('en-US',{ maximumFractionDigits: 0})}} kilometers away</p>
+      <p>Mar 25 - Apr 2</p>
+    </div>
   </section>
 </template>
 
@@ -23,9 +27,12 @@ export default {
   data() {
     return {
       isLiked:false,
+      distance:null
     };
   },
-  created() {},
+  created() {
+  this.getDistanceFromLatLonInKm(32.0853,34.7818,this.stay.loc.lat,this.stay.loc.lng)
+  },
   methods: {
     stayDetails(stayId) {
       this.$router.push("/stay/" + stayId);
@@ -34,12 +41,23 @@ export default {
        this.isLiked=!this.isLiked
        this.$emit('setLiked',this.stay)
        
-    }
+    },
+      getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
+      console.log(lat1,lng1,lat2,lng2);
+  var R = 6371; 
+  var dLat = (lat2-lat1) * (Math.PI/180);  
+  var dLon = (lng2-lng1) * (Math.PI/180); 
+  var a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos((lat1)* (Math.PI/180)) * Math.cos((lat2)* (Math.PI/180)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+    ; 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  this.distance = R * c; 
 
   },
-  computed: {
-    
   },
+  computed: {},
   components: {},
 };
 </script>
