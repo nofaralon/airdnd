@@ -1,7 +1,12 @@
 <template>
   <section v-if="stay" class="stay-details main-layout">
     <h1>{{ stay.name }}</h1>
-    <a href="">{{ stay.loc.address }}</a>
+    <div class="detsils-header">
+      <a href="">{{ stay.loc.address }}</a>
+      <span>Superhost</span>
+      <span>4.39 <a>(3 reviews)</a></span>
+    </div>
+
     <div class="img-container">
       <img v-for="(img, index) in imgs" :key="index" :src="img" alt="" />
     </div>
@@ -61,20 +66,21 @@
 
       <div class="order-form">
         <div class="order-price">
-         
-          <p><span>{{stayPrice}}</span>/night</p>
-      
+          <p>
+            <span>{{ stayPrice }}</span
+            >/night
+          </p>
+
           <span>4.39 <a>(3 reviews)</a></span>
         </div>
 
         <div class="order-picker">
           <div class="block">
-            <el-date-picker
-              v-model="order.dateVal"
-              type="daterange"
-              start-placeholder="CHECK-IN"
-              end-placeholder="CHECK-OUT"
-            >
+            <div class="check">
+              <div>CHECK-IN</div>
+              <div>CHECK-OUT</div>
+            </div>
+            <el-date-picker v-model="order.dateVal" type="daterange">
             </el-date-picker>
           </div>
           <div @click="toggleModal">
@@ -107,15 +113,38 @@
             </div>
           </div>
         </div>
-                <button class="reserve">Reserve</button>
 
+        <button class="reserve">Check availability</button>
+
+        <a>Report this listing</a>
       </div>
+    </section>
+
+    <section class="map-details">
+      <h1>Where you’ll be</h1>
+      <GmapMap
+        class="map"
+        :stay="stay"
+        :options="{
+          zoomControl: true,
+          mapTypeControl: true,
+          scaleControl: true,
+          streetViewControl: true,
+          rotateControl: false,
+          fullscreenControl: true,
+          disableDefaultUi: false,
+        }"
+      />
+      <h3>{{ stay.loc.address }}</h3>
+      <p>{{ stay.around }}</p>
     </section>
   </section>
 </template>
 
 
 <script>
+import GmapMap from "../cmps/map-details.vue";
+
 export default {
   name: "stay-details",
   data() {
@@ -128,8 +157,7 @@ export default {
         adults: 0,
         dateVal: null,
         guests: 0,
-        price: 0
-        
+        price: 0,
       },
       openModal: false,
     };
@@ -175,26 +203,27 @@ export default {
         this.order.kids += 1;
         this.order.guests += 1;
       }
-
-    }
+    },
   },
   computed: {
-    stayPrice(){
-     var PricePerNight = this.stay.price
+    stayPrice() {
+      var PricePerNight = this.stay.price;
 
       // if(this.order.guests){
       //   var orderPrice = PricePerNight * this.order.guests
       // } else orderPrice = PricePerNight
 
       this.order.price = PricePerNight.toLocaleString("en-US", {
-                currency: "USD",
-                style: "currency",
-                maximumFractionDigits: 0,
-              })
+        currency: "USD",
+        style: "currency",
+        maximumFractionDigits: 0,
+      });
 
-      return this.order.price
+      return this.order.price;
     },
   },
-  components: {},
+  components: {
+    GmapMap,
+  },
 };
 </script>
