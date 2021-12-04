@@ -2,6 +2,10 @@
   background-color: white;
   margin-bottom: 80px;
 }
+.explore{
+  position: inherit;
+  background-color: white;
+}
 header {
   &:not(white){
     background-color: black;

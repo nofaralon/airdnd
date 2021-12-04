@@ -1,28 +1,32 @@
 <template>
-  <section class="main-layout">
-    <div>Explore-page</div>
-    <p v-if="isLoading">Loading...</p>
+  <div>
+    <explore-header />
+    <section class="main-layout">
+      <p v-if="isLoading">Loading...</p>
 
-    <stay-list v-else :stays="stays" @setLiked="setLiked"></stay-list>
-  </section>
+      <stay-list v-else :stays="stays" @setLiked="setLiked"></stay-list>
+    </section>
+  </div>
 </template>
 
-
 <script>
-import stayList from "../cmps/stay-list.vue";
+import exploreHeader from "@/cmps/explore-header";
+import stayList from "@/cmps/stay-list";
 
 export default {
   name: "explore-page",
   data() {
     return {};
   },
-  created() {},
+  created() {
+  this.$emit('header','explore')
+
+  },
   methods: {
-    setLiked(stay){
-      console.log('explore emited:',stay);
-       this.$store.dispatch({type:'toggleLike',stay})
-    }
-},
+    setLiked(stay) {
+      this.$store.dispatch({ type: "toggleLike", stay });
+    },
+  },
   computed: {
     stays() {
       return this.$store.getters.staysForDisplay;
@@ -33,6 +37,7 @@ export default {
   },
   components: {
     stayList,
+    exploreHeader,
   },
 };
 </script>

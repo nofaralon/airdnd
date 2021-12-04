@@ -24,10 +24,6 @@ export default {
   },
   created() {},
   methods: {
-    // setLiked(stay){
-    //   console.log('didnt do anything', stay);
-    //    this.$emit('setLiked',stay)
-    // }
   },
   computed: {
     userId(){

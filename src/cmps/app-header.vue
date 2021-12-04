@@ -12,12 +12,11 @@
       </div>
 
     <div class="changing-middle-container">
-    <div v-if="!scroll" class="middle-of-header">
+    <div class="middle-of-header">
       <p :class="{activated: places}" @click="setActivated('places')">Places to stay</p>
       <p :class="{activated: experiences}" @click="setActivated('experiences')">Experiences</p>
       <p :class="{activated: online}" @click="setActivated('online')">Online Experiences</p>
     </div>
-    <dynamic-filter :isSmall="true" v-else/>
     </div>
 
       <div class="user-options">
@@ -37,7 +36,6 @@
                 alt=""
               />
             </button>
-            <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
           </span>
           <el-dropdown-menu slot="dropdown">
 
@@ -70,12 +68,7 @@
       </div>
 
     <div class="changing-middle-container">
-    <div v-if="!scroll" class="middle-of-header">
-      <p :class="{activated: places}" @click="setActivated('places')">Places to stay</p>
-      <p :class="{activated: experiences}" @click="setActivated('experiences')">Experiences</p>
-      <p :class="{activated: online}" @click="setActivated('online')">Online Experiences</p>
-    </div>
-    <dynamic-filter :isSmall="true" v-else/>
+    <dynamic-filter :isSmall="true"/>
     </div>
 
       <div class="user-options">
@@ -95,7 +88,6 @@
                 alt=""
               />
             </button>
-            <!-- <i class="el-icon-arrow-down el-icon--right"></i> -->
           </span>
           <el-dropdown-menu slot="dropdown">
 
@@ -138,7 +130,7 @@ export default {
   created() {
     window.addEventListener('scroll', this.handleScroll);
   },
-   destroyed() {
+  destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
@@ -173,14 +165,6 @@ export default {
     stayFilter,
     dynamicFilter
   },
-  watch:{
-    scroll: function (newVal,oldVal) {
-      if(newVal){
-        this.$emit('filter',true)
-      }else{
-        this.$emit('filter',false)
-      }
-    }
-  }
+
 };
 </script>

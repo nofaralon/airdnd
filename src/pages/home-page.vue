@@ -1,14 +1,21 @@
 <template>
+<div>
+    <app-header/>
+
   <section class="home-page main-layout">
 
-    <div class="opening-screen full">   
+    <div class="opening-screen full">
+             <transition name="component-fade" mode="out-in">
+    <dynamic-filter v-show="!scroll" :isSmall="false"></dynamic-filter>
+    </transition>
+   
     <div>
-    <div class="home-img-container main-layout">
+    <div class="home-img-container main-layout" :class="{scrolled : scroll}">
     <img src="https://a0.muscache.com/im/pictures/prohost-api/Hosting-49706308/original/8e59d82a-6c8e-4e9c-89bc-adbc9d797f32.jpeg?im_w=1200" />
+    </div>
     <div class="explore-btn">
     <p class="opening-sentence">Not sure where to go? Perfect.</p>
     <button @click="goTo('/stay')"><span>I'm flexible</span></button>
-    </div>
     </div>
     </div>
     </div>
@@ -57,26 +64,41 @@
     </div>
 
   </section>
+
+</div>
 </template>
 
 
 <script>
+import appHeader from "../cmps/app-header";
+import dynamicFilter from "@/cmps/dynamic-filter";
 
 export default {
   name: "home-page",
   data() {
     return {
+      scroll:null,
     };
   },
+  created() { 
+    window.addEventListener('scroll', this.handleScroll);
 
+  },
+   destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
   methods: {
     goTo(here){
   this.$router.push(here)
 },
-
+  handleScroll(e) {
+      this.scroll = window.scrollY || window.scrollTop
+    },
   },
   computed: {},
   components: {
+    appHeader,
+    dynamicFilter
 
   },
 };

@@ -1,5 +1,7 @@
 <template>
     <div>
+  <explore-header/>
+
 <form class="user-inputs" v-if="!goSign" @submit.prevent="logUser">
         <input type="text" v-model="user.username" placeholder="Username" />
         <input type="password" v-model="user.password" placeholder="Password" />
@@ -20,6 +22,7 @@
 <script>
 import {showMsg} from "@/services/event-bus.service.js";
 import {userService} from "@/services/user.service.js";
+import exploreHeader from "@/cmps/explore-header"
     export default {
         data(){
     return {
@@ -32,6 +35,8 @@ import {userService} from "@/services/user.service.js";
     }
 },
 created(){
+    this.goSign=this.$route.params.signup
+    this.$emit('header','explore')
 },
 methods: {
 
@@ -61,9 +66,9 @@ computed:{
     isDisabled(){
         return !(this.user.username&&this.user.password)
     },
-    signUp() {
-      return this.$route.params.signup;
-    },
+},
+components:{
+    exploreHeader
 }
     }
 </script>

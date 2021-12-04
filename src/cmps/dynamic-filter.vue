@@ -36,12 +36,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.component-fade-enter-active, .component-fade-leave-active {
-  transition: opacity 2s ease;
+.component-fade-enter-active {
+  transition: width .3s ,all .3s ease;
+
+}
+.component-fade-leave-active {
+  transition: width .3s,all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+
 }
 .component-fade-enter, .component-fade-leave-to
-/* .component-fade-leave-active below version 2.1.8 */ {
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateY(-80px);
   opacity: 0;
 }
-
 </style>
