@@ -9,7 +9,8 @@ export const stayStore = {
     state: {
         isLoading: false,
         stays: [],
-        currStay: null
+        currStay: null,
+
     },
     getters: {
         stays(state) {
@@ -19,24 +20,24 @@ export const stayStore = {
             let stays = JSON.parse(JSON.stringify(state.stays))
                 // let filteredToys = []
                 /*
-                        // filter by inStock
-                        if (state.filterBy.select) {
-                            const { select } = state.filterBy
-                            if (select === 'In stock') toys = toys.filter(toy => toy.inStock)
-                            else if (select === 'Out of stock') toys = toys.filter(toy => !toy.inStock)
-                        }
-  
-                        // filter by name
-                        if (state.filterBy.txt) {
-                            const regex = new RegExp(state.filterBy.txt, 'i');
-                            toys = toys.filter((toy) => regex.test(toy.name));
-                        }
-  
-                        // filter by lables
-                        if (state.filterBy.lable) {
-                            toys = toys.filter((toy) => toy.labels.includes(state.filterBy.lable))
-                        }
-                        */
+                    // filter by inStock
+                    if (state.filterBy.select) {
+                        const { select } = state.filterBy
+                        if (select === 'In stock') toys = toys.filter(toy => toy.inStock)
+                        else if (select === 'Out of stock') toys = toys.filter(toy => !toy.inStock)
+                    }
+ 
+                    // filter by name
+                    if (state.filterBy.txt) {
+                        const regex = new RegExp(state.filterBy.txt, 'i');
+                        toys = toys.filter((toy) => regex.test(toy.name));
+                    }
+ 
+                    // filter by lables
+                    if (state.filterBy.lable) {
+                        toys = toys.filter((toy) => toy.labels.includes(state.filterBy.lable))
+                    }
+                    */
                 // Sorting
                 // if (state.sortBy) {
                 //     if (state.sortBy === 'time')
@@ -118,18 +119,18 @@ export const stayStore = {
                 return savedStay
             })
         },
-        toggleLike({dispatch, getters}, {stay}){
-            const user=getters.miniUser
-            console.log(user,stay);
-            const wasLiked=stay.likedByUsers.findIndex(reviewer=> reviewer._id ===user._id)
-            if(wasLiked>=0){
-                stay.likedByUsers.splice(wasLiked,1)
+        toggleLike({ dispatch, getters }, { stay }) {
+            const user = getters.miniUser
+            console.log(user, stay);
+            const wasLiked = stay.likedByUsers.findIndex(reviewer => reviewer._id === user._id)
+            if (wasLiked >= 0) {
+                stay.likedByUsers.splice(wasLiked, 1)
                 console.log(stay.likedByUsers);
-            }else{
+            } else {
                 stay.likedByUsers.unshift(user)
                 console.log(stay.likedByUsers);
             }
-            
+
 
         },
         updateStay({ commit }, { stay }) {
@@ -144,7 +145,7 @@ export const stayStore = {
             })
         },
         getStay({ commit }, { stayId }) {
-            if(!stayId){
+            if (!stayId) {
                 return stayService.getEmptyStay()
             }
             return stayService.getById(stayId).then((stay) => {

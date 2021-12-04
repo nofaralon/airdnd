@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import { stayStore } from './stay.store'
 import { userStore } from './user.store'
+import { orderStore } from './order.store'
 
 
 Vue.use(Vuex)
@@ -24,6 +25,7 @@ export const myStore = new Vuex.Store({
     },
     modules: {
         stayStore,
-        userStore
+        userStore,
+        orderStore
     }
 })
