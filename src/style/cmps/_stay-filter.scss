@@ -1,12 +1,76 @@
-.filter{
-    display: flex;
-    justify-content: center;
+.small-filter{
+margin-top:0;
+margin-bottom:0;
+height:80px;
+}
+.big-filter{
+position: absolute;
+top: 80px;
+left: 0;
+right: 0;
+margin: 0 auto;
+height: 80px;
+background-color: black;
+}
+.filter-slot-lrg{
     height: 65px;
     width: 850px;
-    background-color: white;
-    border: solid 1px;
+}
+.filter-slot-sm{
+    height: 45px;
+    width: 300px;
+}
+.main-filter{
+    align-items: center;
+    
+    .filter{
+    position: absolute;
     margin: 0 auto;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: solid 1px black;
+    display: flex;
+    justify-content: center;
     border-radius: 40px;
     align-items: center;
-    margin-bottom: 35px;
+    
+
+}
+.search-btn{
+    background-color: $clr1;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filter-btn{
+background-color: transparent;
+padding: 3px;
+border: none;
+width: 100%;
+height: 100%;
+&:hover{
+    cursor: pointer;
+    // background-color:rgba(200,200,200,0.3) ;
+    // background-clip: padding-box;
+    // border: solid 3px rgba(200,200,200,0.3);
+    // border-radius: 30px;
+}
+}
+.filter-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.fa-search{
+    color:white; 
+    width:12px;
+    stroke-width: 5.3;
+}
 }
