@@ -2,15 +2,16 @@
   & img {
     width: 100%;
     height: 680px;
-    border-radius: 20px 20px 0 0;
+    border-radius: 12px 12px 0 0;
     object-fit: cover;
   }
-  & button:hover{
-    cursor: pointer;
-}
+  .home-img-container{
+    margin-top: 180px;
+    position: relative;
+  }
   .explore-btn {
     position: absolute;
-    top: 655px;
+    top: 455px;
     margin: 0 auto;
     left: 0;
     right: 0;
@@ -21,12 +22,14 @@
       height: 52px;
       border: none;
       color: transparent;
-
       background-color: white;
       border-radius: 30px;
       font-family: manrope-bold;
       line-height: 20px;
       font-size: 1.125rem;
+      &:hover{
+        cursor: pointer;
+     }
       & span {
         background-image: linear-gradient(
           to right,
@@ -85,7 +88,7 @@
         justify-content: center;
         height: 20%;
       align-items: center;
-      border-radius: 0 0 20px 20px;
+      border-radius: 0 0 12px 12px;
     }
     .amsterdam-text{
         // background-image: linear-gradient(
@@ -134,12 +137,15 @@
     position: relative;
     margin: 90px 0;
     height: 680px;
+    & img{
+        border-radius: 12px;
+    }
     .on-host-img{
         position: absolute;
         display: flex;
         flex-direction: column;
-        gap: 180px;
-        top: 85px;
+        gap: 160px;
+        top: 50px;
         left: 160px;
         & h1{
             font-size: 5rem;
@@ -150,11 +156,25 @@
         }
         & button{
             background-color: white;
+            font-family: manrope-bold;
+            font-size: 1.05rem;
             width: 175px;
             height: 50px;
             border-radius: 8px;
             border:none;
+            &:hover{
+              background-color: rgba($color:white, $alpha: .9);
+              cursor: pointer;
+            }
         }
         
     }
+    
+}
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .3s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+/* .component-fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }

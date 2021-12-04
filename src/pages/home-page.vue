@@ -1,15 +1,14 @@
 <template>
   <section class="home-page main-layout">
 
-    <div class="opening-screen full">
-    <stay-filter></stay-filter>
+    <div class="opening-screen full">   
     <div>
     <div class="home-img-container main-layout">
     <img src="https://a0.muscache.com/im/pictures/prohost-api/Hosting-49706308/original/8e59d82a-6c8e-4e9c-89bc-adbc9d797f32.jpeg?im_w=1200" />
-    </div>
     <div class="explore-btn">
     <p class="opening-sentence">Not sure where to go? Perfect.</p>
     <button @click="goTo('/stay')"><span>I'm flexible</span></button>
+    </div>
     </div>
     </div>
     </div>
@@ -48,12 +47,12 @@
 
 
     <div class="host-img-container">
-      <img src="https://res.cloudinary.com/di0utpbop/image/upload/v1638544563/airdnd/64f39605-fef0-4ef0-a0f8-caa6c6e011f2_1_abv9oz.webp" alt="">
+      <img src="https://res.cloudinary.com/di0utpbop/image/upload/v1638551091/airdnd/1_s3ZJrdHJn5A9jeaoS60M_Q_taacdw.jpg" alt="">
       <div class="on-host-img">
         <div>
       <h1>Questions</h1> <h1>about</h1>  <h1>hosting?</h1>
         </div>
-      <button>Ask a superhost</button>
+      <button>Ask a Superhost</button>
       </div>
     </div>
 
@@ -62,22 +61,23 @@
 
 
 <script>
-import stayFilter from "../cmps/stay-filter.vue";
 
 export default {
   name: "home-page",
   data() {
-    return {};
+    return {
+    };
   },
-  created() {},
+
   methods: {
     goTo(here){
   this.$router.push(here)
-}
+},
+
   },
   computed: {},
   components: {
-    stayFilter,
+
   },
 };
 </script>
