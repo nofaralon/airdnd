@@ -37,11 +37,11 @@ export default {
 
 <style lang="scss" scoped>
 .component-fade-enter-active {
-  transition: width .3s ,all .3s ease;
+  transition: all .3s ease;
 
 }
 .component-fade-leave-active {
-  transition: width .3s,all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: all .8s cubic-bezier(1, 0, 0.8, 0.6);
 
 }
 .component-fade-enter, .component-fade-leave-to
