@@ -1,4 +1,5 @@
 .stay-details {
+    padding-top: 100px;
     & h1 {
         font-size: rem(26px);
         padding: 10px;
@@ -12,6 +13,10 @@
             color: $clr1;
             height: 15px;
             padding-top: 3px;
+        }
+        & a {
+            text-decoration: underline;
+            color: rgb(127, 127, 127)
         }
     }
 }
@@ -51,7 +56,7 @@
     display: flex;
     flex-direction: column;
     max-width: 640px;
-    padding-right: 95px;
+    // padding-right: 95px;
     .info-header {
         display: flex;
         justify-content: space-between;
@@ -76,6 +81,7 @@
         flex-direction: column;
         gap: 20px;
         padding-top: 20px;
+        line-height: 24px;
         .general-info {
             & div {
                 display: flex;
@@ -102,8 +108,9 @@
                 padding: 0;
                 list-style: none;
                 display: flex;
-                & div:first-child {
-                    margin-right: 10px;
+                flex-grow: 1;
+                >* {
+                    flex-basis: 50%;
                 }
                 & li {
                     display: flex;
@@ -122,12 +129,14 @@
         gap: 50px;
         padding-bottom: 20px;
         padding-top: 20px;
-        width: 60ch;
         & h2 {
             font-size: rem(22px);
+            line-height: 24px;
+            padding-bottom: 20px;
         }
         & p {
             font-size: rem(14.5px);
+            line-height: 24px;
         }
     }
 }
@@ -142,6 +151,8 @@
         padding-top: 3px;
     }
     .review-details {
+        margin-bottom: 40px;
+        max-width: 430px;
         & svg {
             color: $clr1;
             height: 15px;
@@ -162,6 +173,10 @@
                 & span {
                     font-family: manrope-bold;
                 }
+                & div {
+                    font-size: rem(14px);
+                    color: rgb(189, 188, 188);
+                }
             }
         }
     }
@@ -177,5 +192,6 @@
     & p {
         padding-top: 25px;
         padding-bottom: 25px;
+        line-height: 24px;
     }
 }
