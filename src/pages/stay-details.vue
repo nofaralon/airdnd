@@ -403,6 +403,7 @@ export default {
   created() {
     this.loadStay();
     this.order = orderService.getEmptyOrder();
+    this.$emit("header", "details");
   },
   methods: {
     loadStay() {

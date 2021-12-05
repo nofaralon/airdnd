@@ -16,7 +16,7 @@ const routes = [{
         path: '/login/:signup?',
         component: userLoggin
     },
-    
+
     {
         path: '/stay',
         component: explorePage
@@ -38,7 +38,10 @@ const routes = [{
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+        return { x: 0, y: 0 }
+    }
 })
 
 export default router
