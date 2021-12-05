@@ -1,7 +1,5 @@
 <template>
     <div>
-  <explore-header/>
-
 <form class="user-inputs" v-if="!goSign" @submit.prevent="logUser">
         <input type="text" v-model="user.username" placeholder="Username" />
         <input type="password" v-model="user.password" placeholder="Password" />

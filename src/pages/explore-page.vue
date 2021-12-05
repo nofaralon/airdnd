@@ -1,6 +1,5 @@
 <template>
   <div>
-    <explore-header />
     <section class="main-layout">
       <p v-if="isLoading">Loading...</p>
 

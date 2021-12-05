@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition name="component-fade" mode="out-in">
-    <component :is="filterType"></component>
+    <component class="main-layout" :is="filterType"></component>
 </transition>
   </div>
 </template>
@@ -41,7 +41,7 @@ export default {
 
 }
 .component-fade-leave-active {
-  transition: all .8s cubic-bezier(1, 0, 0.8, 0.6);
+  transition: all .8s cubic-bezier(1, 1, 1, 1);
 
 }
 .component-fade-enter, .component-fade-leave-to

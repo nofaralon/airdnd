@@ -2,10 +2,13 @@
 margin-top:0;
 margin-bottom:0;
 height:80px;
+&:hover{
+    cursor: pointer;
+}
 }
 .big-filter{
 position: absolute;
-top: 80px;
+top: 75px;
 left: 0;
 right: 0;
 margin: 0 auto;
@@ -13,7 +16,7 @@ height: 80px;
 background-color: black;
 }
 .filter-slot-lrg{
-    height: 65px;
+    height: 70px;
     width: 850px;
 }
 .filter-slot-sm{
@@ -46,6 +49,9 @@ background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
+    &:hover{
+        cursor: pointer;
+    }
 }
 .filter-btn{
 background-color: transparent;
@@ -67,6 +73,41 @@ height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .country{
+        flex-basis: 31%;
+        text-align: left;
+    }
+    .filter-btn{
+        >*{
+        font-family: manrope-bold;
+        }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        // align-items: center;
+        gap: 5px;
+        border: none;
+        border-radius: 40px;
+        background-color: rgba(200,200,200,0);
+        &:hover{
+         background-color: rgba(200,200,200,0.3);
+        }
+        & input{
+            width: 75%;
+            height: 20px;
+            border: none;
+          background-color: transparent;
+          &:focus{
+            outline: none;
+        }
+        }
+        >*{
+            margin-inline-start: 15%;
+        }
+    }
+    .check-in{
+        flex-basis: 21%;
+    }
 }
 .fa-search{
     color:white; 
@@ -74,3 +115,6 @@ height: 100%;
     stroke-width: 5.3;
 }
 }
+input::-webkit-calendar-picker-indicator {
+    display: none !important;
+  }
