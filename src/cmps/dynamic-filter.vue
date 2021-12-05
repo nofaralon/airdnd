@@ -13,11 +13,6 @@ export default {
   props: {
     isSmall: Boolean,
   },
-  data() {
-    return {
-      scroll: null,
-    };
-  },
   computed: {
     filterType() {
       if (this.isSmall) {

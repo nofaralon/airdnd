@@ -25,14 +25,14 @@
       <div class="city">
         <img src="https://res.cloudinary.com/di0utpbop/image/upload/v1638532176/airdnd/Amsterdam-The-lights-on-the-bridges_rwg49e.jpg" />
         <div class="amsterdam-text city-txt">
-        <p>Amsterdam</p>
+        <p>Netherland</p>
         </div>
       </div>
 
       <div @click="goTo('/stay')" class="city">
         <img src="https://res.cloudinary.com/di0utpbop/image/upload/v1638532647/airdnd/Star_Island_overview_ybytse.jpg" />
         <div class="miami-text city-txt">
-        <p>Miami</p>
+        <p>Florida</p>
         </div>
       </div>
 
@@ -46,7 +46,7 @@
       <div @click="goTo('/stay')" class="city">
         <img src="https://res.cloudinary.com/di0utpbop/image/upload/v1638533352/airdnd/55da01cd23e91286e4548a0c98ed8b7a_qe30hn.jpg" />
         <div class="paris-text city-txt">
-        <p>Paris</p>
+        <p>France</p>
         </div>
       </div>
     </div>

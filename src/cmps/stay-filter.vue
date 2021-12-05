@@ -10,10 +10,10 @@
             </label>
           </button>
           <datalist id="locations">
-            <option >Paris</option>
-            <option >Miami</option>
+            <option >France</option>
+            <option >Florida</option>
             <option >Iceland</option>
-            <option >Amsterdam</option>
+            <option >Netherlands</option>
           </datalist>
           <button class="check-in filter-btn">
           <p >Check in</p>
