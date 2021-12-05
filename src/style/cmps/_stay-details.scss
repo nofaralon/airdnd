@@ -1,12 +1,13 @@
 .stay-details {
     & h1 {
         font-size: rem(26px);
-        padding: 10px;
+        padding-top: 15px;
     }
     .detsils-header {
-        padding-bottom: 10px;
+        padding-bottom: 15px;
+        padding-top: 15px;
         >* {
-            padding: 10px;
+            padding-right: 10px;
         }
         & svg {
             color: $clr1;
@@ -150,6 +151,7 @@
         padding-top: 3px;
     }
     .review-details {
+        margin-top: 40px;
         margin-bottom: 40px;
         max-width: 430px;
         & svg {
@@ -182,8 +184,10 @@
 }
 
 .map-details {
+    border-top: 1px solid #00000029;
     & h1 {
-        padding-top: 45px;
+        padding-top: 30px;
+        padding-bottom: 30px;
     }
     .map {
         margin-bottom: 30px;
