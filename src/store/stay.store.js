@@ -18,34 +18,34 @@ export const stayStore = {
         },
         staysForDisplay(state) {
             let stays = JSON.parse(JSON.stringify(state.stays))
-                // let filteredToys = []
+                // let filteredStays = []
                 /*
                     // filter by inStock
                     if (state.filterBy.select) {
                         const { select } = state.filterBy
-                        if (select === 'In stock') toys = toys.filter(toy => toy.inStock)
-                        else if (select === 'Out of stock') toys = toys.filter(toy => !toy.inStock)
+                        if (select === 'In stock') stays = stays.filter(stay => stay.inStock)
+                        else if (select === 'Out of stock') stays = stays.filter(stay => !stay.inStock)
                     }
  
                     // filter by name
                     if (state.filterBy.txt) {
                         const regex = new RegExp(state.filterBy.txt, 'i');
-                        toys = toys.filter((toy) => regex.test(toy.name));
+                        stays = stays.filter((stay) => regex.test(stay.name));
                     }
  
                     // filter by lables
                     if (state.filterBy.lable) {
-                        toys = toys.filter((toy) => toy.labels.includes(state.filterBy.lable))
+                        stays = stays.filter((stay) => stay.labels.includes(state.filterBy.lable))
                     }
                     */
                 // Sorting
                 // if (state.sortBy) {
                 //     if (state.sortBy === 'time')
-                //         toys = toys.sort((t1, t2) => t1.createdAt - t2.createdAt)
+                //         stays = stays.sort((t1, t2) => t1.createdAt - t2.createdAt)
                 //     else if (state.sortBy === 'price')
-                //         toys = toys.sort((t1, t2) => t1.price - t2.price)
+                //         stays = stays.sort((t1, t2) => t1.price - t2.price)
                 //     else if (state.sortBy === 'name')
-                //         toys = toys.sort((t1, t2) =>
+                //         stays = stays.sort((t1, t2) =>
                 //             t1.name.toLowerCase() > t2.name.toLowerCase() ? 1 : -1
                 //         )
                 // }
@@ -54,7 +54,7 @@ export const stayStore = {
 
             // if (typeof state.pageIdx === 'number' && state.pageIdx !== -1) {
             //     const startIdx = state.pageIdx * state.pageSize
-            //     toys = toys.slice(startIdx, startIdx + state.pageSize)
+            //     stays = stays.slice(startIdx, startIdx + state.pageSize)
             // }
             return stays
         },
