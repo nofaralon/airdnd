@@ -6,7 +6,7 @@
           <button class="country filter-btn">
             <label >
             <p>Location</p>
-            <input class="filter-country-input" list="locations" type="search" placeholder="Where are you going?" v-model="filterBy.country">   
+            <input class="filter-country-input"  list="locations" type="search" placeholder="Where are you going?" v-model="filterBy.country">   
             </label>
           </button>
           <datalist id="locations">
@@ -24,6 +24,30 @@
           <button class="check-in filter-btn">
           <p >Guests</p>
           </button>
+           <div class="guest-modal">
+        <div class="nof">
+          <div>
+            <h2>Adults</h2>
+            <span>Age 13+</span>
+          </div>
+          <div>
+            <button @click="setCountAdults('down')">-</button>
+            <span class="guests">{{currOrder.adults}}</span>
+            <button @click="setCountAdults('up')">+</button>
+          </div>
+        </div>
+        <div>
+          <div>
+            <h2>Kids</h2>
+            <span>Ages 2–12</span>
+          </div>
+          <div>
+            <button @click="setCountKids('down')">-</button>
+            <span class="guests">{{currOrder.kids}}</span>
+            <button @click="setCountKids('up')">+</button>
+          </div>
+        </div>
+      </div>
           <button @click="search" class="search-btn">
             <svg
               aria-hidden="true"
@@ -50,23 +74,59 @@
 <script>
 export default {
    name: "stay-filter",
+   props:{
+     order:Object
+   },
   data() {
     return {
+      isModalOpen:false,
       filterBy:{
         country:'',
         type:'',
         ailments:'',
         guests:null,
         Dates:"",
-      }
+      },
+      currOrder:this.order
     };
   },
-  created() {},
   methods: {
     search(){
-      // store filter
-    }
+      this.$emit('setFilter',{...this.filterBy})
+      this.$emit('saveOrder', this.currOrder)
+     
+    },
+    setCountAdults(val) {
+      if (val === "down") {
+        if (this.currOrder.adults === 0) return;
+        this.currOrder.adults -= 1;
+        this.currOrder.guests -= 1;
+        this.filterBy.guests -=1
+      } else {
+       
+        this.currOrder.adults += 1;
+        this.currOrder.guests += 1;
+        this.filterBy.guests +=1
+
+      }
+    },
+    setCountKids(val) {
+      if (val === "down") {
+        if (this.currOrder.kids === 0) return;
+        this.currOrder.kids -= 1;
+        this.currOrder.guests -= 1;
+        this.filterBy.guests -=1
+      } else {
+        this.currOrder.kids += 1;
+        this.currOrder.guests += 1;
+        this.filterBy.guests +=1
+
+      }
+
+    },
+    
   },
+ 
   computed: {},
   components: {}
 };

@@ -18,26 +18,25 @@ export const stayStore = {
         },
         staysForDisplay(state) {
             let stays = JSON.parse(JSON.stringify(state.stays))
-                // let filteredStays = []
-                /*
+                let filteredStays = []
                     // filter by inStock
-                    if (state.filterBy.select) {
-                        const { select } = state.filterBy
-                        if (select === 'In stock') stays = stays.filter(stay => stay.inStock)
-                        else if (select === 'Out of stock') stays = stays.filter(stay => !stay.inStock)
+                    // if (state.filterBy.inStock) {
+                        // console.log(state.filterBy.country);
+                        // const { select } = state.filterBy
+                        // if (select === 'In stock') stays = stays.filter(stay => stay.inStock)
+                        // else if (select === 'Out of stock') stays = stays.filter(stay => !stay.inStock)
+                    // }
+ 
+                    // filter by country
+                    if (state.filterBy.country) {
+                        stays = stays.filter((stay) => (stay.loc.country ===state.filterBy.country ));
                     }
  
-                    // filter by name
-                    if (state.filterBy.txt) {
-                        const regex = new RegExp(state.filterBy.txt, 'i');
-                        stays = stays.filter((stay) => regex.test(stay.name));
+                    // filter by guests
+                    if (state.filterBy.guests) {
+                        stays = stays.filter((stay) => stay.capacity >= state.filterBy.guests)
                     }
- 
-                    // filter by lables
-                    if (state.filterBy.lable) {
-                        stays = stays.filter((stay) => stay.labels.includes(state.filterBy.lable))
-                    }
-                    */
+                   
                 // Sorting
                 // if (state.sortBy) {
                 //     if (state.sortBy === 'time')
