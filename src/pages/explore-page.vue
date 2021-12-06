@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="main-layout">
+    <section class="explore-layout">
       <p v-if="isLoading">Loading...</p>
 
       <stay-list v-else :stays="stays" @setLiked="setLiked"></stay-list>

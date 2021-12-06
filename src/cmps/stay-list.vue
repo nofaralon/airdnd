@@ -1,5 +1,5 @@
 <template>
-  <section >
+  <section class="card-list">
     <ul class="card-grid">
       <li v-for="stay in stays" :key="stay._id">
         <stay-preview :stay="stay" @setLiked="$emit('setLiked', stay)"/>        

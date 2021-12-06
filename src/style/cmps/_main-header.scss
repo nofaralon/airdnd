@@ -1,14 +1,22 @@
 .white{
   background-color: white;
-  margin-bottom: 80px;
+}
+.go-big{
+  background-color: white ;
+  z-index: 1;
+    position: fixed;
+    height: 160px;
+    width: 100%;
 }
 .details{
   margin-inline-end: 200px;
   margin-inline-start: 200px;
 }
 .explore{
-  position: inherit;
+  // position: inherit;
   background-color: white;
+  margin-inline-end: 36px;
+  margin-inline-start:36px;
 }
 header {
   &:not(white){
@@ -82,7 +90,7 @@ header {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    &:not(.details){
+    &:not(.details,.explore){
       margin-inline-end: 80px;
       margin-inline-start: 80px;
     }
