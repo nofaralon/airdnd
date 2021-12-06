@@ -19,7 +19,7 @@
     <dynamic-filter  @filter="toggleFilter" :isSmall="true"/>
     </div>
 <div v-else-if="open" class="changing-middle-container filter-open">
-    <dynamic-filter  :isSmall="false"/>
+    <dynamic-filter :order="order"  :isSmall="false"/>
     </div>
       <div class="user-options">
   <button class="wrapping-btn small">
@@ -63,6 +63,7 @@
 
 <script>
 import dynamicFilter from '@/cmps/dynamic-filter'
+import {orderService} from '../services/order.service'
 export default {
   props:{
     isScroll:Boolean
@@ -72,11 +73,15 @@ export default {
       scroll:null,
       loggedInUser: null,
       open:null,
+      order:null
     };
   },
   created(){
     this.open=false
     window.addEventListener('scroll', this.handleScroll);
+    this.order=orderService.getEmptyOrder()
+    console.log('ggg',this.order);
+
   },
  destroyed() {
     window.removeEventListener('scroll', this.handleScroll);

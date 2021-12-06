@@ -55,7 +55,7 @@ computed: {
 
 <style lang="scss" scoped>
 .component-fade-enter-active {
-  transition: all .2s ease;
+  transition: all 2s ease;
 
 }
 .component-fade-leave-active {
@@ -66,5 +66,16 @@ computed: {
 /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateY(80px);
   opacity: 0;
+  animation: shrink 2s linear;
+
 }
+@keyframes shrink {
+  20% {
+    width: 80%
+  }
+  40% {
+    width: 60%
+  }
+}
+
 </style>

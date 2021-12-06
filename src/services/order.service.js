@@ -61,7 +61,7 @@ async function save(order) {
 
 }
 async function saveCurrOrder(order){
-    const saveOrder = await storageService.post(CURR_ORDER, order)
+    const saveOrder =  await storageService.postOrder(CURR_ORDER, order)
     return saveOrder
     
 
