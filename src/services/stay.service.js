@@ -159,7 +159,7 @@ function _createStays() {
                 "host": {
                     "_id": "536581",
                     "fullname": "Ari",
-                    "imgUrl": "https://source.unsplash.com/random/100x100/?face"
+                    "imgUrl": "https://thispersondoesnotexist.com/"
                 },
                 "acces": "A fully equiped condo for you to enjoy the Nordic lifestyle",
                 "note": "We are nor resposible for the nrthen lights, so if you do not get to see it, please understand...",
@@ -181,7 +181,7 @@ function _createStays() {
                     "by": {
                         "_id": "u100753482399",
                         "fullname": "James",
-                        "imgUrl": "https://source.unsplash.com/random/100x100/?face"
+                        "imgUrl": "https://thispersondoesnotexist.com/"
                     }
                 }, {
                     "id": "154559",

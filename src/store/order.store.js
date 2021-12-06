@@ -13,7 +13,6 @@ export const orderStore = {
 
     },
     getters: {
-
     },
     mutations: {
         removeOrder(state, payload) {
@@ -73,7 +72,8 @@ export const orderStore = {
             return orderService.getEmptyOrder()
         },
         async saveOrder({commit} ,{newOrder}){
-            return await orderService.saveCurrOrder(newOrder)
+           const order = await orderService.saveCurrOrder(newOrder)
+           commit({type:'getOrder',order})
 
         }
 

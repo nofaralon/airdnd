@@ -21,11 +21,11 @@
           <button class="check-in filter-btn">
           <p >Check out</p>
           </button>
-          <button class="check-in filter-btn">
+          <button @click="toggaleModal" class="check-in filter-btn">
           <p >Guests</p>
           </button>
-           <div class="guest-modal">
-        <div class="nof">
+           <div v-if ="isModalOpen" class="guestt-modal">
+        <div class="noff">
           <div>
             <h2>Adults</h2>
             <span>Age 13+</span>
@@ -72,6 +72,7 @@
 </template>
 
 <script>
+import {eventBusService, setFilter} from '../services/event-bus.service'
 export default {
    name: "stay-filter",
    props:{
@@ -90,10 +91,12 @@ export default {
       currOrder:this.order
     };
   },
+  
   methods: {
     search(){
-      this.$emit('setFilter',{...this.filterBy})
-      this.$emit('saveOrder', this.currOrder)
+      eventBusService.$emit('setFilter',{...this.filterBy})
+      eventBusService.$emit('saveOrder', this.currOrder)
+      console.log(this.filterBy);
      
     },
     setCountAdults(val) {
@@ -124,6 +127,9 @@ export default {
       }
 
     },
+    toggaleModal(){
+      this.isModalOpen =!this.isModalOpen
+    }
     
   },
  

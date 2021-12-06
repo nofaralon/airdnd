@@ -14,15 +14,15 @@
     </div>
     <div class="explore-btn">
     <p class="opening-sentence">Not sure where to go? Perfect.</p>
-    <button @click="goTo('/stay')"><span>I'm flexible</span></button>
+    <button @click="setFilter('null')"><span>I'm flexible</span></button>
     </div>
     </div>
     </div>
 
     <h2 class="inspirations">Inspiration for your next trip</h2>
 
-    <div class="top-cities" >
-     <div v-for="city in topCities" :key="city.name" class="city">
+    <div  class="top-cities" >
+     <div @click="setLocFilter(city.name)" v-for="city in topCities" :key="city.name" class="city">
        <img :src=city.url >
         <div class="city-txt"></div>
         <p>{{city.name}}</p>
@@ -31,39 +31,7 @@
         
     </div>
 
-    <div @click="goTo('/stay')" class="top-cities">
-      <div class="city">
-        <img src="https://res.cloudinary.com/di0utpbop/image/upload/v1638532176/airdnd/Amsterdam-The-lights-on-the-bridges_rwg49e.jpg" />
-        <div class="amsterdam-text city-txt">
-        <p>Netherland</p>
-        </div>
-      </div>
-      
-      
-
-      <div @click="goTo('/stay')" class="city">
-        <img src="https://res.cloudinary.com/di0utpbop/image/upload/v1638532647/airdnd/Star_Island_overview_ybytse.jpg" />
-        <div class="miami-text city-txt">
-        <p>Florida</p>
-        </div>
-      </div>
-
-      <div @click="goTo('/stay')" class="city">
-        <img src="https://res.cloudinary.com/di0utpbop/image/upload/v1638532920/airdnd/iceland18_yexgqv.jpg" />
-        <div class="iceland-text city-txt">
-        <p>Iceland</p>
-        </div>
-      </div>
-
-      <div @click="goTo('/stay')" class="city">
-        <img src="https://res.cloudinary.com/di0utpbop/image/upload/v1638533352/airdnd/55da01cd23e91286e4548a0c98ed8b7a_qe30hn.jpg" />
-        <div class="paris-text city-txt">
-        <p>France</p>
-        </div>
-      </div>
-    </div>
-
-
+    
     <div class="host-img-container">
       <img src="https://res.cloudinary.com/di0utpbop/image/upload/v1638551091/airdnd/1_s3ZJrdHJn5A9jeaoS60M_Q_taacdw.jpg" alt="">
       <div class="on-host-img">
@@ -84,6 +52,7 @@
 import appHeader from "../cmps/app-header";
 import dynamicFilter from "@/cmps/dynamic-filter";
 import {orderService} from '../services/order.service'
+import {eventBusService, SHOW_MSG} from '@/services/event-bus.service'
 
 export default {
   name: "home-page",
@@ -92,8 +61,15 @@ export default {
       scroll:null,
       order:null,
       filterBy:null,
+      filterBy:{
+        country:'',
+        type:'',
+        ailments:'',
+        guests:null,
+        Dates:"",
+      },
       topCities:[{
-        name:'Netherland',
+        name:'Netherlands',
         url:"https://res.cloudinary.com/di0utpbop/image/upload/v1638532176/airdnd/Amsterdam-The-lights-on-the-bridges_rwg49e.jpg"
       },
       {
@@ -116,6 +92,15 @@ export default {
      this.$emit('header','home')
      this.order=orderService.getEmptyOrder()
      console.log(this.order);
+     eventBusService.$on('setFilter',filterBy=>{
+       this.filterBy = filterBy
+       this.$store.dispatch({type:'setFilter', filterBy})
+       this.$router.push('/stay')
+     })
+     eventBusService.$on('saveOrder',newOrder=>{
+       this.$store.dispatch({type:'saveOrder', newOrder})
+
+      })
      
   },
    destroyed() {
@@ -136,7 +121,12 @@ export default {
     
     },
     saveOrder(newOrder){
-      this.$store.dispatch({type:'saveOrder', newOrder})
+    },
+    setLocFilter(location){
+      console.log(location);
+      this.filterBy.country=location
+      this.setFilter({...this.filterBy})
+      this.$router.push('/stay')
     }
     
    
