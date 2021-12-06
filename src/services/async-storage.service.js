@@ -32,6 +32,7 @@ function post(entityType, newEntity) {
 }
 
 function put(entityType, updatedEntity) {
+    console.log('updated emtity-', updatedEntity);
     return query(entityType)
         .then(entities => {
             const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
@@ -50,10 +51,11 @@ function remove(entityType, entityId) {
             _save(entityType, entities)
         })
 }
-function postOrder(entityType,newEntity){
+
+function postOrder(entityType, newEntity) {
     newEntity._id = _makeId()
-    _save(entityType,newEntity)
-   
+    _save(entityType, newEntity)
+
 
 
 }
