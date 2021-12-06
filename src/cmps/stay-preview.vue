@@ -27,9 +27,7 @@
 <script>
 export default {
   name: "stay-pre",
-  props: {
-    stay:Object
-  },
+  props: ['stay'],
 
   data() {
     return {
@@ -38,7 +36,7 @@ export default {
     };
   },
   created() {
-  this.getDistanceFromLatLonInKm(32.0853,34.7818,this.stay.loc.lat,this.stay.loc.lng)
+  // this.getDistanceFromLatLonInKm(32.0853,34.7818,this.stay.loc.lat,this.stay.loc.lng)
   },
   methods: {
     stayDetails(stayId) {
@@ -49,19 +47,19 @@ export default {
        this.$emit('setLiked',this.stay)
        
     },
-      getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
-  var R = 6371; 
-  var dLat = (lat2-lat1) * (Math.PI/180);  
-  var dLon = (lng2-lng1) * (Math.PI/180); 
-  var a = 
-    Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos((lat1)* (Math.PI/180)) * Math.cos((lat2)* (Math.PI/180)) * 
-    Math.sin(dLon/2) * Math.sin(dLon/2)
-    ; 
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-  this.distance = R * c; 
+  //     getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
+  // var R = 6371; 
+  // var dLat = (lat2-lat1) * (Math.PI/180);  
+  // var dLon = (lng2-lng1) * (Math.PI/180); 
+  // var a = 
+  //   Math.sin(dLat/2) * Math.sin(dLat/2) +
+  //   Math.cos((lat1)* (Math.PI/180)) * Math.cos((lat2)* (Math.PI/180)) * 
+  //   Math.sin(dLon/2) * Math.sin(dLon/2)
+  //   ; 
+  // var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  // this.distance = R * c; 
 
-  },
+  // },
   },
   computed: {},
   components: {},

@@ -41,7 +41,7 @@
     <ul class="card-grid">
       <li v-for="stay in stays" :key="stay._id">
         <stay-preview :stay="stay" @setLiked="$emit('setLiked', stay)"/>        
-        <router-link v-if="userId===stay.host._id" :to="'/stay/edit/'+stay._id">Edit</router-link>
+        <!-- <router-link v-if="userId===stay.host._id" :to="'/stay/edit/'+stay._id">Edit</router-link> -->
       </li>
     </ul>
   </section>
