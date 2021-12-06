@@ -1,4 +1,6 @@
 <template>
+<div :class="{'go-big': open}">
+
 <div class="header-container">
 
 
@@ -13,10 +15,12 @@
         <h3 style="color:rgb(255, 56, 92)">airdnd</h3>
       </div>
 
-    <div class="changing-middle-container">
-    <dynamic-filter :isSmall="true"/>
+    <div v-if="!open" class="changing-middle-container">
+    <dynamic-filter  @filter="toggleFilter" :isSmall="true"/>
     </div>
-
+<div v-else-if="open" class="changing-middle-container filter-open">
+    <dynamic-filter  :isSmall="false"/>
+    </div>
       <div class="user-options">
   <button class="wrapping-btn small">
         <router-link class="page-link" style="font-family:manrope-bold; color:rgb(34, 34, 34)" to="/stay/edit">Become a host</router-link>
@@ -53,6 +57,8 @@
   </transition>
 </div>
 
+</div>
+
 </template>
 
 <script>
@@ -62,14 +68,34 @@ export default {
   data() {
     return {
       loggedInUser: null,
+      open:null
     };
   },
-
+  created(){
+    this.open=false
+    window.addEventListener('scroll', this.handleScroll);
+  },
+ destroyed() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
   methods: {
 
     goTo(here) {
       this.$router.push(here);
     },
+    toggleFilter(){
+      console.log('done');
+      this.open=true
+      if(!this.open){
+        
+      }
+    },
+    handleScroll(e){
+      if(window.scrollY){
+        console.log(this.open);
+        this.open=false
+      }
+    }
   },
   computed: {
     user() {
