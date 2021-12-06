@@ -5,7 +5,7 @@
 
     <div class="opening-screen full">
              <transition name="component-fade" mode="out-in">
-    <dynamic-filter v-show="!scroll" :isSmall="false"></dynamic-filter>
+    <dynamic-filter @saveOrder="saveOrder" @setFilter="setFilter" :order="order"  v-show="!scroll" :isSmall="false"></dynamic-filter>
     </transition>
    
     <div>
@@ -21,6 +21,16 @@
 
     <h2 class="inspirations">Inspiration for your next trip</h2>
 
+    <div class="top-cities" >
+     <div v-for="city in topCities" :key="city.name" class="city">
+       <img :src=city.url >
+        <div class="city-txt"></div>
+        <p>{{city.name}}</p>
+      </div>
+
+        
+    </div>
+
     <div @click="goTo('/stay')" class="top-cities">
       <div class="city">
         <img src="https://res.cloudinary.com/di0utpbop/image/upload/v1638532176/airdnd/Amsterdam-The-lights-on-the-bridges_rwg49e.jpg" />
@@ -28,6 +38,8 @@
         <p>Netherland</p>
         </div>
       </div>
+      
+      
 
       <div @click="goTo('/stay')" class="city">
         <img src="https://res.cloudinary.com/di0utpbop/image/upload/v1638532647/airdnd/Star_Island_overview_ybytse.jpg" />
@@ -71,18 +83,40 @@
 <script>
 import appHeader from "../cmps/app-header";
 import dynamicFilter from "@/cmps/dynamic-filter";
+import {orderService} from '../services/order.service'
 
 export default {
   name: "home-page",
   data() {
     return {
       scroll:null,
+      order:null,
+      filterBy:null,
+      topCities:[{
+        name:'Netherland',
+        url:"https://res.cloudinary.com/di0utpbop/image/upload/v1638532176/airdnd/Amsterdam-The-lights-on-the-bridges_rwg49e.jpg"
+      },
+      {
+        name:'Florida',
+        url:"https://res.cloudinary.com/di0utpbop/image/upload/v1638532647/airdnd/Star_Island_overview_ybytse.jpg"
+      },
+    {
+      name:'Iceland',
+      url:"https://res.cloudinary.com/di0utpbop/image/upload/v1638532920/airdnd/iceland18_yexgqv.jpg"
+    },
+     {
+      name:'France',
+      url:"https://res.cloudinary.com/di0utpbop/image/upload/v1638533352/airdnd/55da01cd23e91286e4548a0c98ed8b7a_qe30hn.jpg"
+    }]
+    
     };
   },
   created() { 
     window.addEventListener('scroll', this.handleScroll);
      this.$emit('header','home')
-
+     this.order=orderService.getEmptyOrder()
+     console.log(this.order);
+     
   },
    destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -95,8 +129,21 @@ export default {
   handleScroll(e) {
       this.scroll = window.scrollY || window.scrollTop
     },
+    setFilter(filterBy){
+    this.filterBy = filterBy
+    this.$store.dispatch({type:'setFilter', filterBy})
+    this.$router.push('/stay')
+    
+    },
+    saveOrder(newOrder){
+      this.$store.dispatch({type:'saveOrder', newOrder})
+    }
+    
+   
   },
-  computed: {},
+  computed: {
+    
+  },
   components: {
     appHeader,
     dynamicFilter

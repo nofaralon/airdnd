@@ -8,7 +8,8 @@ export const orderStore = {
     strict: true,
     state: {
         currOrder: null,
-        orders: []
+        orders: [],
+        
 
     },
     getters: {
@@ -68,6 +69,13 @@ export const orderStore = {
                 return order
             })
         },
+        getEmptyOrder({commit}){
+            return orderService.getEmptyOrder()
+        },
+        async saveOrder({commit} ,{newOrder}){
+            return await orderService.saveCurrOrder(newOrder)
+
+        }
 
     },
 }

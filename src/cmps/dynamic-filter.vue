@@ -1,7 +1,8 @@
 <template>
   <div>
+    
     <transition name="component-fade" mode="out-in">
-    <component class="main-layout" :is="filterType"></component>
+    <component @saveOrder="saveOrder" @setFilter="setFilter" :order="order" class="main-layout" :is="filterType"></component>
 </transition>
   </div>
 </template>
@@ -12,7 +13,9 @@ import stayFilterSmall from "@/cmps/stay-filter-small"
 export default {
   props: {
     isSmall: Boolean,
+    order:Object
   },
+  created(){},
   computed: {
     filterType() {
       if (this.isSmall) {
@@ -26,6 +29,14 @@ export default {
   components:{
       stayFilter,
       stayFilterSmall
+  },
+  methods:{
+    setFilter(filterBy){
+      this.$emit('setFilter', filterBy)
+    },
+    saveOrder(newOrder){
+      this.$emit('saveOrder',newOrder)
+    }
   }
 };
 </script>

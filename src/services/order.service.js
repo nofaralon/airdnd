@@ -6,6 +6,7 @@ import { utilService } from './util.service'
 
 
 const ORDER_KEY = 'orderDB';
+const CURR_ORDER ='currOrder'
 // const ORDER_URL = 'http://localhost:3000/api/order/'
 
 export const orderService = {
@@ -13,7 +14,8 @@ export const orderService = {
     getById,
     remove,
     save,
-    getEmptyOrder
+    getEmptyOrder,
+    saveCurrOrder
 
 
 }
@@ -56,6 +58,12 @@ async function save(order) {
     //     return savedOrder
     // }
 
+
+}
+async function saveCurrOrder(order){
+    const saveOrder = await storageService.post(CURR_ORDER, order)
+    return saveOrder
+    
 
 }
 
