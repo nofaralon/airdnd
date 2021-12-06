@@ -32,6 +32,9 @@ export const stayStore = {
                 if(state.filterBy.fromPrice && state.filterBy.toPrice){
                     stays =stays.filter((stay)=>stay.price >=state.filterBy.fromPrice && stay.price <= state.filterBy.toPrice)
                 }
+                // if(state.filterBy.type.outdoors){
+
+                // }
                 
                 // filter by inStock
                 // if (state.filterBy.inStock) {
