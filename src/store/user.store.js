@@ -3,6 +3,7 @@ import {userService} from '../services/user.service.js'
 export const userStore={
     state:{
         user: userService.getLoggedinUser() || null,
+        userCurrPage:'home'
     },
     getters: {
         user(state){
@@ -17,6 +18,9 @@ export const userStore={
                 fullname,
                 imgUrl
             }
+        },
+        userPage(state){
+            return state.userCurrPage
         }
         
 
@@ -26,6 +30,10 @@ export const userStore={
             console.log('user',user);
             state.user = user
         },
+        setUsetPage(state,{page}){
+            console.log('page:',page);
+            state.userCurrPage=page
+        }
     },
     actions:{
         async getUserById({},{userId}){

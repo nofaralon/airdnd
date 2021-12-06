@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition name="component-fade" mode="out-in">
-    <component @filter="$emit('filter')" :isScroll="isScroll" :is="headerType"></component>
+    <component @filter="$emit('filter')" :explore="explore" :details="details" :isScroll="isScroll" :is="headerType"></component>
 </transition>
   </div>
 </template>
@@ -9,24 +9,46 @@
 <script>
 import stayHeader from '@/cmps/stay-header'
 import stayHeaderWhite from '@/cmps/stay-header-white'
+import exploreHeader from '@/cmps/explore-header'
 export default {
-  props: {
+  props:{
     isScroll: Boolean,
+
+  },
+  data() {
+    return{
+      explore:false,
+      details:false
+    }
         },
 computed: {
     headerType() {
-      console.log(this.isScroll);
-      if (this.isScroll) {
-        var header = "stay-header-white";
-      } else {
-        var header = "stay-header";
+      if(this.currPage==='explore'){
+        var header="explore-header"
+              this.explore=true
+              this.details=false
+              console.log('in explore');
+
+      }else if(this.currPage==='details'){
+              this.explore=false
+              this.details=true
+              console.log('in details');
+      }else if(this.currPage==='home'){
+          var header = "stay-header-white";
+              this.explore=false
+              this.details=false
       }
-      return header;
+        return header;
     },
+    currPage(){
+      return this.$store.getters.userPage
+    }
+
   },
   components:{
       stayHeader,
-      stayHeaderWhite
+      stayHeaderWhite,
+      exploreHeader
   }
 }
 </script>
@@ -37,7 +59,7 @@ computed: {
 
 }
 .component-fade-leave-active {
-  transition: all .2s cubic-bezier(1, 1, 1, 1);
+  transition: all .2s ease;
 
 }
 .component-fade-enter, .component-fade-leave-to

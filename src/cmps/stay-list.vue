@@ -15,7 +15,9 @@
 
 export default {
   name: "stay-list",
-      props: ['stays'],
+      props: {
+        stays:Array
+      },
 
   data() {
     return {

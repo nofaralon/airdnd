@@ -18,7 +18,7 @@ export default {
     return {};
   },
   created() {
-  this.$emit('header','explore')
+  this.$store.commit({type:'setUsetPage',page:'explore'})
 
   },
   methods: {

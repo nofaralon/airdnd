@@ -113,12 +113,11 @@ export default {
   },
   created() { 
     window.addEventListener('scroll', this.handleScroll);
-     this.$emit('header','home')
      this.order=orderService.getEmptyOrder()
      console.log(this.order);
-     
+     this.$store.commit({type:'setUsetPage',page:'home'})
   },
-   destroyed() {
+  destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
 
   },
