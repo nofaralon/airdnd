@@ -20,26 +20,27 @@ export const stayStore = {
             let stays = JSON.parse(JSON.stringify(state.stays))
                 let filteredStays = []
                 if (!state.filterBy) {
-                    return stays
-                    
+                    return stays   
                 }
-                    // filter by inStock
-                    // if (state.filterBy.inStock) {
-                        // console.log(state.filterBy.country);
-                        // const { select } = state.filterBy
-                        // if (select === 'In stock') stays = stays.filter(stay => stay.inStock)
-                        // else if (select === 'Out of stock') stays = stays.filter(stay => !stay.inStock)
-                    // } 
-                    // filter by country
-                    if (state.filterBy.country) {
-                        stays = stays.filter((stay) => (stay.loc.country ===state.filterBy.country ));
-                    }
- 
-                    // filter by guests
-                    if (state.filterBy.guests) {
-                        stays = stays.filter((stay) => stay.capacity >= state.filterBy.guests)
-                    }
-                   
+                if (state.filterBy.country) {
+                    stays = stays.filter((stay) => (stay.loc.country ===state.filterBy.country ));
+                }
+                // filter by guests
+                if (state.filterBy.guests) {
+                    stays = stays.filter((stay) => stay.capacity >= state.filterBy.guests)
+                }
+                if(state.filterBy.fromPrice && state.filterBy.toPrice){
+                    stays =stays.filter((stay)=>stay.price >=state.filterBy.fromPrice && stay.price <= state.filterBy.toPrice)
+                }
+                
+                // filter by inStock
+                // if (state.filterBy.inStock) {
+                    // console.log(state.filterBy.country);
+                    // const { select } = state.filterBy
+                    // if (select === 'In stock') stays = stays.filter(stay => stay.inStock)
+                    // else if (select === 'Out of stock') stays = stays.filter(stay => !stay.inStock)
+                // } 
+                // filter by country
                 // Sorting
                 // if (state.sortBy) {
                 //     if (state.sortBy === 'time')
