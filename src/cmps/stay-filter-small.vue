@@ -1,7 +1,7 @@
 <template>
 <div class="main-layout main-filter small-filter">
  <div class="filter filter-slot-sm">
-<button class="filter-btn">
+<button @click="showFilter" class="filter-btn">
   <div class="filter-container">
   <p> Filter!</p>
   <button class="search-btn">
@@ -22,7 +22,12 @@ export default {
     };
   },
   created() {},
-  methods: {},
+  methods: {
+    showFilter(){
+      console.log('in');
+      this.$emit('filter')
+    }
+  },
   computed: {},
   components: {}
 };

@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition name="component-fade" mode="out-in">
-    <component :is="headerType"></component>
+    <component @filter="$emit('filter')" :isScroll="isScroll" :is="headerType"></component>
 </transition>
   </div>
 </template>
