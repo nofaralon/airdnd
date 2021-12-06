@@ -101,14 +101,15 @@
         4.39 <span>• {{ stay.reviews.length }} {{ setReviews }}</span>
       </h1>
 
-      <el-rate
+      <!-- <el-rate
+      class="nof"
         v-model="value"
         disabled
         show-score
-        text-color="#ff9900"
+        text-color="#000000"
         score-template="{value} points"
       >
-      </el-rate>
+      </el-rate> -->
 
       <div v-for="review in stay.reviews" :key="review.id">
         <div class="review-details">
@@ -117,7 +118,7 @@
             <div class="user-details">
               <span>{{ review.by.fullname }}</span>
               <div>
-                {{ randomDate(new Date(2019, 0, 1), new Date(), 0, 24) }}
+                {{ review.date }}
               </div>
             </div>
           </div>
@@ -126,30 +127,39 @@
         </div>
       </div>
 
+      <div class="add-review">
+
       <h1>Add review</h1>
-      <div v-if="user">
-        <img :src="`${user.imgUrl}`" />
-        <div class="user-details">
-          <span>{{ user.fullname }}</span>
-          <div>
-            {{ date }}
+      <div class="review-details">
+        <div>
+          <img :src="`${user.imgUrl}`" />
+          <div class="user-details">
+            <span>{{ user.fullname }}</span>
+            <div>
+              {{ review.date }}
+            </div>
           </div>
         </div>
       </div>
-      <el-rate
-        v-model="value"
+
+      <el-rate class="user-rate"
+        v-model="review.rate"
         :texts="['oops', 'disappointed', 'normal', 'good', 'great']"
         show-text
       >
       </el-rate>
       <div class="add-review-txt">
         <textarea
+          v-model="review.txt"
           type="text"
           name="txt"
           autocomplete="off"
           placeholder="Write your opinion about this stay..."
         ></textarea>
-        <button>send</button>
+        <button @click="addReview">send</button>
+      </div>
+
+
       </div>
     </section>
 
@@ -180,7 +190,7 @@ import stayAmenities from "../cmps/stay-amenities.vue";
 import stayInfo from "../cmps/stay-info.vue";
 import GmapMap from "../cmps/map-details.vue";
 import orderForm from "../cmps/order-form.vue";
-
+import { utilService } from "../services/util.service";
 import { orderService } from "../services/order.service";
 
 export default {
@@ -193,14 +203,21 @@ export default {
       order: {},
       value: 3,
       user: null,
-      date: new Date().toLocaleDateString()
+      review: {
+        date: new Date().toString().slice(3, 15),
+        txt: "",
+        rate: 0,
+        by: this.user,
+        id:  utilService.makeId(),
+      },
     };
   },
   created() {
     this.loadStay();
     this.order = orderService.getEmptyOrder();
+    this.$store.commit({type:'setUsetPage',page:'details'})
     this.$emit("header", "details");
-    this.user = this.loadUser()
+    this.user = this.loadUser();
     console.log(this.user);
   },
   methods: {
@@ -217,29 +234,32 @@ export default {
       var imgs = this.stay.imgUrls.slice(0, 5);
       this.imgs = imgs;
     },
-    loadUser(){
-      var user = this.$store.getters.user
-      if (!user) user = {
-      _id: 'u111',
-      fullname: "guest",
-      imgUrl: "https://source.unsplash.com/random/100x100/?face",
-    };
-    return user
-    },
-    randomDate(start, end, startHour, endHour) {
-      var date = new Date(+start + Math.random() * (end - start));
-      var hour = (startHour + Math.random() * (endHour - startHour)) | 0;
-      date.setHours(hour);
-      var sortDate = date.toString().slice(3, 15);
-      return sortDate;
+    loadUser() {
+      var user = this.$store.getters.user;
+      if (!user)
+        user = {
+          _id: "u111",
+          fullname: "guest",
+          imgUrl: "https://source.unsplash.com/random/100x100/?face",
+        };
+      return user;
     },
     check() {
       const { _id, name, price } = this.stay;
       this.order.stay = { _id, name, price };
       this.order.hostId = this.stay.host._id;
       console.log(this.order.stay);
-      this.$store.dispatch({ type: "addOrder", order: { ...this.order } });
+      this.$store.dispatch({ type: "addOrder", order:  JSON.parse(JSON.stringify(this.order)) });
     },
+    addReview(){
+      this.review.by = this.user
+      const details = {
+        stayId: this.stay._id, 
+        review: JSON.parse(JSON.stringify(this.review))
+      }
+      this.stay = await this.$store.dispatch({ type: "addReview", details })
+      // this.stay = savedStay
+    }
   },
   computed: {
     stayPrice() {

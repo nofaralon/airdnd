@@ -13,7 +13,8 @@ export const stayService = {
     getById,
     remove,
     save,
-    getEmptyStay
+    getEmptyStay,
+    addReview
 
 
 }
@@ -29,7 +30,6 @@ async function query(filterBy) {
 }
 
 async function getById(id) {
-    console.log(typeof id);
     return storageService.get(STAY_KEY, id)
         // try {
         //     const res = await axios.get(STAY_URL + id)
@@ -56,6 +56,15 @@ async function remove(id) {
     // }
 
     // return httpService.delete(`stay/${id}`)
+}
+
+async function addReview(stayId, review) {
+    console.log(stayId, review);
+    var stay = await storageService.get(STAY_KEY, stayId)
+    console.log(stay);
+    var updatedStay = stay.reviews.push(review)
+    return await storageService.put(STAY_KEY, updatedStay)
+
 }
 
 async function save(stay) {
