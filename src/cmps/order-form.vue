@@ -40,14 +40,14 @@
           <el-date-picker v-model="order.Dates" type="daterange">
           </el-date-picker>
         </div>
-        <div @click="toggleModal">
+        <div class="guests" @click="toggleModal">
           <h2>GUESTS</h2>
           <span> {{ order.guests }} {{ setGuests }} </span>
         </div>
       </div>
 
       <div v-if="openModal" class="guest-modal">
-        <div class="nof">
+        <div class="modal">
           <div>
             <h2>Adults</h2>
             <span>Age 13+</span>

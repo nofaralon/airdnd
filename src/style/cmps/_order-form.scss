@@ -45,7 +45,7 @@
         flex-direction: column;
         border-radius: 13px;
         cursor: pointer;
-        & div:last-child {
+        .guests {
             padding: 10px;
             & span {
                 font-size: rem(12px);
@@ -143,16 +143,16 @@
         }
     }
     .guest-modal {
-        position: sticky;
+        // position: sticky;
         padding: 10px;
         display: flex;
         flex-direction: column;
         border: 1px solid #dadada;
         border-radius: 13px;
         box-shadow: 0 3px 8px 0 rgb(0 0 0 / 18%);
-        top: 90px;
+        // top: 90px;
         z-index: 2;
-        .nof {
+        .modal {
             border-bottom: 1px solid #dadada;
         }
         & h2 {

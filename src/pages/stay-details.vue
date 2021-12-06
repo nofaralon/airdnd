@@ -3,8 +3,7 @@
     <h1>{{ stay.name }}</h1>
 
     <div class="detsils-header">
-
-        <span>
+      <span>
         <svg
           aria-hidden="true"
           focusable="false"
@@ -20,7 +19,10 @@
             d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
           ></path>
         </svg>
-        4.39 <a href="#anchor-reviews">({{ stay.reviews.length }} {{ setReviews }})</a></span
+        4.39
+        <a href="#anchor-reviews"
+          >({{ stay.reviews.length }} {{ setReviews }})</a
+        ></span
       >
       <span>
         <svg
@@ -41,7 +43,6 @@
         Superhost</span
       >
       <a href="#anchor-map">{{ stay.loc.address }}</a>
-      
     </div>
 
     <div class="img-container">
@@ -52,7 +53,10 @@
       <div class="stay-info">
         <div class="info-header">
           <div>
-            <h2><span class="stay-name">{{ stay.type }}</span> hosted by {{ stay.host.fullname }}</h2>
+            <h2>
+              <span class="stay-name">{{ stay.type }}</span> hosted by
+              {{ stay.host.fullname }}
+            </h2>
             <span
               >{{ stay.capacity }} Guests • {{ stay.bedroom }}
               {{ setBedrooms }} • {{ stay.beds }} {{ setBeds }} •
@@ -64,14 +68,13 @@
 
         <div class="main-info">
           <stay-info :stay="stay"></stay-info>
-      
+
           <div class="description">
             <h2>Description</h2>
             <p>{{ stay.summary }}</p>
           </div>
 
           <stay-amenities></stay-amenities>
-
         </div>
       </div>
 
@@ -97,6 +100,16 @@
         </svg>
         4.39 <span>• {{ stay.reviews.length }} {{ setReviews }}</span>
       </h1>
+
+      <el-rate
+        v-model="value"
+        disabled
+        show-score
+        text-color="#ff9900"
+        score-template="{value} points"
+      >
+      </el-rate>
+
       <div v-for="review in stay.reviews" :key="review.id">
         <div class="review-details">
           <div>
@@ -108,9 +121,35 @@
               </div>
             </div>
           </div>
-     
+
           <p>{{ review.txt }}</p>
         </div>
+      </div>
+
+      <h1>Add review</h1>
+      <div v-if="user">
+        <img :src="`${user.imgUrl}`" />
+        <div class="user-details">
+          <span>{{ user.fullname }}</span>
+          <div>
+            {{ date }}
+          </div>
+        </div>
+      </div>
+      <el-rate
+        v-model="value"
+        :texts="['oops', 'disappointed', 'normal', 'good', 'great']"
+        show-text
+      >
+      </el-rate>
+      <div class="add-review-txt">
+        <textarea
+          type="text"
+          name="txt"
+          autocomplete="off"
+          placeholder="Write your opinion about this stay..."
+        ></textarea>
+        <button>send</button>
       </div>
     </section>
 
@@ -152,12 +191,17 @@ export default {
       imgs: [],
       amenities: null,
       order: {},
+      value: 3,
+      user: null,
+      date: new Date().toLocaleDateString()
     };
   },
   created() {
     this.loadStay();
     this.order = orderService.getEmptyOrder();
     this.$emit("header", "details");
+    this.user = this.loadUser()
+    console.log(this.user);
   },
   methods: {
     loadStay() {
@@ -172,6 +216,15 @@ export default {
     imgForDisplay() {
       var imgs = this.stay.imgUrls.slice(0, 5);
       this.imgs = imgs;
+    },
+    loadUser(){
+      var user = this.$store.getters.user
+      if (!user) user = {
+      _id: 'u111',
+      fullname: "guest",
+      imgUrl: "https://source.unsplash.com/random/100x100/?face",
+    };
+    return user
     },
     randomDate(start, end, startHour, endHour) {
       var date = new Date(+start + Math.random() * (end - start));
@@ -217,7 +270,7 @@ export default {
     GmapMap,
     orderForm,
     stayAmenities,
-    stayInfo
+    stayInfo,
   },
 };
 </script>

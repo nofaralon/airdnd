@@ -168,6 +168,7 @@ function _createStays() {
                     "id": "157859",
                     "txt": "Place was amazing. We saw the northern lights. Magical. Highly recommend. Hopefully you stay there when there is no overcast so you can see the lights.",
                     "rate": 5,
+                    "date": "Jun 07 2020",
                     "by": {
                         "_id": "u100753482399",
                         "fullname": "James",
@@ -177,6 +178,7 @@ function _createStays() {
                     "id": "154559",
                     "txt": "The glass cottage was absolutely beautiful! Unfortunately, we were not blessed with the northern lights but had a lovely view of the stars.",
                     "rate": 5,
+                    "date": "Apr 03 2021",
                     "by": {
                         "_id": "u100753482399",
                         "fullname": "Charlie",
@@ -232,6 +234,7 @@ function _createStays() {
                     "id": "1559",
                     "txt": "We really enjoyed our stay here. Warm and cozy.",
                     "rate": 5,
+                    "date": "Jun 07 2019",
                     "by": {
                         "_id": "u100753482399",
                         "fullname": "Justin",
@@ -287,6 +290,7 @@ function _createStays() {
                     "id": "159",
                     "txt": "Our favorite place in iceland! Lola was very kind.",
                     "rate": 4,
+                    "date": "Jun 07 2017",
                     "by": {
                         "_id": "u1009",
                         "fullname": "ishitzu",
@@ -342,6 +346,7 @@ function _createStays() {
                     "id": "149",
                     "txt": "Once in a lifetime experience ",
                     "rate": 4,
+                    "date": "Jun 07 2020",
                     "by": {
                         "_id": "u1009",
                         "fullname": "ishitzu",
@@ -384,7 +389,7 @@ function _createStays() {
                 "transit": "We recommend guests use Lyft and Uber.",
                 "around": "Very safe and quiet neighborhood. House is gated",
                 "loc": {
-                    "country": "Miami",
+                    "country": "Florida",
                     "countryCode": "FL",
                     "address": "Miami, Florida, United States",
                     "lng": -80.15259684126534,
@@ -395,6 +400,7 @@ function _createStays() {
                     "id": "14",
                     "txt": "Was it all a dream?!",
                     "rate": 5,
+                    "date": "Jun 07 2018",
                     "by": {
                         "_id": "u10",
                         "fullname": "Sharon",
@@ -439,7 +445,7 @@ function _createStays() {
                 "transit": "We recommend guests use Lyft and Uber.",
                 "around": "Central Miami at your feet",
                 "loc": {
-                    "country": "Miami",
+                    "country": "Florida",
                     "countryCode": "FL",
                     "address": "Miami, Florida, United States",
                     "lng": -80.15757502118096,
@@ -450,6 +456,7 @@ function _createStays() {
                     "id": "14",
                     "txt": "Such a big house, this is a dream...",
                     "rate": 5,
+                    "date": "Jun 07 2020",
                     "by": {
                         "_id": "u102678",
                         "fullname": "shimo",
@@ -493,7 +500,7 @@ function _createStays() {
                 "transit": "Everything is walking distance, electric scooters available all over Brickell for rent, Uber/lyft is also very convenient to use.",
                 "around": "Close to Design District, Wynwood, and Miami Beach. Referred to as the 'Manhattan of the South', Brickell is home to the largest concentration of international banks in the United States, and home to many of Miami's top restaurants, shops and places of entertainment.",
                 "loc": {
-                    "country": "Miami",
+                    "country": "Florida",
                     "countryCode": "FL",
                     "address": "Miami, Florida, United States",
                     "lng": -80.19372162516402,
@@ -504,6 +511,7 @@ function _createStays() {
                     "id": "1",
                     "txt": "Phew, that was awsome!!",
                     "rate": 5,
+                    "date": "Jun 07 2021",
                     "by": {
                         "_id": "u106782",
                         "fullname": "Jordan",
@@ -561,6 +569,7 @@ function _createStays() {
                     "id": "15",
                     "txt": "Amazing!",
                     "rate": 5,
+                    "date": "Apr 03 2021",
                     "by": {
                         "_id": "u1024",
                         "fullname": "user2",
@@ -612,6 +621,7 @@ function _createStays() {
                     "id": "60",
                     "txt": "Very helpful hosts. Cooked traditional...",
                     "rate": 4,
+                    "date": "Apr 03 2021",
                     "by": {
                         "_id": "u103",
                         "fullname": "yuki",
@@ -665,6 +675,7 @@ function _createStays() {
                     "id": "45",
                     "txt": "Wow this loft is the best!",
                     "rate": 5,
+                    "date": "Apr 03 2021",
                     "by": {
                         "_id": "u1025",
                         "fullname": "Ferdinand",
@@ -716,6 +727,7 @@ function _createStays() {
                     "id": "56",
                     "txt": "Best stay ever!",
                     "rate": 4,
+                    "date": "Apr 03 2021",
                     "by": {
                         "_id": "u1029",
                         "fullname": "Yur",
@@ -767,6 +779,7 @@ function _createStays() {
                     "id": "90",
                     "txt": "Very poor apartment handling",
                     "rate": 1,
+                    "date": "Apr 22 2018",
                     "by": {
                         "_id": "u19",
                         "fullname": "Fin",
@@ -818,6 +831,7 @@ function _createStays() {
                     "id": "59",
                     "txt": "The bed was amazing! must come back soon for it!",
                     "rate": 5,
+                    "date": "Apr 03 2016",
                     "by": {
                         "_id": "u10273",
                         "fullname": "Uko",
@@ -868,6 +882,7 @@ function _createStays() {
                     "id": "97",
                     "txt": "Had fun. Thank you.",
                     "rate": 3,
+                    "date": "Apr 03 2020",
                     "by": {
                         "_id": "u102342",
                         "fullname": "Chappi",
@@ -922,6 +937,7 @@ function _createStays() {
                     "id": "100",
                     "txt": "Wont come back,  for sure.",
                     "rate": 2,
+                    "date": "Apr 03 2018",
                     "by": {
                         "_id": "u302",
                         "fullname": "Yoram",
