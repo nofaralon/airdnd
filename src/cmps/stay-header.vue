@@ -4,7 +4,7 @@
 
 <transition name="fade">
 
-  <header class="app-header full fixed">
+  <header class="app-header full fixed main-layout">
     <div class="main-header">
       <div @click="goTo('/')" class="logo">
         <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="airbnb" class="svg-inline--fa fa-airbnb fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -56,7 +56,6 @@
 </template>
 
 <script>
-import dynamicFilter from '@/cmps/dynamic-filter'
 export default {
 
   data() {
@@ -76,7 +75,6 @@ export default {
     },
   },
   components:{
-    dynamicFilter,
   },
 }
 </script>

@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <app-header v-if="isHome" />
-    <explore-header v-if="isExplore" />
-    <details-header v-if="isDetails" />
+    <app-header />
     <router-view @header="setHeader" />
     <app-footer />
   </div>
@@ -20,9 +18,6 @@ export default {
   name: "App",
   data() {
     return {
-      home: true,
-      explore: false,
-      details: false,
       url: null,
     };
   },
@@ -31,38 +26,8 @@ export default {
   },
 
   methods: {
-    setHeader(header) {
-      if (header === "home") {
-        (this.home = true), (this.explore = false), (this.details = false);
-      } else if (header === "explore") {
-        (this.home = false), (this.explore = true), (this.details = false);
-      } else if (header === "details") {
-        (this.home = false), (this.explore = false), (this.details = true);
-      }
-    },
   },
   computed: {
-    isHome() {
-      if (this.home) {
-        return true;
-      } else {
-        return false;
-      }
-    },
-    isExplore() {
-      if (this.explore) {
-        return true;
-      } else {
-        return false;
-      }
-    },
-    isDetails() {
-      if (this.details) {
-        return true;
-      } else {
-        return false;
-      }
-    },
   },
   components: {
     appHeader,

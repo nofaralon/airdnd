@@ -1,14 +1,19 @@
 <template>
 <div class="header-container">
-<dynamic-header :isScroll="isScroll"/>
+<dynamic-header :explore="explore" :details="details" :isScroll="isScroll"/>
 </div>
 
 </template>
 
 <script>
-import dynamicFilter from '@/cmps/dynamic-filter'
+
 import dynamicHeader from '@/cmps/dynamic-header'
+
 export default {
+  props:{
+    explore:Boolean,
+    details:Boolean
+  },
 
   data() {
     return {
@@ -43,9 +48,8 @@ export default {
     }
   },
   components:{
-    dynamicFilter,
-    dynamicHeader
-  },
+    dynamicHeader,  
+    },
 
 };
 </script>

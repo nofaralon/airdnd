@@ -6,7 +6,7 @@
 
         padding: 0;
         display: grid;
-        grid-template-columns: repeat(4, minmax(275px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(350px,1fr));
         gap: 20px;
         & :hover{
             cursor: pointer;
@@ -17,6 +17,8 @@
             list-style: none;
             .preview-container {
                 position: relative;
+                height: 100%;
+                width: 100%;
             }
             img {
                 width: 100%;
@@ -25,13 +27,6 @@
             }
             .img-carousel {
                 border-radius: 12px;
-            }
-            .stay-name {
-                width: 21ch;
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                font-weight: 600;
             }
             .fa-heart {
                 z-index: 1;
@@ -55,8 +50,23 @@
             }
             .name-price-container {
                 display: flex;
+                flex-direction: column;
                 justify-content: space-between;
                 margin-top: 6px;
+
+                .stay-name {
+                    width: 31ch;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+                .type{
+                    text-transform: capitalize;
+                }
+                
+            }
+            .card-stay-price{
+                font-family: manrope-bold;
             }
             >*:not(label) {
                 grid-area: 1 / 1;
@@ -80,5 +90,7 @@
             height: 32.5px;
             background-color: white;
         }
-    }  
-  
+    }   
+    .el-carousel__container{
+        height: 250px;
+    } 

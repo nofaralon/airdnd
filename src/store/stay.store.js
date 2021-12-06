@@ -160,5 +160,16 @@ export const stayStore = {
             commit({ type: 'setFilter', filterBy })
             dispatch({ type: 'loadStays' })
         },
+        addReview({ dispatch }, { details }) {
+            console.log(details);
+            const { stayId, review } = details
+            return stayService.addReview(stayId, review).then((stay) => {
+                console.log(stay);
+                dispatch({ type: 'updateStay', stay })
+
+            })
+
+
+        }
     },
 }

@@ -8,13 +8,18 @@
     </el-carousel-item>
   </el-carousel>
     <div class="name-price-container">
-      <p class="stay-name">{{ stay.name }}</p>
-      <span>{{ stay.price.toLocaleString('en-US',{ currency:'USD',style:'currency',maximumFractionDigits: 0}) }}/night</span>
-    </div>
-    <div class="preview-footer">
+<div>
+      <span class="type">{{stay.type}}</span> in <span class="location"> {{stay.loc.address}} </span>
+</div>
+      <span class="stay-name">{{ stay.name }}</span>
+</div>
+<div>
+      <span class="card-stay-price">{{ stay.price.toLocaleString('en-US',{ currency:'USD',style:'currency',maximumFractionDigits: 0})}}</span>/night
+</div>
+    <!-- <div class="preview-footer">
       <p>{{distance.toLocaleString('en-US',{ maximumFractionDigits: 0})}} kilometers away</p>
       <p>Mar 25 - Apr 2</p>
-    </div>
+    </div> -->
   </section>
 </template>
 
@@ -22,7 +27,9 @@
 <script>
 export default {
   name: "stay-pre",
-  props: ["stay"],
+  props: {
+    stay:Object
+  },
 
   data() {
     return {

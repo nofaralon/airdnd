@@ -204,6 +204,16 @@
             margin-bottom: 40px;
         }
     }
+    .add-review {
+        & h1 {
+            border-top: 1px solid #00000029;
+        }
+    }
+    .user-rate {
+        .el-icon-star-on {
+            color: $clr1 !important;
+        }
+    }
 }
 
 .map-details {

@@ -89,9 +89,9 @@ export default {
   },
   created() { 
     window.addEventListener('scroll', this.handleScroll);
-     this.$emit('header','home')
      this.order=orderService.getEmptyOrder()
      console.log(this.order);
+     this.$store.commit({type:'setUsetPage',page:'home'})
      eventBusService.$on('setFilter',filterBy=>{
        this.filterBy = filterBy
        this.$store.dispatch({type:'setFilter', filterBy})
@@ -103,7 +103,7 @@ export default {
       })
      
   },
-   destroyed() {
+  destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
 
   },

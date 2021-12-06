@@ -8,15 +8,15 @@
     height: 160px;
     width: 100%;
 }
-.details{
-  margin-inline-end: 200px;
-  margin-inline-start: 200px;
-}
+// .details{
+//   margin-inline-end: 200px;
+//   margin-inline-start: 200px;
+// }
 .explore{
   // position: inherit;
   background-color: white;
-  margin-inline-end: 36px;
-  margin-inline-start:36px;
+  // margin-inline-end: 36px;
+  // margin-inline-start:36px;
 }
 header {
   &:not(white){
@@ -91,8 +91,8 @@ header {
     justify-content: space-between;
     width: 100%;
     &:not(.details,.explore){
-      margin-inline-end: 80px;
-      margin-inline-start: 80px;
+      // margin-inline-end: 80px;
+      // margin-inline-start: 80px;
     }
     
     align-items: center;
