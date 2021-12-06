@@ -180,14 +180,12 @@ export const stayStore = {
             commit({ type: 'setFilter', filterBy })
             dispatch({ type: 'loadStays' })
         },
-        addReview({ dispatch }, { details }) {
+        async addReview({ commit }, { details }) {
             console.log(details);
             const { stayId, review } = details
-            return stayService.addReview(stayId, review).then((stay) => {
-                console.log(stay);
-                dispatch({ type: 'updateStay', stay })
-
-            })
+            const stay = await stayService.addReview(stayId, review)
+            console.log('stay-', stay);
+            commit({ type: 'updateStay', stay })
 
 
         }

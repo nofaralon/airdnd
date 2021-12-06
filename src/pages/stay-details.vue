@@ -207,7 +207,7 @@ export default {
         date: new Date().toString().slice(3, 15),
         txt: "",
         rate: 0,
-        by: this.user,
+        by:'',
         id:  utilService.makeId(),
       },
     };
@@ -218,6 +218,7 @@ export default {
     this.$store.commit({type:'setUsetPage',page:'details'})
     this.$emit("header", "details");
     this.user = this.loadUser();
+    this.review.by = this.user
     console.log(this.user);
   },
   methods: {
@@ -251,8 +252,7 @@ export default {
       console.log(this.order.stay);
       this.$store.dispatch({ type: "addOrder", order:  JSON.parse(JSON.stringify(this.order)) });
     },
-    addReview(){
-      this.review.by = this.user
+    async addReview(){
       const details = {
         stayId: this.stay._id, 
         review: JSON.parse(JSON.stringify(this.review))

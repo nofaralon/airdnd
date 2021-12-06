@@ -61,8 +61,8 @@ async function remove(id) {
 async function addReview(stayId, review) {
     console.log(stayId, review);
     var stay = await storageService.get(STAY_KEY, stayId)
-    console.log(stay);
     var updatedStay = stay.reviews.push(review)
+    console.log(stay);
     return await storageService.put(STAY_KEY, updatedStay)
 
 }
