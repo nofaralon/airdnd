@@ -19,14 +19,17 @@ export const stayStore = {
         staysForDisplay(state) {
             let stays = JSON.parse(JSON.stringify(state.stays))
                 let filteredStays = []
+                if (!state.filterBy) {
+                    return stays
+                    
+                }
                     // filter by inStock
                     // if (state.filterBy.inStock) {
                         // console.log(state.filterBy.country);
                         // const { select } = state.filterBy
                         // if (select === 'In stock') stays = stays.filter(stay => stay.inStock)
                         // else if (select === 'Out of stock') stays = stays.filter(stay => !stay.inStock)
-                    // }
- 
+                    // } 
                     // filter by country
                     if (state.filterBy.country) {
                         stays = stays.filter((stay) => (stay.loc.country ===state.filterBy.country ));

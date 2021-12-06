@@ -4,6 +4,7 @@ export const storageService = {
     post,
     put,
     remove,
+    postOrder
 }
 
 function query(entityType, delay = 1000) {
@@ -48,6 +49,13 @@ function remove(entityType, entityId) {
             entities.splice(idx, 1)
             _save(entityType, entities)
         })
+}
+function postOrder(entityType,newEntity){
+    newEntity._id = _makeId()
+    _save(entityType,newEntity)
+   
+
+
 }
 
 

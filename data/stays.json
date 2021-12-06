@@ -90,7 +90,7 @@
         "host": {
             "_id": "536581",
             "fullname": "Atli",
-            "imgUrl": "https://source.unsplash.com/random/100x100/?face"
+            "imgUrl": "https://thispersondoesnotexist.com/"
         },
         "acces": "Private cottage, Free Wi-Fi, Free Parking, hairdryer, kitchenette. Breakfast can be offered for extra 19 EUR per person, for minimum 2 guests if booked. Please send us a message on Airbnb if you wish to book breakfast. Breakfast request must be sent to us with at least 2 days notice so we can prepare the breakfast for you.",
         "note": "Please note that we will send you an email 2 days prior arrival with the check in instructions. The email may end up in your junk/spam folder so please check that.",
@@ -112,7 +112,7 @@
             "by": {
                 "_id": "u100753482399",
                 "fullname": "Justin",
-                "imgUrl": "https://source.unsplash.com/random/100x100/?face"
+                "imgUrl": "https://thispersondoesnotexist.com/"
             }
         }],
         "likedByUsers": ["Justin", "Racha", "Bjorn", "Bobo"]
