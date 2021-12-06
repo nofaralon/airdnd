@@ -21,10 +21,10 @@
           <button class="check-in filter-btn">
           <p >Check out</p>
           </button>
-          <button class="check-in filter-btn">
+          <button @click="isModalOpen =true" class="check-in filter-btn">
           <p >Guests</p>
           </button>
-           <div class="guest-modal">
+           <div v-if ="isModalOpen" class="guest-modal">
         <div class="nof">
           <div>
             <h2>Adults</h2>
