@@ -5,7 +5,7 @@
 
      
         
-      <stay-list v-else :stays="stays" @setLiked="setLiked">
+      <stay-list @setFilter="setFilter" v-else :stays="stays" @setLiked="setLiked">
       </stay-list>
 
      
@@ -31,6 +31,9 @@ export default {
     setLiked(stay) {
       this.$store.dispatch({ type: "toggleLike", stay });
     },
+    setFilter(filterBy){
+      this.$store.dispatch({type:'setFilter', filterBy})
+    }
   },
   computed: {
     stays() {

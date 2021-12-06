@@ -1,26 +1,36 @@
 <template>
   <section class="card-list">
     <div class="filter-options">
-      <button  class="price-filter"> price <i :class="priceModalClass"> </i></button>
-      <button class="type-filter">Type of place  <i :class="typeModalClass"> </i> </button>
+      <button @click="togglePriceModal" class="price-filter"> price <i :class="priceModalClass"> </i></button>
+      <button @click="toggleTypeModal" class="type-filter">Type of place  <i :class="typeModalClass"> </i> </button>
     </div>
-    <div class="price-modal-filter">
-      <h1>The average nightly price is ₪516</h1>
+    <div v-if="isPriceModalOpen" class="price-modal-filter">
+      <h1>The average nightly price is $516</h1>
       <div class="price-limit">
         <div class="input-container">
+          <div class="filter-text"> min Price</div>
+          <div class="margin-left">
+            <span>$</span>
+            <input v-model="filterBy.fromPrice"  type="number">
+          </div>
 
         </div>
 
         -
         <div class="input-container">
-          
+          <div  class="filter-text"> max Price</div>
+          <div class="margin-left">
+            <span>$</span>
+            <input v-model="filterBy.toPrice" type="number">
+          </div>
+
+        </div>
         </div>
 
-      </div>
       <hr/>
       <div class="actions-btn">
-        <button>Clear</button>
-        <button>Save</button>
+        <button @click="resetFilter">Clear</button>
+        <button @click="setPriceFilter">Save</button>
       </div>
     </div>
       
@@ -51,11 +61,35 @@ export default {
     return {
       isLiked:false,
       isPriceModalOpen:false,
-      isTypeModalOpen:false
+      isTypeModalOpen:false,
+      filterBy:{
+        country:'',
+        type:'',
+        ailments:'',
+        guests:null,
+        Dates:"",
+        fromPrice:32,
+        toPrice:1500
+      },
     };
   },
   created() {},
   methods: {
+    togglePriceModal(){
+      this.isPriceModalOpen =!this.isPriceModalOpen
+    },
+    toggleTypeModal(){
+      this.isTypeModalOpen =!this.isTypeModalOpen
+    },
+    setPriceFilter(){
+      const filterBy = {...this.filterBy}
+      this.$emit('setFilter',filterBy)
+
+    },
+    resetFilter(){
+      this.filterBy.fromPrice =32;
+      this.filterBy.toPrice=1500
+    }
    
   },
   computed: {
