@@ -36,10 +36,10 @@
     
 
     <div v-if="isTypeModalOpen" class="type-modal-filter">
-        <el-checkbox v-model="filterBy.type.outdoors">Outdoors</el-checkbox>
-        <el-checkbox v-model="filterBy.type.villa">Villa</el-checkbox>
-        <el-checkbox v-model="filterBy.type.apartment">Apartment</el-checkbox>
-        <el-checkbox v-model="filterBy.type.loft">Loft</el-checkbox>
+        <el-checkbox v-model="type.outdoors">Outdoors</el-checkbox>
+        <el-checkbox v-model="type.villa">Villa</el-checkbox>
+        <el-checkbox v-model="type.apartment">Apartment</el-checkbox>
+        <el-checkbox v-model="type.loft">Loft</el-checkbox>
         <hr/>
     
         <div class="actions-btn">
@@ -76,7 +76,7 @@ export default {
     return {
       isLiked:false,
       isPriceModalOpen:false,
-      isTypeModalOpen:true,
+      isTypeModalOpen:false,
       filterBy:{
         country:'',
         type:'',
@@ -92,10 +92,7 @@ export default {
           apartment:false,
           outdoors:false,
           loft:false
-        },
-      
-
-
+    },
     };
   },
   created() {},
@@ -120,12 +117,19 @@ export default {
       if(this.type.outdoors) this.filterBy.type.push('outdoors')
       if(this.type.apartment) this.filterBy.type.push('apartment')
       if(this.type.loft) this.filterBy.type.push('loft')
-      console.log(this.filter.type);
+      const filterBy ={...this.filterBy}
+      this.$emit('setFilter',filterBy)
 
      
     },
     resetTypeFilter(){
-      
+      this.type ={
+          villa:false,
+          apartment:false,
+          outdoors:false,
+          loft:false
+        }
+
     }
    
   },
