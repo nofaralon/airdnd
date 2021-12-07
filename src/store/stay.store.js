@@ -18,60 +18,43 @@ export const stayStore = {
         },
         staysForDisplay(state) {
             let stays = JSON.parse(JSON.stringify(state.stays))
-            if (!state.filterBy) {
-                return stays
+                let filteredStays = []
+                if (!state.filterBy) {
+                    return stays   
+                }
+                if (state.filterBy.country) {
+                    stays = stays.filter((stay) => (stay.loc.country ===state.filterBy.country ));
+                }
+                // filter by guests
+                if (state.filterBy.guests) {
+                    stays = stays.filter((stay) => stay.capacity >= state.filterBy.guests)
+                }
+                if(state.filterBy.fromPrice && state.filterBy.toPrice){
+                    stays =stays.filter((stay)=>stay.price >=state.filterBy.fromPrice && stay.price <= state.filterBy.toPrice)
+                }
+                // if(state.filterBy.type.outdoors){
 
-            }
-            // filter by inStock
-            // if (state.filterBy.inStock) {
-            // console.log(state.filterBy.country);
-            // const { select } = state.filterBy
-            // if (select === 'In stock') stays = stays.filter(stay => stay.inStock)
-            // else if (select === 'Out of stock') stays = stays.filter(stay => !stay.inStock)
-            // } 
-            // filter by country
-            if (state.filterBy.country) {
-                stays = stays.filter((stay) => (stay.loc.country === state.filterBy.country));
-            }
-
-            // filter by guests
-            if (state.filterBy.guests) {
-                stays = stays.filter((stay) => stay.capacity >= state.filterBy.guests)
-            }
-
-            // Sorting
-            // if (state.sortBy) {
-            //     if (state.sortBy === 'time')
-            //         stays = stays.sort((t1, t2) => t1.createdAt - t2.createdAt)
-            //     else if (state.sortBy === 'price')
-            //         stays = stays.sort((t1, t2) => t1.price - t2.price)
-            //     else if (state.sortBy === 'name')
-            //         stays = stays.sort((t1, t2) =>
-            //             t1.name.toLowerCase() > t2.name.toLowerCase() ? 1 : -1
-            //         )
-            // }
-
-            // filter by country
-            if (state.filterBy.country) {
-                stays = stays.filter((stay) => (stay.loc.country === state.filterBy.country));
-            }
-
-            // filter by guests
-            if (state.filterBy.guests) {
-                stays = stays.filter((stay) => stay.capacity >= state.filterBy.guests)
-            }
-
-            // Sorting
-            // if (state.sortBy) {
-            //     if (state.sortBy === 'time')
-            //         stays = stays.sort((t1, t2) => t1.createdAt - t2.createdAt)
-            //     else if (state.sortBy === 'price')
-            //         stays = stays.sort((t1, t2) => t1.price - t2.price)
-            //     else if (state.sortBy === 'name')
-            //         stays = stays.sort((t1, t2) =>
-            //             t1.name.toLowerCase() > t2.name.toLowerCase() ? 1 : -1
-            //         )
-            // }
+                // }
+                
+                // filter by inStock
+                // if (state.filterBy.inStock) {
+                    // console.log(state.filterBy.country);
+                    // const { select } = state.filterBy
+                    // if (select === 'In stock') stays = stays.filter(stay => stay.inStock)
+                    // else if (select === 'Out of stock') stays = stays.filter(stay => !stay.inStock)
+                // } 
+                // filter by country
+                // Sorting
+                // if (state.sortBy) {
+                //     if (state.sortBy === 'time')
+                //         stays = stays.sort((t1, t2) => t1.createdAt - t2.createdAt)
+                //     else if (state.sortBy === 'price')
+                //         stays = stays.sort((t1, t2) => t1.price - t2.price)
+                //     else if (state.sortBy === 'name')
+                //         stays = stays.sort((t1, t2) =>
+                //             t1.name.toLowerCase() > t2.name.toLowerCase() ? 1 : -1
+                //         )
+                // }
 
             // Paging
 
@@ -180,14 +163,12 @@ export const stayStore = {
             commit({ type: 'setFilter', filterBy })
             dispatch({ type: 'loadStays' })
         },
-        addReview({ dispatch }, { details }) {
+        async addReview({ commit }, { details }) {
             console.log(details);
             const { stayId, review } = details
-            return stayService.addReview(stayId, review).then((stay) => {
-                console.log(stay);
-                dispatch({ type: 'updateStay', stay })
-
-            })
+            const stay = await stayService.addReview(stayId, review)
+            console.log('stay-', stay);
+            commit({ type: 'updateStay', stay })
 
 
         }

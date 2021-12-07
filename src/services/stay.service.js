@@ -61,9 +61,11 @@ async function remove(id) {
 async function addReview(stayId, review) {
     console.log(stayId, review);
     var stay = await storageService.get(STAY_KEY, stayId)
-    console.log(stay);
     var updatedStay = stay.reviews.push(review)
-    return await storageService.put(STAY_KEY, updatedStay)
+    console.log(stay);
+    const nofar = await storageService.put(STAY_KEY, stay)
+    console.log(nofar, 'nofar');
+    return nofar
 
 }
 
