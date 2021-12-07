@@ -32,6 +32,7 @@ export default {
   },
   methods:{
     setFilter(filterBy){
+      console.log('emit in dynamic',filterBy);
       this.$emit('setFilter', filterBy)
     },
     saveOrder(newOrder){
@@ -43,16 +44,16 @@ export default {
 
 <style lang="scss" scoped>
 .component-fade-enter-active {
-  transition: all .3s ease;
+  transition: all 0s ease;
 
 }
 .component-fade-leave-active {
-  transition: all .3s cubic-bezier(1, 1, 1, 1);
-
+  transition: all .3s 
+  
 }
 .component-fade-enter, .component-fade-leave-to
 /* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateY(-80px);
+  transform: translateY(-80px) scale(0.36, 0.7);
   opacity: 0;
 }
 </style>

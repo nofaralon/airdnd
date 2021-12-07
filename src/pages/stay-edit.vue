@@ -1,28 +1,26 @@
 <template>
+<div class="explore-layout">
+
   <div class="edit-container">
     <div class="edit-side-show">
-    <pre v-if="newStay">
-      {{newStay}}
-    </pre>
+      <img class="side-image" :src="sideImages[pageCount]">
     </div>
     <div v-if="newStay" class="edit-main-show">
 
       <div v-if="!pageCount" class="edit-card">
-      </div>
-    <span>First of all, give your listing a good, selling name</span>
+    <p class="edit-header">First of all, give your listing a good, selling name</p>
     <textarea name="name" cols="30" rows="5" placeholder="What is the name of your listing?" v-model="newStay.name"></textarea>
-<div v-if="!pageCount" class="edit-card">
       </div>
 
     <div v-if="pageCount===1" class="edit-card">
-    <span>Where is it?</span>
+    <p class="edit-header">Where is it?</p>
     <label >
       Country:
-    <input list="countries" type="list" v-model="newStay.loc.country">
+    <input class="edit-input" list="countries" type="list" v-model="newStay.loc.country">
     </label>
 
     <datalist id="countries">
-    <option>Amsterdam</option>
+    <option>Netherlands</option>
     <option>France</option>
     <option>Iceland</option>
     <option>Miami, Florida United States</option>
@@ -30,25 +28,34 @@
 
     <label >
       Address:
-    <input list="countries" type="text" v-model="newStay.loc.Address">
+    <input class="edit-input" type="text" v-model="newStay.loc.address">
     </label>
-    
-    <user-location v-if="newStay.loc.Address" :address="newStay.loc.Address" @loc="setLoc"/>
+    <div>
+    <button :disabled="!newStay.loc.address" @click="check=true">Check location</button>
+    </div>
+    <user-location v-if="check" :address="newStay.loc.address" @loc="setLoc"/>
+    <button v-if="check" @click="reset">Reset location</button>
     </div>
 
 <div v-if="pageCount===2" class="edit-card">
-    <span>Provide your potential guest information regarding your listing</span>
+    <p class="edit-header">Provide your potential guest information regarding your listing</p>
     <textarea name="name" cols="40" rows="4" placeholder="Provide some details about the listing, size, furniture, containing AC? etc." v-model="newStay.space"></textarea>
+</div>
+<div v-if="pageCount===3" class="edit-card">
+    <p class="edit-header">Provide your potential guest information regarding your listing</p>
     <textarea name="name" cols="40" rows="10" placeholder="Describe your listing in general" v-model="newStay.summary"></textarea>
+</div>
+<div v-if="pageCount===4" class="edit-card">
+    <p class="edit-header">Provide your potential guest information regarding your listing</p>
     <textarea name="name" cols="40" rows="2" placeholder="Will your guests be restricted? or will they have the whole space?" v-model="newStay.acces"></textarea>
     <textarea name="name" cols="40" rows="2" placeholder="Any notes or notices worth pointing out?" v-model="newStay.notes"></textarea>
 </div>
 
-    <div v-if="pageCount===3" class="edit-card">
-    <span>General information about the listing</span>
+    <div v-if="pageCount===5" class="edit-card">
+    <p class="edit-header">General information about the listing</p>
     <label>
       Type:
-    <input list="types" type="list" v-model="newStay.type">
+    <input class="edit-input" list="types" type="list" v-model="newStay.type">
     </label>
     <datalist id="types">
     <option>Outdoors</option>
@@ -58,36 +65,42 @@
     </datalist>
     <label>
       Capacity:
-    <input min="0" type="number" v-model="newStay.capacity">
+    <input class="edit-input-small" min="0" type="number" v-model="newStay.capacity">
     </label>
     <label>
       Bathrooms:
-    <input min="0" type="number" v-model="newStay.bathrooms">
+    <input class="edit-input-small" min="0" type="number" v-model="newStay.bathrooms">
     </label>
     <label>
       Beds:
-    <input min="0" type="number" v-model="newStay.beds">
+    <input class="edit-input-small" min="0" type="number" v-model="newStay.beds">
     </label>
       </div>
-    <div v-if="pageCount===4" class="edit-card">
-    <span>Describe the listing's surroundings and transportation options</span>
+
+    <div v-if="pageCount===6" class="edit-card">
+    <p class="edit-header">Describe the listing's surroundings and transportation options</p>
     <textarea name="name" cols="40" rows="4" placeholder="What can guests do around your listing?" v-model="newStay.around"></textarea>
     <textarea name="name" cols="40" rows="4" placeholder="Describe common transportation methods in your listing's proximity" v-model="newStay.transit"></textarea>
     </div>
-    <div v-if="pageCount===5" class="edit-card">
-    <span>Add listing price, we recommend checking local avarage before deciding.</span>
-    <input type="number" min="0" v-model="newStay.price">
+
+    <div v-if="pageCount===7" class="edit-card">
+    <p class="edit-header">Add listing price, we recommend checking local avarage before deciding.</p>
+    <input class="edit-input" type="number" min="0" v-model="newStay.price">
     </div>
 
-    <div v-if="pageCount===5" class="edit-card">
-    <span>Finally, add at least five pictures of your listing</span>
+    <div v-if="pageCount===9" class="edit-card">
+    <p class="edit-header">Finally, add at least five pictures of your listing</p>
     <img-upload @save="saveImg"/>
-    <button v-if="pageCount>1" @click="setPageCount(-1)">Back</button>
-    <button v-if="pageCount<5" @click="setPageCount(-1)">Next</button>
-    <button :disabled="imgCount<5" v-if="pageCount===5" @click="setPageCount(-1)">Submit listing</button>
+    </div>
+    <div class="page-btns">
+    <button v-if="pageCount>=1" @click="setPageCount(-1)">Back</button>
+    <button v-if="pageCount<9" @click="setPageCount(1)">Next</button>
+    <button :disabled="imgCount<5" v-if="pageCount===9" @click="saveStay">Submit listing</button>
     </div>
     </div>
   </div>
+
+</div>
 </template>
 
 
@@ -104,7 +117,20 @@ export default {
     return {
       newStay:null,
       pageCount:0,
-      imgCount:0
+      imgCount:0,
+      check:false,
+      sideImages:[
+        "https://res.cloudinary.com/di0utpbop/image/upload/v1638899198/airdnd/Airbnb-More-Guests-1030x687_kw2pyp.jpg",
+        "https://res.cloudinary.com/di0utpbop/image/upload/v1638899204/airdnd/dc60abc6-a945-4b02-9b23-cc00d1077cd6_ahdxwg.jpg",
+        "https://res.cloudinary.com/di0utpbop/image/upload/v1638899196/airdnd/FB_What-kind-of-Airbnb-Host-are-you_xfabxh.jpg",
+        "https://res.cloudinary.com/di0utpbop/image/upload/v1638899196/airdnd/FB_What-kind-of-Airbnb-Host-are-you_xfabxh.jpg",
+        "https://res.cloudinary.com/di0utpbop/image/upload/v1638544563/airdnd/64f39605-fef0-4ef0-a0f8-caa6c6e011f2_1_abv9oz.webp",
+        "https://res.cloudinary.com/di0utpbop/image/upload/v1638899689/airdnd/shutterstock_1151446655-1_optimized-scaled-e1633100162370_tjbyfn.jpg",
+        "https://res.cloudinary.com/di0utpbop/image/upload/v1638899192/airdnd/travel-1_llqstg.jpg",
+        "https://res.cloudinary.com/di0utpbop/image/upload/v1638550973/airdnd/https___specials-images.forbesimg.com_imageserve_610c19de8bf014c44b4537a9_0x0_o1jn7p.jpg",
+        "https://res.cloudinary.com/di0utpbop/image/upload/v1638899205/airdnd/6c9a9a99-9c38-417e-a7f5-a45ede9b3407-1532627926_ihvsol.jpg",
+      ]
+
     };
   },
   async created() {
@@ -116,6 +142,11 @@ export default {
 
   },
   methods: {
+    reset(){
+      this.newStay.loc.address=null
+      this.newStay.loc.country=null
+      this.click=false
+    },
     async addStay(){
       this.newStay= await this.$store.dispatch({type:'getStay'})
       this.newStay.host._id=this.user._id
@@ -128,15 +159,19 @@ export default {
     },
     saveImg(imgUrl) {
       this.newStay.imgUrls.push(imgUrl)
+      console.log(this.newStay.imgUrls);
       this.imgCount+=1
     },
     setPageCount(pulusOrMinus){
       this.pageCount+=pulusOrMinus
+    },
+    saveStay(){
+      console.log('this.newStay',this.newStay);
+      this.$store.dispatch({type:"addStay",stay:this.newStay})
     }
   },
   computed: {
     user(){
-      console.log(this.$store.getters.user);
       return this.$store.getters.user
     }
   },

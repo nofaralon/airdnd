@@ -65,10 +65,10 @@ computed: {
 
 <style lang="scss" scoped>
 .component-fade-enter-active {
-  transition: all .4s ease;
+  transition: all .2s ease;
 }
 .component-fade-leave-active {
-  transition: all .4s ease;
+  transition: all .2s ease;
 }
 .component-fade-enter, .component-fade-leave-to
 /* .slide-fade-leave-active below version 2.1.8 */ {

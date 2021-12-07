@@ -1,34 +1,34 @@
-.small-filter{
-margin-top:0;
-margin-bottom:0;
-height:80px;
-&:hover{
+.small-filter {
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 80px;
+  &:hover {
     cursor: pointer;
+  }
 }
+.big-filter {
+  z-index: 1;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  margin-right: 82px;
+  height: 80px;
+  background-color: transparent;
 }
-.big-filter{
-z-index: 1;
-position: fixed;
-top: 70px;
-left: 0;
-right: 0;
-margin: 0 auto;
-margin-right: 82px;
-height: 80px;
-background-color: transparent;
+.filter-slot-lrg {
+  height: 67px;
+  width: 850px;
 }
-.filter-slot-lrg{
-    height: 67px;
-    width: 850px;
+.filter-slot-sm {
+  height: 45px;
+  width: 300px;
 }
-.filter-slot-sm{
-    height: 45px;
-    width: 300px;
-}
-.main-filter{
-    align-items: center;
-    
-    .filter{
+.main-filter {
+  align-items: center;
+
+  .filter {
     position: absolute;
     margin: 0 auto;
     left: 0;
@@ -39,10 +39,14 @@ background-color: transparent;
     justify-content: center;
     border-radius: 40px;
     align-items: center;
-    
 
-}
-.search-btn{
+    body.menu-open {
+      top: -53px;
+      opacity: 0;
+      transform: scale(0.36, 0.7);
+    }
+  }
+  .search-btn {
     background-color: $clr1;
     width: 38px;
     height: 38px;
@@ -52,125 +56,125 @@ background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
-    &:hover{
-        cursor: pointer;
+    &:hover {
+      cursor: pointer;
     }
-}
-.filter-btn{
-background-color: transparent;
-padding: 3px;
-border: none;
-width: 100%;
-height: 100%;
-&:hover{
-    cursor: pointer;
-    // background-color:rgba(200,200,200,0.3) ;
-    // background-clip: padding-box;
-    // border: solid 3px rgba(200,200,200,0.3);
-    // border-radius: 30px;
-}
-}
-.filter-container{
+  }
+  .filter-btn {
+    background-color: transparent;
+    padding: 3px;
+    border: none;
+    width: 100%;
+    height: 100%;
+    &:hover {
+      cursor: pointer;
+      // background-color:rgba(200,200,200,0.3) ;
+      // background-clip: padding-box;
+      // border: solid 3px rgba(200,200,200,0.3);
+      // border-radius: 30px;
+    }
+  }
+  .filter-container {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .country{
-        flex-basis: 31%;
-        text-align: left;
+    .country {
+      flex-basis: 31%;
+      text-align: left;
     }
-    p{
-        padding: 0px 16px;
-        opacity: 0.8;
+    p {
+      padding: 0px 16px;
+      opacity: 0.8;
     }
-    .filter-btn{
-        >*{
+    .filter-btn {
+      > * {
         font-family: manrope-bold;
-        }
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        // align-items: center;
-        gap: 5px;
+      }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      // align-items: center;
+      gap: 5px;
+      border: none;
+      border-radius: 40px;
+      background-color: rgba(200, 200, 200, 0);
+      &:hover {
+        background-color: rgba(200, 200, 200, 0.3);
+      }
+      & input {
+        width: 90%;
+        height: 20px;
         border: none;
-        border-radius: 40px;
-        background-color: rgba(200,200,200,0);
-        &:hover{
-         background-color: rgba(200,200,200,0.3);
+        background-color: transparent;
+        &:focus {
+          outline: none;
         }
-        & input{
-            width: 90%;
-            height: 20px;
-            border: none;
-          background-color: transparent;
-          &:focus{
-            outline: none;
-        }
-        }
-        >*{
-            margin-inline-start: 15%;
-        }
+      }
+      > * {
+        margin-inline-start: 15%;
+      }
     }
-    .check-in{
-        flex-basis: 21%;
+    .check-in {
+      flex-basis: 21%;
     }
-}
-.fa-search{
-    color:white; 
-    width:12px;
+  }
+  .fa-search {
+    color: white;
+    width: 12px;
     stroke-width: 5.3;
-}
+  }
 }
 input::-webkit-calendar-picker-indicator {
-    display: none !important;
+  display: none !important;
+}
+.guestt-modal {
+  position: absolute;
+  top: 40px;
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #dadada;
+  border-radius: 13px;
+  box-shadow: 0 3px 8px 0 rgb(0 0 0 / 18%);
+  top: 77px;
+  z-index: 2;
+  width: 390px;
+  left: 460px;
+  .noff {
+    border-bottom: 1px solid #dadada;
+    margin-bottom: 10px;
+    // margin-top: 15px;
+    padding-bottom: 15px;
   }
-  .guestt-modal {
-    position: absolute;
-    top: 40px;
-    background-color: white;
-    padding: 10px;
+  & h2 {
+    font-size: rem(14px);
+  }
+  & span {
+    font-size: rem(14px);
+  }
+  > * {
+    margin: 15px;
     display: flex;
-    flex-direction: column;
-    border: 1px solid #dadada;
-    border-radius: 13px;
-    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 18%);
-    top: 77px;
-    z-index: 2;
-    width: 390px;
-    left:460px;
-    .noff {
-        border-bottom: 1px solid #dadada;
-        margin-bottom: 10px;
-        // margin-top: 15px;
-        padding-bottom: 15px;
+    justify-content: space-between;
+    padding: 5px;
+    text-align: start;
+    & button {
+      justify-content: center;
+      background-color: #0000;
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      align-items: center;
+      color: #484848;
+      font-size: 1.125rem;
+      border: 1px solid;
+      cursor: pointer;
     }
-    & h2 {
-        font-size: rem(14px);
+    .guests {
+      padding: 10px;
     }
-    & span {
-        font-size: rem(14px);
-    }
-    >* {
-        margin: 15px;
-        display: flex;
-        justify-content: space-between;
-        padding: 5px;
-        text-align: start;
-        & button {
-            justify-content: center;
-            background-color: #0000;
-            border-radius: 50%;
-            height: 40px;
-            width: 40px;
-            align-items: center;
-            color: #484848;
-            font-size: 1.125rem;
-            border: 1px solid;
-            cursor: pointer;
-        }
-        .guests {
-            padding: 10px;
-        }
-    }
+  }
 }

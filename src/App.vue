@@ -10,8 +10,6 @@
 import { myRouter } from "./router/index.js";
 import { myStore } from "./store/index.js";
 import appHeader from "./cmps/app-header.vue";
-import exploreHeader from "./cmps/explore-header.vue";
-import detailsHeader from "./cmps/details-header.vue";
 import appFooter from "./cmps/app-footer.vue";
 
 export default {
@@ -31,8 +29,6 @@ export default {
   },
   components: {
     appHeader,
-    exploreHeader,
-    detailsHeader,
     appFooter,
   },
   router: myRouter,

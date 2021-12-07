@@ -4,7 +4,6 @@
 <div class="header-container">
 
 
-<transition name="fade">
 
   <header class="app-header full fixed white" :class="[{'explore-layout' : explore , 'details-layout' : details},{'fixed' : explore , 'not-fixed' : details}]">
     <div class="main-header">
@@ -15,10 +14,10 @@
         <h3 style="color:rgb(255, 56, 92)">airdnd</h3>
       </div>
 
-    <div v-if="!open && !userPage" class="changing-middle-container">
+    <div v-show="!open && !userPage" class="changing-middle-container">
     <dynamic-filter  @filter="toggleFilter" :isSmall="true"/>
     </div>
-<div v-else-if="open" class="changing-middle-container filter-open">
+<div v-show="open" class="changing-middle-container filter-open">
     <dynamic-filter :order="order"  :isSmall="false"/>
     </div>
       <div class="user-options">
@@ -58,7 +57,6 @@
       </div>
     </div>
   </header>
-  </transition>
 </div>
 
 </div>

@@ -4,7 +4,6 @@
 <div class="header-container">
 
 
-<transition name="fade">
 
   <header class="app-header full fixed main-layout" :class="{'white':isWhite}">
     <div class="main-header">
@@ -15,10 +14,10 @@
         <h3 :style="[isWhite?{'color':'rgb(255, 56, 92)'} : {'color':'white'}]">airdnd</h3>
       </div>
 
-    <div v-if="!open&&isScroll" class="changing-middle-container">
+    <div v-show="!open&&isScroll" class="changing-middle-container">
     <dynamic-filter  @filter="toggleFilter" :isSmall="true"/>
     </div>
-<div v-else-if="open" class="changing-middle-container filter-open">
+<div v-show="open || (user!=='home'&&!isScroll)" class="changing-middle-container filter-open">
     <dynamic-filter :order="order"  :isSmall="false"/>
     </div>
       <div class="user-options">
@@ -57,7 +56,6 @@
       </div>
     </div>
   </header>
-  </transition>
 </div>
 
 </div>
@@ -117,7 +115,11 @@ export default {
       }else{
         return false
       }
-    }
+    },
+       user() {
+
+      return this.$store.getters.user;
+    },
   },
   components:{
     dynamicFilter,

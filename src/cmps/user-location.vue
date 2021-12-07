@@ -28,9 +28,8 @@ export default {
     },
   data() {
     return {
-      markers: [
-      ],
-      center: { lat: 32.0853, lng: 34.7818 },
+      markers:{},
+      center:null
     };
   },
   created(){
@@ -51,6 +50,8 @@ export default {
           `https://maps.googleapis.com/maps/api/geocode/json?address=${searchVal}&key=${API_KEY}`
         )
         .then((res) => {
+    this.markers.position=res.data.results[0].geometry.location
+
           return {
             locations: res.data.results[0].geometry.location,
             name: res.data.results[0].formatted_address,

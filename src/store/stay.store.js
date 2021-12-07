@@ -10,7 +10,13 @@ export const stayStore = {
         isLoading: false,
         stays: [],
         currStay: null,
-        filterBy:null
+        filterBy:{
+            country:'',
+            ailments:'',
+            guests:null,
+            Dates:"",
+            type:[]
+        }
          
           
 
@@ -18,6 +24,9 @@ export const stayStore = {
     getters: {
         stays(state) {
             return state.stays
+        },
+        filterBy(state){
+            return state.filterBy
         },
         staysForDisplay(state) {
             let stays = JSON.parse(JSON.stringify(state.stays))
@@ -92,14 +101,15 @@ export const stayStore = {
         },
         getStay({ currStay }) {
             return currStay
-        }
+        },
     },
     mutations: {
-        setLoading(state, { isLoading }) {
-            state.isLoading = isLoading
-        },
         setFilter(state, { filterBy }) {
             state.filterBy = {...filterBy }
+            console.log('state.filterBy',state.filterBy);
+        },
+        setLoading(state, { isLoading }) {
+            state.isLoading = isLoading
         },
         setSort(state, { sortBy }) {
             state.sortBy = sortBy

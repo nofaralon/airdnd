@@ -101,7 +101,7 @@ function getEmptyStay() {
     return {
         _id: '',
         name: '',
-        imgUrls: ['', ''],
+        imgUrls: [],
         price: null,
         summary: '',
         space: '',

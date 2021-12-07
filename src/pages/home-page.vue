@@ -4,9 +4,9 @@
   <section class="home-page main-layout">
 
     <div class="opening-screen full">
-             <transition name="component-fade" mode="out-in">
+             <!-- <transition name="component-fade" mode="out-in">
     <dynamic-filter @saveOrder="saveOrder" @setFilter="setFilter" :order="order"  v-show="!scroll" :isSmall="false"></dynamic-filter>
-    </transition>
+    </transition> -->
    
     <div>
     <div class="home-img-container main-layout" :class="{scrolled : scroll}">
@@ -90,18 +90,19 @@ export default {
   },
   created() { 
     window.addEventListener('scroll', this.handleScroll);
-     this.order=orderService.getEmptyOrder()
-     console.log(this.order);
+    //  this.order=orderService.getEmptyOrder()
+    //  console.log(this.order);
      this.$store.commit({type:'setUserPage',page:'home'})
-     eventBusService.$on('setFilter',filterBy=>{
-       this.filterBy = filterBy
-       this.$store.dispatch({type:'setFilter', filterBy})
-       this.$router.push('/stay')
-     })
-     eventBusService.$on('saveOrder',newOrder=>{
-       this.$store.dispatch({type:'saveOrder', newOrder})
+    //  eventBusService.$on('setFilter',filterBy=>{
+    //    console.log(filterBy);
+    //    this.filterBy = filterBy
+    //    this.$store.dispatch({type:'setFilter', filterBy})
+    //    if (this.$router.params !== '/stay') this.$router.push('/stay')
+    //  })
+    //  eventBusService.$on('saveOrder',newOrder=>{
+    //    this.$store.dispatch({type:'saveOrder', newOrder})
 
-      })
+    //   })
      
   },
   destroyed() {
@@ -115,18 +116,18 @@ export default {
   handleScroll(e) {
       this.scroll = window.scrollY || window.scrollTop
     },
-    setFilter(filterBy){
-    this.filterBy = filterBy
-    this.$store.dispatch({type:'setFilter', filterBy})
-    this.$router.push('/stay')
+    // setFilter(filterBy){
+    // this.filterBy = filterBy
+    // this.$store.dispatch({type:'setFilter', filterBy})
+    // this.$router.push('/stay')
     
-    },
-    saveOrder(newOrder){
-    },
-    setLocFilter(location){
-      this.filterBy.country=location
-      this.setFilter({...this.filterBy})
-    }
+    // },
+    // saveOrder(newOrder){
+    // },
+    // setLocFilter(location){
+    //   this.filterBy.country=location
+    //   this.setFilter({...this.filterBy})
+    // }
     
    
   },
@@ -140,4 +141,18 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.component-fade-enter-active {
+  transition: all .3s ease;
 
+}
+.component-fade-leave-active {
+  transition: all .1s 
+  
+}
+.component-fade-enter, .component-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateY(-80px) scale(0.1, 0.7);
+  opacity: 0;
+}
+</style>
