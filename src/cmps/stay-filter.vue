@@ -87,8 +87,9 @@ export default {
         ailments:'',
         guests:null,
         Dates:"",
-        fromPrice:null,
-        toPrice:null
+        fromPrice:32,
+        toPrice:2000,
+        type:[]
       },
       currOrder:this.order
     };

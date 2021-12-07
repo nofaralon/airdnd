@@ -17,11 +17,23 @@ export const stayStore = {
             return state.stays
         },
         staysForDisplay(state) {
+            console.log(state.filterBy);
             let stays = JSON.parse(JSON.stringify(state.stays))
                 let filteredStays = []
                 if (!state.filterBy) {
-                    return stays   
-                }
+                    return stays  } 
+                    if (state.filterBy.type.length) {
+                        const selectedLabels = JSON.parse(JSON.stringify(state.filterBy.type));
+                        selectedLabels.map((label)=>{
+                        stays = stays.filter(stay => {
+                            console.log(stay.type);
+                        
+    
+                        })
+                    })
+                        
+                    }
+               
                 if (state.filterBy.country) {
                     stays = stays.filter((stay) => (stay.loc.country ===state.filterBy.country ));
                 }
@@ -32,9 +44,12 @@ export const stayStore = {
                 if(state.filterBy.fromPrice && state.filterBy.toPrice){
                     stays =stays.filter((stay)=>stay.price >=state.filterBy.fromPrice && stay.price <= state.filterBy.toPrice)
                 }
-                // if(state.filterBy.type.outdoors){
+               
+                //     stays =stays.filter((stay)=> {
+                //         state.filterBy.type.
+                //     })
 
-                // }
+                
                 
                 // filter by inStock
                 // if (state.filterBy.inStock) {
