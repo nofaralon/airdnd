@@ -103,9 +103,10 @@
         color: rgb(221, 221, 221) ;
         font-weight: 600;
         padding: 10px;
-        &:hover{
-            background-color: rgb(202, 199, 199);
-        }
+        // &:hover{
+            // background-color: rgb(202, 199, 199);
+            
+        // }
         }
         :last-child{
             cursor: pointer !important;
@@ -201,6 +202,9 @@ padding: 20px;
     align-items: center ;
     justify-content: space-between;
     :first-child{
+    width: auto;
+    height: auto;
+     border-radius: 5px;
      cursor: pointer;
      opacity: 1 ;
     border: none ;
@@ -233,5 +237,192 @@ padding: 20px;
         border: none !important;
         background: rgb(34, 34, 34) !important;
         color: rgb(255, 255, 255) !important;
+    }
+}
+
+.bed-modal-filter{
+    width: 400px;
+    position: absolute !important;
+    display: flex ;
+    flex-direction: column;
+    z-index: 10 ;
+    background: rgb(255, 255, 255) ;
+    border: 0.5px solid rgba(118, 118, 118, 0.28) ;
+    border-radius: 12px ;
+    box-shadow: rgb(0 0 0 / 15%) 0px 10px 37px ;
+    overflow: hidden auto !important;
+    white-space: normal !important;
+    left: 20px !important;
+    right: auto !important;
+    padding: 20px;
+}
+.beds-modal-filter {
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dadada;
+    border-radius: 13px;
+    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 18%);
+    top: 200px;
+    z-index: 5;
+    width: 400px;
+    left:120px;
+    .noff {
+        border-bottom: 1px solid #dadada;
+        margin-bottom: 10px;
+        // margin-top: 15px;
+        padding:5px 5px 15px;
+    }
+    >*{
+        display: flex;
+        align-items: center;
+    }
+    & h2 {
+        font-size: rem(14px);
+    }
+    & span {
+        font-size: rem(14px);
+    }
+    >* {
+        margin: 10px;
+        display: flex;
+        justify-content: space-between;
+        text-align: start;
+        & button {
+            justify-content: center;
+            background-color: #0000;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            align-items: center;
+            color: #484848;
+            font-size: 1.125rem;
+            border: 1px solid;
+            cursor: pointer;
+        }
+        .guests {
+            padding: 10px;
+        }
+        :last-child{
+            padding: 0;
+        }
+    }
+
+
+
+}
+
+.bedrooms-modal-filter{
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dadada;
+    border-radius: 13px;
+    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 18%);
+    top: 200px;
+    z-index: 5;
+    width: 400px;
+    left:200px;
+    .noff {
+        border-bottom: 1px solid #dadada;
+        margin-bottom: 10px;
+        // margin-top: 15px;
+        padding-bottom: 15px;
+    }
+
+  
+    & h2 {
+        font-size: rem(14px);
+    }
+    & span {
+        font-size: rem(14px);
+    }
+    >* {
+        margin: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        padding: 5px;
+        text-align: start;
+        & button {
+            justify-content: center;
+            background-color: #0000;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            align-items: center;
+            color: #484848;
+            font-size: 1.125rem;
+            border: 1px solid;
+            cursor: pointer;
+        }
+        .guests {
+            padding: 10px;
+        }
+        
+    }
+    :last-child{
+        padding: 0;
+    }
+}
+
+.bathrooms-modal-filter{
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dadada;
+    border-radius: 13px;
+    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 18%);
+    top: 200px;
+    z-index: 5;
+    width: 400px;
+    left:340px;
+    .noff {
+        border-bottom: 1px solid #dadada;
+        margin-bottom: 10px;
+        // margin-top: 15px;
+        padding-bottom: 15px;
+    }
+    >*{
+        display: flex;
+        align-items: center;
+    }
+    & h2 {
+        font-size: rem(14px);
+    }
+    & span {
+        font-size: rem(14px);
+    }
+    >* {
+        margin: 10px;
+        display: flex;
+        justify-content: space-between;
+        padding: 5px;
+        text-align: start;
+        & button {
+            justify-content: center;
+            background-color: #0000;
+            border-radius: 50%;
+            height: 40px;
+            width: 40px;
+            align-items: center;
+            color: #484848;
+            font-size: 1.125rem;
+            border: 1px solid;
+            cursor: pointer;
+        }
+        .guests {
+            padding: 10px;
+        }
+    }
+    :last-child{
+        padding: 0;
     }
 }
