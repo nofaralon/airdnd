@@ -10,6 +10,9 @@ export const stayStore = {
         isLoading: false,
         stays: [],
         currStay: null,
+        filterBy:null
+         
+          
 
     },
     getters: {
@@ -17,23 +20,11 @@ export const stayStore = {
             return state.stays
         },
         staysForDisplay(state) {
-            console.log(state.filterBy);
             let stays = JSON.parse(JSON.stringify(state.stays))
                 let filteredStays = []
                 if (!state.filterBy) {
-                    return stays  } 
-             if (state.filterBy.type.length) {
-                        const selectedLabels = JSON.parse(JSON.stringify(state.filterBy.type));
-                        selectedLabels.map((label)=>{
-                        stays = stays.filter(stay => {
-                            console.log(stay.type);
-                        
-    
-                        })
-                    })
-                        
-                    }
-               
+                    return stays   
+                }
                 if (state.filterBy.country) {
                     stays = stays.filter((stay) => (stay.loc.country ===state.filterBy.country ));
                 }
@@ -43,6 +34,23 @@ export const stayStore = {
                 }
                 if(state.filterBy.fromPrice && state.filterBy.toPrice){
                     stays =stays.filter((stay)=>stay.price >=state.filterBy.fromPrice && stay.price <= state.filterBy.toPrice)
+                }
+                if (state.filterBy.type.length) {
+                    const selectedLabels = JSON.parse(JSON.stringify(state.filterBy.type));
+                    selectedLabels.map((label)=>{
+                    stays = stays.filter(stay => {
+                    return stay.type === label
+                    })
+                })
+                }
+                if(state.filterBy.beds){
+                    stays = stays.filter((stay)=> stay.beds >= state.filterBy.beds)
+                }
+                if(state.filterBy.bathrooms){
+                    stays = stays.filter((stay)=> stay.bathrooms >= state.filterBy.bathrooms)
+                }
+                if(state.filterBy.bedrooms){
+                    stays = stays.filter((stay)=> stay.bedroom >= state.filterBy.bedrooms)
                 }
                
                 //     stays =stays.filter((stay)=> {
@@ -176,7 +184,7 @@ export const stayStore = {
         },
         setFilter({ commit, dispatch }, { filterBy }) {
             commit({ type: 'setFilter', filterBy })
-            dispatch({ type: 'loadStays' })
+            // dispatch({ type: 'loadStays' })
         },
         async addReview({ commit }, { details }) {
             console.log(details);
