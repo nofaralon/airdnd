@@ -22,7 +22,7 @@ export const stayStore = {
                 let filteredStays = []
                 if (!state.filterBy) {
                     return stays  } 
-                    if (state.filterBy.type.length) {
+             if (state.filterBy.type.length) {
                         const selectedLabels = JSON.parse(JSON.stringify(state.filterBy.type));
                         selectedLabels.map((label)=>{
                         stays = stays.filter(stay => {

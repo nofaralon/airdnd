@@ -148,6 +148,33 @@ white-space: normal !important;
 left: 10px !important;
 right: auto !important;
 padding: 20px;
+
+.label{
+    padding: 12px 0px;
+}
+.el-checkbox__label {
+    font-size: 18px;
+    
+}
+.el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+    background-color: #409EFF;
+    border-color: #409EFF;
+}
+.el-checkbox__inner {
+    display: inline-block;
+    position: relative;
+    border: 1px solid #DCDFE6;
+    border-radius: 2px;
+    box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+    background-color: #FFF;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 }
 .actions-btn{
     display: flex ;

@@ -36,10 +36,10 @@
     
 
     <div v-if="isTypeModalOpen" class="type-modal-filter">
-        <el-checkbox v-model="type.outdoors">Outdoors</el-checkbox>
-        <el-checkbox v-model="type.villa">Villa</el-checkbox>
-        <el-checkbox v-model="type.apartment">Apartment</el-checkbox>
-        <el-checkbox v-model="type.loft">Loft</el-checkbox>
+        <el-checkbox class="label" v-model="type.outdoors">Outdoors</el-checkbox>
+        <el-checkbox class="label" v-model="type.villa">Villa</el-checkbox>
+        <el-checkbox  class="label" v-model="type.apartment">Apartment</el-checkbox>
+        <el-checkbox class="label" v-model="type.loft">Loft</el-checkbox>
         <hr/>
     
         <div class="actions-btn">
@@ -98,10 +98,24 @@ export default {
   created() {},
   methods: {
     togglePriceModal(){
-      this.isPriceModalOpen =!this.isPriceModalOpen
+      if (this.isPriceModalOpen === true) {
+        this.isPriceModalOpen=false
+      } else{
+        this.isPriceModalOpen =true
+        this.isTypeModalOpen =false
+      }
+    
+
+     
     },
     toggleTypeModal(){
-      this.isTypeModalOpen =!this.isTypeModalOpen
+    if (this.isTypeModalOpen === true) {
+        this.isTypeModalOpen=false
+      } else{
+        this.isTypeModalOpen =true
+        this.isPriceModalOpen =false
+      }
+    
     },
     setPriceFilter(){
       const filterBy = {...this.filterBy}

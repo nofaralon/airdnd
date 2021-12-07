@@ -14,7 +14,7 @@
     </div>
     <div class="explore-btn">
     <p class="opening-sentence">Not sure where to go? Perfect.</p>
-    <button @click="setFilter('null')"><span>I'm flexible</span></button>
+    <button @click="setFilter(filterBy)"><span>I'm flexible</span></button>
     </div>
     </div>
     </div>
@@ -67,6 +67,7 @@ export default {
         ailments:'',
         guests:null,
         Dates:"",
+        type:[]
       },
       topCities:[{
         name:'Netherlands',
