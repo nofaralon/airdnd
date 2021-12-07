@@ -30,6 +30,7 @@ computed: {
               console.log('in explore');
 
       }else if(this.currPage==='details'){
+        var header="explore-header"
               this.explore=false
               this.details=true
               console.log('in details');

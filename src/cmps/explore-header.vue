@@ -1,12 +1,12 @@
 <template>
-<div class="go-big" :style="[open ? {'height':'160px'}:{'height':'120px'}]">
+<div class="go-big" :class="{'fixed' : explore , 'not-fixed' : details}" :style="[open ? {'height':'160px'}:{'height':'120px'}]">
 
 <div class="header-container">
 
 
 <transition name="fade">
 
-  <header class="app-header full fixed white" :class="{'explore-layout' : explore , 'details-layout' : details}">
+  <header class="app-header full fixed white" :class="[{'explore-layout' : explore , 'details-layout' : details},{'fixed' : explore , 'not-fixed' : details}]">
     <div class="main-header">
       <div @click="goTo('/')" class="logo">
         <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="airbnb" class="svg-inline--fa fa-airbnb fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -79,6 +79,7 @@ export default {
   },
   created(){
     console.log('in explore',this.explore);
+    console.log('in details',this.details);
     this.open=false
     window.addEventListener('scroll', this.handleScroll);
     this.order=orderService.getEmptyOrder()
