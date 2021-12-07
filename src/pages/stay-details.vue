@@ -257,7 +257,7 @@ export default {
         stayId: this.stay._id, 
         review: JSON.parse(JSON.stringify(this.review))
       }
-      this.stay = await this.$store.dispatch({ type: "addReview", details })
+      // this.stay = await this.$store.dispatch({ type: "addReview", details })
       // this.stay = savedStay
     }
   },
