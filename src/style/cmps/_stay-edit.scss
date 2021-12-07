@@ -1,0 +1,10 @@
+.edit-container{
+    display: flex;
+    flex-direction: row;
+    .edit-side-show{
+        flex-basis: 50%;
+    }
+    .edit-main-show{
+        flex-basis: 50%;
+    }
+}

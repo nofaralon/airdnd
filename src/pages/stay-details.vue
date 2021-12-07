@@ -54,7 +54,7 @@
         <div class="info-header">
           <div>
             <h2>
-              <span class="stay-name">{{ stay.type }}</span> hosted by
+              <span class="stay-name">{{ stay.type }}</span>  <span v-if="stay.type==='outdoors'">accommodation</span> hosted by
               {{ stay.host.fullname }}
             </h2>
             <span

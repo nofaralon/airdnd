@@ -147,7 +147,7 @@ export default {
   },
   computed: {
     setGuests(){
-      if (this.order.guests > 1) return "guests";
+      if (this.order.guests > 1 || this.order.guests===0) return "guests";
       else return "guest";
     },
     stayPrice() {

@@ -7,7 +7,7 @@
         padding: 0;
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(350px,1fr));
-        gap: 20px;
+        gap: 15px;
         & :hover{
             cursor: pointer;
         }
@@ -55,18 +55,34 @@
                 margin-top: 6px;
 
                 .stay-name {
-                    width: 31ch;
+                    width: 28ch;
                     white-space: nowrap;
                     text-overflow: ellipsis;
                     overflow: hidden;
+                    font-size: 0.875rem;
+                    margin-bottom: 3px;
                 }
                 .type{
                     text-transform: capitalize;
                 }
+                .card-type-loc{
+                    margin: 2px 0;
+                    font-size: 0.9375rem;
+                }
+                & svg {
+                    color: $clr1;
+                    height: 15px;
+                    padding-top: 3px;
+                }
+                & a {
+                    text-decoration: underline;
+                    color: rgb(127, 127, 127)
+                }
                 
             }
-            .card-stay-price{
+            .card-stay-price , .reviews-rating{
                 font-family: manrope-bold;
+                // font-size: 1.125rem;
             }
             >*:not(label) {
                 grid-area: 1 / 1;
@@ -93,4 +109,5 @@
     }   
     .el-carousel__container{
         height: 250px;
+        width: 100%;
     } 

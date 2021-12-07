@@ -86,19 +86,12 @@ header {
       transition: border-bottom 1.3s;
       transition: opacity 0.3s;
     }
-    // > *{
-    //   flex-grow: 1;
-    // }
+
   }
   .main-header {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    &:not(.details,.explore){
-      // margin-inline-end: 80px;
-      // margin-inline-start: 80px;
-    }
-    
     align-items: center;
   }
 
