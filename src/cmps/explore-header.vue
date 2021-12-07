@@ -22,6 +22,10 @@
     <dynamic-filter :order="order"  :isSmall="false"/>
     </div>
       <div class="user-options">
+        <button class="wrapping-btn small">
+        <router-link class="page-link" style="font-family:manrope-bold; color:rgb(34, 34, 34)" to="/stay">Explore</router-link>
+  </button>
+
   <button class="wrapping-btn small">
         <router-link class="page-link" style="font-family:manrope-bold; color:rgb(34, 34, 34)" to="/stay/edit">Become a host</router-link>
   </button>
