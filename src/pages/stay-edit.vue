@@ -111,7 +111,8 @@ export default {
     if (!this.stay){
       this.addStay()
     }
-    this.$emit("header", "edit");
+      this.$store.commit({type:'setUserPage',page:'userPage'})
+
 
   },
   methods: {

@@ -92,7 +92,7 @@ export default {
     window.addEventListener('scroll', this.handleScroll);
      this.order=orderService.getEmptyOrder()
      console.log(this.order);
-     this.$store.commit({type:'setUsetPage',page:'home'})
+     this.$store.commit({type:'setUserPage',page:'home'})
      eventBusService.$on('setFilter',filterBy=>{
        this.filterBy = filterBy
        this.$store.dispatch({type:'setFilter', filterBy})

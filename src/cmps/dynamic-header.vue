@@ -1,7 +1,7 @@
 <template>
   <div>
     <transition name="component-fade" mode="out-in">
-    <component @filter="$emit('filter')" :explore="explore" :details="details" :isScroll="isScroll" :is="headerType"></component>
+    <component @filter="$emit('filter')" :explore="explore" :details="details" :userPage="userPage" :isScroll="isScroll" :is="headerType"></component>
 </transition>
   </div>
 </template>
@@ -18,7 +18,8 @@ export default {
   data() {
     return{
       explore:false,
-      details:false
+      details:false,
+      user:false
     }
         },
 computed: {
@@ -26,18 +27,26 @@ computed: {
       if(this.currPage==='explore'){
         var header="explore-header"
               this.explore=true
+              this.userPage=false
               this.details=false
-              console.log('in explore');
 
       }else if(this.currPage==='details'){
         var header="explore-header"
               this.explore=false
               this.details=true
-              console.log('in details');
+              this.userPage=false
+
+      }else if(this.currPage==='userPage'){
+        console.log('userPage');
+        var header="explore-header"
+              this.explore=false
+              this.details=true
+              this.userPage=true
       }else if(this.currPage==='home'){
           var header = "stay-header-white";
               this.explore=false
               this.details=false
+              this.userPage=false
       }
         return header;
     },

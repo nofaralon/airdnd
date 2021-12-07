@@ -15,7 +15,7 @@
         <h3 style="color:rgb(255, 56, 92)">airdnd</h3>
       </div>
 
-    <div v-if="!open" class="changing-middle-container">
+    <div v-if="!open && !userPage" class="changing-middle-container">
     <dynamic-filter  @filter="toggleFilter" :isSmall="true"/>
     </div>
 <div v-else-if="open" class="changing-middle-container filter-open">
@@ -71,7 +71,8 @@ import {orderService} from '../services/order.service'
 export default {
   props:{
     explore:Boolean,
-    details:Boolean
+    details:Boolean,
+    userPage:Boolean
   },
 
   data() {
@@ -82,8 +83,6 @@ export default {
     };
   },
   created(){
-    console.log('in explore',this.explore);
-    console.log('in details',this.details);
     this.open=false
     window.addEventListener('scroll', this.handleScroll);
     this.order=orderService.getEmptyOrder()
@@ -104,6 +103,7 @@ export default {
       }
     },
     handleScroll(e){
+
       if(window.scrollY){
         console.log(this.open);
         this.open=false
@@ -112,6 +112,7 @@ export default {
   },
   computed: {
     user() {
+
       return this.$store.getters.user;
     },
   },

@@ -22,7 +22,7 @@ export default {
     return {};
   },
   created() {
-  this.$store.commit({type:'setUsetPage',page:'explore'})
+  this.$store.commit({type:'setUserPage',page:'explore'})
 
   },
   methods: {

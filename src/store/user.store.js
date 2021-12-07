@@ -30,7 +30,7 @@ export const userStore={
             console.log('user',user);
             state.user = user
         },
-        setUsetPage(state,{page}){
+        setUserPage(state,{page}){
             console.log('page:',page);
             state.userCurrPage=page
         }
