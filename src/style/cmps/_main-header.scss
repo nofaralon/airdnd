@@ -4,7 +4,9 @@
 .go-big{
   background-color: white ;
   z-index: 1;
+  &:not(.not-fixed){
     position: fixed;
+  }
     height: 160px;
     width: 100%;
 }
@@ -26,7 +28,9 @@ header {
   z-index: 1;
   height: 80px;
   width: 100%;
-  position: fixed;
+  &:not(.not-fixed){
+    position: fixed;
+  }
   color: white;
   display: flex;
   text-align: center;

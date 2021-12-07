@@ -15,13 +15,16 @@
         <h3 :style="[isWhite?{'color':'rgb(255, 56, 92)'} : {'color':'white'}]">airdnd</h3>
       </div>
 
-    <div v-if="!open" class="changing-middle-container">
+    <div v-if="!open&&isScroll" class="changing-middle-container">
     <dynamic-filter  @filter="toggleFilter" :isSmall="true"/>
     </div>
 <div v-else-if="open" class="changing-middle-container filter-open">
     <dynamic-filter :order="order"  :isSmall="false"/>
     </div>
       <div class="user-options">
+        <button class="wrapping-btn small">
+        <router-link class="page-link" style="font-family:manrope-bold;" :style="[isWhite?{'color':'rgb(34, 34, 34)'} : {'color':'white'}]" to="/stay">Explore</router-link>
+  </button>
   <button class="wrapping-btn small">
         <router-link class="page-link" style="font-family:manrope-bold;" :style="[isWhite?{'color':'rgb(34, 34, 34)'} : {'color':'white'}]" to="/stay/edit">Become a host</router-link>
   </button>
@@ -109,7 +112,6 @@ export default {
       return this.$store.getters.user;
     },
     isWhite(){
-      console.log(this.isScroll);
       if(this.isScroll){
         return true
       }else{

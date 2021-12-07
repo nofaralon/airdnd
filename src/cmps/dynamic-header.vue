@@ -30,6 +30,7 @@ computed: {
               console.log('in explore');
 
       }else if(this.currPage==='details'){
+        var header="explore-header"
               this.explore=false
               this.details=true
               console.log('in details');
@@ -55,12 +56,10 @@ computed: {
 
 <style lang="scss" scoped>
 .component-fade-enter-active {
-  transition: all 2s ease;
-
+  transition: all .2s ease;
 }
 .component-fade-leave-active {
   transition: all .2s ease;
-
 }
 .component-fade-enter, .component-fade-leave-to
 /* .slide-fade-leave-active below version 2.1.8 */ {
