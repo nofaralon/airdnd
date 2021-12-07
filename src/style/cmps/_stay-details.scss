@@ -214,6 +214,13 @@
             color: $clr1 !important;
         }
     }
+    .review-container {
+        display: flex;
+        flex-wrap: wrap;
+        >* {
+            flex-basis: 50%;
+        }
+    }
 }
 
 .map-details {

@@ -63,7 +63,9 @@ async function addReview(stayId, review) {
     var stay = await storageService.get(STAY_KEY, stayId)
     var updatedStay = stay.reviews.push(review)
     console.log(stay);
-    return await storageService.put(STAY_KEY, updatedStay)
+    const nofar = await storageService.put(STAY_KEY, stay)
+    console.log(nofar, 'nofar');
+    return nofar
 
 }
 
