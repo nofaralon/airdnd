@@ -124,10 +124,8 @@ export default {
     saveOrder(newOrder){
     },
     setLocFilter(location){
-      console.log(location);
       this.filterBy.country=location
       this.setFilter({...this.filterBy})
-      this.$router.push('/stay')
     }
     
    
