@@ -1,6 +1,6 @@
 // import { storageService } from './async-storage.service'
 // import { storage } from './storage.service'
-// import { utilService } from './util.service'
+import { utilService } from './util.service'
 // const axios = require('axios')
 import { httpService } from './http.service'
 
@@ -14,7 +14,8 @@ export const stayService = {
         remove,
         save,
         getEmptyStay,
-        addReview
+        addReview,
+        getEmptyReview
     }
     // _createStays()
 
@@ -100,6 +101,17 @@ function getEmptyStay() {
 
     }
 }
+
+function getEmptyReview() {
+    return {
+        date: new Date().toString().slice(3, 15),
+        txt: "",
+        rate: 0,
+        by: "",
+        id: utilService.makeId(),
+    }
+}
+
 
 // function _createStays() {
 //     var stays = storage.load(STAY_KEY)

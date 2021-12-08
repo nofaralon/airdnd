@@ -19,7 +19,7 @@
             d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
           ></path>
         </svg>
-        {{setTotalRate}}
+        {{ setTotalRate }}
         <a href="#anchor-reviews"
           >({{ stay.reviews.length }} {{ setReviews }})</a
         ></span
@@ -54,7 +54,9 @@
         <div class="info-header">
           <div>
             <h2>
-              <span class="stay-name">{{ stay.type }}</span>  <span v-if="stay.type==='outdoors'">accommodation</span> hosted by
+              <span class="stay-name">{{ stay.type }}</span>
+              <span v-if="stay.type === 'outdoors'">accommodation</span> hosted
+              by
               {{ stay.host.fullname }}
             </h2>
             <span
@@ -80,88 +82,7 @@
 
       <order-form @check="check" :stay="stay" :order="order"></order-form>
     </section>
-
-    <section id="anchor-reviews" class="reviews">
-      <h1>
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          data-prefix="fas"
-          data-icon="star"
-          class="svg-inline--fa fa-star fa-w-18"
-          role="img"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 576 512"
-        >
-          <path
-            fill="currentColor"
-            d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
-          ></path>
-        </svg>
-       {{setTotalRate}} <span>• {{ stay.reviews.length }} {{ setReviews }}</span>
-      </h1>
-
-      <!-- <el-rate
-      class="nof"
-        v-model="value"
-        disabled
-        show-score
-        text-color="#000000"
-        score-template="{value} points"
-      >
-      </el-rate> -->
-
-      <div class="review-container">
-        <div v-for="review in stay.reviews" :key="review.id">
-          <div class="review-details">
-            <div>
-              <img :src="`${review.by.imgUrl}`" />
-              <div class="user-details">
-                <span>{{ review.by.fullname }}</span>
-                <div>
-                  {{ review.date }}
-                </div>
-              </div>
-            </div>
-
-            <p>{{ review.txt }}</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="add-review">
-        <h1>Add review</h1>
-        <div class="review-details">
-          <div>
-            <img :src="`${user.imgUrl}`" />
-            <div class="user-details">
-              <span>{{ user.fullname }}</span>
-              <div>
-                {{ review.date }}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <el-rate
-          class="user-rate"
-          v-model="review.rate"
-          :texts="['oops', 'disappointed', 'normal', 'good', 'great']"
-          show-text
-        >
-        </el-rate>
-        <div class="add-review-txt">
-          <textarea
-            v-model="review.txt"
-            type="text"
-            name="txt"
-            autocomplete="off"
-            placeholder="Write your opinion about this stay..."
-          ></textarea>
-          <button @click="addReview">send</button>
-        </div>
-      </div>
-    </section>
+      <stay-reviews @addReview="addReview" :stay="stay" :review="review" :user="user"></stay-reviews>
 
     <section id="anchor-map" class="map-details">
       <h1>Where you’ll be</h1>
@@ -188,10 +109,10 @@
 <script>
 import stayAmenities from "../cmps/stay-amenities.vue";
 import stayInfo from "../cmps/stay-info.vue";
+import stayReviews from "../cmps/stay-reviews.vue";
 import GmapMap from "../cmps/map-details.vue";
 import orderForm from "../cmps/order-form.vue";
-import { utilService } from "../services/util.service";
-import { orderService } from "../services/order.service";
+import { stayService } from "../services/stay.service";
 
 export default {
   name: "stay-details",
@@ -203,22 +124,15 @@ export default {
       order: {},
       value: 3,
       user: null,
-      review: {
-        date: new Date().toString().slice(3, 15),
-        txt: "",
-        rate: 0,
-        by: "",
-        id: utilService.makeId(),
-      },
+      review: {},
     };
   },
   created() {
     this.loadStay();
-    this.order = orderService.getEmptyOrder();
+    this.loadOrder();
     this.$store.commit({ type: "setUserPage", page: "details" });
-    this.$store.commit({type:'clearOrder'})
-    this.$emit("header", "details");
     this.user = this.loadUser();
+    this.review = stayService.getEmptyReview();
     this.review.by = this.user;
   },
   methods: {
@@ -243,11 +157,16 @@ export default {
         };
       return user;
     },
+    loadOrder() {
+      this.order = JSON.parse(JSON.stringify( this.$store.getters.order));
+  
+    },
     check() {
       const { _id, name, price } = this.stay;
       this.order.stay = { _id, name, price };
       this.order.hostId = this.stay.host._id;
-      console.log(this.order.stay);
+      this.order.totalPrice = this.order.cleaning + this.order.service + (this.order.totalDays * this.stay.price);
+      console.log(this.order);
       this.$store.dispatch({
         type: "addOrder",
         order: JSON.parse(JSON.stringify(this.order)),
@@ -259,7 +178,8 @@ export default {
         review: JSON.parse(JSON.stringify(this.review)),
       };
       this.stay = await this.$store.dispatch({ type: "addReview", details });
-      this.loadStay();
+      this.review = stayService.getEmptyReview();
+      this.review.by = this.user;
     },
   },
   computed: {
@@ -287,11 +207,13 @@ export default {
       else return "bath";
     },
     setTotalRate() {
-      var sum =  this.stay.reviews.reduce((acc, review) => {
-        return acc + review.rate;
-      },0);
-      var total = sum/this.stay.reviews.length
-      return total.toFixed(2)
+      if (this.stay.reviews.length){
+        var sum = this.stay.reviews.reduce((acc, review) => {
+          return acc + review.rate;
+        }, 0);
+        var total = sum / this.stay.reviews.length;
+      } else total = 0
+      return total.toFixed(2);
     },
   },
   components: {
@@ -299,6 +221,7 @@ export default {
     orderForm,
     stayAmenities,
     stayInfo,
+    stayReviews
   },
 };
 </script>
