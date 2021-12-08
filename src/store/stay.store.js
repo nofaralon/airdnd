@@ -102,6 +102,9 @@ export const stayStore = {
         getStay({ currStay }) {
             return currStay
         },
+        allStays(state){
+            return state.stays
+        }
     },
     mutations: {
         setFilter(state, { filterBy }) {
