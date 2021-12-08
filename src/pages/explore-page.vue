@@ -26,11 +26,11 @@ export default {
 
   },
   methods: {
-    setLiked(stay) {
-      this.$store.dispatch({ type: "toggleLike", stay });
+    async setLiked(stay) {
+     await this.$store.dispatch({ type: "toggleLike", stay });
     },
     setFilter(filterBy){
-      this.$store.dispatch({type:'setFilter', filterBy})
+      this.$store.commit({type:'setFilter', filterBy})
     }
   },
   computed: {

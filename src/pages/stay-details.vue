@@ -216,6 +216,7 @@ export default {
     this.loadStay();
     this.order = orderService.getEmptyOrder();
     this.$store.commit({ type: "setUserPage", page: "details" });
+    this.$store.commit({type:'clearOrder'})
     this.$emit("header", "details");
     this.user = this.loadUser();
     this.review.by = this.user;

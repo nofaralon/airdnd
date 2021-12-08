@@ -1,18 +1,45 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { orderService } from '../services/order.service'
+import { utilService } from '../services/util.service'
 
 Vue.use(Vuex)
 
 export const orderStore = {
     strict: true,
     state: {
-        currOrder: null,
+        currOrder: {
+            _id: '',
+            hostId: '',
+            createdAt: Date.now(),
+            buyer: {
+                _id: '',
+                fullname: ''
+            },
+            cleaning: utilService.getRandomInt(15, 50),
+            service: utilService.getRandomInt(15, 50),
+            totalPrice: 0,
+            Dates: '',
+            totalDays: 0,
+            guests: 0,
+            adults: 0,
+            kids: 0,
+            stay: {
+                _id: '',
+                name: '',
+                price: 0
+            },
+            status: 'pending'
+        },
         orders: [],
         
 
     },
     getters: {
+        order(state){
+            console.log('state currOrder',state.currOrder);
+            return state.currOrder
+        }
     },
     mutations: {
         removeOrder(state, payload) {
@@ -29,9 +56,36 @@ export const orderStore = {
         setOrders(state, { orders }) {
             state.orders = orders
         },
-        getOrder(state, { order }) {
+        setOrder(state, { order }) {
+            console.log('setOrder order',order);
             state.currOrder = order
+            console.log('setOrder state order',state.currOrder);
         },
+        clearOrder(state){
+            state.currOrder={
+                _id: '',
+                hostId: '',
+                createdAt: Date.now(),
+                buyer: {
+                    _id: '',
+                    fullname: ''
+                },
+                cleaning: utilService.getRandomInt(15, 50),
+                service: utilService.getRandomInt(15, 50),
+                totalPrice: 0,
+                Dates: '',
+                totalDays: 0,
+                guests: 0,
+                adults: 0,
+                kids: 0,
+                stay: {
+                    _id: '',
+                    name: '',
+                    price: 0
+                },
+                status: 'pending'
+            }
+        }
     },
     actions: {
         loadOrders({ commit }) {
@@ -74,7 +128,6 @@ export const orderStore = {
         async saveOrder({commit} ,{newOrder}){
            const order = await orderService.saveCurrOrder(newOrder)
            commit({type:'getOrder',order})
-
         }
 
     },
