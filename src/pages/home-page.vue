@@ -4,9 +4,6 @@
   <section class="home-page main-layout">
 
     <div class="opening-screen full">
-             <!-- <transition name="component-fade" mode="out-in">
-    <dynamic-filter @saveOrder="saveOrder" @setFilter="setFilter" :order="order"  v-show="!scroll" :isSmall="false"></dynamic-filter>
-    </transition> -->
    
     <div>
     <div class="home-img-container main-layout" :class="{scrolled : scroll}">
@@ -50,7 +47,6 @@
 
 <script>
 import appHeader from "../cmps/app-header";
-import dynamicFilter from "@/cmps/dynamic-filter";
 import {orderService} from '../services/order.service'
 import {eventBusService, SHOW_MSG} from '@/services/event-bus.service'
 
@@ -93,6 +89,8 @@ export default {
     //  this.order=orderService.getEmptyOrder()
     //  console.log(this.order);
      this.$store.commit({type:'setUserPage',page:'home'})
+    this.$store.commit({type:'clearOrder'})
+
     //  eventBusService.$on('setFilter',filterBy=>{
     //    console.log(filterBy);
     //    this.filterBy = filterBy
@@ -118,12 +116,13 @@ export default {
     },
     setFilter(filterBy){
     this.filterBy = filterBy
-    this.$store.dispatch({type:'setFilter', filterBy})
+    this.$store.commit({type:'setFilter', filterBy})
     this.$router.push('/stay')
+    },
     
-    },
-    saveOrder(newOrder){
-    },
+    // },
+    // saveOrder(newOrder){
+    // },
     setLocFilter(location){
       this.filterBy.country=location
       this.setFilter({...this.filterBy})
@@ -136,7 +135,6 @@ export default {
   },
   components: {
     appHeader,
-    dynamicFilter
 
   },
 };

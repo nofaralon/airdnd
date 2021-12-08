@@ -138,6 +138,7 @@ export default {
       this.addStay()
     }
       this.$store.commit({type:'setUserPage',page:'userPage'})
+    this.$store.commit({type:'clearOrder'})
 
 
   },
@@ -166,7 +167,6 @@ export default {
       this.pageCount+=pulusOrMinus
     },
     saveStay(){
-      console.log('this.newStay',this.newStay);
       this.$store.dispatch({type:"addStay",stay:this.newStay})
     }
   },

@@ -15,10 +15,10 @@
       </div>
 
     <div v-show="!open && !userPage" class="changing-middle-container">
-    <dynamic-filter  @filter="toggleFilter" :isSmall="true"/>
+    <stay-filter-small  @filter="toggleFilter"/>
     </div>
 <div v-show="open" class="changing-middle-container filter-open">
-    <dynamic-filter :order="order"  :isSmall="false"/>
+    <stay-filter @filter="toggleFilter" :order="order"  />
     </div>
       <div class="user-options">
         <button class="wrapping-btn small">
@@ -64,8 +64,9 @@
 </template>
 
 <script>
-import dynamicFilter from '@/cmps/dynamic-filter'
 import {orderService} from '../services/order.service'
+import StayFilterSmall from '@/cmps/stay-filter-small'
+import StayFilter from '@/cmps/stay-filter'
 export default {
   props:{
     explore:Boolean,
@@ -95,10 +96,8 @@ export default {
     },
     toggleFilter(){
       console.log('done');
-      this.open=true
-      if(!this.open){
-        
-      }
+      this.open=!this.open
+
     },
     handleScroll(e){
 
@@ -115,7 +114,8 @@ export default {
     },
   },
   components:{
-    dynamicFilter,
+    StayFilter,
+    StayFilterSmall
   },
 
 };

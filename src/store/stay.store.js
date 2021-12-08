@@ -192,10 +192,6 @@ export const stayStore = {
                 return stay
             })
         },
-        setFilter({ commit, dispatch }, { filterBy }) {
-            commit({ type: 'setFilter', filterBy })
-            // dispatch({ type: 'loadStays' })
-        },
         async addReview({ commit }, { details }) {
             console.log(details);
             const { stayId, review } = details

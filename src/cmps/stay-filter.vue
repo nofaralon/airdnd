@@ -23,6 +23,8 @@
           </button>
           <button @click="toggaleModal" class="check-in filter-btn">
           <p >Guests</p>
+          <p v-if="filterBy.guests">{{filterBy.guests}} Guest<span v-show="filterBy.guests!==1">s</span></p>
+          <p class="check-in-add-guest" v-else>Add guests</p>
           </button>
            <div v-if ="isModalOpen" class="guestt-modal">
         <div class="noff">
@@ -75,31 +77,23 @@
 import {eventBusService, setFilter} from '../services/event-bus.service'
 export default {
    name: "stay-filter",
-   props:{
-     order:Object
-   },
   data() {
     return {
       isModalOpen:false,
-      filterBy:{
-        country:'',
-        type:'',
-        ailments:'',
-        guests:null,
-        Dates:"",
-        fromPrice:32,
-        toPrice:2000,
-        type:[]
-      },
-      currOrder:this.order
+      // currOrder:null
+
     };
   },
-  
+  created(){
+    // this.currOrder=this.setOrder()
+    // this.filterBy()
+  },
   methods: {
     search(){
       eventBusService.$emit('setFilter',{...this.filterBy})
       eventBusService.$emit('saveOrder', this.currOrder)
       console.log(this.filterBy);
+      this.$emit('filter')
      
     },
     setCountAdults(val) {
@@ -109,12 +103,13 @@ export default {
         this.currOrder.guests -= 1;
         this.filterBy.guests -=1
       } else {
-       
+        
         this.currOrder.adults += 1;
         this.currOrder.guests += 1;
         this.filterBy.guests +=1
-
       }
+      eventBusService.$emit('saveOrder', this.currOrder)
+
     },
     setCountKids(val) {
       if (val === "down") {
@@ -123,20 +118,35 @@ export default {
         this.currOrder.guests -= 1;
         this.filterBy.guests -=1
       } else {
+        if(this.currOrder.kids === 0 && this.currOrder.adults === 0) {
+          this.currOrder.adults += 1
+          this.currOrder.guests += 1;
+          this.filterBy.guests +=1
+        }
         this.currOrder.kids += 1;
         this.currOrder.guests += 1;
         this.filterBy.guests +=1
-
       }
-
+      eventBusService.$emit('saveOrder', this.currOrder)
     },
     toggaleModal(){
       this.isModalOpen =!this.isModalOpen
-    }
+    },
+
     
   },
  
-  computed: {},
+  computed: {
+    filterBy(){
+    const filter=JSON.parse(JSON.stringify(this.$store.getters.filterBy))
+    return filter
+    },
+    currOrder(){
+    const order = JSON.parse(JSON.stringify(this.$store.getters.order))
+    console.log('computed order',order);
+    return order
+    },
+  },
   components: {}
 };
 </script>

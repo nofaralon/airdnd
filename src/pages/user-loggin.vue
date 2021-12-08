@@ -56,7 +56,7 @@ import exploreHeader from "@/cmps/explore-header"
 created(){
     this.goSign=this.$route.params.signup
     this.$emit('header','explore')
-    
+    this.$store.commit({type:'clearOrder'})
 },
 methods: {
     async saveUser(){

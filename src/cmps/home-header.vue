@@ -15,10 +15,10 @@
       </div>
 
     <div v-show="!open&&isScroll" class="changing-middle-container">
-    <dynamic-filter  @filter="toggleFilter" :isSmall="true"/>
+    <stay-filter-small  @filter="toggleFilter"/>
     </div>
 <div v-show="open || (user!=='home'&&!isScroll)" class="changing-middle-container filter-open">
-    <dynamic-filter :order="order"  :isSmall="false"/>
+    <stay-filter :order="order" />
     </div>
       <div class="user-options">
         <button class="wrapping-btn small">
@@ -63,8 +63,10 @@
 </template>
 
 <script>
-import dynamicFilter from '@/cmps/dynamic-filter'
+import stayFilter from '@/cmps/stay-filter'
+import stayFilterSmall from '@/cmps/stay-filter-small'
 import {orderService} from '../services/order.service'
+
 export default {
   props:{
     isScroll:Boolean
@@ -73,12 +75,11 @@ export default {
     return {
       scroll:null,
       loggedInUser: null,
-      open:null,
+      open:false,
       order:null
     };
   },
   created(){
-    this.open=false
     window.addEventListener('scroll', this.handleScroll);
     this.order=orderService.getEmptyOrder()
     console.log('ggg',this.order);
@@ -93,11 +94,7 @@ export default {
       this.$router.push(here);
     },
     toggleFilter(){
-      console.log('done');
       this.open=true
-      if(!this.open){
-        
-      }
     },
     handleScroll(e){
       if(window.scrollY){
@@ -122,8 +119,11 @@ export default {
     },
   },
   components:{
-    dynamicFilter,
+    stayFilter,
+    stayFilterSmall
   },
 
 };
 </script>
+
+    StayFilter

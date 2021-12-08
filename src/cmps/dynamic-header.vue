@@ -7,8 +7,7 @@
 </template>
 
 <script>
-import stayHeader from '@/cmps/stay-header'
-import stayHeaderWhite from '@/cmps/stay-header-white'
+import homeHeader from '@/cmps/home-header'
 import exploreHeader from '@/cmps/explore-header'
 export default {
   props:{
@@ -43,7 +42,7 @@ computed: {
               this.details=true
               this.userPage=true
       }else if(this.currPage==='home'){
-          var header = "stay-header-white";
+          var header = "home-header";
               this.explore=false
               this.details=false
               this.userPage=false
@@ -56,8 +55,7 @@ computed: {
 
   },
   components:{
-      stayHeader,
-      stayHeaderWhite,
+      homeHeader,
       exploreHeader
   }
 }

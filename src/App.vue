@@ -19,8 +19,8 @@ export default {
       url: null,
     };
   },
-  created() {
-    this.$store.dispatch({ type: "loadStays" });
+  async created() {
+     await this.$store.dispatch({ type: "loadStays" });
   },
 
   methods: {
