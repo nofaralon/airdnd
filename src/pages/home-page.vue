@@ -116,18 +116,18 @@ export default {
   handleScroll(e) {
       this.scroll = window.scrollY || window.scrollTop
     },
-    // setFilter(filterBy){
-    // this.filterBy = filterBy
-    // this.$store.dispatch({type:'setFilter', filterBy})
-    // this.$router.push('/stay')
+    setFilter(filterBy){
+    this.filterBy = filterBy
+    this.$store.dispatch({type:'setFilter', filterBy})
+    this.$router.push('/stay')
     
-    // },
-    // saveOrder(newOrder){
-    // },
-    // setLocFilter(location){
-    //   this.filterBy.country=location
-    //   this.setFilter({...this.filterBy})
-    // }
+    },
+    saveOrder(newOrder){
+    },
+    setLocFilter(location){
+      this.filterBy.country=location
+      this.setFilter({...this.filterBy})
+    }
     
    
   },
