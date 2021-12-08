@@ -61,6 +61,7 @@
   </button>
       </div>
     </div>
+    <explore-filter></explore-filter>
   </header>
 </div>
 
@@ -72,6 +73,7 @@
 import {orderService} from '../services/order.service'
 import StayFilterSmall from '@/cmps/stay-filter-small'
 import StayFilter from '@/cmps/stay-filter'
+import exploreFilter from './explore-filter.vue'
 export default {
   props:{
     explore:Boolean,
@@ -110,7 +112,8 @@ export default {
         console.log(this.open);
         this.open=false
       }
-    }
+    },
+   
   },
   computed: {
     user() {
@@ -120,7 +123,8 @@ export default {
   },
   components:{
     StayFilter,
-    StayFilterSmall
+    StayFilterSmall,
+    exploreFilter
   },
 
 };

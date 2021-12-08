@@ -1,6 +1,7 @@
 .filter-options {
     display: flex;
     flex-direction: row;
+    margin-bottom: 10px;
   
     .price-filter, .type-filter {
       cursor: pointer ;
@@ -9,6 +10,8 @@
       background-color: #ffffff ;
       border-color: #dddddd ;
       border-radius: 30px ;
+      color: black;
+
       color: #222222 ;
       font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
         Helvetica Neue, sans-serif ;
@@ -71,6 +74,14 @@
         color: rgb(255, 255, 255);
       }
     }
+    .type-modal-filter{
+      align-items: flex-start;
+      .actions-btn{
+        width: 100%;
+
+      }
+
+    }
     .price-modal-filter , .type-modal-filter{
       width: 400px;
       position: absolute;
@@ -82,11 +93,13 @@
       border-radius: 12px;
       box-shadow: rgb(0 0 0 / 15%) 0px 10px 37px;
       white-space: normal;
-      left: 10px;
+      color: black;
+      
       padding: 20px;
     }
   .price-modal-filter {
     h1 {
+      font-size: 20px;
       display: flex;
       justify-content: flex-start;
       padding: 10px;
@@ -97,8 +110,8 @@
     .price-limit {
       display: flex;
       flex-direction: row;
-      justify-content: center;
-      align-items: center;
+      justify-content: space-between;
+      align-items: flex-start;
       .input-container {
         width: 165px;
         height: 50px;
@@ -106,12 +119,17 @@
         border-radius: 10px;
         margin-inline: 5px;
         margin: 20px 0px;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2px;
         input {
           position: absolute;
           width: 130px;
           height: 50px;
           border: none;
-          top: 235px;
+          top: 241px;
           background-color: transparent;
         }
         .margin-left {
@@ -166,10 +184,12 @@
     border: 1px solid #dadada;
     border-radius: 13px;
     box-shadow: 0 3px 8px 0 rgb(0 0 0 / 18%);
-    top: 200px;
+    // top: 180px;
     z-index: 5;
     width: 400px;
     left: 120px;
+    color: black;
+
     .noff {
       border-bottom: 1px solid #dadada;
       margin-bottom: 10px;
@@ -217,4 +237,5 @@
     margin-left: 5px;
    
   }
+ 
   

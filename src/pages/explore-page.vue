@@ -15,6 +15,7 @@
 <script>
 import exploreHeader from "@/cmps/explore-header";
 import stayList from "@/cmps/stay-list";
+import {eventBusService} from '../services/event-bus.service'
 
 export default {
   name: "explore-page",
@@ -23,6 +24,10 @@ export default {
   },
   created() {
   this.$store.commit({type:'setUserPage',page:'explore'})
+  eventBusService.$on('setBigFilter',filterBy=>{
+       this.$store.commit({type:'setBigFilter', filterBy})
+       if (this.$router.params !== '/stay') this.$router.push('/stay')
+     })
 
   },
   methods: {

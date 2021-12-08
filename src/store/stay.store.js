@@ -15,8 +15,14 @@ export const stayStore = {
             ailments: '',
             guests: null,
             Dates: "",
-            type: []
-        }
+            type: [],
+            fromPrice:0,
+            toPrice:450,
+            beds:0,
+            bedrooms:0,
+            bathrooms:0
+        },
+        tempStays:[]
 
 
 
@@ -94,6 +100,7 @@ export const stayStore = {
             //     const startIdx = state.pageIdx * state.pageSize
             //     stays = stays.slice(startIdx, startIdx + state.pageSize)
             // }
+            state.tempStays=stays
             return stays
         },
         isLoading({ isLoading }) {
@@ -104,11 +111,32 @@ export const stayStore = {
         },
         allStays(state){
             return state.stays
+        },
+        tempStays(state){
+            return state.tempStays
         }
+      
     },
     mutations: {
         setFilter(state, { filterBy }) {
-            state.filterBy = {...filterBy }
+            if (filterBy.fromPrice) {
+                state.filterBy.fromPrice =filterBy.fromPrice  
+            }
+            if (filterBy.toPrice) {
+                state.filterBy.toPrice =filterBy.toPrice  
+            }
+            if (filterBy.type.length) {
+                state.filterBy.type =filterBy.type  
+            }
+            if (filterBy.beds) {
+                state.filterBy.beds =filterBy.beds  
+            }
+            if (filterBy.bedrooms) {
+                state.filterBy.bedrooms =filterBy.bedrooms  
+            }
+            if (filterBy.bathrooms) {
+                state.filterBy.bathrooms =filterBy.bathrooms  
+            }
             console.log('state.filterBy', state.filterBy);
         },
         setLoading(state, { isLoading }) {
@@ -141,6 +169,17 @@ export const stayStore = {
         getStay(state, { stay }) {
             state.currStay = stay
         },
+        setBigFilter(state,{filterBy}){
+            if(filterBy.country){
+                state.filterBy.country =filterBy.country
+            }else{
+                state.filterBy.country='';
+            }
+            if(filterBy.guests){
+                state.filterBy.guests =filterBy.guests
+            }
+            
+        }
     },
     actions: {
         loadStays({ commit, state }) {

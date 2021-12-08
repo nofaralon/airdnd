@@ -1,6 +1,5 @@
 <template>
   <section class="card-list">
-    <explore-header @setFilter="setFilter" :stays="stays"></explore-header>
     <ul class="card-grid">
       <li v-for="stay in stays" :key="stay._id">
         <stay-preview :stay="stay" @setLiked="$emit('setLiked', stay)"/>        
@@ -13,7 +12,6 @@
 
 <script>
     import stayPreview from './stay-preview.vue'
-    import exploreHeader from './explore-filter.vue'
 
 export default {
   name: "stay-list",
@@ -40,7 +38,6 @@ export default {
   },
   components: {
     stayPreview,
-    exploreHeader
   },
 };
 </script>

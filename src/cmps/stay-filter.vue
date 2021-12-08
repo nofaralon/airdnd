@@ -6,7 +6,7 @@
           <button class="country filter-btn">
             <label >
             <p>Location</p>
-            <input class="filter-country-input"  list="locations" type="search" placeholder="Where are you going?" v-model="filterBy.country">   
+            <input  class="filter-country-input"  list="locations" type="search" placeholder="Where are you going?" v-model="filterBy.country">   
             </label>
           </button>
           <datalist id="locations">
@@ -26,6 +26,7 @@
           <p v-if="filterBy.guests">{{filterBy.guests}} Guest<span v-show="filterBy.guests!==1">s</span></p>
           <p class="check-in-add-guest" v-else>Add guests</p>
           </button>
+          
            <div v-if ="isModalOpen" class="guestt-modal">
         <div class="noff">
           <div>
@@ -50,6 +51,7 @@
           </div>
         </div>
       </div>
+      
           <button @click="search" class="search-btn">
             <svg
               aria-hidden="true"
@@ -79,6 +81,7 @@ export default {
    name: "stay-filter",
   data() {
     return {
+   
       isModalOpen:false,
       // currOrder:null
 
@@ -89,8 +92,11 @@ export default {
     // this.filterBy()
   },
   methods: {
+    setCountry(val){
+      console.log('val',val);
+    },
     search(){
-      eventBusService.$emit('setFilter',{...this.filterBy})
+      eventBusService.$emit('setBigFilter',{...this.filterBy})
       eventBusService.$emit('saveOrder', this.currOrder)
       console.log(this.filterBy);
       this.$emit('filter')

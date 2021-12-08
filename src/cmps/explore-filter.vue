@@ -17,22 +17,20 @@
         </filter-btn>
       </div>
     </div>
-    
+
     <div v-if="modalType === 'price'" class="price-modal-filter">
       <h1>The average nightly price is {{avg}} $ </h1>
-       <HistogramSlider
-       class="diagram"
+      <HistogramSlider class="diagram"
        :width="320"
        :bar-height="100"
-       :barGap="4"
-       :barWidth="7"
        :data="prices"
+       :barWidth="7"
        labelColor="#ff385c"
        primaryColor="#ff385c"
-       @change="start"
-       @update="end"
-       :updateColorOnChange="true"
+       @finish="start"
+      :updateColorOnChange="true"
        />
+
       <div class="price-limit">
         <div class="input-container">
           <div class="filter-text">min Price</div>
@@ -41,7 +39,7 @@
             <input v-model="filterBy.fromPrice" type="number" />
           </div>
         </div>
-        -
+      
         <div class="input-container">
           <div class="filter-text">max Price</div>
           <div class="margin-left">
@@ -95,32 +93,18 @@
 
 <script>
 import FilterBtn from "./filter-btn.vue";
+import {eventBusService} from '../services/event-bus.service'
 export default {
-  name: "stay-list",
-  props: {
-    stays: Array,
-  },
+  props: {},
   data() {
     return {
       avg:null,
-      prices:this.getPrices,
+      prices:null,
       modalType: "",
       status: "",
       modalTypes: ["price", "type", "beds", "bedrooms", "bathrooms"],
       types: ["beds", "bedrooms", "bathrooms"],
-      filterBy: {
-        country: "",
-        type: "",
-        ailments: "",
-        guests: null,
-        Dates: "",
-        fromPrice: 45,
-        toPrice: 250,
-        type: [],
-        beds: 0,
-        bedrooms: 0,
-        bathrooms: 0,
-      },
+      filterBy: { },
       type: {
         villa: false,
         apartment: false,
@@ -130,24 +114,21 @@ export default {
     };
   },
   created() {
-    const prices =[]
-    this.allStays.map((stay)=>{
-      prices.push(stay.price)
+    this.filterBy =JSON.parse(JSON.stringify(this.filterByy))
+    const prices=[];
+    console.log('ggg',this.stays);
+    this.stays.map((stay)=>{
+    prices.push(stay.price)
     })
-    prices.unshift()
-    this.prices =prices
+    this.prices=prices
     const avgPrice = this.getAvg(prices)
-    this.avg =avgPrice
+    this.avg =Math.round(avgPrice)
 
     
 
   },
   
   methods: {
-    end(ev){
-      console.log('ebv',ev);
-
-    },
     toggleModal(type) {
       if (this.modalType === type) {
         this.status = "";
@@ -167,13 +148,14 @@ export default {
     },
     start(ev){
       this.filterBy.fromPrice=ev.from
-      this.filterBy.toPrice =ev.to
+      this.filterBy.toPrice=ev.to
     },
    
     setFilter() {
       const filterBy = JSON.parse(JSON.stringify(this.filterBy));
-      this.$emit("setFilter", filterBy);
-      this.status = "";
+      console.log('filterByyy',filterBy);
+       eventBusService.$emit('setFilter',filterBy)     
+        this.status = "";
       this.modalType = "";
     },
     setCountBeds(val, type) {
@@ -203,6 +185,7 @@ export default {
     resetPriceFilter() {
       this.filterBy.fromPrice = 45;
       this.filterBy.toPrice = 250;
+      
     },
     setTypeFilter() {
       const types = [];
@@ -212,8 +195,11 @@ export default {
       if (this.type.loft) types.push("loft");
       this.filterBy.type = types;
       const filterBy = { ...this.filterBy };
-      this.$emit("setFilter", filterBy);
-      this.closeModals();
+      // console.log('this.filter', filterBy);
+      eventBusService.$emit('setFilter',filterBy)     
+      this.status = "";
+      this.modalType = ""
+ 
     },
     resetTypeFilter() {
       this.type = {
@@ -236,9 +222,13 @@ export default {
     },
   },
   computed: {
-    allStays(){
-      return this.$store.getters.allStays
+    filterByy(){
+      return this.$store.getters.filterBy
+    },
+    stays(){
+      return this.$store.getters.tempStays
     }
+
   },
   components: {
     FilterBtn,

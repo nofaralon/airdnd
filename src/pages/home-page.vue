@@ -64,7 +64,12 @@ export default {
         ailments:'',
         guests:null,
         Dates:"",
-        type:[]
+        type:[],
+        fromPrice: 45,
+        toPrice: 250,
+        beds: 0,
+        bedrooms: 0,
+        bathrooms: 0,
       },
       topCities:[{
         name:'Netherlands',
@@ -91,13 +96,13 @@ export default {
     //  console.log(this.order);
      this.$store.commit({type:'setUserPage',page:'home'})
     this.$store.commit({type:'clearOrder'})
+    const filterBy =this.filterBy
+    // this.$store.commit({type:'setFilter',filterBy})
 
-    //  eventBusService.$on('setFilter',filterBy=>{
-    //    console.log(filterBy);
-    //    this.filterBy = filterBy
-    //    this.$store.dispatch({type:'setFilter', filterBy})
-    //    if (this.$router.params !== '/stay') this.$router.push('/stay')
-    //  })
+     eventBusService.$on('setBigFilter',filterBy=>{
+       this.$store.commit({type:'setBigFilter', filterBy})
+       if (this.$store.getters.userPage==='home')this.$router.push('/stay')
+     })
     //  eventBusService.$on('saveOrder',newOrder=>{
     //    this.$store.dispatch({type:'saveOrder', newOrder})
 
