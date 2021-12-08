@@ -21,8 +21,9 @@
     <div  class="top-cities" >
      <div @click="setLocFilter(city.name)" v-for="city in topCities" :key="city.name" class="city">
        <img :src=city.url >
-        <div class="city-txt"></div>
+        <div class="city-txt">
         <p>{{city.name}}</p>
+        </div>
       </div>
 
         
