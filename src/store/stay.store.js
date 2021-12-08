@@ -102,7 +102,7 @@ export const stayStore = {
         getStay({ currStay }) {
             return currStay
         },
-        allStays(state){
+        allStays(state) {
             return state.stays
         }
     },
@@ -187,11 +187,13 @@ export const stayStore = {
             })
         },
         getStay({ commit }, { stayId }) {
+            commit({ type: 'setLoading', isLoading: true })
+
             if (!stayId) {
                 return stayService.getEmptyStay()
-            }
-            return stayService.getById(stayId).then((stay) => {
+            } else return stayService.getById(stayId).then((stay) => {
                 commit({ type: 'getStay', stay })
+                commit({ type: 'setLoading', isLoading: false })
                 return stay
             })
         },
