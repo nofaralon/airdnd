@@ -1,6 +1,6 @@
 <template>
   <section class="card-list">
-    <explore-header @setFilter="setFilter"></explore-header>
+    <explore-header @setFilter="setFilter" :stays="stays"></explore-header>
     <ul class="card-grid">
       <li v-for="stay in stays" :key="stay._id">
         <stay-preview :stay="stay" @setLiked="$emit('setLiked', stay)"/>        

@@ -45,7 +45,7 @@
         Orders
         </h3>
     <div>
-    <span>0 <button class="order-status"></button></span> <span>0 <button class="order-status"></button></span> <span>0 <buttonclass="order-status"></buttonclass=></span>
+    <span>0 <button class="order-status"></button></span> <span>0 <button class="order-status"></button></span> <span>0 <button class="order-status"></button></span>
     </div>
     </div>
      <div class="main-bar-guests">
