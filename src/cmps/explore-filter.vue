@@ -1,13 +1,13 @@
 <template>
   <section>
     <div v-if="modalTypes" class="filter-options">
-      <div
+         <div
         v-for="modalType in modalTypes"
         :key="modalType"
         class="filter-options"
       >
+
         <filter-btn
-       
           :key="modalType"
           :modalType="modalType"
           :status="status"
@@ -17,8 +17,22 @@
         </filter-btn>
       </div>
     </div>
+    
     <div v-if="modalType === 'price'" class="price-modal-filter">
-      <h1>The average nightly price is $516</h1>
+      <h1>The average nightly price is {{avg}} $ </h1>
+       <HistogramSlider
+       class="diagram"
+       :width="320"
+       :bar-height="100"
+       :barGap="4"
+       :barWidth="7"
+       :data="prices"
+       labelColor="#ff385c"
+       primaryColor="#ff385c"
+       @change="start"
+       @update="end"
+       :updateColorOnChange="true"
+       />
       <div class="price-limit">
         <div class="input-container">
           <div class="filter-text">min Price</div>
@@ -57,7 +71,7 @@
       </div>
     </div>
 
-    <div v-for="(type, index)  in types"  :key="index">
+    <div v-for="(type, index) in types" :key="index">
       <div v-if="modalType === type" :class="gettModalClass(index)">
         <div class="noff">
           <div>
@@ -75,6 +89,7 @@
         </div>
       </div>
     </div>
+
   </section>
 </template>
 
@@ -85,9 +100,10 @@ export default {
   props: {
     stays: Array,
   },
-
   data() {
     return {
+      avg:null,
+      prices:this.getPrices,
       modalType: "",
       status: "",
       modalTypes: ["price", "type", "beds", "bedrooms", "bathrooms"],
@@ -98,8 +114,8 @@ export default {
         ailments: "",
         guests: null,
         Dates: "",
-        fromPrice: 32,
-        toPrice: 1500,
+        fromPrice: 45,
+        toPrice: 250,
         type: [],
         beds: 0,
         bedrooms: 0,
@@ -113,17 +129,47 @@ export default {
       },
     };
   },
-  created() {},
+  created() {
+    const prices =[]
+    this.allStays.map((stay)=>{
+      prices.push(stay.price)
+    })
+    prices.unshift()
+    this.prices =prices
+    const avgPrice = this.getAvg(prices)
+    this.avg =avgPrice
+
+    
+
+  },
+  
   methods: {
+    end(ev){
+      console.log('ebv',ev);
+
+    },
     toggleModal(type) {
       if (this.modalType === type) {
         this.status = "";
         this.modalType = "";
+      } else {
+        this.modalType = type;
+        this.status = type;
       }
-      this.modalType = type;
-      this.status = type;
     },
+    getAvg(prices){
+     const sum = prices.reduce(function(acc,price){
+        return acc += price
+      },0)
+      const avg = sum/prices.length
+      return avg
 
+    },
+    start(ev){
+      this.filterBy.fromPrice=ev.from
+      this.filterBy.toPrice =ev.to
+    },
+   
     setFilter() {
       const filterBy = JSON.parse(JSON.stringify(this.filterBy));
       this.$emit("setFilter", filterBy);
@@ -155,8 +201,8 @@ export default {
       }
     },
     resetPriceFilter() {
-      this.filterBy.fromPrice = 32;
-      this.filterBy.toPrice = 1500;
+      this.filterBy.fromPrice = 45;
+      this.filterBy.toPrice = 250;
     },
     setTypeFilter() {
       const types = [];
@@ -181,18 +227,18 @@ export default {
       this.status === status;
     },
     gettModalClass(index) {
-      if (index ===1) {
-        return 'beds-modal-filter right'  
+      if (index === 1) {
+        return "beds-modal-filter right";
       }
-      if (index ===2) {
-        return 'beds-modal-filter righter'
-      }
-      else return 'beds-modal-filter'
-     
-      
+      if (index === 2) {
+        return "beds-modal-filter righter";
+      } else return "beds-modal-filter";
     },
   },
   computed: {
+    allStays(){
+      return this.$store.getters.allStays
+    }
   },
   components: {
     FilterBtn,

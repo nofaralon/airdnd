@@ -5,6 +5,7 @@ import explorePage from '../pages/explore-page.vue'
 import stayEdit from '../pages/stay-edit.vue'
 import stayDetails from '../pages/stay-details.vue'
 import userLoggin from '../pages/user-loggin.vue'
+import userProfilePage from '../pages/user-profile-page.vue'
 
 Vue.use(VueRouter)
 
@@ -16,7 +17,10 @@ const routes = [{
         path: '/login/:signup?',
         component: userLoggin
     },
-
+    {
+        path: '/profile/:userId?',
+        component: userProfilePage
+    },
     {
         path: '/stay',
         component: explorePage

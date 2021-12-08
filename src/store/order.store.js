@@ -128,7 +128,12 @@ export const orderStore = {
         async saveOrder({commit} ,{newOrder}){
            const order = await orderService.saveCurrOrder(newOrder)
            commit({type:'getOrder',order})
+        },
+        async getOrders({commit},{userId}){
+            const orders= await orderService.query()
+            return orders
         }
+
 
     },
 }
