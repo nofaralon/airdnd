@@ -1,7 +1,11 @@
 <template>
   <section v-if="stay" class="stay-details details-layout">
     <!-- <p v-if="isLoading">Loading...</p> -->
-    <div v-if="isLoading" class="lds-facebook"><div></div><div></div><div></div></div>
+    <div v-if="isLoading" class="lds-facebook">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <section v-else>
       <h1>{{ stay.name }}</h1>
 
@@ -158,6 +162,7 @@ export default {
     },
     loadUser() {
       var user = this.$store.getters.user;
+      console.log(user);
       if (!user)
         user = {
           _id: "u111",
@@ -172,6 +177,8 @@ export default {
     check() {
       const { _id, name, price } = this.stay;
       this.order.stay = { _id, name, price };
+      this.order.buyer._id = this.user._id;
+      this.order.buyer.fullname = this.user.fullname;
       this.order.hostId = this.stay.host._id;
       this.order.totalPrice =
         this.order.cleaning +
@@ -227,8 +234,7 @@ export default {
       return total.toFixed(2);
     },
     isLoading() {
-       return this.$store.getters.isLoading;
-  
+      return this.$store.getters.isLoading;
     },
   },
   components: {
