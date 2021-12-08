@@ -20,7 +20,7 @@ export const orderService = {
 
 
 
-async function query() {
+async function query(filterBy=null) {
     // return storageService.query(ORDER_KEY)
 
     return httpService.get(`order`, filterBy)

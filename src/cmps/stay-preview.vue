@@ -64,7 +64,7 @@
             ></path>
           </svg>
           <span class="reviews-rating">{{ setTotalRate }}</span>
-          <a href="#anchor-reviews"
+          <a
             >({{ stay.reviews.length }} {{ setReviews }})</a
           ></span
         >
@@ -130,14 +130,18 @@ export default {
   },
   computed: {
     setTotalRate() {
-      var sum = this.stay.reviews.reduce((acc, review) => {
-        return acc + review.rate;
-      }, 0);
-      var total = sum / this.stay.reviews.length;
-      return total.toFixed(2);
+      if(this.stay.reviews.length){
+        var sum = this.stay.reviews.reduce((acc, review) => {
+          return acc + review.rate;
+        }, 0);
+        var total = sum / this.stay.reviews.length;
+        return total.toFixed(2);
+      }else{
+        return 0
+      }
     },
     setReviews() {
-      if (this.stay.reviews.length > 1) return "reviews";
+      if (this.stay.reviews.length !== 1) return "reviews";
       else return "review";
     },
   },

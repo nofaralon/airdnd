@@ -132,7 +132,7 @@ export default {
       this.addStay()
     }
       this.$store.commit({type:'setUserPage',page:'userPage'})
-    this.$store.commit({type:'clearOrder'})
+    // this.$store.commit({type:'clearOrder'})
 
 
   },
