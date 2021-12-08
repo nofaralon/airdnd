@@ -48,13 +48,21 @@ header {
       width: 32px;
       color: white;
     }
+    .logo-white{
+      color: $clr1;
+    }
+    .logo-black{
+      color: white;
+    }
   }
   .activated{
     border-bottom: whitesmoke solid 2px;
   }
   .page-link{
     text-decoration: none;
-    color: white;
+    :not(.explore-link){
+      color: white;
+    }
   }
   .header-container{
     width: 100%;

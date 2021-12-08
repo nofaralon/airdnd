@@ -9,15 +9,11 @@
 
       <div v-if="!pageCount" class="edit-card">
     <p class="edit-header">First of all, give your listing a good, selling name</p>
-    <textarea name="name" cols="30" rows="5" placeholder="What is the name of your listing?" v-model="newStay.name"></textarea>
-      </div>
+    <input class="edit-input"  placeholder="Stay name" v-model="newStay.name">
+<div class="card-address">
 
-    <div v-if="pageCount===1" class="edit-card">
     <p class="edit-header">Where is it?</p>
-    <label >
-      Country:
-    <input class="edit-input" list="countries" type="list" v-model="newStay.loc.country">
-    </label>
+    <input class="edit-input" list="countries" placeholder="Country" type="list" v-model="newStay.loc.country">
 
     <datalist id="countries">
     <option>Netherlands</option>
@@ -26,32 +22,31 @@
     <option>Miami, Florida United States</option>
     </datalist>
 
-    <label >
-      Address:
-    <input class="edit-input" type="text" v-model="newStay.loc.address">
-    </label>
+    <input class="edit-input" type="text" placeholder="address" v-model="newStay.loc.address">
     <div>
-    <button :disabled="!newStay.loc.address" @click="check=true">Check location</button>
+    <a :disabled="!newStay.loc.address" @click="check=true">Check location</a>
     </div>
     <user-location v-if="check" :address="newStay.loc.address" @loc="setLoc"/>
-    <button v-if="check" @click="reset">Reset location</button>
-    </div>
+    <a v-if="check" @click="reset">Reset location</a>
+
+</div>
+
+      </div>
+
+<div v-if="pageCount===1" class="edit-card">
+    <p class="edit-header">Provide your potential guest information regarding your listing</p>
+    <textarea name="name" cols="40" rows="6" placeholder="Stay size, furniture, containing AC? etc." v-model="newStay.space"></textarea>
+    <p class="edit-header">Provide your potential guest information regarding your listing</p>
+    <textarea name="name" cols="40" rows="6" placeholder="General description" v-model="newStay.summary"></textarea>
+</div>
 
 <div v-if="pageCount===2" class="edit-card">
-    <p class="edit-header">Provide your potential guest information regarding your listing</p>
-    <textarea name="name" cols="40" rows="4" placeholder="Provide some details about the listing, size, furniture, containing AC? etc." v-model="newStay.space"></textarea>
-</div>
-<div v-if="pageCount===3" class="edit-card">
-    <p class="edit-header">Provide your potential guest information regarding your listing</p>
-    <textarea name="name" cols="40" rows="10" placeholder="Describe your listing in general" v-model="newStay.summary"></textarea>
-</div>
-<div v-if="pageCount===4" class="edit-card">
     <p class="edit-header">Provide your potential guest information regarding your listing</p>
     <textarea name="name" cols="40" rows="2" placeholder="Will your guests be restricted? or will they have the whole space?" v-model="newStay.acces"></textarea>
     <textarea name="name" cols="40" rows="2" placeholder="Any notes or notices worth pointing out?" v-model="newStay.notes"></textarea>
 </div>
 
-    <div v-if="pageCount===5" class="edit-card">
+    <div v-if="pageCount===3" class="edit-card">
     <p class="edit-header">General information about the listing</p>
     <label>
       Type:
@@ -75,27 +70,27 @@
       Beds:
     <input class="edit-input-small" min="0" type="number" v-model="newStay.beds">
     </label>
-      </div>
+<label>
+  Price:
+    <input class="edit-input" type="number" min="0" v-model="newStay.price">
+</label>
 
-    <div v-if="pageCount===6" class="edit-card">
     <p class="edit-header">Describe the listing's surroundings and transportation options</p>
     <textarea name="name" cols="40" rows="4" placeholder="What can guests do around your listing?" v-model="newStay.around"></textarea>
     <textarea name="name" cols="40" rows="4" placeholder="Describe common transportation methods in your listing's proximity" v-model="newStay.transit"></textarea>
+      </div>
+
+    <div v-if="pageCount===4" class="edit-card">
     </div>
 
-    <div v-if="pageCount===7" class="edit-card">
-    <p class="edit-header">Add listing price, we recommend checking local avarage before deciding.</p>
-    <input class="edit-input" type="number" min="0" v-model="newStay.price">
-    </div>
-
-    <div v-if="pageCount===9" class="edit-card">
+    <div v-if="pageCount===5" class="edit-card">
     <p class="edit-header">Finally, add at least five pictures of your listing</p>
     <img-upload @save="saveImg"/>
     </div>
     <div class="page-btns">
-    <button v-if="pageCount>=1" @click="setPageCount(-1)">Back</button>
-    <button v-if="pageCount<9" @click="setPageCount(1)">Next</button>
-    <button :disabled="imgCount<5" v-if="pageCount===9" @click="saveStay">Submit listing</button>
+    <button  :disabled="pageCount===0" @click="setPageCount(-1)">Back</button>
+    <button  v-if="pageCount<5" @click="setPageCount(1)">Next</button>
+    <button  :disabled="imgCount<5" v-if="pageCount===5" @click="saveStay">Submit listing</button>
     </div>
     </div>
   </div>
@@ -122,7 +117,6 @@ export default {
       sideImages:[
         "https://res.cloudinary.com/di0utpbop/image/upload/v1638899198/airdnd/Airbnb-More-Guests-1030x687_kw2pyp.jpg",
         "https://res.cloudinary.com/di0utpbop/image/upload/v1638899204/airdnd/dc60abc6-a945-4b02-9b23-cc00d1077cd6_ahdxwg.jpg",
-        "https://res.cloudinary.com/di0utpbop/image/upload/v1638899196/airdnd/FB_What-kind-of-Airbnb-Host-are-you_xfabxh.jpg",
         "https://res.cloudinary.com/di0utpbop/image/upload/v1638899196/airdnd/FB_What-kind-of-Airbnb-Host-are-you_xfabxh.jpg",
         "https://res.cloudinary.com/di0utpbop/image/upload/v1638544563/airdnd/64f39605-fef0-4ef0-a0f8-caa6c6e011f2_1_abv9oz.webp",
         "https://res.cloudinary.com/di0utpbop/image/upload/v1638899689/airdnd/shutterstock_1151446655-1_optimized-scaled-e1633100162370_tjbyfn.jpg",

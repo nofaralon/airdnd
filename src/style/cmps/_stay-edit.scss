@@ -1,7 +1,32 @@
 .edit-container{
     display: flex;
     flex-direction: row;
-    
+    & button{
+        color: white;
+        background-color: $clr1;
+        border-radius: 5px;
+        padding: 10px;
+        border: none;
+    }
+    & a{
+        &:hover{
+            color: $clr1;
+            cursor: pointer;
+        }
+    }
+    .page-btns{
+        display: flex;
+        width: 79%;
+        justify-content: space-between;
+        >*{
+            &:hover{
+                cursor: pointer;
+            }
+            &:disabled{
+                cursor:not-allowed;
+            }
+        }
+    }
     .edit-side-show{
  
 flex-basis: 55%;
@@ -29,19 +54,30 @@ flex-basis: 55%;
         >*{
             margin: 5px 0;
         }
+        .card-address{
+            >*{
+                margin: 10px;
+            }
+
+        }
         .edit-input{
-            height: 30px;
+            background-color: transparent;
+            height: 20px;
             width: 120px;
             border: none;
-            border-radius: 10px;
+            border-bottom: solid 1px rgb(34, 34, 34);
         }
         .edit-input-small{
             height: 30px;
             width: 60px;
         }
         textarea{
-            border-radius: 8px;
+            background-color: transparent;
+            border-radius: 5px;
+            border: solid 1px rgb(34, 34, 34);
+            resize: none;
         }
+
         
     }
 }
