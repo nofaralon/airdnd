@@ -1,12 +1,13 @@
 <template>
   <section>
-    <div v-if="modalTypes"  class="filter-options">
+    <div v-if="modalTypes" class="filter-options">
       <div
         v-for="modalType in modalTypes"
         :key="modalType"
         class="filter-options"
       >
         <filter-btn
+       
           :key="modalType"
           :modalType="modalType"
           :status="status"
@@ -15,7 +16,6 @@
         >
         </filter-btn>
       </div>
-
     </div>
     <div v-if="modalType === 'price'" class="price-modal-filter">
       <h1>The average nightly price is $516</h1>
@@ -57,8 +57,8 @@
       </div>
     </div>
 
-    <div v-for="type in types" :key="type">
-      <div v-if="modalType === type" class="bedrooms-modal-filter">
+    <div v-for="(type, index)  in types"  :key="index">
+      <div v-if="modalType === type" :class="gettModalClass(index)">
         <div class="noff">
           <div>
             <h2>{{ type }}</h2>
@@ -75,7 +75,6 @@
         </div>
       </div>
     </div>
-
   </section>
 </template>
 
@@ -90,7 +89,7 @@ export default {
   data() {
     return {
       modalType: "",
-      status:'',
+      status: "",
       modalTypes: ["price", "type", "beds", "bedrooms", "bathrooms"],
       types: ["beds", "bedrooms", "bathrooms"],
       filterBy: {
@@ -117,21 +116,19 @@ export default {
   created() {},
   methods: {
     toggleModal(type) {
-      if(this.modalType === type) {
-        console.log('hey!!');
-       this.status='';
-       this.modalType =''
-      } 
-      this.modalType=type;
+      if (this.modalType === type) {
+        this.status = "";
+        this.modalType = "";
+      }
+      this.modalType = type;
       this.status = type;
     },
-   
 
     setFilter() {
       const filterBy = JSON.parse(JSON.stringify(this.filterBy));
       this.$emit("setFilter", filterBy);
-      this.status='';
-      this.modalType ='';
+      this.status = "";
+      this.modalType = "";
     },
     setCountBeds(val, type) {
       if (val === "down") {
@@ -181,13 +178,21 @@ export default {
       };
     },
     getModalClass(status) {
-    this.status === status
-   },
+      this.status === status;
+    },
+    gettModalClass(index) {
+      if (index ===1) {
+        return 'beds-modal-filter right'  
+      }
+      if (index ===2) {
+        return 'beds-modal-filter righter'
+      }
+      else return 'beds-modal-filter'
+     
+      
+    },
   },
   computed: {
-    getBtnClass(modalType) {
-      return;
-    },
   },
   components: {
     FilterBtn,

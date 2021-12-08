@@ -1,5 +1,6 @@
 <template>
 <div class="header-container">
+
 <dynamic-header :explore="explore" :details="details" :isScroll="isScroll"/>
 </div>
 
@@ -40,6 +41,7 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+ 
     handleScroll(e) {
       this.scroll = window.scrollY || window.scrollTop
     },

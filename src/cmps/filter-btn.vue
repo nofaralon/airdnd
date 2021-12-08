@@ -23,7 +23,6 @@ export default {
   },
   computed: {
     getModalClass() {
-
       return (this.status === this.modalType)? "el-icon-arrow-up": "el-icon-arrow-down";
     },
   },
