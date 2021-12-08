@@ -52,8 +52,8 @@
             <el-dropdown-item>Host your home</el-dropdown-item>
             </router-link>
 
-            <router-link  style="text-decoration:none;" :to="'/profile/'+user._id">
-            <el-dropdown-item :disabled="user">Profile</el-dropdown-item>
+            <router-link v-if="user"  style="text-decoration:none;" :to="'/profile/'+user._id">
+            <el-dropdown-item>Profile</el-dropdown-item>
             </router-link>
             
           </el-dropdown-menu>
