@@ -69,7 +69,7 @@ methods: {
             const user = this.user
             const isUser = await this.$store.dispatch({type:'setUser', user})
             if(isUser){
-            this.$router.push("*");
+            this.$router.push("/stay");
             showMsg('User logged in:'+ JSON.parse(JSON.stringify((user.username))));
             }else{
             alert(`Wrong username or password`);

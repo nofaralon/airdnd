@@ -45,11 +45,13 @@ async function update(user) {
     return user;
 }
 
-async function login(userCred) {
+async function login(userName,password) {
     const users = await storageService.query('user')
-    const user = users.find(user => user.username === userCred.username)
+    console.log('users', users);
+    const user = users.find(user => user.username === userName && user.password ===password)
     if(!user) return false
-    return _saveLocalUser(user)
+     _saveLocalUser(user)
+     return user
 
     // const user = await httpService.post('auth/login', userCred)
         // socketService.emit('set-user-socket', user._id);
