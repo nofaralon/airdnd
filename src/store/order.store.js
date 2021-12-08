@@ -9,7 +9,6 @@ export const orderStore = {
     strict: true,
     state: {
         currOrder: {
-            _id: '',
             hostId: '',
             createdAt: Date.now(),
             buyer: {
@@ -63,7 +62,6 @@ export const orderStore = {
         },
         clearOrder(state){
             state.currOrder={
-                _id: '',
                 hostId: '',
                 createdAt: Date.now(),
                 buyer: {
@@ -132,7 +130,12 @@ export const orderStore = {
         async getOrders({commit},{userId}){
             const orders= await orderService.query()
             return orders
-        }
+        },
+        async getUserOrders({userId}){
+            console.log('store filter', userId);
+            return await orderService.query(userId)
+         }
+
 
 
     },

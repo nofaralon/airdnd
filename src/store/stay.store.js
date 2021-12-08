@@ -141,6 +141,7 @@ export const stayStore = {
         getStay(state, { stay }) {
             state.currStay = stay
         },
+
     },
     actions: {
         loadStays({ commit, state }) {
@@ -204,8 +205,10 @@ export const stayStore = {
             console.log('stay-', stay);
             commit({ type: 'updateStay', stay })
             return stay
-
-
+        },
+        async getUserStays({commit},{filterBy}){
+            console.log(filterBy);
+            return await stayService.query(filterBy)
         }
     },
 }
