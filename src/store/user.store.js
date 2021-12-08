@@ -1,60 +1,60 @@
-import {userService} from '../services/user.service.js'
+import { userService } from '../services/user.service.js'
 
-export const userStore={
-    state:{
+export const userStore = {
+    state: {
         user: userService.getLoggedinUser() || null,
-        userCurrPage:'home'
+        userCurrPage: 'home'
     },
     getters: {
-        user(state){
+        user(state) {
             return state.user
         },
-        miniUser(state){
-            const _id=state.user._id
-            const fullname=state.user.fullname
-            const imgUrl=state.user.imgUrl
+        miniUser(state) {
+            const _id = state.user._id
+            const fullname = state.user.fullname
+            const imgUrl = state.user.imgUrl
             return {
                 _id,
                 fullname,
                 imgUrl
             }
         },
-        userPage(state){
+        userPage(state) {
             return state.userCurrPage
         }
-        
+
 
     },
     mutations: {
-        setUser(state,{loggedInUser}){
-            console.log('user',loggedInUser);
-            state.user = loggedInUser
+        setUser(state, { loginUser }) {
+            console.log('user', loginUser);
+            state.user = loginUser
         },
-        setUserPage(state,{page}){
-            console.log('page:',page);
-            state.userCurrPage=page
+        setUserPage(state, { page }) {
+            console.log('page:', page);
+            state.userCurrPage = page
         }
     },
-    actions:{
-        async getUserById({},{userId}){
+    actions: {
+        async getUserById({}, { userId }) {
             console.log(userId);
-            const user= await userService.getById(userId)
+            const user = await userService.getById(userId)
             console.log(user);
             return user
         },
-        async setUser({commit},{user}){
-            const loggedInUser=await userService.login(user.username,user.password);
-            if(loggedInUser){
-                commit({type:"setUser", loggedInUser})
+        async setUser({ commit }, { user }) {
+            const loginUser = await userService.login(user.username, user.password);
+            if (loginUser) {
+                commit({ type: "setUser", loginUser })
                 return true
-            }else{
+            } else {
                 return false
             }
 
         },
-        async signUser({commit},{user}){
-            await userService.signup(user)
-            commit({type:"setUser", user})
+        async signUser({ commit }, { user }) {
+            var loginUser = await userService.signup(user)
+            commit({ type: "setUser", loginUser })
         }
     }
 

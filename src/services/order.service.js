@@ -1,12 +1,12 @@
-import { storageService } from './async-storage.service'
+// import { storageService } from './async-storage.service'
 // import { storage } from './storage.service'
 import { utilService } from './util.service'
-// const axios = require('axios')
-// import { httpService } from './http.service'
+const axios = require('axios')
+import { httpService } from './http.service'
 
 
-const ORDER_KEY = 'orderDB';
-const CURR_ORDER ='currOrder'
+// const ORDER_KEY = 'orderDB';
+// const CURR_ORDER ='currOrder'
 // const ORDER_URL = 'http://localhost:3000/api/order/'
 
 export const orderService = {
@@ -14,62 +14,59 @@ export const orderService = {
     getById,
     remove,
     save,
-    getEmptyOrder,
-    saveCurrOrder
-
+    getEmptyOrder
 
 }
 
 
 
 async function query() {
-    return storageService.query(ORDER_KEY)
+    // return storageService.query(ORDER_KEY)
 
-    // return httpService.get(`order`, filterBy)
+    return httpService.get(`order`, filterBy)
 
 }
 
 async function getById(id) {
-    return storageService.get(ORDER_KEY, id)
+    // return storageService.get(ORDER_KEY, id)
 
-    // const order = httpService.get(`order/${id}`)
-    // return order
+    const order = httpService.get(`order/${id}`)
+    return order
 
 
 }
 
 async function remove(id) {
-    return storageService.remove(ORDER_KEY, id)
+    // return storageService.remove(ORDER_KEY, id)
 
-    // return httpService.delete(`order/${id}`)
+    return httpService.delete(`order/${id}`)
 }
 
 async function save(order) {
-    const savedOrder = (order._id) ? storageService.put(ORDER_KEY, order) : storageService.post(ORDER_KEY, order)
-    return savedOrder;
+    // const savedOrder = (order._id) ? storageService.put(ORDER_KEY, order) : storageService.post(ORDER_KEY, order)
+    // return savedOrder;
 
 
-    // if (stay._id) {
-    //     const savedOrder = await httpService.put(`order/${order._id}`, order)
-    //     return savedOrder
+    if (order._id) {
+        const savedOrder = await httpService.put(`order/${order._id}`, order)
+        return savedOrder
 
-    // } else {
-    //     const savedOrder = await httpService.post(`order`, order)
-    //     return savedOrder
-    // }
+    } else {
+        const savedOrder = await httpService.post(`order`, order)
+        return savedOrder
+    }
 
 
 }
-async function saveCurrOrder(order){
-    const saveOrder =  await storageService.postOrder(CURR_ORDER, order)
-    return saveOrder
-    
+// async function saveCurrOrder(order){
+//     const saveOrder =  await storageService.postOrder(CURR_ORDER, order)
+//     return saveOrder
 
-}
+
+// }
 
 function getEmptyOrder() {
     return {
-        _id: '',
         hostId: '',
         createdAt: Date.now(),
         buyer: {
