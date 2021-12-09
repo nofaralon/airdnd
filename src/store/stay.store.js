@@ -35,36 +35,37 @@ export const stayStore = {
         staysForDisplay(state) {
             let stays = JSON.parse(JSON.stringify(state.stays))
             let filteredStays = []
-            if (!state.filterBy) {
-                return stays
-            }
-            if (state.filterBy.country) {
-                stays = stays.filter((stay) => (stay.loc.country === state.filterBy.country));
-            }
-            // filter by guests
-            if (state.filterBy.guests) {
-                stays = stays.filter((stay) => stay.capacity >= state.filterBy.guests)
-            }
-            if (state.filterBy.fromPrice && state.filterBy.toPrice) {
-                stays = stays.filter((stay) => stay.price >= state.filterBy.fromPrice && stay.price <= state.filterBy.toPrice)
-            }
-            if (state.filterBy.type.length) {
-                const selectedLabels = JSON.parse(JSON.stringify(state.filterBy.type));
-                selectedLabels.map((label) => {
-                    stays = stays.filter(stay => {
-                        return stay.type === label
-                    })
-                })
-            }
-            if (state.filterBy.beds) {
-                stays = stays.filter((stay) => stay.beds >= state.filterBy.beds)
-            }
-            if (state.filterBy.bathrooms) {
-                stays = stays.filter((stay) => stay.bathrooms >= state.filterBy.bathrooms)
-            }
-            if (state.filterBy.bedrooms) {
-                stays = stays.filter((stay) => stay.bedroom >= state.filterBy.bedrooms)
-            }
+            return stays
+            // if (!state.filterBy) {
+            //     return stays
+            // }
+            // if (state.filterBy.country) {
+            //     stays = stays.filter((stay) => (stay.loc.country === state.filterBy.country));
+            // }
+            // // filter by guests
+            // if (state.filterBy.guests) {
+            //     stays = stays.filter((stay) => stay.capacity >= state.filterBy.guests)
+            // }
+            // if (state.filterBy.fromPrice && state.filterBy.toPrice) {
+            //     stays = stays.filter((stay) => stay.price >= state.filterBy.fromPrice && stay.price <= state.filterBy.toPrice)
+            // }
+            // if (state.filterBy.type.length) {
+            //     const selectedLabels = JSON.parse(JSON.stringify(state.filterBy.type));
+            //     selectedLabels.map((label) => {
+            //         stays = stays.filter(stay => {
+            //             return stay.type === label
+            //         })
+            //     })
+            // }
+            // if (state.filterBy.beds) {
+            //     stays = stays.filter((stay) => stay.beds >= state.filterBy.beds)
+            // }
+            // if (state.filterBy.bathrooms) {
+            //     stays = stays.filter((stay) => stay.bathrooms >= state.filterBy.bathrooms)
+            // }
+            // if (state.filterBy.bedrooms) {
+            //     stays = stays.filter((stay) => stay.bedroom >= state.filterBy.bedrooms)
+            // }
 
             //     stays =stays.filter((stay)=> {
             //         state.filterBy.type.
@@ -135,7 +136,7 @@ export const stayStore = {
             if (filterBy.bathrooms) {
                 state.filterBy.bathrooms = filterBy.bathrooms
             }
-            console.log('state.filterBy', state.filterBy);
+
         },
         setUserStays(state, { stays }) {
             state.userStays = stays
@@ -179,21 +180,48 @@ export const stayStore = {
             if (filterBy.guests) {
                 state.filterBy.guests = filterBy.guests
             }
+        },
+        resetFilter(state,{filterBy}){
+            state.filterBy = filterBy
+        },
+        setTempStays(state, {stays}){
+            console.log('temp stays',stays);
+            state.tempStays=stays
 
         }
+
     },
     actions: {
         loadStays({ commit, state }) {
+            console.log('loading....');
             var filterBy = state.filterBy ? state.filterBy : ''
             commit({ type: 'setLoading', isLoading: true })
             stayService
                 .query(filterBy)
                 .then((stays) => {
                     commit({ type: 'setStays', stays })
+                    commit({type:'setTempStays',stays})
                 })
                 .finally(() => {
                     commit({ type: 'setLoading', isLoading: false })
                 })
+        },
+        setFilter({commit,state,dispatch},{filterBy}){
+           commit({type:'setFilter',filterBy})
+               console.log('setting small');
+              dispatch({type:'loadStays'})
+           
+        },
+        setBigFilter({commit,state,dispatch},{filterBy}){
+           commit({type:'setBigFilter',filterBy})
+               console.log('setting big',filterBy);
+               dispatch({type:'loadStays'})
+
+        },
+        resetFilter({commit,dispatch},{filterBy}){
+            commit({type:'resetFilter',filterBy})
+            dispatch({type:'loadStays'})
+
         },
         addStay({ commit }, { stay }) {
             return stayService.save(stay).then((savedStay) => {

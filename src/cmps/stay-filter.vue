@@ -108,14 +108,11 @@ export default {
     // this.filterBy()
   },
   methods: {
-    setCountry(val) {
-      console.log("val", val);
-    },
-    search() {
-      eventBusService.$emit("setBigFilter", { ...this.filterBy });
-      eventBusService.$emit("saveOrder", this.currOrder);
-      console.log(this.filterBy);
-      this.$emit("filter");
+   async search(){
+      await eventBusService.$emit('setBigFilter',{...this.filterBy})
+     await eventBusService.$emit('saveOrder', this.currOrder)
+      this.$emit('filter')
+     
     },
     setCountAdults(val) {
       if (val === "down") {

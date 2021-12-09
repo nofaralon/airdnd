@@ -24,10 +24,11 @@ export default {
   },
   created() {
   this.$store.commit({type:'setUserPage',page:'explore'})
-  eventBusService.$on('setBigFilter',filterBy=>{
-       this.$store.commit({type:'setBigFilter', filterBy})
-       if (this.$router.params !== '/stay') this.$router.push('/stay')
-     })
+  // eventBusService.$on('setBigFilter',filterBy=>{
+  //   console.log('filterrr',filterBy);
+  //      this.$store.dispatch({type:'setBigFilter', filterBy})
+  //      if (this.$router.params !== '/stay') this.$router.push('/stay')
+  //    })
 
   },
   methods: {
@@ -35,7 +36,7 @@ export default {
      await this.$store.dispatch({ type: "toggleLike", stay });
     },
     setFilter(filterBy){
-      this.$store.commit({type:'setFilter', filterBy})
+      this.$store.dispatch({type:'setFilter', filterBy})
     }
   },
   computed: {
