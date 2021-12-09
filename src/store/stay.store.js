@@ -208,13 +208,21 @@ export const stayStore = {
                 return stay
             })
         },
+
+        
         getStayByUserId({ commit }, { userId }) {
             console.log('userId- in stor stays', userId);
             return stayService.getByUserId(userId).then((stays) => {
                 commit({ type: 'setUserStays', stays })
+                console.log(stays);
                 return stays
             })
         },
+
+
+
+
+
         async addReview({ commit }, { details }) {
             console.log(details);
             const { stayId, review } = details

@@ -30,16 +30,14 @@
             <el-date-picker
               v-model="value1"
               type="daterange"
-              start-placeholder="Start date"
-              end-placeholder="End date"
+              start-placeholder="Add dates"
+              end-placeholder="Add dates"
             >
             </el-date-picker>
           <button @click="toggaleModal" class="check-in filter-btn">
-            <p>Guests</p>
-            <p v-if="filterBy.guests">
-              {{ filterBy.guests }} Guest<span v-show="filterBy.guests !== 1"
-                >s</span
-              >
+            <p class="guest">Guests</p>
+            <p class="check-in-add-guest bold" v-if="filterBy.guests">
+              {{ filterBy.guests }} Guest<span v-show="filterBy.guests !== 1">s</span>
             </p>
             <p class="check-in-add-guest" v-else>Add guests</p>
           </button>
