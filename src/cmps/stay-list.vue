@@ -1,5 +1,7 @@
 <template>
   <section class="card-list">
+    <h1 class="stays-text" v-if="currCountry">{{staysCount}} Stays in {{currCountry}}</h1>
+    <h1 class="stays-text" v-else> {{staysCount}} stays over the world </h1>
     <ul class="card-grid">
       <li v-for="stay in stays" :key="stay._id">
         <stay-preview :stay="stay" @setLiked="$emit('setLiked', stay)"/>        
@@ -24,7 +26,9 @@ export default {
       isLiked:false,
     };
   },
-  created() {},
+  created() {
+    console.log('curr',this.currCountry);
+  },
   methods: {
     setFilter(filterBy){
       this.$emit('setFilter',filterBy)
@@ -34,6 +38,12 @@ export default {
     userId(){
       if(this.$store.getters.user) return this.$store.getters.user._id
     },
+    staysCount(){
+      return this.stays.length
+    },
+    currCountry(){
+      return this.$store.getters.currCountry
+    }
     
   },
   components: {
