@@ -31,10 +31,10 @@
         </div>
         <div class="main-bar-orders">
           <h3>Orders</h3>
-          <div class="orders-btns">
-            <p>0</p>
+          <div v-if="userOrders" class="orders-btns">
+            <p>{{userOrders.length}}</p>
             <span>0 <button class="order-status green"></button></span>
-            <span>0 <button class="order-status yellow"></button></span>
+            <span>{{pendingOreders.length}} <button @click="sortOrdersBy('pending')" class="order-status yellow"></button></span>
             <span>0 <button class="order-status red"></button></span>
           </div>
         </div>
@@ -53,10 +53,7 @@
           </div>
 
           <div class="conditional-container" v-if="userStays">
-            <div
-              v-show="stays"
-              class="user-stay"
-            >
+            <div v-show="stays" class="user-stay">
               <!-- <el-table :data="userStays" style="width: 100%">
                 <el-table-column prop="name" label="Name" width="280">
                 </el-table-column>
@@ -81,15 +78,30 @@
               </p> -->
             </div>
           </div>
-
-          <div v-show="orders" class="info-header">
-            <p>Guest name</p>
-            <p>Dates</p>
-            <p>Status</p>
-            <p>Price</p>
+          <div>
+            <table v-if="orders && userOrders" class="info-header">
+                <th>Guest name</th>
+                <th>Dates</th>
+                <th>Number of guests</th>
+                <th>Status</th>
+                <th>Price</th>
+              <tbody>
+                <tr v-for="(order, index) in userOrders" :key="index">
+                  <td>{{ order.buyer.fullname }}</td>
+                  <td>{{ order.Dates[index] }}</td>
+                  <td>{{ order.guests }}</td>
+                  <td>{{ order.status }}</td>
+                  <td>{{ order.totalPrice.toLocaleString("en-US", {
+          currency: "USD",
+          style: "currency",
+          maximumFractionDigits: 0,
+        }) }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
-          <div class="conditional-container" v-if="userOrders">
+          <!-- <div class="conditional-container" v-if="userOrders">
             <div
               v-show="orders"
               v-for="(order, index) in userOrders"
@@ -100,7 +112,7 @@
               <p>{{ order.status }}</p>
               <p>{{ order.stay.totalPrice }}</p>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -111,8 +123,8 @@
 export default {
   data() {
     return {
-      orders: false,
-      stays: true,
+      orders: true,
+      stays: false,
       userStays: null,
       userOrders: null,
     };
@@ -143,24 +155,37 @@ export default {
     // },
     async getOrders() {
       if (!this.userOrders) {
-          const userId = this.user._id;
-        const filterBy={
-            userId
-        }
-        console.log('userId',userId);
+        const userId = this.user._id;
+        const filterBy = {
+          userId,
+        };
+        console.log("userId", userId);
         this.userOrders = await this.$store.dispatch({
           type: "getUserOrders",
-          filterBy
+          filterBy,
         });
-            console.log('this.userOrders',this.userOrders);
+        console.log("this.userOrders", this.userOrders);
       }
-      console.log('after-', this.userOrders);
+      console.log("after-", this.userOrders);
     },
+    sortOrdersBy(type){
+        if(type==='pending'){
+            this.userOrders=this.pendingOreders
+        }
+    }
   },
   computed: {
     user() {
       return this.$store.getters.user;
     },
+    pendingOreders() {
+      return this.userOrders.filter(order=>{
+          return order.status==='pending'
+      })
+    },
+    // staysUserOwn() {
+    //   return this.userStays || 0;
+    // },
   },
 };
 </script>

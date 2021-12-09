@@ -20,7 +20,7 @@ export const stayService = {
     // _createStays()
 
 
-async function query(filterBy) {
+async function query(filterBy=null) {
     // return storageService.query(STAY_KEY)
 
     return httpService.get(`stay/${filterBy.userId}`)
