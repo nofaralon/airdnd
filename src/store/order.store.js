@@ -36,8 +36,10 @@ export const orderStore = {
     },
     getters: {
         order(state) {
-            console.log('state currOrder', state.currOrder);
             return state.currOrder
+        },
+        orders(state){
+            return state.orders
         }
     },
     mutations: {

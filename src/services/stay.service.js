@@ -11,6 +11,7 @@ import { httpService } from './http.service'
 export const stayService = {
         query,
         getById,
+        getByUserId,
         remove,
         save,
         getEmptyStay,
@@ -34,6 +35,11 @@ async function getById(id) {
 
     const stay = httpService.get(`stay/${id}`)
     return stay
+}
+
+async function getByUserId(id) {
+    // return storageService.get(STAY_KEY, id)
+    return httpService.get(`stay/user/${id}`)
 }
 
 async function remove(id) {

@@ -16,16 +16,14 @@ export const stayStore = {
             guests: null,
             Dates: "",
             type: [],
-            fromPrice:0,
-            toPrice:450,
-            beds:0,
-            bedrooms:0,
-            bathrooms:0
+            fromPrice: 0,
+            toPrice: 450,
+            beds: 0,
+            bedrooms: 0,
+            bathrooms: 0
         },
-        tempStays:[]
-
-
-
+        tempStays: [],
+        userStays: [],
     },
     getters: {
         stays(state) {
@@ -101,7 +99,7 @@ export const stayStore = {
             //     const startIdx = state.pageIdx * state.pageSize
             //     stays = stays.slice(startIdx, startIdx + state.pageSize)
             // }
-            state.tempStays=stays
+            state.tempStays = stays
             return stays
         },
         isLoading({ isLoading }) {
@@ -113,32 +111,35 @@ export const stayStore = {
         allStays(state) {
             return state.stays
         },
-        tempStays(state){
+        tempStays(state) {
             return state.tempStays
         }
-      
+
     },
     mutations: {
         setFilter(state, { filterBy }) {
             if (filterBy.fromPrice) {
-                state.filterBy.fromPrice =filterBy.fromPrice  
+                state.filterBy.fromPrice = filterBy.fromPrice
             }
             if (filterBy.toPrice) {
-                state.filterBy.toPrice =filterBy.toPrice  
+                state.filterBy.toPrice = filterBy.toPrice
             }
             if (filterBy.type.length) {
-                state.filterBy.type =filterBy.type  
+                state.filterBy.type = filterBy.type
             }
             if (filterBy.beds) {
-                state.filterBy.beds =filterBy.beds  
+                state.filterBy.beds = filterBy.beds
             }
             if (filterBy.bedrooms) {
-                state.filterBy.bedrooms =filterBy.bedrooms  
+                state.filterBy.bedrooms = filterBy.bedrooms
             }
             if (filterBy.bathrooms) {
-                state.filterBy.bathrooms =filterBy.bathrooms  
+                state.filterBy.bathrooms = filterBy.bathrooms
             }
 
+        },
+        setUserStays(state, { stays }) {
+            state.userStays = stays
         },
         setLoading(state, { isLoading }) {
             state.isLoading = isLoading
@@ -167,17 +168,17 @@ export const stayStore = {
         setStays(state, { stays }) {
             state.stays = stays
         },
-        getStay(state, { stay }) {
+        setStay(state, { stay }) {
             state.currStay = stay
         },
-        setBigFilter(state,{filterBy}){
-            if(filterBy.country){
-                state.filterBy.country =filterBy.country
-            }else{
-                state.filterBy.country='';
+        setBigFilter(state, { filterBy }) {
+            if (filterBy.country) {
+                state.filterBy.country = filterBy.country
+            } else {
+                state.filterBy.country = '';
             }
-            if(filterBy.guests){
-                state.filterBy.guests =filterBy.guests
+            if (filterBy.guests) {
+                state.filterBy.guests = filterBy.guests
             }
         },
         resetFilter(state,{filterBy}){
@@ -255,13 +256,21 @@ export const stayStore = {
         },
         getStay({ commit }, { stayId }) {
             commit({ type: 'setLoading', isLoading: true })
+            console.log('stayId-', stayId);
 
             if (!stayId) {
                 return stayService.getEmptyStay()
             } else return stayService.getById(stayId).then((stay) => {
-                commit({ type: 'getStay', stay })
+                commit({ type: 'setStay', stay })
                 commit({ type: 'setLoading', isLoading: false })
                 return stay
+            })
+        },
+        getStayByUserId({ commit }, { userId }) {
+            console.log('userId- in stor stays', userId);
+            return stayService.getByUserId(userId).then((stays) => {
+                commit({ type: 'setUserStays', stays })
+                return stays
             })
         },
         async addReview({ commit }, { details }) {
@@ -272,7 +281,7 @@ export const stayStore = {
             commit({ type: 'updateStay', stay })
             return stay
         },
-        async getUserStays({commit},{filterBy}){
+        async getUserStays({ commit }, { filterBy }) {
             console.log(filterBy);
             return await stayService.query(filterBy)
         }
