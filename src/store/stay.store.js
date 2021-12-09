@@ -242,6 +242,7 @@ export const stayStore = {
             console.log('userId- in stor stays', userId);
             return stayService.getByUserId(userId).then((stays) => {
                 commit({ type: 'setUserStays', stays })
+                console.log(stays);
                 return stays
             })
         },
