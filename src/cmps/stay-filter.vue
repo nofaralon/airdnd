@@ -4,54 +4,71 @@
       <button class="filter-btn">
         <div class="filter-container">
           <button class="country filter-btn">
-            <label >
-            <p>Location</p>
-            <input  class="filter-country-input"  list="locations" type="search" placeholder="Where are you going?" v-model="filterBy.country">   
+            <label>
+              <p>Location</p>
+              <input
+                class="filter-country-input"
+                list="locations"
+                type="search"
+                placeholder="Where are you going?"
+                v-model="filterBy.country"
+              />
             </label>
           </button>
           <datalist id="locations">
-            <option >France</option>
-            <option >Florida</option>
-            <option >Iceland</option>
-            <option >Netherlands</option>
+            <option>France</option>
+            <option>Florida</option>
+            <option>Iceland</option>
+            <option>Netherlands</option>
           </datalist>
           <button class="check-in filter-btn">
-          <p >Check in</p>
+            <p>Check in</p>
           </button>
           <button class="check-in filter-btn">
-          <p >Check out</p>
+            <p>Check out</p>
           </button>
+            <el-date-picker
+              v-model="value1"
+              type="daterange"
+              start-placeholder="Start date"
+              end-placeholder="End date"
+            >
+            </el-date-picker>
           <button @click="toggaleModal" class="check-in filter-btn">
-          <p >Guests</p>
-          <p v-if="filterBy.guests">{{filterBy.guests}} Guest<span v-show="filterBy.guests!==1">s</span></p>
-          <p class="check-in-add-guest" v-else>Add guests</p>
+            <p>Guests</p>
+            <p v-if="filterBy.guests">
+              {{ filterBy.guests }} Guest<span v-show="filterBy.guests !== 1"
+                >s</span
+              >
+            </p>
+            <p class="check-in-add-guest" v-else>Add guests</p>
           </button>
-          
-           <div v-if ="isModalOpen" class="guestt-modal">
-        <div class="noff">
-          <div>
-            <h2>Adults</h2>
-            <span>Age 13+</span>
+
+          <div v-if="isModalOpen" class="guestt-modal">
+            <div class="noff">
+              <div>
+                <h2>Adults</h2>
+                <span>Age 13+</span>
+              </div>
+              <div>
+                <button @click="setCountAdults('down')">-</button>
+                <span class="guests">{{ currOrder.adults }}</span>
+                <button @click="setCountAdults('up')">+</button>
+              </div>
+            </div>
+            <div>
+              <div>
+                <h2>Kids</h2>
+                <span>Ages 2–12</span>
+              </div>
+              <div>
+                <button @click="setCountKids('down')">-</button>
+                <span class="guests">{{ currOrder.kids }}</span>
+                <button @click="setCountKids('up')">+</button>
+              </div>
+            </div>
           </div>
-          <div>
-            <button @click="setCountAdults('down')">-</button>
-            <span class="guests">{{currOrder.adults}}</span>
-            <button @click="setCountAdults('up')">+</button>
-          </div>
-        </div>
-        <div>
-          <div>
-            <h2>Kids</h2>
-            <span>Ages 2–12</span>
-          </div>
-          <div>
-            <button @click="setCountKids('down')">-</button>
-            <span class="guests">{{currOrder.kids}}</span>
-            <button @click="setCountKids('up')">+</button>
-          </div>
-        </div>
-      </div>
-      
+
           <button @click="search" class="search-btn">
             <svg
               aria-hidden="true"
@@ -76,83 +93,77 @@
 </template>
 
 <script>
-import {eventBusService, setFilter} from '../services/event-bus.service'
+import { eventBusService, setFilter } from "../services/event-bus.service";
 export default {
-   name: "stay-filter",
+  name: "stay-filter",
   data() {
     return {
-   
-      isModalOpen:false,
+      isModalOpen: false,
+      value1: ''
       // currOrder:null
-
     };
   },
-  created(){
+  created() {
     // this.currOrder=this.setOrder()
     // this.filterBy()
   },
   methods: {
-    setCountry(val){
-      console.log('val',val);
+    setCountry(val) {
+      console.log("val", val);
     },
-    search(){
-      eventBusService.$emit('setBigFilter',{...this.filterBy})
-      eventBusService.$emit('saveOrder', this.currOrder)
+    search() {
+      eventBusService.$emit("setBigFilter", { ...this.filterBy });
+      eventBusService.$emit("saveOrder", this.currOrder);
       console.log(this.filterBy);
-      this.$emit('filter')
-     
+      this.$emit("filter");
     },
     setCountAdults(val) {
       if (val === "down") {
         if (this.currOrder.adults === 0) return;
         this.currOrder.adults -= 1;
         this.currOrder.guests -= 1;
-        this.filterBy.guests -=1
+        this.filterBy.guests -= 1;
       } else {
-        
         this.currOrder.adults += 1;
         this.currOrder.guests += 1;
-        this.filterBy.guests +=1
+        this.filterBy.guests += 1;
       }
-      eventBusService.$emit('saveOrder', this.currOrder)
-
+      eventBusService.$emit("saveOrder", this.currOrder);
     },
     setCountKids(val) {
       if (val === "down") {
         if (this.currOrder.kids === 0) return;
         this.currOrder.kids -= 1;
         this.currOrder.guests -= 1;
-        this.filterBy.guests -=1
+        this.filterBy.guests -= 1;
       } else {
-        if(this.currOrder.kids === 0 && this.currOrder.adults === 0) {
-          this.currOrder.adults += 1
+        if (this.currOrder.kids === 0 && this.currOrder.adults === 0) {
+          this.currOrder.adults += 1;
           this.currOrder.guests += 1;
-          this.filterBy.guests +=1
+          this.filterBy.guests += 1;
         }
         this.currOrder.kids += 1;
         this.currOrder.guests += 1;
-        this.filterBy.guests +=1
+        this.filterBy.guests += 1;
       }
-      eventBusService.$emit('saveOrder', this.currOrder)
+      eventBusService.$emit("saveOrder", this.currOrder);
     },
-    toggaleModal(){
-      this.isModalOpen =!this.isModalOpen
+    toggaleModal() {
+      this.isModalOpen = !this.isModalOpen;
     },
+  },
 
-    
-  },
- 
   computed: {
-    filterBy(){
-    const filter=JSON.parse(JSON.stringify(this.$store.getters.filterBy))
-    return filter
+    filterBy() {
+      const filter = JSON.parse(JSON.stringify(this.$store.getters.filterBy));
+      return filter;
     },
-    currOrder(){
-    const order = JSON.parse(JSON.stringify(this.$store.getters.order))
-    console.log('computed order',order);
-    return order
+    currOrder() {
+      const order = JSON.parse(JSON.stringify(this.$store.getters.order));
+      console.log("computed order", order);
+      return order;
     },
   },
-  components: {}
+  components: {},
 };
 </script>

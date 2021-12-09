@@ -152,6 +152,7 @@ export default {
     async loadStay() {
       const { stayId } = this.$route.params;
       this.stay = await this.$store.dispatch({ type: "getStay", stayId });
+      console.log('satyyyy', this.stay);
       if (this.stay) {
         this.imgForDisplay();
       }
