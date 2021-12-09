@@ -131,9 +131,9 @@ export const orderStore = {
             const orders= await orderService.query()
             return orders
         },
-        async getUserOrders({userId}){
-            console.log('store filter', userId);
-            return await orderService.query(userId)
+        async getUserOrders({},{filterBy}){
+            console.log('store filter', filterBy);
+            return await orderService.query(filterBy)
          }
 
 
