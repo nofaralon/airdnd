@@ -15,7 +15,7 @@
       </div>
 
     <div v-show="!open && !userPage" class="changing-middle-container">
-    <stay-filter-small  @filter="toggleFilter"/>
+    <stay-filter-small :filter="filterBy" @filter="toggleFilter"/>
     </div>
 <div v-show="open" class="changing-middle-container filter-open">
     <stay-filter @filter="toggleFilter" :order="order"  />
@@ -120,6 +120,9 @@ export default {
 
       return this.$store.getters.user;
     },
+    filterBy() {
+      return this.$store.getters.filterBY
+    }
   },
   components:{
     StayFilter,

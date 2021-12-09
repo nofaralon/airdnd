@@ -57,7 +57,7 @@
               v-show="stays"
               class="user-stay"
             >
-              <el-table :data="userStays" style="width: 100%">
+              <!-- <el-table :data="userStays" style="width: 100%">
                 <el-table-column prop="name" label="Name" width="280">
                 </el-table-column>
                 <el-table-column prop="loc.address" label="Address" width="280">
@@ -66,7 +66,7 @@
                 </el-table-column>
                 <el-table-column prop="likedByUsers.length" label="likes">
                 </el-table-column>
-              </el-table>
+              </el-table> -->
               <!-- <p>
                 {{ stay.name }}
               </p>
@@ -119,7 +119,7 @@ export default {
   },
   created() {
     this.$store.commit({ type: "setUserPage", page: "userPage" });
-    this.getStays();
+    // this.getStays();
     this.getOrders();
   },
   methods: {
@@ -132,18 +132,18 @@ export default {
         this.stays = true;
       }
     },
-    async getStays() {
-      if (!this.userStays) {
-        const userId = 536581;
-        this.userStays = await this.$store.dispatch({
-          type: "getUserStays",
-          filterBy: userId,
-        });
-      }
-    },
+    // async getStays() {
+    //   if (!this.userStays) {
+    //     const userId = 536581;
+    //     this.userStays = await this.$store.dispatch({
+    //       type: "getUserStays",
+    //       filterBy: userId,
+    //     });
+    //   }
+    // },
     async getOrders() {
       if (!this.userOrders) {
-        const userId = this.user._id;
+          const userId = this.user._id;
         const filterBy={
             userId
         }
@@ -152,7 +152,9 @@ export default {
           type: "getUserOrders",
           filterBy
         });
+            console.log('this.userOrders',this.userOrders);
       }
+      console.log('after-', this.userOrders);
     },
   },
   computed: {
