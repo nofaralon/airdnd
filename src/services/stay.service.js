@@ -22,10 +22,10 @@ export const stayService = {
 
 
 async function query(filter) {
-    console.log('got to service',filter);
+    console.log('got to service', filter);
     // return storageService.query(STAY_KEY)
-        const filterBy = JSON.stringify(filter)
-        return httpService.get(`stay/${filterBy}`)
+    const filterBy = JSON.stringify(filter)
+    return httpService.get(`stay/${filterBy}`)
 
 
 }
@@ -33,7 +33,7 @@ async function query(filter) {
 async function getById(id) {
     // return storageService.get(STAY_KEY, id)
 
-    const stay = httpService.get(`stay/${id}`)
+    const stay = httpService.get(`stay/details/${id}`)
     return stay
 }
 
