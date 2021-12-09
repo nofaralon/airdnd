@@ -61,7 +61,7 @@
   </button>
       </div>
     </div>
-    <explore-filter></explore-filter>
+    <explore-filter v-show="!open && !userPage &&!details"></explore-filter>
   </header>
 </div>
 
