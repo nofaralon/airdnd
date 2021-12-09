@@ -23,7 +23,7 @@ export const stayService = {
 async function query(filterBy) {
     // return storageService.query(STAY_KEY)
 
-    return httpService.get(`stay`, filterBy)
+    return httpService.get(`stay/${filterBy.userId}`)
 }
 
 async function getById(id) {

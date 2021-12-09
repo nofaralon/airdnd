@@ -154,6 +154,7 @@ export default {
         });
             console.log('this.userOrders',this.userOrders);
       }
+      console.log('after-', this.userOrders);
     },
   },
   computed: {
