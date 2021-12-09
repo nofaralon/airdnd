@@ -50,7 +50,6 @@ export const stayStore = {
         tempStays(state) {
             return state.tempStays
         }
-
     },
     mutations: {
         setFilter(state, { filterBy }) {
@@ -81,7 +80,6 @@ export const stayStore = {
             }else {
                 state.filterBy.bathrooms =0;
             }
-
         },
         setUserStays(state, { stays }) {
             state.userStays = stays
