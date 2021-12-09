@@ -194,9 +194,9 @@ export default {
     // staysUserOwn() {
     //   return this.userStays || 0;
     // },
-    orders(){
-        return this.$store.getters.orders
-    }
+    // orders(){
+    //     return this.$store.getters.orders
+    // }
   },
 };
 </script>
