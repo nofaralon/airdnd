@@ -27,12 +27,15 @@ export default {
     window.addEventListener('scroll', this.handleScroll);
      this.$store.commit({type:'setUserPage',page:'home'})
      eventBusService.$on('setFilter',filterBy=>{
-       this.$store.commit({type:'setFilter', filterBy})
+       this.$store.dispatch({type:'setFilter', filterBy})
        if (this.currPage) this.$router.push('/stay')
+     })
+      eventBusService.$on('setBigFilter',filterBy=>{
+       this.$store.dispatch({type:'setBigFilter', filterBy})
+       if (this.$store.getters.userPage==='home')this.$router.push('/stay')
      })
      eventBusService.$on('saveOrder',newOrder=>{
        const order=newOrder
-       console.log('emited testOrder',order);
        this.$store.commit({type:'setOrder', order})
 
       })

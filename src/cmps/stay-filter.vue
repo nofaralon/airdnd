@@ -93,8 +93,8 @@ export default {
   },
   methods: {
    async search(){
-     await eventBusService.$emit('setBigFilter',{...this.filterBy})
-      eventBusService.$emit('saveOrder', this.currOrder)
+      await eventBusService.$emit('setBigFilter',{...this.filterBy})
+     await eventBusService.$emit('saveOrder', this.currOrder)
       this.$emit('filter')
      
     },

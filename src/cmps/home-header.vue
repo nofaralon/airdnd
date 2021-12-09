@@ -85,7 +85,6 @@ export default {
   created(){
     window.addEventListener('scroll', this.handleScroll);
     this.order=orderService.getEmptyOrder()
-    console.log('ggg',this.order);
 
   },
  destroyed() {
