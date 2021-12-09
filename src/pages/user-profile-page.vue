@@ -8,8 +8,8 @@
       </div>
 
       <div class="main-bar">
-        <div class="main-bar-rating">
-          <h3>Total rating</h3>
+        <div v-if="userStays" class="main-bar-rating">
+          <h3>Total avarage rating</h3>
           <p>
             <svg
               aria-hidden="true"
@@ -26,7 +26,9 @@
                 d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
               ></path>
             </svg>
-            0
+            {{totalRating.toLocaleString("en-US", {
+          maximumFractionDigits: 2,
+        })}}
           </p>
         </div>
         <div class="main-bar-orders">
@@ -44,40 +46,34 @@
           <p>0</p>
         </div>
 
+        <div v-if="userStays" class="main-bar-stays">
+          <h3>Total Stays</h3>
+          <p>{{userStays.length}}</p>
+        </div>
+
         <div class="info-container">
-          <div v-show="stays" class="info-header">
-            <p>Name</p>
-            <p>Address</p>
-            <p>Price</p>
-            <p>Likes</p>
+
+           <div>
+            <table v-if="stays && userStays" class="info-header">
+                <th>Name</th>
+                <th>Address</th>
+                <th>Price</th>
+                <th>Likes</th>
+              <tbody>
+                <tr v-for="(stay, index) in userStays" :key="index">
+                  <td>{{ stay.name }}</td>
+                  <td>{{ stay.loc.address }}</td>
+                  <td>{{ stay.price.toLocaleString("en-US", {
+          currency: "USD",
+          style: "currency",
+          maximumFractionDigits: 0,
+        }) }}</td>
+                  <td>{{ stay.likedByUsers.length }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
-          <div class="conditional-container" v-if="userStays">
-            <div v-show="stays" class="user-stay">
-              <!-- <el-table :data="userStays" style="width: 100%">
-                <el-table-column prop="name" label="Name" width="280">
-                </el-table-column>
-                <el-table-column prop="loc.address" label="Address" width="280">
-                </el-table-column>
-                <el-table-column prop="price" label="Price">
-                </el-table-column>
-                <el-table-column prop="likedByUsers.length" label="likes">
-                </el-table-column>
-              </el-table> -->
-              <!-- <p>
-                {{ stay.name }}
-              </p>
-              <p>
-                {{ stay.loc.address }}
-              </p>
-              <p>
-                {{ stay.price }}
-              </p>
-              <p>
-                {{ stay.likedByUsers.length }}
-              </p> -->
-            </div>
-          </div>
           <div>
             <table v-if="orders && userOrders" class="info-header">
                 <th>Guest name</th>
@@ -145,16 +141,13 @@ export default {
       }
     },
     async getStays() {
-      console.log('hiiiiii');
       if (!this.userStays) {
           const userId = this.user._id;
-          console.log('userId', userId);
         this.userStays = await this.$store.dispatch({
           type: "getStayByUserId",
           userId,
         });
       }
-       console.log('this.userStays', this.userStays);
     },
     async getOrders() {
       if (!this.userOrders) {
@@ -167,9 +160,7 @@ export default {
           type: "getUserOrders",
           filterBy,
         });
-        console.log("this.userOrders", this.userOrders);
       }
-      console.log("after-", this.userOrders);
     },
     sortOrdersBy(type){
         if(type==='pending'){
@@ -181,6 +172,20 @@ export default {
     user() {
       return this.$store.getters.user;
     },
+    totalRating(){
+        var ratings=0
+        var reviewsNum=0
+        this.userStays.forEach(stay => {
+           ratings+=stay.reviews.reduce((acc,review)=>{
+                acc+=Number(review.rate)
+                console.log(acc,"acc");
+                reviewsNum+=1
+                return acc
+            },0)
+        });
+        return (ratings/reviewsNum)
+    },
+    
     pendingOreders() {
       return this.userOrders.filter(order=>{
           return order.status==='pending'
@@ -189,6 +194,9 @@ export default {
     // staysUserOwn() {
     //   return this.userStays || 0;
     // },
+    orders(){
+        return this.$store.getters.orders
+    }
   },
 };
 </script>

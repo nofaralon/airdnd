@@ -6,6 +6,7 @@
         margin-right: 10px;
         display: flex;
         flex-direction: column;
+        flex-basis: 20%;
         & button{
             background-color: transparent;
             border: none;
@@ -23,6 +24,8 @@
         }
     }
     .main-bar{
+        width: 80%;
+        flex-basis: 80%;
         position: relative;
         margin-left: 15px;
         display: flex;
@@ -51,6 +54,9 @@
             height: 15px;
             padding-top: 3px;
         }
+        .main-bar-stays{
+            margin: 20px 20px 20px 0;
+        }
         .main-bar-orders{
             margin: 20px 0;
             .order-status{
@@ -68,6 +74,7 @@
                     font-family: manrope-bold;
                 }
             }
+            
             .red{
                 background-color: rgb(243, 74, 74);
             }
