@@ -210,6 +210,8 @@ export const stayStore = {
                 return stay
             })
         },
+
+        
         getStayByUserId({ commit }, { userId }) {
             console.log('userId- in stor stays', userId);
             return stayService.getByUserId(userId).then((stays) => {
@@ -218,6 +220,11 @@ export const stayStore = {
                 return stays
             })
         },
+
+
+
+
+
         async addReview({ commit }, { details }) {
             console.log(details);
             const { stayId, review } = details
