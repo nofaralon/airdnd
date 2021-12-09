@@ -119,7 +119,7 @@ export default {
   },
   created() {
     this.$store.commit({ type: "setUserPage", page: "userPage" });
-    // this.getStays();
+    this.getStays();
     this.getOrders();
   },
   methods: {
@@ -132,15 +132,18 @@ export default {
         this.stays = true;
       }
     },
-    // async getStays() {
-    //   if (!this.userStays) {
-    //     const userId = 536581;
-    //     this.userStays = await this.$store.dispatch({
-    //       type: "getUserStays",
-    //       filterBy: userId,
-    //     });
-    //   }
-    // },
+    async getStays() {
+      console.log('hiiiiii');
+      if (!this.userStays) {
+          const userId = this.user._id;
+          console.log('userId', userId);
+        this.userStays = await this.$store.dispatch({
+          type: "getStayByUserId",
+          userId,
+        });
+      }
+       console.log('this.userStays', this.userStays);
+    },
     async getOrders() {
       if (!this.userOrders) {
           const userId = this.user._id;

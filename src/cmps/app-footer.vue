@@ -1,7 +1,7 @@
 <template>
   <section class="app-footer">
-    <div class="members">
-      <div v-for="(member, index) in members" :key="index">
+    <div class="members-container" >
+      <div class="members" v-for="(member, index) in members" :key="index">
         <h3>{{ member.name }}</h3>
         <div>
           <svg
@@ -37,7 +37,7 @@
               d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"
             ></path>
           </svg>
-          <span>{{ member.email }}</span>
+          <a :href="member.email"> {{ member.mail }}</a>
         </div>
         <div>
           <svg
@@ -75,8 +75,9 @@
           </svg>
           <a :href="member.gitHub"> {{ member.gitHub }}</a>
         </div>
+
+        </div>
       </div>
-    </div>
     <div class="footer-container">
       <p>© 2021 Airbnb, Inc. · Privacy · Terms · Sitemap</p>
       <div class="icons">
@@ -165,23 +166,26 @@ export default {
         {
           name: "Nofar Alon",
           whatsApp: "050-2237663",
-          email: "nofaralon28@gmail.com",
+          email: "mailto:nofaralon28@gmail.com",
+          mail: "nofaralon28@gmail.com",
           linkdin: "https://www.linkedin.com/in/nofar-alon-94ab701a8/",
           gitHub: "https://github.com/nofaralon",
         },
         {
           name: "Yahav Freeman",
           whatsApp: "054-7697300",
-          email: "nofaralon28@gmail.com",
-          linkdin: "https://www.linkedin.com/in/nofar-alon-94ab701a8/",
-          gitHub: "https://github.com/nofaralon",
+          email: "mailto:freeman.yav@gmail.com",
+          mail: "freeman.yav@gmail.com",
+          linkdin: "https://www.linkedin.com/in/yahav-freeman-79116a178/",
+          gitHub: "https://github.com/yahavFreeman",
         },
         {
-          name: "Gilad",
+          name: "Gilad Abrevaya",
           whatsApp: "050-4538550",
-          email: "nofaralon28@gmail.com",
-          linkdin: "https://www.linkedin.com/in/nofar-alon-94ab701a8/",
-          gitHub: "https://github.com/nofaralon",
+          email: "mailto:gilada8892@gmail.com",
+          mail: "gilada8892@gmail.com",
+          linkdin: "https://www.linkedin.com",
+          gitHub: "https://github.com/gigilad",
         },
       ],
     };
