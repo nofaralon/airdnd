@@ -92,13 +92,9 @@ export default {
     // this.filterBy()
   },
   methods: {
-    setCountry(val){
-      console.log('val',val);
-    },
-    search(){
-      eventBusService.$emit('setBigFilter',{...this.filterBy})
+   async search(){
+     await eventBusService.$emit('setBigFilter',{...this.filterBy})
       eventBusService.$emit('saveOrder', this.currOrder)
-      console.log(this.filterBy);
       this.$emit('filter')
      
     },
