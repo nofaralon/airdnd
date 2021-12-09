@@ -31,12 +31,12 @@ export const orderStore = {
             status: 'pending'
         },
         orders: [],
-        
+
 
     },
     getters: {
-        order(state){
-            console.log('state currOrder',state.currOrder);
+        order(state) {
+            console.log('state currOrder', state.currOrder);
             return state.currOrder
         }
     },
@@ -56,12 +56,12 @@ export const orderStore = {
             state.orders = orders
         },
         setOrder(state, { order }) {
-            console.log('setOrder order',order);
+            console.log('setOrder order', order);
             state.currOrder = order
-            console.log('setOrder state order',state.currOrder);
+            console.log('setOrder state order', state.currOrder);
         },
-        clearOrder(state){
-            state.currOrder={
+        clearOrder(state) {
+            state.currOrder = {
                 hostId: '',
                 createdAt: Date.now(),
                 buyer: {
@@ -120,21 +120,21 @@ export const orderStore = {
                 return order
             })
         },
-        getEmptyOrder({commit}){
+        getEmptyOrder({ commit }) {
             return orderService.getEmptyOrder()
         },
-        async saveOrder({commit} ,{newOrder}){
-           const order = await orderService.saveCurrOrder(newOrder)
-           commit({type:'getOrder',order})
+        async saveOrder({ commit }, { newOrder }) {
+            const order = await orderService.saveCurrOrder(newOrder)
+            commit({ type: 'getOrder', order })
         },
-        async getOrders({commit},{userId}){
-            const orders= await orderService.query()
+        async getOrders({ commit }, { userId }) {
+            const orders = await orderService.query()
             return orders
         },
-        async getUserOrders({userId}){
-            console.log('store filter', userId);
-            return await orderService.query(userId)
-         }
+        async getUserOrders({}, { filterBy }) {
+            console.log('store filter', filterBy);
+            return await orderService.query(filterBy)
+        }
 
 
 

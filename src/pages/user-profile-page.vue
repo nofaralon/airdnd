@@ -153,6 +153,7 @@ export default {
           filterBy
         });
       }
+      console.log('after-', this.userOrders);
     },
   },
   computed: {
