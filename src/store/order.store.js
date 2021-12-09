@@ -58,9 +58,7 @@ export const orderStore = {
             state.orders = orders
         },
         setOrder(state, { order }) {
-            console.log('setOrder order', order);
             state.currOrder = order
-            console.log('setOrder state order', state.currOrder);
         },
         clearOrder(state) {
             state.currOrder = {

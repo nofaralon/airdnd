@@ -147,6 +147,7 @@ export default {
           type: "getStayByUserId",
           userId,
         });
+        console.log("this.userStays",this.userStays);
       }
     },
     async getOrders() {

@@ -21,10 +21,13 @@ export const stayService = {
     // _createStays()
 
 
-async function query(filterBy=null) {
+async function query(filter) {
+    console.log('got to service',filter);
     // return storageService.query(STAY_KEY)
+        const filterBy = JSON.stringify(filter)
+        return httpService.get(`stay/${filterBy}`)
 
-    return httpService.get(`stay/`)
+
 }
 
 async function getById(id) {

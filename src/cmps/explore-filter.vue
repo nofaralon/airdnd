@@ -93,13 +93,13 @@
 
 <script>
 import FilterBtn from "./filter-btn.vue";
-import {eventBusService} from '../services/event-bus.service'
+import {eventBusService,updatePrices} from '../services/event-bus.service'
 export default {
   props: {},
   data() {
     return {
       avg:null,
-      prices:null,
+      prices:this.modalPrices,
       modalType: "",
       status: "",
       modalTypes: ["price", "type", "beds", "bedrooms", "bathrooms"],
@@ -115,16 +115,12 @@ export default {
   },
   created() {
     this.filterBy =JSON.parse(JSON.stringify(this.filterByy))
-    const prices=[];
-    console.log('ggg',this.stays);
-    this.stays.map((stay)=>{
-    prices.push(stay.price)
+    this.modalPrices()
+    eventBusService.$on('updatePrices',val =>{
+      console.log('updating');
+      this.modalPrices()
     })
-    this.prices=prices
-    const avgPrice = this.getAvg(prices)
-    this.avg =Math.round(avgPrice)
-
-    
+   
 
   },
   
@@ -137,6 +133,19 @@ export default {
         this.modalType = type;
         this.status = type;
       }
+    },
+     modalPrices(){
+       console.log('hey');
+    const prices=[];
+    this.stays.map((stay)=>{
+    prices.push(stay.price)
+    })
+    this.prices=prices
+    console.log('update prices',prices);
+
+     const avgPrice = this.getAvg(prices)
+    this.avg =Math.round(avgPrice)
+    return prices
     },
     getAvg(prices){
      const sum = prices.reduce(function(acc,price){
@@ -227,7 +236,8 @@ export default {
     },
     stays(){
       return this.$store.getters.tempStays
-    }
+    },
+   
 
   },
   components: {
