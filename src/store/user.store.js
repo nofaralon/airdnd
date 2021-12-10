@@ -27,19 +27,15 @@ export const userStore = {
     },
     mutations: {
         setUser(state, { loginUser }) {
-            console.log('user', loginUser);
             state.user = loginUser
         },
         setUserPage(state, { page }) {
-            console.log('page:', page);
             state.userCurrPage = page
         }
     },
     actions: {
         async getUserById({}, { userId }) {
-            console.log(userId);
             const user = await userService.getById(userId)
-            console.log(user);
             return user
         },
         async setUser({ commit }, { user }) {
@@ -56,12 +52,10 @@ export const userStore = {
             var loginUser = await userService.signup(user)
             commit({ type: "setUser", loginUser })
         },
-        async logoutUser({commit}){
-            console.log('logout....');
+        async logoutUser({ commit }) {
             const deletedUser = await userService.logout()
-            console.log('logout completed');
-            const loginUser= null
-            commit({type:'setUser', loginUser})
+            const loginUser = null
+            commit({ type: 'setUser', loginUser })
         }
     }
 

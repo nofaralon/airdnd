@@ -147,7 +147,6 @@ export default {
         this.$router.push('/stay')
       }
       this.checked = true;
-      console.log(this.order,'order in details');
     },
   },
   computed: {
@@ -181,7 +180,6 @@ export default {
       const date1 = Date.parse(this.order.Dates[0]);
       const date2 = Date.parse(this.order.Dates[1]);
       const diffTime = Math.abs(date2 - date1);
-      console.log('date2', date2);
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
       this.order.totalDays = diffDays;
       return diffDays;

@@ -15,15 +15,12 @@ export default {
     },
   mixins: [mixins.reactiveProp],
 created() {
-    console.log("this.charData",this.charData);
 
     this.newLabels=Object.keys(this.chartData)
-    console.log("labels",this.newLabels);
     this.newLabels.forEach(label => {
       this.newData.push(this.chartData[label])
       this.newColor.push('rgba('+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+','+Math.floor(Math.random()*256)+',0.6)')
     });
-    console.log("this.newData",this.newData);
 },
   mounted() {
     // Overwriting base render method with actual data.

@@ -186,7 +186,6 @@ export default {
           filterBy,
         });
       }
-        console.log("this.userOrders",this.userOrders);
         this.getAllOrders();
     },
     async getAllOrders(){
@@ -198,13 +197,11 @@ export default {
           return order.hostId===this.user._id
         })
         this.userRevenue+=this.incommingOrders.reduce((acc,order)=>{
-          console.log(order);
           (this.revenuePerStay[order.stay.name]) ? this.revenuePerStay[order.stay.name]+=order.totalPrice : this.revenuePerStay[order.stay.name]=order.totalPrice
 
           acc+=order.totalPrice
           return acc
         }, 0)
-      console.log(this.revenuePerStay);
     },
     sortOrdersBy(type) {
       if (type === "pending") {
@@ -226,7 +223,6 @@ export default {
           return acc;
         }, 0);
       });
-      console.log("this.revenuePerStay",this.revenuePerStay);
       return ratings / reviewsNum;
     },
 

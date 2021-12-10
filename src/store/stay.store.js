@@ -30,11 +30,10 @@ export const stayStore = {
             return state.stays
         },
         filterBy(state) {
-            console.log(state.filterBy, 'in store-getter');
             return state.filterBy
         },
-        currCountry(state){
-            return state.filterBy.country 
+        currCountry(state) {
+            return state.filterBy.country
         },
         staysForDisplay(state) {
             let stays = JSON.parse(JSON.stringify(state.stays))
@@ -57,7 +56,6 @@ export const stayStore = {
     },
     mutations: {
         setFilter(state, { filterBy }) {
-            console.log('my filter', filterBy);
             if (filterBy.fromPrice) {
                 state.filterBy.fromPrice = filterBy.fromPrice
             }
@@ -106,7 +104,6 @@ export const stayStore = {
         },
         addStay(state, payload) {
             state.stays.push(payload.stay)
-            console.log('asdasd', state.stays)
         },
         updateStay(state, payload) {
             const idx = state.stays.findIndex((stay) => stay._id === payload.stay._id)
@@ -130,19 +127,16 @@ export const stayStore = {
         },
         resetFilter(state, { filterBy }) {
             state.filterBy = filterBy
-            console.log('state filter now', state.filterBy);
         },
         setTempStays(state, { stays }) {
-            console.log('temp stays', stays);
             state.tempStays = stays
 
         },
-        
+
 
     },
     actions: {
         loadStays({ commit, state }) {
-            console.log('loading....');
             var filterBy = state.filterBy ? state.filterBy : ''
             commit({ type: 'setLoading', isLoading: true })
             stayService
@@ -157,12 +151,10 @@ export const stayStore = {
         },
         async setFilter({ commit, state, dispatch }, { filterBy }) {
             await commit({ type: 'setFilter', filterBy })
-            console.log('setting small');
             dispatch({ type: 'loadStays' })
         },
         async setBigFilter({ commit, state, dispatch }, { filterBy }) {
             await commit({ type: 'setBigFilter', filterBy })
-            console.log('setting big', filterBy);
             dispatch({ type: 'loadStays' })
 
         },
@@ -179,14 +171,11 @@ export const stayStore = {
         },
         toggleLike({ dispatch, getters }, { stay }) {
             const user = getters.miniUser
-            console.log(user, stay);
             const wasLiked = stay.likedByUsers.findIndex(reviewer => reviewer._id === user._id)
             if (wasLiked >= 0) {
                 stay.likedByUsers.splice(wasLiked, 1)
-                console.log(stay.likedByUsers);
             } else {
                 stay.likedByUsers.unshift(user)
-                console.log(stay.likedByUsers);
             }
 
 
@@ -204,7 +193,6 @@ export const stayStore = {
         },
         getStay({ commit }, { stayId }) {
             commit({ type: 'setLoading', isLoading: true })
-            console.log('stayId-', stayId);
 
             if (!stayId) {
                 return stayService.getEmptyStay()
@@ -217,10 +205,8 @@ export const stayStore = {
 
 
         getStayByUserId({ commit }, { userId }) {
-            console.log('userId- in stor stays', userId);
             return stayService.getByUserId(userId).then((stays) => {
                 commit({ type: 'setUserStays', stays })
-                console.log(stays);
                 return stays
             })
         },
@@ -230,15 +216,12 @@ export const stayStore = {
 
 
         async addReview({ commit }, { details }) {
-            console.log(details);
             const { stayId, review } = details
             const stay = await stayService.addReview(stayId, review)
-            console.log('stay-', stay);
             commit({ type: 'updateStay', stay })
             return stay
         },
         async getUserStays({ commit }, { filterBy }) {
-            console.log(filterBy);
             return await stayService.query(filterBy)
         }
     },

@@ -38,7 +38,7 @@ export const orderStore = {
         order(state) {
             return state.currOrder
         },
-        orders(state){
+        orders(state) {
             return state.orders
         }
     },
@@ -48,7 +48,6 @@ export const orderStore = {
         },
         addOrder(state, payload) {
             state.orders.push(payload.order)
-            console.log(state.orders);
         },
         updateOrder(state, payload) {
             const idx = state.orders.findIndex((order) => order._id === payload.order._id)
@@ -128,12 +127,10 @@ export const orderStore = {
             commit({ type: 'getOrder', order })
         },
         async getOrders({ commit }) {
-            console.log('here');
             return await orderService.query()
-            
+
         },
         async getUserOrders({}, { filterBy }) {
-            console.log('store filter', filterBy);
             return await orderService.query(filterBy)
         }
 

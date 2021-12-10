@@ -27,7 +27,6 @@ export default {
     };
   },
   created() {
-    console.log('curr',this.currCountry);
   },
   methods: {
     setFilter(filterBy){

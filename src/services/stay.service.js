@@ -22,7 +22,6 @@ export const stayService = {
 
 
 async function query(filter) {
-    console.log('got to service', filter);
     // return storageService.query(STAY_KEY)
     const filterBy = JSON.stringify(filter)
     return httpService.get(`stay/${filterBy}`)
@@ -948,10 +947,8 @@ function getEmptyReview() {
 //             "likedByUsers": ["Miriam", "Nicole", "Duglas"]
 //         }
 //         ]
-//         console.log(stays);
 
 //         // gStays = JSON.parse(stays)
-//         // console.log(gStays);
 //         storage.store(STAY_KEY, stays)
 //     }
 //     return stays;
