@@ -64,7 +64,7 @@
     </label>
     <label>
       Bedrooms:
-    <input class="edit-input-small" min="0" type="number" v-model="newStay.bedrooms">
+    <input class="edit-input-small" min="0" type="number" v-model="newStay.bedroom">
     </label>
     <label>
       Bathrooms:

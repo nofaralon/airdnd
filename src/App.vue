@@ -17,10 +17,24 @@ export default {
   data() {
     return {
       url: null,
+            filterBy:{
+        country:'',
+        type:'',
+        ailments:'',
+        guests:null,
+        Dates:"",
+        type:[],
+        fromPrice: 45,
+        toPrice: 250,
+        beds: 0,
+        bedrooms: 0,
+        bathrooms: 0,
+      },
     };
   },
   async created() {
-     await this.$store.dispatch({ type: "loadStays" });
+    await this.$store.dispatch({ type: "loadStays" });
+    
   },
 
   methods: {
