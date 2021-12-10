@@ -46,7 +46,6 @@ async function update(user) {
 
 async function login(username, password) {
     // const users = await storageService.query('user')
-    // console.log('users', users);
     // const user = users.find(user => user.username === userName && user.password ===password)
     // if(!user) return false
     //  _saveLocalUser(user)
@@ -63,7 +62,6 @@ async function signup(userCred) {
     const user = await httpService.post('auth/signup', userCred)
         // socketService.emit('set-user-socket', user._id);
     _saveLocalUser(user)
-    console.log(user);
     return user
 }
 async function logout() {

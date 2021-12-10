@@ -99,15 +99,12 @@ export default {
     return {
       isModalOpen: false,
       value1: ''
-      // currOrder:null
     };
   },
   created() {
-    console.log(this.currOrder);
     if(this.currOrder.Dates) this.value1 = this.currOrder.Dates
     else this.value1 = ''
-    // this.currOrder=this.setOrder()
-    // this.filterBy()
+
   },
   methods: {
    async search(){

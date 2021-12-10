@@ -68,7 +68,8 @@ export default {
   },
   created() {
     this.goSign = this.$route.params.signup;
-    this.$store.commit({ type: "clearOrder" });
+    this.$store.commit({ type: "setUserPage", page: "details" });
+
   },
   methods: {
     async saveUser() {

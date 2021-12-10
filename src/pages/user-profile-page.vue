@@ -15,19 +15,17 @@
           {{totalRating.toLocaleString("en-US", {maximumFractionDigits: 2,})}}
           </p>
         </div>
-        <div @click="setInfo('orders')"  class="main-bar-orders options" :class="{focused:orders}">
+        <div @click="setInfo('orders');"  class="main-bar-orders options" :class="{focused:orders}">
           <h3>Orders Inbox</h3>
           <div v-if="incommingOrders" class="orders-btns">
-            <p>{{ incommingOrders.length }}</p>
-            <span>0 <button class="order-status green"></button></span>
-            <span
-              >{{ pendingOreders.length }}
-              <button
-                @click="sortOrdersBy('pending')"
-                class="order-status yellow"
-              ></button
-            ></span>
-            <span>0 <button class="order-status red"></button></span>
+            <p>{{ incommingOrders.length+userOrders.length }}</p>
+            
+              <span>
+                <span>(</span>
+                {{ pendingStaysOrders.length }}
+                <span>)</span>
+                </span>
+            
           </div>
         </div>
 
@@ -72,7 +70,9 @@
           </div>
 
           <div>
-            <table v-if="orders && userOrders" class="info-table">
+            <button v-show="orders" @click="sent=true; inbox=false;">My orders</button>
+            <button v-show="orders" @click="sent=false; inbox=true;">My stays' orders</button>
+            <table v-if="orders && incommingOrders && inbox" class="info-table">
               <th>Guest name</th>
               <th>Stay Dates</th>
               <th>Guests</th>
@@ -81,8 +81,31 @@
               <th>Ordered at</th>
 
               <tbody>
-                <tr v-for="(order, index) in userOrders" :key="index">
+                <tr v-for="(order, index) in incommingOrders" :key="index">
                   <td>{{ order.buyer.fullname }}</td>
+                  <td>{{ new Date(order.Dates[index]) }}</td>
+                  <td>{{ order.guests }}</td>
+                  <td>{{ order.status }}</td>
+                  <td>{{order.totalPrice.toLocaleString("en-US", {currency: "USD",style: "currency",maximumFractionDigits: 0,})}}</td>
+                  <td>{{ new Date(order.createdAt).getFullYear()}}
+                    /
+                    <span><span v-show="new Date(order.createdAt).getMonth()+1<9">0</span>{{(new Date(order.createdAt).getMonth()+1)}}</span> 
+                    /
+                    <span><span v-show="new Date(order.createdAt).getDay()+1<9">0</span>{{(new Date(order.createdAt).getDay()+1)}}</span> 
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <table v-if="orders && userOrders && sent" class="info-table">
+              <th>Stay Dates</th>
+              <th>Guests</th>
+              <th>Status</th>
+              <th>Price</th>
+              <th>Ordered at</th>
+
+              <tbody>
+                <tr v-for="(order, index) in userOrders" :key="index">
                   <td>{{ new Date(order.Dates[index]) }}</td>
                   <td>{{ order.guests }}</td>
                   <td>{{ order.status }}</td>
@@ -107,7 +130,7 @@
 
               <tbody v-for="(stay, index) in userStays" :key="index" class="stays-reviews">
                 <tr v-for="(review, index) in stay.reviews" :key="index">
-                  <td>{{ stay.name }}</td>
+                  <td class="stay-name">{{ stay.name }}</td>
                   <td>{{ review.by.fullname}}</td>
                   <td>{{ review.rate }}</td>
                   <td>{{ review.txt }}</td>
@@ -137,7 +160,9 @@ export default {
       allOrders:null,
       userRevenue:0,
       incommingOrders:null,
-      revenuePerStay:{}
+      revenuePerStay:{},
+      sent:false,
+      inbox:true
 
     };
   },
@@ -151,6 +176,7 @@ export default {
     setInfo(showInfo) {
       this.closeAll()
       if (showInfo === "orders") {
+        this.setPendingOff()
         this.orders = true;
       } else if (showInfo === "stays") {
         this.stays = true;
@@ -186,7 +212,6 @@ export default {
           filterBy,
         });
       }
-        console.log("this.userOrders",this.userOrders);
         this.getAllOrders();
     },
     async getAllOrders(){
@@ -198,19 +223,22 @@ export default {
           return order.hostId===this.user._id
         })
         this.userRevenue+=this.incommingOrders.reduce((acc,order)=>{
-          console.log(order);
           (this.revenuePerStay[order.stay.name]) ? this.revenuePerStay[order.stay.name]+=order.totalPrice : this.revenuePerStay[order.stay.name]=order.totalPrice
 
           acc+=order.totalPrice
           return acc
         }, 0)
-      console.log(this.revenuePerStay);
     },
-    sortOrdersBy(type) {
-      if (type === "pending") {
-        this.userOrders = this.pendingOreders;
+    setPendingOff(){
+      if (this.pendingStaysOrders.length){
+        console.log(this.pendingStaysOrders.length);
+        this.incommingOrders.forEach(order=>{
+          console.log(order);
+          order.status='recieved'
+          this.$store.dispatch({type:"updateOrder",order})
+        })
       }
-    },
+    }
   },
   computed: {
     user() {
@@ -226,12 +254,16 @@ export default {
           return acc;
         }, 0);
       });
-      console.log("this.revenuePerStay",this.revenuePerStay);
       return ratings / reviewsNum;
     },
 
-    pendingOreders() {
+    pendingUserOrders() {
       return this.userOrders.filter((order) => {
+        return order.status === "pending";
+      });
+    },
+    pendingStaysOrders() {
+      return this.incommingOrders.filter((order) => {
         return order.status === "pending";
       });
     },

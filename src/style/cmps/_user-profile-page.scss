@@ -31,7 +31,7 @@
         background-color: rgb(239, 245, 243);
         .profile-options-container{
             display: flex;
-            border-bottom: solid 25px white;
+            border-bottom: solid 3px white;
             &::after{
                 border-bottom-left-radius: 8px;
             }
@@ -135,12 +135,13 @@
                                 background-color: white;
                             }
                         }
-                        & tr{
-                            & :first-child{
-                                width: 20ch;
-                                
+                            .stay-name{
+                                width: 8ch;
+                                // white-space: nowrap;
+                                text-overflow: ellipsis;
+                                overflow: hidden;
                             }
-                        }
+                        
                     }
             }
             .conditional-container{

@@ -55,6 +55,10 @@
             <router-link v-if="user"  style="text-decoration:none;" :to="'/profile/'+user._id">
             <el-dropdown-item>Profile</el-dropdown-item>
             </router-link>
+
+             <router-link v-if="user" @click="logOut" style="text-decoration:none;" :to="'/'">
+            <el-dropdown-item>Log out</el-dropdown-item>
+            </router-link>
             
           </el-dropdown-menu>
         </el-dropdown>
@@ -127,9 +131,9 @@ export default {
     resetFilter(){
       const filterBy= JSON.parse(JSON.stringify(this.filter))
       eventBusService.$emit('resetFilter',filterBy)
-     
-      
-
+    },
+     logOut(){
+      this.$store.dispatch({type:'logoutUser'})
     }
    
   },
