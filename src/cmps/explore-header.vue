@@ -21,8 +21,8 @@
     <stay-filter @filter="toggleFilter" :order="order"  />
     </div>
       <div class="user-options">
-        <button class="wrapping-btn small">
-        <router-link class="page-link explore-link" style="font-family:manrope-bold; color:rgb(34, 34, 34)" to="/stay">Explore</router-link>
+        <button @click="resetFilter" class="wrapping-btn small">
+        <router-link class="page-link explore-link" style="font-family:manrope-bold; color:rgb(34, 34, 34)"  to="/stay">Explore</router-link>
   </button>
 
   <button class="wrapping-btn small">
@@ -74,6 +74,7 @@ import {orderService} from '../services/order.service'
 import StayFilterSmall from '@/cmps/stay-filter-small'
 import StayFilter from '@/cmps/stay-filter'
 import exploreFilter from './explore-filter.vue'
+import {eventBusService,resetFilter} from '../services/event-bus.service'
 export default {
   props:{
     explore:Boolean,
@@ -85,7 +86,19 @@ export default {
     return {
       loggedInUser: null,
       open:null,
-      order:null
+      order:null,
+      filter: {
+            country: '',
+            ailments: '',
+            guests: null,
+            Dates: "",
+            type: [],
+            fromPrice: 0,
+            toPrice: 450,
+            beds: 0,
+            bedrooms: 0,
+            bathrooms: 0
+        },
     };
   },
   created(){
@@ -111,6 +124,13 @@ export default {
         this.open=false
       }
     },
+    resetFilter(){
+      const filterBy= JSON.parse(JSON.stringify(this.filter))
+      eventBusService.$emit('resetFilter',filterBy)
+     
+      
+
+    }
    
   },
   computed: {

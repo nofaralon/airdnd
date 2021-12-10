@@ -62,7 +62,6 @@ export const userStore = {
             console.log('logout completed');
             const loginUser= null
             commit({type:'setUser', loginUser})
-            
         }
     }
 

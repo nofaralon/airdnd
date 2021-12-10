@@ -32,6 +32,9 @@ export const stayStore = {
         filterBy(state) {
             return state.filterBy
         },
+        currCountry(state){
+            return state.filterBy.country 
+        },
         staysForDisplay(state) {
             let stays = JSON.parse(JSON.stringify(state.stays))
             let filteredStays = []
@@ -50,7 +53,6 @@ export const stayStore = {
         tempStays(state) {
             return state.tempStays
         }
-
     },
     mutations: {
         setFilter(state, { filterBy }) {
@@ -81,7 +83,6 @@ export const stayStore = {
             }else {
                 state.filterBy.bathrooms =0;
             }
-
         },
         setUserStays(state, { stays }) {
             state.userStays = stays
@@ -128,12 +129,14 @@ export const stayStore = {
         },
         resetFilter(state,{filterBy}){
             state.filterBy = filterBy
+            console.log('state filter now', state.filterBy);
         },
         setTempStays(state, {stays}){
             console.log('temp stays',stays);
             state.tempStays=stays
 
-        }
+        },
+        
 
     },
     actions: {

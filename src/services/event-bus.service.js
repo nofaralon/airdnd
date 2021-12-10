@@ -12,5 +12,9 @@ export function setFilter(value){
 export function saveOrder(value){
 }
 export function updatePrices(){
+
+}
+export function resetFilter(){
     
 }
+ 

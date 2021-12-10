@@ -76,9 +76,9 @@
             <h2>{{ type }}</h2>
           </div>
           <div>
-            <button @click="setCountBeds('down', type)">-</button>
+            <button @click="setCountBeds('down', type)"><i class="el-icon-minus"></i></button>
             <span class="guests">{{ filterBy[type] }}</span>
-            <button @click="setCountBeds('up', type)">+</button>
+            <button @click="setCountBeds('up', type)"><i class="el-icon-plus"></i></button>
           </div>
         </div>
         <div class="actions-btn">
