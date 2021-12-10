@@ -124,16 +124,24 @@
                     }
                 }
                 
-                    .stays-reviews:nth-child(even){
+                    .stays-reviews{
+                        &:nth-child(even){
+                            & tr{
+                                background-color: rgb(209, 209, 209);
+                            }
+                        }
+                        &:nth-child(odd){
+                            & tr{
+                                background-color: white;
+                            }
+                        }
                         & tr{
-                            background-color: rgb(209, 209, 209);
+                            & :first-child{
+                                width: 20ch;
+                                
+                            }
                         }
                     }
-                    // & tr{
-                    
-                    // }
-
-
             }
             .conditional-container{
                 .user-stay{

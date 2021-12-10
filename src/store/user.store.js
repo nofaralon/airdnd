@@ -57,9 +57,7 @@ export const userStore = {
             commit({ type: "setUser", loginUser })
         },
         async logoutUser({commit}){
-            console.log('logout....');
             const deletedUser = await userService.logout()
-            console.log('logout completed');
             const loginUser= null
             commit({type:'setUser', loginUser})
         }
