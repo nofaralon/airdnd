@@ -21,24 +21,40 @@
             <option>Iceland</option>
             <option>Netherlands</option>
           </datalist>
+          <!-- <el-select v-model="value" value-key="value" placeholder="Select">
+            <template slot="prefix"
+              ><img class="prefix" :src="value.photo"
+            /></template>
+            <el-option
+              v-for="item in countries"
+              :key="item.value"
+              :label="item.label"
+              :value="item"
+            >
+              <img :src="item.photo" /> {{ item.label }}
+            </el-option>
+          </el-select> -->
+
           <button class="check-in filter-btn">
             <p>Check in</p>
           </button>
           <button class="check-in filter-btn">
             <p>Check out</p>
           </button>
-            <el-date-picker
-              @change="setDateOrder"
-              v-model="value1"
-              type="daterange"
-              start-placeholder="Add dates"
-              end-placeholder="Add dates"
-            >
-            </el-date-picker>
+          <el-date-picker
+            @change="setDateOrder"
+            v-model="value1"
+            type="daterange"
+            start-placeholder="Add dates"
+            end-placeholder="Add dates"
+          >
+          </el-date-picker>
           <button @click="toggaleModal" class="check-in filter-btn">
             <p class="guest">Guests</p>
             <p class="check-in-add-guest bold" v-if="filterBy.guests">
-              {{ filterBy.guests }} Guest<span v-show="filterBy.guests !== 1">s</span>
+              {{ filterBy.guests }} Guest<span v-show="filterBy.guests !== 1"
+                >s</span
+              >
             </p>
             <p class="check-in-add-guest" v-else>Add guests</p>
           </button>
@@ -98,20 +114,44 @@ export default {
   data() {
     return {
       isModalOpen: false,
-      value1: ''
+      value1: "",
+      // countries:[
+      //   {
+      //     value: 'France',
+      //     label: 'France',
+      //     photo: 'https://upload.wikimedia.org/wikipedia/commons/5/50/McDonald%27s_SVG_logo.svg'
+      //   },
+      //   {
+      //     value: 'Florida',
+      //     label: 'Florida',
+      //     photo: 'https://upload.wikimedia.org/wikipedia/commons/5/50/McDonald%27s_SVG_logo.svg'
+      //   },
+      //   {
+      //     value: 'Iceland',
+      //     label: 'Iceland',
+      //     photo: 'https://upload.wikimedia.org/wikipedia/commons/5/50/McDonald%27s_SVG_logo.svg'
+      //   },
+      //   {
+      //     value: 'Netherlands',
+      //     label: 'Netherlands',
+      //     photo: 'https://upload.wikimedia.org/wikipedia/commons/5/50/McDonald%27s_SVG_logo.svg'
+      //   }
+      // ],
+      // value: null
+
     };
   },
   created() {
-    if(this.currOrder.Dates) this.value1 = this.currOrder.Dates
-    else this.value1 = ''
+    if (this.currOrder.Dates) this.value1 = this.currOrder.Dates;
+    else this.value1 = "";
+        	// this.value = this.countries[0]
 
   },
   methods: {
-   async search(){
-      await eventBusService.$emit('setBigFilter',{...this.filterBy})
-     await eventBusService.$emit('saveOrder', this.currOrder)
-      this.$emit('filter')
-     
+    async search() {
+      await eventBusService.$emit("setBigFilter", { ...this.filterBy });
+      await eventBusService.$emit("saveOrder", this.currOrder);
+      this.$emit("filter");
     },
     setCountAdults(val) {
       if (val === "down") {
@@ -147,8 +187,8 @@ export default {
     toggaleModal() {
       this.isModalOpen = !this.isModalOpen;
     },
-    setDateOrder(){
-      this.currOrder.Dates=this.value1 
+    setDateOrder() {
+      this.currOrder.Dates = this.value1;
     },
   },
 
