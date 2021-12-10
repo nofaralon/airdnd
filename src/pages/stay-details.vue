@@ -27,9 +27,9 @@
             ></path>
           </svg>
           {{ setTotalRate }}
-          <a href="#anchor-reviews"
-            >({{ stay.reviews.length }} {{ setReviews }})</a
-          ></span
+          (<a href="#anchor-reviews"
+            >{{ stay.reviews.length }} {{ setReviews }}</a
+          >)</span
         >
         <span>
           <svg

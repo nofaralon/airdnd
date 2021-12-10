@@ -63,6 +63,10 @@
     <input class="edit-input-small" min="0" type="number" v-model="newStay.capacity">
     </label>
     <label>
+      Bedrooms:
+    <input class="edit-input-small" min="0" type="number" v-model="newStay.bedrooms">
+    </label>
+    <label>
       Bathrooms:
     <input class="edit-input-small" min="0" type="number" v-model="newStay.bathrooms">
     </label>
@@ -81,16 +85,13 @@
       </div>
 
     <div v-if="pageCount===4" class="edit-card">
-    </div>
-
-    <div v-if="pageCount===5" class="edit-card">
     <p class="edit-header">Finally, add at least five pictures of your listing</p>
     <img-upload @save="saveImg"/>
     </div>
     <div class="page-btns">
     <button  :disabled="pageCount===0" @click="setPageCount(-1)">Back</button>
-    <button  v-if="pageCount<5" @click="setPageCount(1)">Next</button>
-    <button  :disabled="imgCount<5" v-if="pageCount===5" @click="saveStay">Submit listing</button>
+    <button  v-if="pageCount<4" @click="setPageCount(1)">Next</button>
+    <button  :disabled="imgCount<4" v-if="pageCount===4" @click="saveStay">Submit listing</button>
     </div>
     </div>
   </div>

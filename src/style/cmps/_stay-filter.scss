@@ -50,9 +50,9 @@
     }
     .search-btn {
         background-color: $clr1;
-        width: 38px;
-        height: 38px;
-        margin-right: 12px;
+        width: 45px;
+        height: 45px;
+        margin-right: 7px;
         border-radius: 50%;
         border: none;
         display: flex;
@@ -60,6 +60,13 @@
         align-items: center;
         &:hover {
             cursor: pointer;
+        }
+    }
+    .small {
+        width: 30px;
+        height: 30px;
+        .fa-search {
+            position: absolute;
         }
     }
     .filter-btn {
@@ -77,6 +84,7 @@
         }
     }
     .filter-container {
+        padding-left: 10px;
         width: 100%;
         height: 100%;
         display: flex;
@@ -208,7 +216,7 @@ input::-webkit-calendar-picker-indicator {
         position: absolute;
         top: 18px;
         max-width: 290px;
-        left: 283px;
+        left: 290px;
         height: 34px;
         margin-top: 10px;
         background-color: transparent;

@@ -119,6 +119,9 @@ export default {
 
       return this.$store.getters.user;
     },
+    filterBy() {
+      return this.$store.getters.filterBy
+    }
   },
   components:{
     stayFilter,

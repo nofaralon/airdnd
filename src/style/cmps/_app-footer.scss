@@ -2,34 +2,11 @@
     font-size: rem(14px);
     background-color: $clr4;
     padding: 10px;
-    .members-container {
-        width: 87%;
-        display: flex;
-        justify-content: space-between;
-        margin: auto;
-        .members {
-            padding: 15px;
-            margin-bottom: 10px;
-            &:nth-child(2) {
-                border-left: 1px solid #d6cbcb;
-                border-right: 1px solid #d6cbcb;
-            }
-            >* {
-                display: flex;
-                margin-bottom: 3px;
-            }
-            & svg {
-                margin-right: 10px;
-            }
-        }
-    }
     .footer-container {
         display: flex;
         justify-content: space-between;
         width: 87%;
         margin: auto;
-        border-top: 1px solid #d6cbcb;
-        padding-top: 10px;
         .icons {
             display: flex;
             & div:last-child {

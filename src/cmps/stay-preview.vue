@@ -64,9 +64,9 @@
             ></path>
           </svg>
           <span class="reviews-rating">{{ setTotalRate }}</span>
-          <a
-            >({{ stay.reviews.length }} {{ setReviews }})</a
-          ></span
+          (<a
+            >{{ stay.reviews.length }} {{ setReviews }}</a
+          >)</span
         >
       </div>
       <div class="card-type-loc">

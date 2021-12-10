@@ -28,6 +28,7 @@
             <p>Check out</p>
           </button>
             <el-date-picker
+              @change="setDateOrder"
               v-model="value1"
               type="daterange"
               start-placeholder="Add dates"
@@ -102,6 +103,9 @@ export default {
     };
   },
   created() {
+    console.log(this.currOrder);
+    if(this.currOrder.Dates) this.value1 = this.currOrder.Dates
+    else this.value1 = ''
     // this.currOrder=this.setOrder()
     // this.filterBy()
   },
@@ -145,6 +149,9 @@ export default {
     },
     toggaleModal() {
       this.isModalOpen = !this.isModalOpen;
+    },
+    setDateOrder(){
+      this.currOrder.Dates=this.value1 
     },
   },
 

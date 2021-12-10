@@ -1,5 +1,5 @@
 <template>
-<div class="go-big" :class="{'fixed' : explore , 'not-fixed' : details}" :style="[open ? {'height':'160px'}:{'height':'120px'}]">
+<div class="go-big" :class="{'fixed' : explore , 'not-fixed' : details}" :style="[open ? {'height':'160px'}:{'height':'130px'}]">
 
 <div class="header-container">
 
@@ -15,7 +15,7 @@
       </div>
 
     <div v-show="!open && !userPage" class="changing-middle-container">
-    <stay-filter-small :filter="filterBy" @filter="toggleFilter"/>
+    <stay-filter-small  @filter="toggleFilter"/>
     </div>
 <div v-show="open" class="changing-middle-container filter-open">
     <stay-filter @filter="toggleFilter" :order="order"  />
@@ -121,7 +121,7 @@ export default {
       return this.$store.getters.user;
     },
     filterBy() {
-      return this.$store.getters.filterBY
+      return this.$store.getters.filterBy
     }
   },
   components:{

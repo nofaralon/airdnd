@@ -78,19 +78,19 @@ async function save(stay) {
 
 function getEmptyStay() {
     return {
-        _id: '',
         name: '',
         imgUrls: [],
-        price: null,
+        price: 0,
         summary: '',
         space: '',
         acces: "",
         around: "",
         notes: "",
         transit: "",
-        capacity: null,
-        bathrooms: null,
-        beds: null,
+        capacity: 0,
+        bathrooms: 0,
+        beds: 0,
+        bedrooms: 0,
         amenities: [],
         host: {
             _id: '',
@@ -101,8 +101,8 @@ function getEmptyStay() {
             country: '',
             countryCode: '',
             address: '',
-            lat: null,
-            lng: null
+            lat: 0,
+            lng: 0
         },
         type: '',
         reviews: [],

@@ -1,6 +1,6 @@
 <template>
   <section class="app-footer">
-    <div class="members-container" >
+    <!-- <div class="members-container" >
       <div class="members" v-for="(member, index) in members" :key="index">
         <h3>{{ member.name }}</h3>
         <div>
@@ -77,7 +77,7 @@
         </div>
 
         </div>
-      </div>
+      </div> -->
     <div class="footer-container">
       <p>© 2021 Airbnb, Inc. · Privacy · Terms · Sitemap</p>
       <div class="icons">
