@@ -107,6 +107,8 @@ export default {
       }
     },
     logOut(){
+       console.log("logout,header");
+
       this.$store.dispatch({type:'logoutUser'})
     }
   },
@@ -136,5 +138,3 @@ export default {
 
 };
 </script>
-
-    StayFilter

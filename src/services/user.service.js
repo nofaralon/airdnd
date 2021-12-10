@@ -65,6 +65,7 @@ async function signup(userCred) {
     return user
 }
 async function logout() {
+    console.log("logout,service");
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
         // socketService.emit('unset-user-socket');
     return await httpService.post('auth/logout')

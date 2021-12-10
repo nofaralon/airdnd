@@ -24,6 +24,7 @@ export const stayService = {
 async function query(filter) {
     // return storageService.query(STAY_KEY)
     const filterBy = JSON.stringify(filter)
+    console.log('service filterBy',filterBy);
     return httpService.get(`stay/${filterBy}`)
 
 

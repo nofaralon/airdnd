@@ -16,7 +16,9 @@
           </p>
         </div>
         <div @click="setInfo('orders');"  class="main-bar-orders options" :class="{focused:orders}">
-          <h3>Orders Inbox</h3>
+          <h3 v-show="!sent &&!inbox">Orders</h3>
+          <h3 v-show="sent">My orders</h3>
+          <h3 v-show="inbox">My stays' orders</h3>
           <div v-if="incommingOrders" class="orders-btns">
             <p>{{ incommingOrders.length+userOrders.length }}</p>
             
@@ -41,7 +43,7 @@
         </div>
 
         <div @click="setInfo('stays')" class="main-bar-stays options" :class="{focused:stays}">
-          <h3>Active Stays</h3>
+          <h3>My Stays</h3>
           <p v-if="userStays">{{ userStays.length }}</p>
         </div>
 
@@ -139,7 +141,6 @@
               </tbody>
             </table>
           </div>
-          <!-- <button @click="router.push('/stay/edit')">Add stay</button> -->
         </div>
       </div>
     </div>
@@ -162,7 +163,7 @@ export default {
       incommingOrders:null,
       revenuePerStay:{},
       sent:false,
-      inbox:true
+      inbox:false
 
     };
   },
@@ -176,6 +177,7 @@ export default {
     setInfo(showInfo) {
       this.closeAll()
       if (showInfo === "orders") {
+        this.inbox=true
         this.setPendingOff()
         this.orders = true;
       } else if (showInfo === "stays") {
@@ -231,9 +233,7 @@ export default {
     },
     setPendingOff(){
       if (this.pendingStaysOrders.length){
-        console.log(this.pendingStaysOrders.length);
         this.incommingOrders.forEach(order=>{
-          console.log(order);
           order.status='recieved'
           this.$store.dispatch({type:"updateOrder",order})
         })

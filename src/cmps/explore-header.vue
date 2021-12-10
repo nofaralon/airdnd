@@ -56,9 +56,7 @@
             <el-dropdown-item>Profile</el-dropdown-item>
             </router-link>
 
-             <router-link v-if="user" @click="logOut" style="text-decoration:none;" :to="'/'">
-            <el-dropdown-item>Log out</el-dropdown-item>
-            </router-link>
+            <el-dropdown-item v-if="user" @click.native="logOut()">Log out</el-dropdown-item>
             
           </el-dropdown-menu>
         </el-dropdown>
@@ -133,6 +131,7 @@ export default {
       eventBusService.$emit('resetFilter',filterBy)
     },
      logOut(){
+       console.log("logout,header");
       this.$store.dispatch({type:'logoutUser'})
     }
    

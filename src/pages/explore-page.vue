@@ -36,6 +36,7 @@ export default {
   },
   computed: {
     stays() {
+      console.log(this.$store.getters.staysForDisplay);
       return this.$store.getters.staysForDisplay;
     },
     isLoading() {

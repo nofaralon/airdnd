@@ -230,6 +230,8 @@ export default {
       return this.$store.getters.filterBy
     },
     stays(){
+      console.log(this.$store.getters.tempStays);
+
       return this.$store.getters.tempStays
     },
    
