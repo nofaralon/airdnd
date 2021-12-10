@@ -155,7 +155,6 @@ export default {
     },
     saveImg(imgUrl) {
       this.newStay.imgUrls.push(imgUrl)
-      console.log(this.newStay.imgUrls);
       this.imgCount+=1
     },
     setPageCount(pulusOrMinus){

@@ -100,7 +100,6 @@ export default {
   },
   watch: {
     "$route.params.signup"() {
-      console.log(this.$route.params);
       if (!this.$route.params.signup) {
         this.goSign = false;
       } else this.goSign = true;

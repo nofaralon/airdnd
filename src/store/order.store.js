@@ -127,9 +127,10 @@ export const orderStore = {
             const order = await orderService.saveCurrOrder(newOrder)
             commit({ type: 'getOrder', order })
         },
-        async getOrders({ commit }, { userId }) {
-            const orders = await orderService.query()
-            return orders
+        async getOrders({ commit }) {
+            console.log('here');
+            return await orderService.query()
+            
         },
         async getUserOrders({}, { filterBy }) {
             console.log('store filter', filterBy);

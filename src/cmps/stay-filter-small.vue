@@ -30,7 +30,6 @@ export default {
   },
   methods: {
     showFilter(){
-      console.log('in');
       this.$emit('filter')
     }
   },

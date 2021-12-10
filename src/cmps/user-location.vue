@@ -58,7 +58,6 @@ export default {
           };
         })
         .catch((err) => {
-          console.log("Had issues talking to server", err);
         });
       return prm;
     },

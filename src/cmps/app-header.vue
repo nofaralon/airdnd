@@ -39,6 +39,11 @@ export default {
        this.$store.commit({type:'setOrder', order})
 
       })
+      eventBusService.$on('resetFilter',filterBy=>{
+      this.$store.dispatch({type:'resetFilter', filterBy})
+
+        
+      })
   },
   destroyed() {
     window.removeEventListener('scroll', this.handleScroll);

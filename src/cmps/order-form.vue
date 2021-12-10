@@ -70,9 +70,7 @@
           </div>
         </div>
       </div>
-
-      <button @click="check" class="reserve">{{ checkBtn }}</button>
-
+      <el-button class="reserve" @click="check" :plain="true">{{ checkBtn }}</el-button>
       <div v-if="checked" class="total-order">
         <p>You won't be charged yet</p>
 
@@ -141,6 +139,12 @@ export default {
     check() {
       if (this.checked) {
         this.$emit("check", this.order);
+          this.$message({
+          showClose: true,
+          message: 'Congrats, your order has been received.',
+          type: 'success'
+        });
+        this.$router.push('/stay')
       }
       this.checked = true;
       console.log(this.order,'order in details');

@@ -92,21 +92,11 @@ export default {
   },
   created() { 
     window.addEventListener('scroll', this.handleScroll);
-    //  this.order=orderService.getEmptyOrder()
-    //  console.log(this.order);
+   
      this.$store.commit({type:'setUserPage',page:'home'})
     this.$store.commit({type:'clearOrder'})
     const filterBy = this.filterBy
     this.$store.dispatch({type:'resetFilter',filterBy})
-
-    //  eventBusService.$on('setBigFilter',filterBy=>{
-    //    this.$store.dispatch({type:'setBigFilter', filterBy})
-    //    if (this.$store.getters.userPage==='home')this.$router.push('/stay')
-    //  })
-    //  eventBusService.$on('saveOrder',newOrder=>{
-    //    this.$store.dispatch({type:'saveOrder', newOrder})
-
-    //   })
      
   },
   destroyed() {

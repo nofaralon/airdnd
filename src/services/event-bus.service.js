@@ -10,8 +10,11 @@ export function setFilter(value){
  
 }
 export function saveOrder(value){
-    console.log('hey');
 }
 export function updatePrices(){
+
+}
+export function resetFilter(){
     
 }
+ 
