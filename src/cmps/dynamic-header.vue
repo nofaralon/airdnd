@@ -36,7 +36,6 @@ computed: {
               this.userPage=false
 
       }else if(this.currPage==='userPage'){
-        console.log('userPage');
         var header="explore-header"
               this.explore=false
               this.details=true

@@ -152,7 +152,6 @@ export default {
     async loadStay() {
       const { stayId } = this.$route.params;
       this.stay = await this.$store.dispatch({ type: "getStay", stayId });
-      console.log('satyyyy', this.stay);
       if (this.stay) {
         this.imgForDisplay();
       }
@@ -163,7 +162,6 @@ export default {
     },
     loadUser() {
       var user = this.$store.getters.user;
-      console.log(user);
       if (!user)
         user = {
           _id: "u111",
@@ -185,7 +183,6 @@ export default {
         this.order.cleaning +
         this.order.service +
         this.order.totalDays * this.stay.price;
-      console.log(this.order);
       this.$store.dispatch({
         type: "addOrder",
         order: JSON.parse(JSON.stringify(this.order)),

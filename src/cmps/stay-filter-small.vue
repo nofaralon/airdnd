@@ -24,7 +24,6 @@ export default {
   created() {},
   methods: {
     showFilter(){
-      console.log('in');
       this.$emit('filter')
     }
   },

@@ -102,14 +102,12 @@ export default {
       this.$router.push(here);
     },
     toggleFilter(){
-      console.log('done');
       this.open=!this.open
 
     },
     handleScroll(e){
 
       if(window.scrollY){
-        console.log(this.open);
         this.open=false
       }
     },

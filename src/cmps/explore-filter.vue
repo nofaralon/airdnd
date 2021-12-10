@@ -117,7 +117,6 @@ export default {
     this.filterBy =JSON.parse(JSON.stringify(this.filterByy))
     this.modalPrices()
     eventBusService.$on('updatePrices',val =>{
-      console.log('updating');
       this.modalPrices()
     })
    
@@ -135,13 +134,11 @@ export default {
       }
     },
      modalPrices(){
-       console.log('hey');
     const prices=[];
     this.stays.map((stay)=>{
     prices.push(stay.price)
     })
     this.prices=prices
-    console.log('update prices',prices);
 
      const avgPrice = this.getAvg(prices)
     this.avg =Math.round(avgPrice)
@@ -162,7 +159,6 @@ export default {
    
     setFilter() {
       const filterBy = JSON.parse(JSON.stringify(this.filterBy));
-      console.log('filterByyy',filterBy);
        eventBusService.$emit('setFilter',filterBy)     
         this.status = "";
       this.modalType = "";
@@ -204,7 +200,6 @@ export default {
       if (this.type.loft) types.push("loft");
       this.filterBy.type = types;
       const filterBy = { ...this.filterBy };
-      // console.log('this.filter', filterBy);
       eventBusService.$emit('setFilter',filterBy)     
       this.status = "";
       this.modalType = ""

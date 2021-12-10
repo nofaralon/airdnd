@@ -42,7 +42,6 @@ export default {
       const lng = this.stay.loc.lng;
 
       this.marker.position = { lat: lat, lng: lng };
-      console.log(this.marker.position);
       this.center = { lat: lat, lng: lng };
     },
     moveTo(position) {

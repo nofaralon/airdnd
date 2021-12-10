@@ -155,7 +155,6 @@ export default {
     },
     currOrder() {
       const order = JSON.parse(JSON.stringify(this.$store.getters.order));
-      console.log("computed order", order);
       return order;
     },
   },

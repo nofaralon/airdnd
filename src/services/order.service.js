@@ -20,10 +20,14 @@ export const orderService = {
 
 
 
-async function query(filterBy = null) {
+async function query(filterBy = {}) {
     // return storageService.query(ORDER_KEY)
-
+if(filterBy.userId){
     return httpService.get(`order/${filterBy.userId}`)
+}else{
+    return httpService.get(`order/`)
+
+}
 
 }
 
