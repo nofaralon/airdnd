@@ -11,7 +11,7 @@
                 list="locations"
                 type="search"
                 placeholder="Where are you going?"
-                v-model="filterBy.country"
+                v-model="filter.country"
               />
             </label>
           </button>
@@ -19,9 +19,9 @@
             <div class="countries-modal-title">
             <span>GO ANYWHERE, ANYTIME</span>
             </div>
-            <div class="explore-button-container">
+            <div @click="search" class="explore-button-container">
               <div class="explore-button">
-              <div>
+              <div >
                 <span class="flexible-text">I'm flexible</span>
               </div>
               <div class="icon-container">
@@ -34,7 +34,7 @@
               </div>
             <div class="stays-options">
               <div v-for="(country,index) in countries" :key="index">
-                <div>
+                <div @click="setCountry(country.name)">
                   <span>
                     {{country.name}} - stays
                     
@@ -46,13 +46,13 @@
             </div>
 
           </section>
-          <datalist id="locations">
+          <!-- <datalist id="locations">
             <option>France</option>
             <option>Florida</option>
             <option>Iceland</option>
             <option>Thailand</option>
             <option>Netherlands</option>
-          </datalist>
+          </datalist> -->
           <!-- <el-select v-model="value" value-key="value" placeholder="Select">
             <template slot="prefix"
               ><img class="prefix" :src="value.photo"
@@ -152,31 +152,11 @@ export default {
         {name:'Thailand'},
         {name:'Icleand'},
         {name:'Florida'},
-        {name:'Netharlends'}
-        ]
-      // countries:[
-      //   {
-      //     value: 'France',
-      //     label: 'France',
-      //     photo: 'https://upload.wikimedia.org/wikipedia/commons/5/50/McDonald%27s_SVG_logo.svg'
-      //   },
-      //   {
-      //     value: 'Florida',
-      //     label: 'Florida',
-      //     photo: 'https://upload.wikimedia.org/wikipedia/commons/5/50/McDonald%27s_SVG_logo.svg'
-      //   },
-      //   {
-      //     value: 'Iceland',
-      //     label: 'Iceland',
-      //     photo: 'https://upload.wikimedia.org/wikipedia/commons/5/50/McDonald%27s_SVG_logo.svg'
-      //   },
-      //   {
-      //     value: 'Netherlands',
-      //     label: 'Netherlands',
-      //     photo: 'https://upload.wikimedia.org/wikipedia/commons/5/50/McDonald%27s_SVG_logo.svg'
-      //   }
-      // ],
-      // value: null
+        {name:'Netherlands'}
+        ],
+        filter:{
+          country:''
+        }
 
     };
   },
@@ -184,14 +164,18 @@ export default {
     if (this.currOrder.Dates) this.value1 = this.currOrder.Dates;
     else this.value1 = "";
         	// this.value = this.countries[0]
-
   },
   methods: {
     async search() {
+      this.filterBy.country =this.filter.country      
       await eventBusService.$emit("setBigFilter", { ...this.filterBy });
       await eventBusService.$emit("saveOrder", this.currOrder);
       await this.$emit("filter");
       await eventBusService.$emit("updatePrices");
+    },
+    setCountry(country){
+      this.filter.country=country
+
     },
     setCountAdults(val) {
       if (val === "down") {
@@ -206,6 +190,7 @@ export default {
       }
       eventBusService.$emit("saveOrder", this.currOrder);
     },
+   
     setCountKids(val) {
       if (val === "down") {
         if (this.currOrder.kids === 0) return;
