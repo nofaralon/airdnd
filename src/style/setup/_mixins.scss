@@ -24,6 +24,31 @@
   }
 }
 
+@mixin for-details-mobile-layout {
+  @media (max-width: $details-break-narrow) {
+    @content;
+  }
+}
+
+@mixin for-details-narrow-layout {
+  @media (min-width: $details-break-narrow) {
+    @content;
+  }
+}
+
+@mixin for-details-normal-layout {
+  @media (min-width: $details-break-normal) {
+    @content;
+  }
+}
+
+@mixin for-details-wide-layout {
+  @media (min-width: $details-break-wide) {
+    @content;
+  }
+}
+
+
 @mixin layoutGTC($max) {
   grid-template-columns:
     minmax($layoutPadding, 1fr)
