@@ -10,7 +10,7 @@ export const orderStore = {
     state: {
         currOrder: {
             hostId: '',
-            createdAt: Date.now(),
+            createdAt: '',
             buyer: {
                 _id: '',
                 fullname: ''
@@ -62,7 +62,7 @@ export const orderStore = {
         clearOrder(state) {
             state.currOrder = {
                 hostId: '',
-                createdAt: Date.now(),
+                createdAt: '',
                 buyer: {
                     _id: '',
                     fullname: ''

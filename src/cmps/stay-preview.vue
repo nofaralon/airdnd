@@ -2,7 +2,7 @@
   <section class="preview-container" @click="stayDetails(stay._id)">
     <el-carousel
       class="img-carousel"
-      arrow="bold"
+      arrow="always"
       indicator-position="none"
       :autoplay="false"
       :trigger="'click'"
@@ -64,13 +64,12 @@
             ></path>
           </svg>
           <span class="reviews-rating">{{ setTotalRate }}</span>
-          (<a
-            >{{ stay.reviews.length }} {{ setReviews }}</a
+          (<a>{{ stay.reviews.length }} {{ setReviews }}</a
           >)</span
         >
       </div>
       <div class="card-type-loc">
-        <span class="type">{{ stay.type }}</span> <span v-if="stay.type==='outdoors'"> accommodation</span> in
+        <span class="type">{{ stay.type }}</span> <span v-if="stay.type.toLowerCase()==='outdoors'"> accommodation</span> in
         <span class="location"> {{ stay.loc.address }} </span>
       </div>
       <span class="stay-name">{{ stay.name }}</span>
@@ -130,15 +129,16 @@ export default {
   },
   computed: {
     setTotalRate() {
-      if(this.stay.reviews.length){
+      if (!this.stay.reviews.length) {
+        var total = 0;
+      } else {
         var sum = this.stay.reviews.reduce((acc, review) => {
           return acc + review.rate;
         }, 0);
         var total = sum / this.stay.reviews.length;
-        return total.toFixed(2);
-      }else{
-        return 0
       }
+
+      return total.toFixed(2);
     },
     setReviews() {
       if (this.stay.reviews.length !== 1) return "reviews";

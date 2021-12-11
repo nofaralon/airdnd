@@ -230,6 +230,7 @@ export default {
       return this.$store.getters.filterBy
     },
     stays(){
+
       return this.$store.getters.tempStays
     },
     allPrices(){

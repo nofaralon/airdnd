@@ -178,6 +178,7 @@ export const stayStore = {
             } else {
                 stay.likedByUsers.unshift(user)
             }
+            dispatch({type: "updateStay", stay})
 
 
         },

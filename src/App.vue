@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       url: null,
-            filterBy:{
+      filterBy:{
         country:'',
         type:'',
         ailments:'',

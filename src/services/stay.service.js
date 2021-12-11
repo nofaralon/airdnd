@@ -112,7 +112,7 @@ function getEmptyStay() {
 
 function getEmptyReview() {
     return {
-        date: new Date().toString().slice(3, 15),
+        date: '',
         txt: "",
         rate: 0,
         by: "",

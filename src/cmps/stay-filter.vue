@@ -33,7 +33,7 @@
                 <span>TOP CITIES</span>
               </div>
             <div class="stays-options">
-              <div v-for="country in countries" :key="country">
+              <div v-for="(country,index) in countries" :key="index">
                 <div>
                   <span>
                     {{country.name}} - stays
@@ -50,6 +50,7 @@
             <option>France</option>
             <option>Florida</option>
             <option>Iceland</option>
+            <option>Thailand</option>
             <option>Netherlands</option>
           </datalist>
           <!-- <el-select v-model="value" value-key="value" placeholder="Select">

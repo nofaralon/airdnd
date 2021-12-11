@@ -1,5 +1,5 @@
 <template>
-<div class="go-big" :class="{'fixed' : explore , 'not-fixed' : details}" :style="[open ? {'height':'160px'}:{'height':'130px'}]">
+<div class="go-big" :class="{'fixed' : explore , 'not-fixed' : details}" :style="[open ? {'height':'180px'}:{'height':'150px'}]">
 
 <div class="header-container">
 
@@ -56,9 +56,7 @@
             <el-dropdown-item>Profile</el-dropdown-item>
             </router-link>
 
-             <router-link v-if="user" @click="logOut" style="text-decoration:none;" :to="'/'">
-            <el-dropdown-item>Log out</el-dropdown-item>
-            </router-link>
+            <el-dropdown-item v-if="user" @click.native="logOut()">Log out</el-dropdown-item>
             
           </el-dropdown-menu>
         </el-dropdown>
@@ -79,6 +77,7 @@ import StayFilterSmall from '@/cmps/stay-filter-small'
 import StayFilter from '@/cmps/stay-filter'
 import exploreFilter from './explore-filter.vue'
 import {eventBusService,resetFilter} from '../services/event-bus.service'
+import { socketService } from '../services/socket.service'
 export default {
   props:{
     explore:Boolean,
@@ -109,6 +108,7 @@ export default {
     this.open=false
     window.addEventListener('scroll', this.handleScroll);
     this.order=orderService.getEmptyOrder()
+    if (this.user) this.createOrderSocket()
   },
  destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -139,6 +139,15 @@ export default {
     },
      logOut(){
       this.$store.dispatch({type:'logoutUser'})
+      socketService.off('hostOrders')
+      this.$router.push('/')
+
+    },
+    createOrderSocket(){
+      socketService.on('hostOrders', this.orderNotification)
+    },
+    orderNotification(order){
+      console.log(order);
     }
    
   },
@@ -149,6 +158,11 @@ export default {
     },
     filterBy() {
       return this.$store.getters.filterBy
+    }
+  },
+  watch: {
+    user: function(newVal){
+      if (newVal) this.createOrderSocket()
     }
   },
   components:{
