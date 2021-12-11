@@ -30,7 +30,7 @@
             </div>
               </div>
               <div class="top-cities-text">
-                <span>Top cities</span>
+                <span>TOP CITIES</span>
               </div>
             <div class="stays-options">
               <div v-for="country in countries" :key="country">
