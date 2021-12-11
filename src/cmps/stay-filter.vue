@@ -6,7 +6,7 @@
           <button class="country filter-btn">
             <label>
               <p>Location</p>
-              <input
+              <input @click="isLocationModalOpen=true"
                 class="filter-country-input"
                 list="locations"
                 type="search"
@@ -15,7 +15,7 @@
               />
             </label>
           </button>
-          <section class="location-options">
+          <section v-if="isLocationModalOpen" class="location-options">
             <div class="countries-modal-title">
             <span>GO ANYWHERE, ANYTIME</span>
             </div>
@@ -35,10 +35,11 @@
             <div class="stays-options">
               <div v-for="(country,index) in countries" :key="index">
                 <div @click="setCountry(country.name)">
+                  <svg  aria-hidden="true" focusable="false" data-prefix="fas" data-icon="map-marker-alt" class="svg-inline--fa fa-map-marker-alt fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"></path></svg>
                   <span>
                     {{country.name}} - stays
-                    
                   </span>
+
                 </div>
 
               </div>
@@ -145,6 +146,7 @@ export default {
   name: "stay-filter",
   data() {
     return {
+      isLocationModalOpen:false,
       isModalOpen: false,
       value1: "",
       countries:[
@@ -174,7 +176,8 @@ export default {
       await eventBusService.$emit("updatePrices");
     },
     setCountry(country){
-      this.filter.country=country
+      this.filter.country=country;
+      this.isLocationModalOpen=false
 
     },
     setCountAdults(val) {

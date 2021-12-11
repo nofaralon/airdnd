@@ -264,6 +264,7 @@ input::-webkit-calendar-picker-indicator {
     left: 0px;
     width: 500px;
     height: 500px;
+    color: black;
     background-color: #FFFFFF;
     border-radius: 32px;
     .countries-modal-title{
@@ -272,9 +273,10 @@ input::-webkit-calendar-picker-indicator {
         padding: 8px 32px 2px ;
         text-align: start;
         span{
-    font-size: 12px ;
+    font-size: 14px ;
     line-height: 12px ;
     font-weight: 600 ;
+    font-family: manrope-bold;
         }
     }
     .explore-button-container{
@@ -288,6 +290,10 @@ input::-webkit-calendar-picker-indicator {
         box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px ;
         border: 1px solid rgb(221, 221, 221);
         justify-content: space-between;
+        &:hover{
+        box-shadow: rgb(0 0 0 / 23%) 0px 6px 16px;
+
+        }
         >*{
             padding: 8px 24px;
             .icon-container{
@@ -303,12 +309,13 @@ input::-webkit-calendar-picker-indicator {
 .top-cities-text{
 padding: 0px 32px 2px;
 text-align: start;
-font-size: 12px;
+font-size: 14px;
 line-height: 12px;
 font-weight: 600;
 display: flex;
 align-items: center;
 height: 30px;
+font-family: manrope-bold;
 
 }
 .stays-options{
@@ -317,14 +324,14 @@ height: 30px;
         cursor: pointer ;
         width: 100% ;
         &:hover{
-            background-color: #eeececec;
+            background-color: #f6f6f6ec;
             
         }
         >*{
        display: flex ;
-       flex-direction: column ;
-       justify-content: center;
-       align-items: start;
+       flex-direction: row ;
+       justify-content: flex-start;
+       align-items: center;
        height: 45px;
        
         }
@@ -345,4 +352,9 @@ height: 30px;
     width: 28px;
     height: 28px;
     font-weight: 700;
+}
+ .fa-map-marker-alt ,.fa-w-12{
+    height: 15px;
+    margin-right: 8px;
+
 }

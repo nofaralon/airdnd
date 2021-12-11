@@ -153,6 +153,7 @@ export default {
 
     },
     start(ev){
+      console.log(ev);
       this.filterBy.fromPrice=ev.from
       this.filterBy.toPrice=ev.to
     },
