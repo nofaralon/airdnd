@@ -88,7 +88,7 @@
 
           <div class="stay-table">
 
-             <el-table v-if="stays && userStays" :data="staysToTable" stripe style="width: 100%">
+             <el-table v-if="stays && userStays" :data="staysToShow" stripe style="width: 100%">
               <el-table-column prop="name" label="Name">
               </el-table-column>
               <el-table-column prop="loc.address" label="Address" >
@@ -122,7 +122,7 @@
            
             <div class="my-orders-table">
 
-            <el-table v-if="orders && incommingOrders && inbox" :data="ordersToTable" stripe style="width: 100%">
+            <el-table v-if="orders && incommingOrders && inbox" :data="ordersToShow" stripe style="width: 100%">
               <el-table-column prop="buyer.fullname" label="Guest name">
               </el-table-column>
               <el-table-column prop="Dates" label="Stay Dates" >
@@ -142,7 +142,7 @@
 
              <div class="orders-table">
 
-            <el-table v-if="orders && userOrders && sent" :data="ordersToTable2" stripe style="width: 100%">
+            <el-table v-if="orders && userOrders && sent" :data="myOrdersToShow" stripe style="width: 100%">
               <el-table-column prop="Dates" label="Stay Dates">
               </el-table-column>
               <el-table-column prop="guests" label="Guests">
@@ -159,7 +159,7 @@
 
           <div class="reviews-table">
 
-            <el-table v-if="reviews && userStays" :data="reviewsToTable" stripe style="width: 100%">
+            <el-table v-if="reviews && userStays" :data="reviewsToShow" stripe style="width: 100%">
               <el-table-column prop="name" label="Stay name">
               </el-table-column>
               <el-table-column prop="review.by.fullname" label="User" width="120px">
@@ -301,7 +301,7 @@ export default {
         return order.status === "pending";
       });
     },
-    ordersToTable(){
+    ordersToShow(){
       this.incommingOrders = this.incommingOrders.map((order) => {
         order.totalPrice = order.totalPrice.toLocaleString("en-US", {currency: "USD",style: "currency",maximumFractionDigits: 0,})
         order.createdAt = order.createdAt.toString()
@@ -311,7 +311,7 @@ export default {
       });
          return this.incommingOrders
     },
-    ordersToTable2(){
+    myOrdersToShow(){
       console.log( this.userOrders);
       this.userOrders = this.userOrders.map((order) => {
         order.totalPrice = order.totalPrice.toLocaleString("en-US", {currency: "USD",style: "currency",maximumFractionDigits: 0,})
@@ -322,7 +322,7 @@ export default {
       });
          return this.userOrders
     },
-    staysToTable(){
+    staysToShow(){
       console.log(this.userStays);
       this.userStays = this.userStays.map((stay) => {
         console.log(stay);
@@ -331,7 +331,7 @@ export default {
       });
          return this.userStays
     },
-    reviewsToTable(){
+    reviewsToShow(){
      var reviews = this.userStays.map((stay)=>{
        var reviewObject = {
          name: stay.name,
