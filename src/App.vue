@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { myRouter } from "./router/index.js";
+import { router } from "./router/index.js";
 import { myStore } from "./store/index.js";
 import appHeader from "./cmps/app-header.vue";
 import appFooter from "./cmps/app-footer.vue";
@@ -45,7 +45,7 @@ export default {
     appHeader,
     appFooter,
   },
-  router: myRouter,
+  router: router,
   store: myStore,
 };
 </script>
