@@ -33,7 +33,7 @@
                 <span>Top cities</span>
               </div>
             <div class="stays-options">
-              <div v-for="country in countries" :key="country">
+              <div v-for="(country,index) in countries" :key="index">
                 <div>
                   <span>
                     {{country.name}} - stays
