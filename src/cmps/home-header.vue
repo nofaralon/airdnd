@@ -206,11 +206,7 @@ export default {
     filterBy() {
       return this.$store.getters.filterBy;
     },
-  },
-  watch: {
-    user: function (newVal) {
-      console.log(newVal);
-    },
+  
   },
   components: {
     stayFilter,
