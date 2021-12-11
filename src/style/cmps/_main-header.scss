@@ -11,6 +11,21 @@
     }
     height: 180px;
     width: 100%;
+    &.not-fixed{
+
+        @include for-mobile-layout{
+            display: none !important;
+          }
+          @include for-narrow-layout{
+            display: none !important;
+          }
+          @include for-normal-layout{
+            display: grid !important ;
+          }
+          @include for-wide-layout{
+            display: grid !important;
+          }
+    }
 }
 
 // .details{
