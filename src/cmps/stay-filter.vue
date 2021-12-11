@@ -19,6 +19,7 @@
             <option>France</option>
             <option>Florida</option>
             <option>Iceland</option>
+            <option>Thailand</option>
             <option>Netherlands</option>
           </datalist>
           <!-- <el-select v-model="value" value-key="value" placeholder="Select">

@@ -24,7 +24,6 @@ export const stayService = {
 async function query(filter) {
     // return storageService.query(STAY_KEY)
     const filterBy = JSON.stringify(filter)
-    console.log('service filterBy',filterBy);
     return httpService.get(`stay/${filterBy}`)
 
 
@@ -90,7 +89,7 @@ function getEmptyStay() {
         capacity: 0,
         bathrooms: 0,
         beds: 0,
-        bedrooms: 0,
+        bedroom: 0,
         amenities: [],
         host: {
             _id: '',
@@ -101,8 +100,8 @@ function getEmptyStay() {
             country: '',
             countryCode: '',
             address: '',
-            lat: 0,
-            lng: 0
+            lat: null,
+            lng: null
         },
         type: '',
         reviews: [],

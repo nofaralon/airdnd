@@ -142,7 +142,6 @@ export const stayStore = {
             stayService
                 .query(filterBy)
                 .then((stays) => {
-                    console.log(stays.length);
                     commit({ type: 'setStays', stays })
                     commit({ type: 'setTempStays', stays })
                 })
@@ -151,18 +150,15 @@ export const stayStore = {
                 })
         },
         async setFilter({ commit, state, dispatch }, { filterBy }) {
-            console.log('here');
             await commit({ type: 'setFilter', filterBy })
             dispatch({ type: 'loadStays' })
         },
         async setBigFilter({ commit, state, dispatch }, { filterBy }) {
-            console.log('here');
             await commit({ type: 'setBigFilter', filterBy })
             dispatch({ type: 'loadStays' })
 
         },
         resetFilter({ commit, dispatch }, { filterBy }) {
-            console.log('here');
             commit({ type: 'resetFilter', filterBy })
             dispatch({ type: 'loadStays' })
 
@@ -181,6 +177,7 @@ export const stayStore = {
             } else {
                 stay.likedByUsers.unshift(user)
             }
+            dispatch({type: "updateStay", stay})
 
 
         },

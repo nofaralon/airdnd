@@ -92,11 +92,10 @@ export default {
   },
   created() { 
     window.addEventListener('scroll', this.handleScroll);
-   
      this.$store.commit({type:'setUserPage',page:'home'})
     this.$store.commit({type:'clearOrder'})
     const filterBy = this.filterBy
-    this.$store.dispatch({type:'resetFilter',filterBy})
+    // this.$store.dispatch({type:'resetFilter',filterBy})
      
   },
   destroyed() {
