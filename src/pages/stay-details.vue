@@ -126,6 +126,7 @@ import stayReviews from "../cmps/stay-reviews.vue";
 import GmapMap from "../cmps/map-details.vue";
 import orderForm from "../cmps/order-form.vue";
 import { stayService } from "../services/stay.service";
+import { socketService } from "../services/socket.service";
 
 export default {
   name: "stay-details",
@@ -141,16 +142,18 @@ export default {
     };
   },
   created() {
-    this.loadStay();
+    const { stayId } = this.$route.params;
+    this.loadStay(stayId);
     this.loadOrder();
     this.$store.commit({ type: "setUserPage", page: "details" });
     this.user = this.loadUser();
     this.review = stayService.getEmptyReview();
     this.review.by = this.user;
+
   },
   methods: {
-    async loadStay() {
-      const { stayId } = this.$route.params;
+    async loadStay(stayId) {
+      
       this.stay = await this.$store.dispatch({ type: "getStay", stayId });
       if (this.stay) {
         this.imgForDisplay();
@@ -173,22 +176,26 @@ export default {
     loadOrder() {
       this.order = JSON.parse(JSON.stringify(this.$store.getters.order));
     },
-    check() {
+     async  check() {
       const { _id, name, price } = this.stay;
       this.order.stay = { _id, name, price };
       this.order.buyer._id = this.user._id;
       this.order.buyer.fullname = this.user.fullname;
       this.order.hostId = this.stay.host._id;
       this.order.totalPrice =
-        this.order.cleaning +
-        this.order.service +
-        this.order.totalDays * this.stay.price;
-      this.$store.dispatch({
+      this.order.cleaning +
+      this.order.service +
+      this.order.totalDays * this.stay.price;
+      this.order.createdAt = new Date().toLocaleDateString('en-US')
+      const order = await this.$store.dispatch({
         type: "addOrder",
         order: JSON.parse(JSON.stringify(this.order)),
       });
+      socketService.emit('addOrder', order )
+
     },
     async addReview() {
+      this.review.date = new Date().toString().slice(3, 15)
       const details = {
         stayId: this.stay._id,
         review: JSON.parse(JSON.stringify(this.review)),
@@ -223,12 +230,15 @@ export default {
       else return "bath";
     },
     setTotalRate() {
-      if (this.stay.reviews.length) {
+      if (!this.stay.reviews.length) {
+        var total = 0;
+      } else {
         var sum = this.stay.reviews.reduce((acc, review) => {
           return acc + review.rate;
         }, 0);
         var total = sum / this.stay.reviews.length;
-      } else total = 0;
+      }
+
       return total.toFixed(2);
     },
     isLoading() {

@@ -79,6 +79,7 @@ import StayFilterSmall from '@/cmps/stay-filter-small'
 import StayFilter from '@/cmps/stay-filter'
 import exploreFilter from './explore-filter.vue'
 import {eventBusService,resetFilter} from '../services/event-bus.service'
+import { socketService } from '../services/socket.service'
 export default {
   props:{
     explore:Boolean,
@@ -109,6 +110,7 @@ export default {
     this.open=false
     window.addEventListener('scroll', this.handleScroll);
     this.order=orderService.getEmptyOrder()
+    if (this.user) this.createOrderSocket()
   },
  destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -134,6 +136,13 @@ export default {
     },
      logOut(){
       this.$store.dispatch({type:'logoutUser'})
+      socketService.off('hostOrders')
+    },
+    createOrderSocket(){
+      socketService.on('hostOrders', this.orderNotification)
+    },
+    orderNotification(order){
+      console.log(order);
     }
    
   },
@@ -144,6 +153,11 @@ export default {
     },
     filterBy() {
       return this.$store.getters.filterBy
+    }
+  },
+  watch: {
+    user: function(newVal){
+      if (newVal) this.createOrderSocket()
     }
   },
   components:{

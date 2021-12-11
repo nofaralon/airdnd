@@ -90,9 +90,9 @@ export default {
   },
   created() {},
   methods: {
-      addReview(){
-        this.$emit("addReview", this.review);
-      }
+    addReview() {
+      this.$emit("addReview", this.review);
+    },
   },
   computed: {
     setReviews() {
@@ -100,10 +100,15 @@ export default {
       else return "review";
     },
     setTotalRate() {
-      var sum = this.stay.reviews.reduce((acc, review) => {
-        return acc + review.rate;
-      }, 0);
-      var total = sum / this.stay.reviews.length;
+      if (!this.stay.reviews.length) {
+        var total = 0;
+      } else {
+        var sum = this.stay.reviews.reduce((acc, review) => {
+          return acc + review.rate;
+        }, 0);
+        var total = sum / this.stay.reviews.length;
+      }
+
       return total.toFixed(2);
     },
   },
