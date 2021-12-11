@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section >
     <div v-if="modalTypes" class="filter-options">
          <div
         v-for="modalType in modalTypes"
@@ -21,10 +21,12 @@
     <div v-if="modalType === 'price'" class="price-modal-filter">
       <h1>The average nightly price is {{avg}} $ </h1>
       <HistogramSlider class="diagram"
-       :width="320"
-       :bar-height="100"
+       :width="220"
+       :bar-height="70"
        :data="prices"
-       :barWidth="7"
+       :barGap="3"
+       :barWidth="6"
+       :block="false"
        labelColor="#ff385c"
        primaryColor="#ff385c"
        @finish="start"
@@ -99,7 +101,7 @@ export default {
   data() {
     return {
       avg:null,
-      prices:this.modalPrices,
+      prices:null,
       modalType: "",
       status: "",
       modalTypes: ["price", "type", "beds", "bedrooms", "bathrooms"],
@@ -116,10 +118,6 @@ export default {
   created() {
     this.filterBy =JSON.parse(JSON.stringify(this.filterByy))
     this.modalPrices()
-    eventBusService.$on('updatePrices',val =>{
-      this.modalPrices()
-    })
-   
 
   },
   
@@ -134,15 +132,17 @@ export default {
       }
     },
      modalPrices(){
-    const prices=[];
-    this.stays.map((stay)=>{
-    prices.push(stay.price)
-    })
-    this.prices=prices
-
-     const avgPrice = this.getAvg(prices)
+      this.prices=this.allPrices
+    // const prices=[];
+    // console.log('temp stays',this.stays);
+    // this.stays.map((stay)=>{
+    // prices.push(stay.price)
+    // })
+    // this.prices=prices
+    // console.log(this.prices);
+    const avgPrice = this.getAvg(this.allPrices)
     this.avg =Math.round(avgPrice)
-    return prices
+    
     },
     getAvg(prices){
      const sum = prices.reduce(function(acc,price){
@@ -230,10 +230,25 @@ export default {
       return this.$store.getters.filterBy
     },
     stays(){
+
       return this.$store.getters.tempStays
     },
+    allPrices(){
+    const prices=[];
+    this.stays.map((stay)=>{
+    prices.push(stay.price)
+    })
+    return prices
    
-
+    }
+    
+  },
+   watch: {
+    "allPrices"() {
+     this.prices=this.allPrices 
+    const avgPrice = this.getAvg(this.allPrices)
+    this.avg =Math.round(avgPrice)      
+    },
   },
   components: {
     FilterBtn,

@@ -11,7 +11,7 @@ export const stayStore = {
         stays: [],
         currStay: null,
         filterBy: {
-            country: '',
+            country:'',
             ailments: '',
             guests: null,
             Dates: "",
@@ -82,6 +82,7 @@ export const stayStore = {
             } else {
                 state.filterBy.bathrooms = 0;
             }
+           
         },
         setUserStays(state, { stays }) {
             state.userStays = stays
@@ -142,8 +143,8 @@ export const stayStore = {
             stayService
                 .query(filterBy)
                 .then((stays) => {
-                    commit({ type: 'setStays', stays })
                     commit({ type: 'setTempStays', stays })
+                    commit({ type: 'setStays', stays })
                 })
                 .finally(() => {
                     commit({ type: 'setLoading', isLoading: false })
@@ -177,6 +178,7 @@ export const stayStore = {
             } else {
                 stay.likedByUsers.unshift(user)
             }
+            dispatch({type: "updateStay", stay})
 
 
         },

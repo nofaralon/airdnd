@@ -53,10 +53,10 @@
     <input class="edit-input" list="types" type="list" v-model="newStay.type">
     </label>
     <datalist id="types">
-    <option>Outdoors</option>
-    <option>Loft</option>
-    <option>Apartment</option>
-    <option>Villa</option>
+    <option>outdoors</option>
+    <option>loft</option>
+    <option>apartment</option>
+    <option>villa</option>
     </datalist>
     <label>
       Capacity:
@@ -64,7 +64,7 @@
     </label>
     <label>
       Bedrooms:
-    <input class="edit-input-small" min="0" type="number" v-model="newStay.bedrooms">
+    <input class="edit-input-small" min="0" type="number" v-model="newStay.bedroom">
     </label>
     <label>
       Bathrooms:

@@ -46,6 +46,19 @@
             <div v-if="incommingOrders" class="orders-btns">
               <p>{{ incommingOrders.length + userOrders.length }}</p>
 
+        <div @click="setInfo('reviews')"  class="main-bar-rating options" :class="{focused:reviews}">
+          <h3>Avarage rating</h3>
+          <p v-if="userStays"> <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" > <path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z" ></path> </svg> 
+          {{totalRating.toLocaleString("en-US", {maximumFractionDigits: 2,})}}
+          </p>
+        </div>
+        <div @click="setInfo('orders');"  class="main-bar-orders options" :class="{focused:orders}">
+          <h3 v-show="!sent &&!inbox">Orders</h3>
+          <h3 v-show="sent">My orders</h3>
+          <h3 v-show="inbox">My stays' orders</h3>
+          <div v-if="incommingOrders" class="orders-btns">
+            <p>{{ incommingOrders.length+userOrders.length }}</p>
+            
               <span>
                 <span>(</span>
                 {{ pendingStaysOrders.length }}
@@ -68,8 +81,13 @@
                   maximumFractionDigits: 0,
                 })
               }}
-            </p>
-          </div>
+          </p>
+        </div>
+
+        <div @click="setInfo('stays')" class="main-bar-stays options" :class="{focused:stays}">
+          <h3>My Stays</h3>
+          <p v-if="userStays">{{ userStays.length }}</p>
+        </div>
 
           <div
             @click="setInfo('stays')"
@@ -172,7 +190,6 @@
               </el-table-column>
             </el-table>
           </div>
-          <!-- <button @click="router.push('/stay/edit')">Add stay</button> -->
         </div>
       </div>
     </div>
@@ -207,7 +224,8 @@ export default {
     setInfo(showInfo) {
       this.closeAll();
       if (showInfo === "orders") {
-        this.setPendingOff();
+        this.inbox=true
+        this.setPendingOff()
         this.orders = true;
       } else if (showInfo === "stays") {
         this.stays = true;

@@ -62,7 +62,7 @@
             <div>
               <h2>
                 <span class="stay-name">{{ stay.type }}</span>
-                <span v-if="stay.type === 'outdoors'"> accommodation</span>
+                <span v-if="stay.type.toLowerCase() === 'outdoors'"> accommodation</span>
                 hosted by
                 {{ stay.host.fullname }}
               </h2>

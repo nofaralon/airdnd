@@ -2,7 +2,7 @@
   <section class="preview-container" @click="stayDetails(stay._id)">
     <el-carousel
       class="img-carousel"
-      arrow="bold"
+      arrow="always"
       indicator-position="none"
       :autoplay="false"
       :trigger="'click'"
@@ -69,8 +69,7 @@
         >
       </div>
       <div class="card-type-loc">
-        <span class="type">{{ stay.type }}</span>
-        <span v-if="stay.type === 'outdoors'"> accommodation</span> in
+        <span class="type">{{ stay.type }}</span> <span v-if="stay.type.toLowerCase()==='outdoors'"> accommodation</span> in
         <span class="location"> {{ stay.loc.address }} </span>
       </div>
       <span class="stay-name">{{ stay.name }}</span>

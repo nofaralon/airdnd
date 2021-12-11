@@ -10,7 +10,7 @@ import locale from 'element-ui/lib/locale/lang/en'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import HistogramSlider from 'vue-histogram-slider';
 import 'vue-histogram-slider/dist/histogram-slider.css';
- 
+
 Vue.component(HistogramSlider.name, HistogramSlider);
 Vue.use(VueGoogleMaps, {
     load: {

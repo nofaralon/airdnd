@@ -81,7 +81,7 @@
     <div class="footer-container">
       <p>© 2021 Airbnb, Inc. · Privacy · Terms · Sitemap</p>
       <div class="icons">
-        <div>
+        <!-- <div>
           <svg
             aria-hidden="true"
             focusable="false"
@@ -102,7 +102,7 @@
           <a>USD</a>
         </div>
 
-        <div>
+        <div> -->
           <svg
             aria-hidden="true"
             focusable="false"

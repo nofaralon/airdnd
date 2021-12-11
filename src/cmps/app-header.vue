@@ -1,5 +1,5 @@
 <template>
-<div class="header-container">
+<div  class="header-container">
 
 <dynamic-header :explore="explore" :details="details" :isScroll="isScroll"/>
 </div>
@@ -32,6 +32,7 @@ export default {
      })
       eventBusService.$on('setBigFilter',filterBy=>{
        this.$store.dispatch({type:'setBigFilter', filterBy})
+
        if (this.$store.getters.userPage==='home')this.$router.push('/stay')
      })
      eventBusService.$on('saveOrder',newOrder=>{
@@ -40,10 +41,11 @@ export default {
 
       })
       eventBusService.$on('resetFilter',filterBy=>{
-      this.$store.dispatch({type:'resetFilter', filterBy})
-
-        
+      this.$store.dispatch({type:'resetFilter', filterBy}) 
       })
+      eventBusService.$on('updatePrices',value =>{
+      })
+      
   },
   destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -74,7 +76,8 @@ export default {
     },       
     currPage(){
       if (this.$store.getters.userPage!=='explore') return true
-    }
+    },
+  
   },
   components:{
     dynamicHeader,  
