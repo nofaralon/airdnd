@@ -1,5 +1,5 @@
 <template>
-  <div class="main-layout main-filter big-filter">
+  <div class="main-filter big-filter">
     <div class="filter filter-slot-lrg">
       <button class="filter-btn">
         <div class="filter-container">
