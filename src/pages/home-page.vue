@@ -111,7 +111,7 @@ export default {
     },
     setFilter(filterBy){
     this.filterBy = filterBy
-    this.$store.dispatch({type:'setFilter', filterBy})
+    this.$store.dispatch({type:'setBigFilter', filterBy})
     this.$router.push('/stay')
     },
     

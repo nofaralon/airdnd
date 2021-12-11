@@ -15,6 +15,37 @@
               />
             </label>
           </button>
+          <section class="location-options">
+            <div class="countries-modal-title">
+            <span>GO ANYWHERE, ANYTIME</span>
+            </div>
+            <div class="explore-button-container">
+              <div class="explore-button">
+              <div>
+                <span class="flexible-text">I'm flexible</span>
+              </div>
+              <div class="icon-container">
+                <i class="el-icon-arrow-right"></i>
+              </div>
+            </div>
+              </div>
+              <div class="top-cities-text">
+                <span>Top cities</span>
+              </div>
+            <div class="stays-options">
+              <div v-for="country in countries" :key="country">
+                <div>
+                  <span>
+                    {{country.name}} - stays
+                    
+                  </span>
+                </div>
+
+              </div>
+
+            </div>
+
+          </section>
           <datalist id="locations">
             <option>France</option>
             <option>Florida</option>
@@ -115,6 +146,13 @@ export default {
     return {
       isModalOpen: false,
       value1: "",
+      countries:[
+        {name:'France'},
+        {name:'Thailand'},
+        {name:'Icleand'},
+        {name:'Florida'},
+        {name:'Netharlends'}
+        ]
       // countries:[
       //   {
       //     value: 'France',
@@ -151,7 +189,8 @@ export default {
     async search() {
       await eventBusService.$emit("setBigFilter", { ...this.filterBy });
       await eventBusService.$emit("saveOrder", this.currOrder);
-      this.$emit("filter");
+      await this.$emit("filter");
+      await eventBusService.$emit("updatePrices");
     },
     setCountAdults(val) {
       if (val === "down") {
@@ -201,6 +240,7 @@ export default {
       const order = JSON.parse(JSON.stringify(this.$store.getters.order));
       return order;
     },
+    
   },
   components: {},
 };
