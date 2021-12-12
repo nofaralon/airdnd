@@ -23,8 +23,25 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
-    >:nth-child(n+4) {
-        display: none;
+    @include for-mobile-layout {
+        >:nth-child(n+4) {
+            display: none;
+        }
+    }
+    @include for-narrow-layout {
+        >:nth-child(n+4) {
+            display: none;
+        }
+    }
+    @include for-normal-layout {
+        >:nth-child(n+4) {
+            display: block;
+        }
+    }
+    @include for-wide-layout {
+        >:nth-child(n+4) {
+            display: block;
+        }
     }
     .price-filter,
     .type-filter {
