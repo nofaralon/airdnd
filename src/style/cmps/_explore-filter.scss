@@ -1,7 +1,18 @@
+.mobile-container{
+  display: flex;
+}
+.mobile-logo{
+  color: $clr1;
+  height: 32px;
+  margin-top: 17px;
+}
 .filter-options {
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
+    >:nth-child(n+4){
+      display: none;
+    }
   
     .price-filter, .type-filter {
       cursor: pointer ;
@@ -98,6 +109,20 @@
       padding: 20px;
     }
   .price-modal-filter {
+    @include for-mobile-layout {
+      left: 7px !important;
+      top: 70px !important;
+    }
+    @include for-narrow-layout {
+      left: 0 !important;
+      top: 0 !important;
+    }
+    @include for-normal-layout {
+      left: 120px !important;
+    }
+    @include for-wide-layout {
+      left: 120px !important;
+    }
     h1 {
       font-size: 20px;
       display: flex;
@@ -124,6 +149,7 @@
         flex-direction: column;
         align-items: flex-start;
         padding: 2px;
+       
         input {
           position: absolute;
           width: 130px;
@@ -149,7 +175,20 @@
     
   }
   .type-modal-filter {
-   
+    @include for-mobile-layout {
+      left: 7px !important;
+      top: 70px !important;
+    }
+    @include for-narrow-layout {
+      left: 0 !important;
+      top: 0 !important;
+    }
+    @include for-normal-layout {
+      left: 120px !important;
+    }
+    @include for-wide-layout {
+      left: 120px !important;
+    }
   
     .label {
       padding: 12px 0px;
@@ -186,8 +225,20 @@
     box-shadow: 0 3px 8px 0 rgb(0 0 0 / 18%);
     // top: 180px;
     z-index: 5;
+    @include for-mobile-layout {
+      left: 7px !important;
+      top: 70px;
+    }
+    @include for-narrow-layout {
+      left: 120px !important;
+    }
+    @include for-normal-layout {
+      left: 120px !important;
+    }
+    @include for-wide-layout {
+      left: 120px !important;
+    }
     width: 400px;
-    left: 120px;
     color: black;
 
     .noff {
