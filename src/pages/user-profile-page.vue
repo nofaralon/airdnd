@@ -59,7 +59,7 @@
             class="main-bar-revenue options"
             :class="{ focused: revenues }"
           >
-            <h3>Revenue</h3>
+            <h3> Yearly revenue</h3>
             <p>
               {{
                 userRevenue.toLocaleString("en-US", {

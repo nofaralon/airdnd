@@ -1,46 +1,87 @@
+.mobile-container {
+    @include for-mobile-layout {
+        display: flex !important;
+    }
+    @include for-narrow-layout {
+        display: flex !important;
+    }
+    @include for-normal-layout {
+        display: none !important;
+    }
+    @include for-wide-layout {
+        display: none !important;
+    }
+}
+
+.mobile-logo {
+    color: $clr1;
+    height: 32px;
+    margin-top: 17px;
+}
+
 .filter-options {
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
-  
-    .price-filter, .type-filter {
-      cursor: pointer ;
-      text-align: center ;
-      border: 1px solid black;
-      background-color: #ffffff ;
-      border-color: #dddddd ;
-      border-radius: 30px ;
-      color: black;
-
-      color: #222222 ;
-      font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
-        Helvetica Neue, sans-serif ;
-      position: relative ;
-      padding-top: 10px ;
-      padding-bottom: 10px ;
-      padding-left: 16px ;
-      padding-right: 20px ;
-      font-size: 12px ;
-      line-height: 16px ;
-      width: auto ;
-      margin-right: 5px;
-      margin-bottom: 10px;
-      &:hover {
-        border: 1px solid black;
-        border-color: black ;
-      }
+    @include for-mobile-layout {
+        >:nth-child(n+4) {
+            display: none;
+        }
     }
-  }
-  .el-icon-arrow-down:before,
-  .el-icon-arrow-up:before {
+    @include for-narrow-layout {
+        >:nth-child(n+4) {
+            display: none;
+        }
+    }
+    @include for-normal-layout {
+        >:nth-child(n+4) {
+            display: block;
+        }
+    }
+    @include for-wide-layout {
+        >:nth-child(n+4) {
+            display: block;
+        }
+    }
+    .price-filter,
+    .type-filter {
+        cursor: pointer;
+        text-align: center;
+        border: 1px solid black;
+        background-color: #ffffff;
+        border-color: #dddddd;
+        border-radius: 30px;
+        color: black;
+        color: #222222;
+        font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+        position: relative;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 16px;
+        padding-right: 20px;
+        font-size: 12px;
+        line-height: 16px;
+        width: auto;
+        margin-right: 5px;
+        margin-bottom: 10px;
+        &:hover {
+            border: 1px solid black;
+            border-color: black;
+        }
+    }
+}
+
+.el-icon-arrow-down:before,
+.el-icon-arrow-up:before {
     font-weight: 1000;
     margin-left: 3px;
-  }
-  .actions-btn {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      :first-child {
+}
+
+.actions-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+     :first-child {
         width: auto;
         height: auto;
         border-radius: 5px;
@@ -52,10 +93,10 @@
         font-weight: 600;
         padding: 10px;
         &:hover {
-          background-color: rgb(202, 199, 199);
+            background-color: rgb(202, 199, 199);
         }
-      }
-      :last-child {
+    }
+     :last-child {
         cursor: pointer;
         display: inline-block;
         margin: 0px;
@@ -72,110 +113,139 @@
         border: none;
         background: rgb(34, 34, 34);
         color: rgb(255, 255, 255);
-      }
     }
-    .type-modal-filter{
-      align-items: flex-start;
-      .actions-btn{
+}
+
+.type-modal-filter {
+    align-items: flex-start;
+    .actions-btn {
         width: 100%;
-
-      }
-
     }
-    .price-modal-filter , .type-modal-filter{
-      width: 400px;
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      z-index: 10;
-      background: rgb(255, 255, 255);
-      border: 0.5px solid rgba(118, 118, 118, 0.28);
-      border-radius: 12px;
-      box-shadow: rgb(0 0 0 / 15%) 0px 10px 37px;
-      white-space: normal;
-      color: black;
-      
-      padding: 20px;
+}
+
+.price-modal-filter,
+.type-modal-filter {
+    width: 400px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    background: rgb(255, 255, 255);
+    border: 0.5px solid rgba(118, 118, 118, 0.28);
+    border-radius: 12px;
+    box-shadow: rgb(0 0 0 / 15%) 0px 10px 37px;
+    white-space: normal;
+    color: black;
+    padding: 20px;
+}
+
+.price-modal-filter {
+    @include for-mobile-layout {
+        left: 7px !important;
+        top: 70px !important;
     }
-  .price-modal-filter {
+    @include for-narrow-layout {
+        left: 0 !important;
+        top: 0 !important;
+    }
+    @include for-normal-layout {
+        left: 120px !important;
+    }
+    @include for-wide-layout {
+        left: 120px !important;
+    }
     h1 {
-      font-size: 20px;
-      display: flex;
-      justify-content: flex-start;
-      padding: 10px;
-    }
-    .filter-text {
-      margin-left: 4px;
-    }
-    .price-limit {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-      .input-container {
-        width: 165px;
-        height: 50px;
-        border: 1px solid rgb(221, 221, 221);
-        border-radius: 10px;
-        margin-inline: 5px;
-        margin: 20px 0px;
+        font-size: 20px;
         display: flex;
         justify-content: flex-start;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 2px;
-        input {
-          position: absolute;
-          width: 130px;
-          height: 50px;
-          border: none;
-          top: 212px;
-          background-color: transparent;
-        }
-        .margin-left {
-          margin-left: 5px;
-        }
-      }
+        padding: 10px;
     }
-    ::placeholder {
-      color: black;
-      font-weight: 400;
+    .filter-text {
+        margin-left: 4px;
+    }
+    .price-limit {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        .input-container {
+            width: 165px;
+            height: 50px;
+            border: 1px solid rgb(221, 221, 221);
+            border-radius: 10px;
+            margin-inline: 5px;
+            margin: 20px 0px;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 2px;
+            input {
+                position: absolute;
+                width: 130px;
+                height: 50px;
+                border: none;
+                top: 212px;
+                background-color: transparent;
+            }
+            .margin-left {
+                margin-left: 5px;
+            }
+        }
+    }
+     ::placeholder {
+        color: black;
+        font-weight: 400;
     }
     input:focus,
     textarea:focus,
     select:focus {
-      outline: none;
+        outline: none;
     }
-    
-  }
-  .type-modal-filter {
-   
-  
+}
+
+.type-modal-filter {
+    @include for-mobile-layout {
+        left: 7px !important;
+        top: 70px !important;
+    }
+    @include for-narrow-layout {
+        left: 0 !important;
+        // top: 100px !important;
+    }
+    @include for-normal-layout {
+        left: 120px !important;
+        // top: 50px !important;
+    }
+    @include for-wide-layout {
+        left: 120px !important;
+        top: 50px !important;
+    }
     .label {
-      padding: 12px 0px;
+        padding: 12px 0px;
     }
     .el-checkbox__label {
-      font-size: 18px;
+        font-size: 18px;
     }
-    .el-checkbox__input.is-checked .el-checkbox__inner,.el-checkbox__input.is-indeterminate .el-checkbox__inner {
-      background-color: black;
-      border-color: black;
+    .el-checkbox__input.is-checked .el-checkbox__inner,
+    .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+        background-color: black;
+        border-color: black;
     }
     .el-checkbox__inner {
-      border: 2px solid #dcdfe6;
-      width: 18px;
-      height: 18px;
-      justify-content: center;
-      align-items: center;
-      font-weight: 2000;
+        border: 2px solid #dcdfe6;
+        width: 18px;
+        height: 18px;
+        justify-content: center;
+        align-items: center;
+        font-weight: 2000;
     }
-    .el-checkbox__input.is-checked + .el-checkbox__label {
-      color: black;
+    .el-checkbox__input.is-checked+.el-checkbox__label {
+        color: black;
     }
-  
-  }
-  
-  .beds-modal-filter {
+}
+
+.beds-modal-filter {
     position: absolute;
     background-color: white;
     padding: 10px;
@@ -186,63 +256,74 @@
     box-shadow: 0 3px 8px 0 rgb(0 0 0 / 18%);
     // top: 180px;
     z-index: 5;
-    width: 400px;
-    left: 120px;
-    color: black;
-
-    .noff {
-      border-bottom: 1px solid #dadada;
-      margin-bottom: 10px;
-      padding: 5px 5px 15px;
+    @include for-mobile-layout {
+        left: 7px !important;
+        top: 70px;
     }
-    > * {
-      display: flex;
-      align-items: center;
+    @include for-narrow-layout {
+        left: 120px !important;
+    }
+    @include for-normal-layout {
+        left: 120px !important;
+    }
+    @include for-wide-layout {
+        left: 120px !important;
+    }
+    width: 400px;
+    color: black;
+    .noff {
+        border-bottom: 1px solid #dadada;
+        margin-bottom: 10px;
+        padding: 5px 5px 15px;
+    }
+    >* {
+        display: flex;
+        align-items: center;
     }
     & h2 {
-      font-size: rem(14px);
+        font-size: rem(14px);
     }
     & span {
-      font-size: rem(14px);
+        font-size: rem(14px);
     }
-    > * {
-      margin: 10px;
-      display: flex;
-      justify-content: space-between;
-      text-align: start;
-      & button {
-        justify-content: center;
-        background-color: #0000;
-        border-radius: 50%;
-        padding: 8px 16px;
-        align-items: center;
-        color: #484848;
-        font-size: 1.125rem;
-        border: 1px solid;
-        cursor: pointer;
-        width: 40px;
-        height: 40px;
-         >*{
-           display: flex;
-           justify-content: center;
-           align-items: center;
-         }
-      }
-      .guests {
-        padding: 10px;
-      }
+    >* {
+        margin: 10px;
+        display: flex;
+        justify-content: space-between;
+        text-align: start;
+        & button {
+            justify-content: center;
+            background-color: #0000;
+            border-radius: 50%;
+            padding: 8px 16px;
+            align-items: center;
+            color: #484848;
+            font-size: 1.125rem;
+            border: 1px solid;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            >* {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        .guests {
+            padding: 10px;
+        }
     }
-  }
-  .right {
+}
+
+.right {
     left: 190px !important;
-  }
-  .righter {
+}
+
+.righter {
     left: 250px !important;
-  }
-  .diagram{
-    margin-top:7px;
+}
+
+.diagram {
+    margin-top: 7px;
     margin-left: 65px;
-   
-  }
- 
-  
+}
