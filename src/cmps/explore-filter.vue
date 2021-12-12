@@ -120,7 +120,6 @@ export default {
   created() {
     this.filterBy =JSON.parse(JSON.stringify(this.filterByy))
     this.modalPrices()
-    console.log(this.filterBy);
 
   },
   
@@ -137,12 +136,10 @@ export default {
      modalPrices(){
       this.prices=this.allPrices
     // const prices=[];
-    // console.log('temp stays',this.stays);
     // this.stays.map((stay)=>{
     // prices.push(stay.price)
     // })
     // this.prices=prices
-    // console.log(this.prices);
     const avgPrice = this.getAvg(this.allPrices)
     this.avg =Math.round(avgPrice)
     
@@ -156,7 +153,6 @@ export default {
 
     },
     start(ev){
-      console.log(ev);
       this.filterBy.fromPrice=ev.from
       this.filterBy.toPrice=ev.to
     },

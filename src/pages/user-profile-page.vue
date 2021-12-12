@@ -265,9 +265,7 @@ export default {
     },
     setPendingOff() {
       if (this.pendingStaysOrders.length) {
-        // console.log(this.pendingStaysOrders.length);
         this.incommingOrders.forEach((order) => {
-          // console.log(order);
           order.status = "recieved";
           // this.$store.dispatch({ type: "updateOrder", order });
         });
@@ -312,7 +310,6 @@ export default {
          return this.incommingOrders
     },
     myOrdersToShow(){
-      console.log( this.userOrders);
       this.userOrders = this.userOrders.map((order) => {
         order.totalPrice = order.totalPrice.toLocaleString("en-US", {currency: "USD",style: "currency",maximumFractionDigits: 0,})
         order.createdAt = order.createdAt.toString()
@@ -323,9 +320,7 @@ export default {
          return this.userOrders
     },
     staysToShow(){
-      console.log(this.userStays);
       this.userStays = this.userStays.map((stay) => {
-        console.log(stay);
         stay.price = stay.price.toLocaleString("en-US", {currency: "USD",style: "currency",maximumFractionDigits: 0,})
         return stay
       });
@@ -337,7 +332,6 @@ export default {
          name: stay.name,
          reviews: stay.reviews
        }
-      // console.log(reviewObject, 'reviewObject');
 
       return reviewObject
      })

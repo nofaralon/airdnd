@@ -98,7 +98,18 @@
             <button class="wrapping-btn big right-btn">
               <el-dropdown trigger="click">
                 <span class="el-dropdown-link">
-                  <button class="header-btn">
+                  <el-badge @click="OpenProfile" v-if="newNotification" :value="1" class="item">
+                    <button class="header-btn">
+                      ☰
+                      <img v-if="user" :src="user.imgUrl" alt="" />
+                      <img
+                        v-else
+                        src="https://res.cloudinary.com/di0utpbop/image/upload/v1638552963/airdnd/pngfind.com-default-image-png-6764065_c91w16.png"
+                      />
+                    </button>
+                  </el-badge>
+
+                  <button v-else class="header-btn">
                     ☰
                     <img v-if="user" :src="user.imgUrl" alt="" />
                     <img
@@ -140,7 +151,9 @@
                     style="text-decoration: none"
                     :to="'/'"
                   >
-                    <el-dropdown-item v-if="user" @click.native="logOut()">Log out</el-dropdown-item>
+                    <el-dropdown-item v-if="user" @click.native="logOut()"
+                      >Log out</el-dropdown-item
+                    >
                   </router-link>
                 </el-dropdown-menu>
               </el-dropdown>
@@ -168,19 +181,21 @@ export default {
       loggedInUser: null,
       open: false,
       order: null,
-      search:false
+      search:false,
+      newNotification: false
     };
   },
   created() {
     window.addEventListener("scroll", this.handleScroll);
     this.order = orderService.getEmptyOrder();
+        if (this.user) this.createOrderSocket()
+
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     setSearch(){
-console.log('got the emit');
 this.search=false
     },
     goTo(here) {
@@ -196,7 +211,22 @@ this.search=false
     },
     logOut() {
       this.$store.dispatch({ type: "logoutUser" });
+        socketService.off('hostOrders')
+      // this.$router.push('/')
     },
+      createOrderSocket(){
+      socketService.on('hostOrders', this.orderNotification)
+    },
+    orderNotification(order){
+      if(order.hostId === this.user._id){
+        this.newNotification = true
+      }
+    },
+    OpenProfile(){
+      this.newNotification = false
+      this.$router.push(`/profile/${this.user._id}`)
+
+    }
   },
   computed: {
     user() {
@@ -215,7 +245,11 @@ this.search=false
     filterBy() {
       return this.$store.getters.filterBy;
     },
-  
+  },
+   watch: {
+    user: function(newVal){
+      if (newVal) this.createOrderSocket()
+    }
   },
   components: {
     stayFilter,

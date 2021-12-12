@@ -56,7 +56,6 @@ export const stayStore = {
     },
     mutations: {
         setFilter(state, { filterBy }) {
-            console.log(filterBy);
             if(filterBy.guests){
                 state.filterBy.guests =filterBy.guests
             }
