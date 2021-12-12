@@ -110,7 +110,7 @@ export default {
       filter: {
             country: '',
             ailments: '',
-            guests: null,
+            guests: 0,
             Dates: "",
             type: [],
             fromPrice: 0,
