@@ -3,11 +3,8 @@
     <section v-if="stays" class="explore-layout">
       <p v-if="isLoading">Loading...</p>
 
-      <stay-list @setFilter="setFilter" v-else :stays="stays" @setLiked="setLiked">
-      </stay-list>
+      <stay-list @setFilter="setFilter" v-else :stays="stays" @setLiked="setLiked"></stay-list>
 
-     
-      
     </section>
   </div>
 </template>

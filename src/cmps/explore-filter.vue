@@ -18,6 +18,8 @@
       </div>
     </div>
 
+    
+
     <div v-if="modalType === 'price'" class="price-modal-filter">
       <h1>The average nightly price is {{avg}} $ </h1>
       <HistogramSlider class="diagram"
@@ -104,8 +106,8 @@ export default {
       prices:null,
       modalType: "",
       status: "",
-      modalTypes: ["price", "type", "beds", "bedrooms", "bathrooms"],
-      types: ["beds", "bedrooms", "bathrooms"],
+      modalTypes: ["guests","price", "type", "beds", "bedrooms", "bathrooms"],
+      types: ["guests","beds", "bedrooms", "bathrooms"],
       filterBy: { },
       type: {
         villa: false,
@@ -118,6 +120,7 @@ export default {
   created() {
     this.filterBy =JSON.parse(JSON.stringify(this.filterByy))
     this.modalPrices()
+    console.log(this.filterBy);
 
   },
   
@@ -153,6 +156,7 @@ export default {
 
     },
     start(ev){
+      console.log(ev);
       this.filterBy.fromPrice=ev.from
       this.filterBy.toPrice=ev.to
     },
