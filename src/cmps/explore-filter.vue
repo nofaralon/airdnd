@@ -29,8 +29,8 @@
        :barGap="3"
        :barWidth="6"
        :block="false"
-       labelColor="#ff385c"
-       primaryColor="#ff385c"
+       labelColor="#d2d2d2"
+       primaryColor="#d2d2d2"
        @finish="start"
       :updateColorOnChange="true"
        />
