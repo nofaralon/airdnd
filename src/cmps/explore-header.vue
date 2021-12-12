@@ -1,6 +1,10 @@
 <template>
-<div class="go-big" :class="{'fixed' : explore , 'not-fixed' : details}" :style="[open ? {'height':'180px'}:{'height':'150px'}]">
+<div>
+  <div>
 
+  </div>
+<div class="go-big" :class="{'fixed' : explore , 'not-fixed' : details , 'open' : open} ">
+<explore-filter class="mobile-filter"></explore-filter>
 <div class="header-container">
 
 
@@ -21,8 +25,8 @@
     <stay-filter @filter="toggleFilter" :order="order"  />
     </div>
       <div class="user-options">
-        <button @click="resetFilter" class="wrapping-btn small">
-        <router-link class="page-link explore-link" style="font-family:manrope-bold; color:rgb(34, 34, 34)"  to="/stay">Explore</router-link>
+        <button @click="resetFilter" class="wrapping-btn small explore-btn">
+        <router-link v-if="details" class="page-link explore-link" style="font-family:manrope-bold; color:rgb(34, 34, 34)"  to="/stay">Explore</router-link>
   </button>
 
   <button class="wrapping-btn small">
@@ -81,7 +85,7 @@
 </div>
 
 </div>
-
+</div>
 </template>
 
 <script>

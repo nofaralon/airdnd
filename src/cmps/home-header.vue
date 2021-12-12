@@ -1,11 +1,11 @@
 <template>
   <div :class="{ 'go-big': open }">
-    <div class="header-container">
+    <div class="header-container" >
       <div
         class="narrow-mobile-container main-layout full"
-        :class="{ white: isWhite }"
+        :class="[{ white: isWhite },{ display: search}] "
       >
-        <button class="narrow-mobile-btn" :class="{ greyish: isWhite }">
+        <button v-if="!search" @click="search=!search" class="narrow-mobile-btn" :class="{ greyish: isWhite }">
           <p>
             <svg
               aria-hidden="true"
@@ -26,6 +26,9 @@
           <p>Where are you going?</p>
         </button>
       </div>
+<stays-modal @back="setSearch" class="search-screen-modal" v-if="search"/>
+
+
       <header
         class="app-header full fixed main-layout"
         :class="{ white: isWhite }"
@@ -69,7 +72,7 @@
             <stay-filter :order="order" />
           </div>
           <div class="user-options">
-            <button class="wrapping-btn small">
+            <button class="wrapping-btn small explore-btn">
               <router-link
                 class="page-link"
                 style="font-family: manrope-bold"
@@ -152,7 +155,8 @@
 <script>
 import stayFilter from "@/cmps/stay-filter";
 import stayFilterSmall from "@/cmps/stay-filter-small";
-import { orderService } from "../services/order.service";
+import staysModal from "@/cmps/stays-modal"
+import { orderService } from "@/services/order.service";
 
 export default {
   props: {
@@ -164,6 +168,7 @@ export default {
       loggedInUser: null,
       open: false,
       order: null,
+      search:false
     };
   },
   created() {
@@ -174,6 +179,10 @@ export default {
     window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
+    setSearch(){
+console.log('got the emit');
+this.search=false
+    },
     goTo(here) {
       this.$router.push(here);
     },
@@ -211,6 +220,7 @@ export default {
   components: {
     stayFilter,
     stayFilterSmall,
+    staysModal
   },
 };
 </script>

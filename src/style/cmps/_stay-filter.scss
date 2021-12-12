@@ -1,3 +1,61 @@
+.go-big {
+  background-color: white;
+  z-index: 1;
+  box-shadow: 0 6px 16px -2px #e9e7e7;
+  height: 150px;
+  @include for-mobile-layout {
+        height: 80px;
+      }
+      @include for-narrow-layout {
+        height: 80px;
+      }
+      @include for-normal-layout {
+        height: 150px;
+      }
+      @include for-wide-layout {
+        height: 150px;
+      }
+  &.open{
+      height: 180px;
+      @include for-mobile-layout {
+            height: 80px;
+          }
+          @include for-narrow-layout {
+            height: 80px;
+          }
+          @include for-normal-layout {
+            height: 180px;
+          }
+          @include for-wide-layout {
+            height: 180px;
+          }
+  }
+
+  &.fixed{
+    position: fixed;
+  }
+  
+  width: 100%;
+
+.mobile-filter{
+    @include for-mobile-layout {
+      display: flex !important;
+    }
+    @include for-narrow-layout {
+      display: flex !important;
+    }
+    @include for-normal-layout {
+      display: none !important ;
+    }
+    @include for-wide-layout {
+      display: none !important;
+    }
+  }
+  .filter-options{
+      margin-top: 6px;
+  }
+}
+
 .small-filter {
     margin-top: 0;
     margin-bottom: 0;
@@ -21,7 +79,13 @@
 
 .filter-slot-lrg {
     height: 67px;
-    width: 850px;
+      @include for-normal-layout {
+        width: 685px !important;
+      }
+      @include for-wide-layout {
+        width: 850px !important;
+      }
+    
 }
 
 .filter-slot-sm {
@@ -126,10 +190,15 @@
             & input {
                 margin-top: 6px;
                 font-size: rem(14px);
-                width: 90%;
                 height: 20px;
                 border: none;
                 background-color: transparent;
+                @include for-normal-layout {
+                    width: 100% !important;
+                  }
+                  @include for-wide-layout {
+                    width: 90% !important;
+                  }
                 &:focus {
                     outline: none;
                 }
@@ -259,14 +328,24 @@ input::-webkit-calendar-picker-indicator {
     }
 }
 .location-options{
+    &:not(.home){
     position: absolute;
     top: 77px;
     left: 0px;
     width: 500px;
     height: 500px;
+    border-radius: 32px;
+    }
     color: black;
     background-color: #FFFFFF;
-    border-radius: 32px;
+    &.home{
+        height: 100vh;
+        width: 100%;
+        z-index: 10;
+        position: fixed;
+    border-radius: 0;
+
+    }
     .countries-modal-title{
         margin-top: 25px ;
         margin-bottom: 15px;
@@ -307,6 +386,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .top-cities-text{
+margin-top: 35px;
 padding: 0px 32px 2px;
 text-align: start;
 font-size: 14px;

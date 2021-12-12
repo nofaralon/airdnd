@@ -4,15 +4,10 @@
     width: 100%;
     object-fit: cover;
     @include for-mobile-layout{
-      // height: 550px;
-
-
-      // @include aspect-ratio(100%,550px)
-      
+      height: 450px;      
     }
     @include for-narrow-layout{
       // height: 640px;
-
     }
     @include for-normal-layout{
     height: 660px;
@@ -26,45 +21,48 @@
   .home-img-container{
     @include for-mobile-layout{
       width: 100%;
+    margin-bottom: -35px;
       display: flex !important;
     }
     @include for-narrow-layout{
       width: 100%;
+    margin-bottom: -35px;
       display: flex !important;
       
     }
     @include for-normal-layout{
       height: 640px;
       margin-top: 177px;
+    margin-bottom: -35px;
       display: grid !important;
 
     }
     @include for-wide-layout{
       margin-top: 177px;
+    margin-bottom: -160px;
            display: grid !important;
 
     }
   }
   .explore-btn {
-    position: absolute;
+    position: relative;
     margin: 0 auto;
-    left: 0;
-    right: 0;
+  
     text-align: center;
     color: white;
-    @include for-mobile-layout{
-      top: 230px;
-    }
-    @include for-narrow-layout{
-      top: 470px;
-    }
-    @include for-normal-layout{
-      top: 670px;
+    // @include for-mobile-layout{
+    //   top: 260px;
+    // }
+    // @include for-narrow-layout{
+    //   top: 310px;
+    // }
+    // @include for-normal-layout{
+    //   top: 670px;
 
-    }
-    @include for-wide-layout{
-    top: 650px;
-    }
+    // }
+    // @include for-wide-layout{
+    // top: 650px;
+    // }
     & button {
       border: none;
       color: transparent;
@@ -130,10 +128,8 @@
   .opening-sentence {
     color: white;
     font-family: manrope-bold;
-    letter-spacing: 0.02rem;
-    font-size: 1.8rem;
-    line-height: 53px;
-    margin-bottom: 25px;
+    letter-spacing: 0.01rem;
+    
     @include for-mobile-layout{
       font-size: 1.2rem;
       line-height: 35px;
@@ -150,7 +146,7 @@
       margin-bottom: 25px;
     }
     @include for-wide-layout{
-      font-size: 1.8rem;
+      font-size: 2.85rem;
       line-height: 53px;
       margin-bottom: 25px;
     }
