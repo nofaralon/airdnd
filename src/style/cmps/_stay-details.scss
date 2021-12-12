@@ -181,6 +181,29 @@
             }
         }
     }
+    .reviews-modal {
+        border: solid;
+        border-radius: 7px;
+        padding-left: 40px;
+        width: 75%;
+        margin: auto;
+        max-height: 80vh;
+        overflow: scroll;
+        position: absolute;
+        background-color: #fff;
+    }
+    .open-modal {
+        top: 1399px;
+        transform: translate(4%, 58%);
+    }
+    .show-more {
+        cursor: pointer;
+        padding: 10px;
+        background-color: white;
+        border: 1px solid rgb(127, 127, 127);
+        border-radius: 7px;
+        margin-bottom: 10px;
+    }
     .add-review-txt {
         & textarea {
             margin: 20px 0;
