@@ -33,7 +33,7 @@ export default {
       eventBusService.$on('setBigFilter',filterBy=>{
        this.$store.dispatch({type:'setBigFilter', filterBy})
 
-       if (this.$store.getters.userPage==='home')this.$router.push('/stay')
+       if (this.$store.getters.userPage==='home' ||this.$store.getters.userPage==='details')this.$router.push('/stay')
      })
      eventBusService.$on('saveOrder',newOrder=>{
        const order=newOrder

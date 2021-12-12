@@ -13,7 +13,7 @@ export const stayStore = {
         filterBy: {
             country:'',
             ailments: '',
-            guests: null,
+            guests: 0,
             Dates: "",
             type: [],
             fromPrice: 0,
@@ -56,6 +56,10 @@ export const stayStore = {
     },
     mutations: {
         setFilter(state, { filterBy }) {
+            console.log(filterBy);
+            if(filterBy.guests){
+                state.filterBy.guests =filterBy.guests
+            }
             if (filterBy.fromPrice) {
                 state.filterBy.fromPrice = filterBy.fromPrice
             }

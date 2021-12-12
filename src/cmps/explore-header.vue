@@ -22,7 +22,7 @@
     </div>
       <div class="user-options">
         <button @click="resetFilter" class="wrapping-btn small">
-        <router-link class="page-link explore-link" style="font-family:manrope-bold; color:rgb(34, 34, 34)"  to="/stay">Explore</router-link>
+        <router-link class="page-link explore-link" style="font-family:manrope-bold; color:rgb(34, 34, 34)" to='/stay'>Explore</router-link>
   </button>
 
   <button class="wrapping-btn small">
@@ -106,7 +106,7 @@ export default {
       filter: {
             country: '',
             ailments: '',
-            guests: null,
+            guests: 0,
             Dates: "",
             type: [],
             fromPrice: 0,

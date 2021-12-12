@@ -21,7 +21,7 @@ export default {
         country:'',
         type:'',
         ailments:'',
-        guests:null,
+        guests:0,
         Dates:"",
         type:[],
         fromPrice: 45,
