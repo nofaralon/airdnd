@@ -100,7 +100,8 @@
             justify-content: center;
         }
         background-color: rgb(255, 255, 255);
-        border: solid 1px black;
+        border: 1px solid #dadada;
+        box-shadow: 0 6px 16px -2px #d8d8d8;
         display: flex;
         border-radius: 40px;
         align-items: center;
@@ -171,6 +172,8 @@
                 margin: 0;
                 margin-left: 20px;
                 font-size: rem(14px);
+                color: #bbbfc5;
+
             }
             display: flex;
             flex-direction: column;
@@ -189,6 +192,9 @@
                 height: 20px;
                 border: none;
                 background-color: transparent;
+                &::placeholder{
+                    color: #bbbfc5;
+                }
                 @include for-normal-layout {
                     width: 100% !important;
                 }

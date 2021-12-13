@@ -8,6 +8,35 @@
 
       <div class="main-bar">
         <div class="profile-options-container">
+            <div
+            @click="setInfo('orders')"
+            class="main-bar-orders options"
+            :class="{ focused: orders }"
+          >
+            <h3>Orders Inbox</h3>
+            <div v-if="incommingOrders" class="orders-btns">
+              <p>{{ incommingOrders.length }}</p>
+            </div>
+          </div>
+
+ <div
+            @click="setInfo('revenues')"
+            class="main-bar-revenue options"
+            :class="{ focused: revenues }"
+          >
+            <h3> Annual revenue</h3>
+            <p>
+              {{
+                userRevenue.toLocaleString("en-US", {
+                  currency: "USD",
+                  style: "currency",
+                  maximumFractionDigits: 0,
+                })
+              }}
+            </p>
+          </div>
+
+
           <div
             @click="setInfo('reviews')"
             class="main-bar-rating options"
@@ -37,39 +66,9 @@
               }}
             </p>
           </div>
-          <div
-            @click="setInfo('orders')"
-            class="main-bar-orders options"
-            :class="{ focused: orders }"
-          >
-            <h3>Orders Inbox</h3>
-            <div v-if="incommingOrders" class="orders-btns">
-              <p>{{ incommingOrders.length + userOrders.length }}</p>
+        
 
-              <span>
-                <span>(</span>
-                {{ pendingStaysOrders.length }}
-                <span>)</span>
-              </span>
-            </div>
-          </div>
-
-          <div
-            @click="setInfo('revenues')"
-            class="main-bar-revenue options"
-            :class="{ focused: revenues }"
-          >
-            <h3> Yearly revenue</h3>
-            <p>
-              {{
-                userRevenue.toLocaleString("en-US", {
-                  currency: "USD",
-                  style: "currency",
-                  maximumFractionDigits: 0,
-                })
-              }}
-            </p>
-          </div>
+         
 
           <div
             @click="setInfo('stays')"
@@ -100,26 +99,7 @@
             </el-table>
           </div>
 
-          <div>
-            <button
-              v-show="orders"
-              @click="
-                sent = true;
-                inbox = false;
-              "
-            >
-              My orders
-            </button>
-            <button
-              v-show="orders"
-              @click="
-                sent = false;
-                inbox = true;
-              "
-            >
-              My stays' orders
-            </button>
-           
+          <div>           
             <div class="my-orders-table">
 
             <el-table v-if="orders && incommingOrders && inbox" :data="ordersToShow" stripe style="width: 100%">
@@ -184,9 +164,9 @@ export default {
   data() {
     return {
       revenues: false,
-      orders: false,
+      orders: true,
       stays: false,
-      reviews: true,
+      reviews: false,
       userStays: null,
       userOrders: null,
       allOrders: null,

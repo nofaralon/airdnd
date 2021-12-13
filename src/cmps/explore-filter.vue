@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="relative-to-filter">
     <div v-if="modalTypes" class="filter-options">
       <div
         v-for="modalType in modalTypes"
@@ -217,12 +217,15 @@ export default {
       this.status === status;
     },
     gettModalClass(index) {
-      if (index === 1) {
-        return "beds-modal-filter right";
-      }
-      if (index === 2) {
-        return "beds-modal-filter righter";
-      } else return "beds-modal-filter";
+      if (index === 0) {
+        return "beds-modal-filter guests";
+      }else if (index === 1) {
+        return "beds-modal-filter beds";
+      }else if (index === 2) {
+        return "beds-modal-filter bedrooms";
+      } else if (index === 3){
+        return "beds-modal-filter bathrooms";
+      }       
     },
   },
   computed: {

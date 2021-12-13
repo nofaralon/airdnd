@@ -177,20 +177,20 @@
 
 .price-modal-filter {
     @include for-mobile-layout {
-        left: 7px !important;
-        top: 70px !important;
-        width: 360px  !important;
+        right: -10px !important;
+        top: 80px !important;
+        width: 350px  !important;
     }
     @include for-narrow-layout {
-        left: 120px !important;
-        top: 70px !important;
+        right: 0px !important;
+        top: 80px !important;
     }
     @include for-normal-layout {
-        left: 250px !important;
-        top: 125px !important;
+        left: 95px !important;
+        top: 70px !important;
     }
     @include for-wide-layout {
-        left: 177px !important;
+        left: 95px !important;
     }
     h1 {
         font-size: 18px;
@@ -241,23 +241,26 @@
         outline: none;
     }
 }
-
+.relative-to-filter{
+    position: relative;
+}
 .type-modal-filter {
     @include for-mobile-layout {
-        left: 7px !important;
-        top: 70px !important;
-        width: 362px !important;
+        right: -10px !important;
+        top: 80px !important;
+        width: 350px !important;
     }
     @include for-narrow-layout {
-        left: 0 !important;
-        // top: 100px !important;
+        right: -10px !important;
+        top: 80px !important;
     }
     @include for-normal-layout {
-        left: 120px !important;
-        // top: 50px !important;
+        left: 185px !important;
+        top: 70px !important;
     }
     @include for-wide-layout {
-        left: 120px !important;
+        left: 185px !important;
+        top: 70px !important;
     }
     .label {
         padding: 12px 0px;
@@ -294,20 +297,52 @@
     box-shadow: 0 3px 8px 0 rgb(0 0 0 / 18%);
     // top: 180px;
     z-index: 5;
+    &.guests{
+
     @include for-mobile-layout {
-        left: 7px !important;
-        top: 70px;
-        width: 362px !important;
+        right: -10px !important;
+        top: 80px;
+        width: 350px !important;
     }
     @include for-narrow-layout {
-        left: 120px !important;
+        right: -10px !important;
+        top: 80px;
     }
     @include for-normal-layout {
-        left: 120px !important;
+        left: 0px !important;
+        top: 70px !important;
     }
     @include for-wide-layout {
-        left: 120px !important;
+        left: 0px !important;
     }
+}
+&.beds{
+    @include for-normal-layout {
+        left: 274px !important;
+        top: 70px !important;
+    }
+    @include for-wide-layout {
+        left: 270px !important;
+    }
+}
+&.bedrooms{
+    @include for-normal-layout {
+        left: 361px !important;
+        top: 70px !important;
+    }
+    @include for-wide-layout {
+        left: 361px !important;
+    }
+}
+&.bathrooms{
+    @include for-normal-layout {
+        left: 480px !important;
+        top: 70px !important;
+    }
+    @include for-wide-layout {
+        left: 480px !important;
+    }
+}
     width: 400px;
     color: black;
     .noff {
@@ -352,14 +387,6 @@
             padding: 10px;
         }
     }
-}
-
-.right {
-    left: 190px !important;
-}
-
-.righter {
-    left: 250px !important;
 }
 
 .diagram {
