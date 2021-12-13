@@ -216,16 +216,14 @@
     }
 }
 .el-message{
-    top: 8% !important;
-    left:82% !important;
-    border:1px solid rgb(255, 56, 92) !important;
-    background-color: rgb(255, 56, 92)!important;
+    top: 10.5% !important;
+    left:79% !important;
     i::before{
-    color: white !important;
+    font-size: 20px !important;
 
     }
     
 }
 .el-message--success .el-message__content{
-    color: white !important;
+    font-size: 18px !important;
 }

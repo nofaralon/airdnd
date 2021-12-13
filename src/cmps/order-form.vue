@@ -141,7 +141,7 @@ export default {
         this.$emit("check", this.order);
           this.$message({
           showClose: true,
-          message: 'Congrats, your order has been received.',
+          message: 'your order has been received.',
           type: 'success'
         });
         this.$router.push('/stay')
