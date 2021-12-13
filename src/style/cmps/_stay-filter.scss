@@ -76,6 +76,7 @@
 
 .filter-slot-lrg {
     height: 67px;
+    border: 1px solid #b8b8b8;
     @include for-normal-layout {
         width: 685px !important;
     }
@@ -87,6 +88,8 @@
 .filter-slot-sm {
     height: 45px;
     width: 300px;
+    border: 1px solid #dadada;
+    box-shadow: 0 6px 16px -2px #d8d8d8;
 }
 
 .main-filter {
@@ -100,8 +103,6 @@
             justify-content: center;
         }
         background-color: rgb(255, 255, 255);
-        border: 1px solid #dadada;
-        box-shadow: 0 6px 16px -2px #d8d8d8;
         display: flex;
         border-radius: 40px;
         align-items: center;
@@ -173,7 +174,6 @@
                 margin-left: 20px;
                 font-size: rem(14px);
                 color: #bbbfc5;
-
             }
             display: flex;
             flex-direction: column;
@@ -192,7 +192,7 @@
                 height: 20px;
                 border: none;
                 background-color: transparent;
-                &::placeholder{
+                &::placeholder {
                     color: #bbbfc5;
                 }
                 @include for-normal-layout {
