@@ -1,12 +1,11 @@
 <template>
-  <section >
+  <section>
     <div v-if="modalTypes" class="filter-options">
-         <div
+      <div
         v-for="modalType in modalTypes"
         :key="modalType"
         class="filter-options"
       >
-
         <filter-btn
           :key="modalType"
           :modalType="modalType"
@@ -18,22 +17,21 @@
       </div>
     </div>
 
-    
-
     <div v-if="modalType === 'price'" class="price-modal-filter">
-      <h1>The average nightly price is {{avg}} $ </h1>
-      <HistogramSlider class="diagram"
-       :width="220"
-       :bar-height="70"
-       :data="prices"
-       :barGap="3"
-       :barWidth="6"
-       :block="false"
-       labelColor="#b0b0b0"
-       primaryColor="#b0b0b0"
-       @finish="start"
-      :updateColorOnChange="true"
-       />
+      <h1>The average nightly price is {{ avg }} $</h1>
+      <HistogramSlider
+        class="diagram"
+        :width="220"
+        :bar-height="70"
+        :data="prices"
+        :barGap="3"
+        :barWidth="6"
+        :block="false"
+        labelColor="#b0b0b0"
+        primaryColor="#b0b0b0"
+        @finish="start"
+        :updateColorOnChange="true"
+      />
 
       <div class="price-limit">
         <div class="input-container">
@@ -43,7 +41,7 @@
             <input v-model="filterBy.fromPrice" type="number" />
           </div>
         </div>
-      
+
         <div class="input-container">
           <div class="filter-text">max Price</div>
           <div class="margin-left">
@@ -80,9 +78,13 @@
             <h2>{{ type }}</h2>
           </div>
           <div>
-            <button @click="setCountBeds('down', type)"><i class="el-icon-minus"></i></button>
+            <button @click="setCountBeds('down', type)">
+              <i class="el-icon-minus"></i>
+            </button>
             <span class="guests">{{ filterBy[type] }}</span>
-            <button @click="setCountBeds('up', type)"><i class="el-icon-plus"></i></button>
+            <button @click="setCountBeds('up', type)">
+              <i class="el-icon-plus"></i>
+            </button>
           </div>
         </div>
         <div class="actions-btn">
@@ -91,38 +93,38 @@
         </div>
       </div>
     </div>
-
   </section>
 </template>
 
 <script>
 import FilterBtn from "./filter-btn.vue";
-import {eventBusService,updatePrices} from '../services/event-bus.service'
+import { eventBusService, updatePrices } from "../services/event-bus.service";
 export default {
   props: {},
   data() {
     return {
-      avg:null,
-      prices:null,
+      avg: null,
+      prices: null,
       modalType: "",
       status: "",
-      modalTypes: ["guests","price", "type", "beds", "bedrooms", "bathrooms"],
-      types: ["guests","beds", "bedrooms", "bathrooms"],
-      filterBy: { },
+      modalTypes: ["guests", "price", "type", "beds", "bedrooms", "bathrooms"],
+      types: ["guests", "beds", "bedrooms", "bathrooms"],
+      filterBy: {},
       type: {
         villa: false,
         apartment: false,
         outdoors: false,
         loft: false,
       },
+      min: Infinity,
+      max: -Infinity,
     };
   },
   created() {
-    this.filterBy =JSON.parse(JSON.stringify(this.filterByy))
-    this.modalPrices()
-
+    this.filterBy = JSON.parse(JSON.stringify(this.filterByy));
+    this.modalPrices();
   },
-  
+
   methods: {
     toggleModal(type) {
       if (this.modalType === type) {
@@ -133,34 +135,34 @@ export default {
         this.status = type;
       }
     },
-     modalPrices(){
-      this.prices=this.allPrices
-    // const prices=[];
-    // this.stays.map((stay)=>{
-    // prices.push(stay.price)
-    // })
-    // this.prices=prices
-    const avgPrice = this.getAvg(this.allPrices)
-    this.avg =Math.round(avgPrice)
-    
+    modalPrices() {
+      this.prices = this.allPrices;
+      // const prices=[];
+      // this.stays.map((stay)=>{
+      // prices.push(stay.price)
+      // })
+      // this.prices=prices
+      const avgPrice = this.getAvg(this.allPrices);
+      this.avg = Math.round(avgPrice);
     },
-    getAvg(prices){
-     const sum = prices.reduce(function(acc,price){
-        return acc += price
-      },0)
-      const avg = sum/prices.length
-      return avg
-
+    getAvg(prices) {
+      const sum = prices.reduce(function (acc, price) {
+        return (acc += price);
+      }, 0);
+      const avg = sum / prices.length;
+      return avg;
     },
-    start(ev){
+    start(ev) {
       this.filterBy.fromPrice=ev.from
       this.filterBy.toPrice=ev.to
+      // this.filterBy.fromPrice = this.min - 30;
+      // this.filterBy.toPrice = this.max + 30;
     },
-   
+
     setFilter() {
       const filterBy = JSON.parse(JSON.stringify(this.filterBy));
-       eventBusService.$emit('setFilter',filterBy)     
-        this.status = "";
+      eventBusService.$emit("setFilter", filterBy);
+      this.status = "";
       this.modalType = "";
     },
     setCountBeds(val, type) {
@@ -188,9 +190,8 @@ export default {
       }
     },
     resetPriceFilter() {
-      this.filterBy.fromPrice = 45;
-      this.filterBy.toPrice = 250;
-      
+      this.filterBy.fromPrice = this.min - 30;
+      this.filterBy.toPrice = this.max + 30;
     },
     setTypeFilter() {
       const types = [];
@@ -200,10 +201,9 @@ export default {
       if (this.type.loft) types.push("loft");
       this.filterBy.type = types;
       const filterBy = { ...this.filterBy };
-      eventBusService.$emit('setFilter',filterBy)     
+      eventBusService.$emit("setFilter", filterBy);
       this.status = "";
-      this.modalType = ""
- 
+      this.modalType = "";
     },
     resetTypeFilter() {
       this.type = {
@@ -226,27 +226,33 @@ export default {
     },
   },
   computed: {
-    filterByy(){
-      return this.$store.getters.filterBy
+    filterByy() {
+      return this.$store.getters.filterBy;
     },
-    stays(){
-      return this.$store.getters.tempStays
+    stays() {
+      return this.$store.getters.tempStays;
     },
-    allPrices(){
-    const prices=[];
-    this.stays.map((stay)=>{
-    prices.push(stay.price)
-    })
-    return prices
-   
-    }
-    
+    allPrices() {
+      const prices = [];
+      this.stays.map((stay) => {
+        prices.push(stay.price);
+      });
+
+      prices.forEach((num) => {
+        this.max = num > this.max ? num : this.max;
+        this.min = num < this.min ? num : this.min;
+      });
+      prices.push(this.max + 30, this.min - 30);
+       this.filterBy.toPrice = this.max+30
+      this.filterBy.fromPrice = this.min-30
+      return prices;
+    },
   },
-   watch: {
-    "allPrices"() {
-     this.prices=this.allPrices 
-    const avgPrice = this.getAvg(this.allPrices)
-    this.avg =Math.round(avgPrice)      
+  watch: {
+    allPrices() {
+      this.prices = this.allPrices;
+      const avgPrice = this.getAvg(this.allPrices);
+      this.avg = Math.round(avgPrice);
     },
   },
   components: {

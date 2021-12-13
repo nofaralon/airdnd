@@ -139,28 +139,40 @@
     padding: 20px;
 }
 
-.irs-grid{
+.irs-grid {
     display: none !important;
 }
-.irs--round .irs-bar{
+
+.irs--round .irs-bar {
     top: 30px !important;
 }
-.irs--round .irs-line{
+
+.irs--round .irs-line {
     top: 30px !important;
 }
-.irs-handle{
+
+.irs-handle {
     // left: 100% !important;
     top: 18px !important;
 }
 
+.histogram {
+    & :first-child {
+        display: none;
+    }
+    & :nth-last-child(5) {
+        display: none;
+    }
+}
 
 // .irs-handle.from{
 //     right: 105% !important;
 // }
-
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: red;
-  opacity: 1; /* Firefox */
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: red;
+    opacity: 1;
+    /* Firefox */
 }
 
 .price-modal-filter {
@@ -169,14 +181,15 @@
         top: 70px !important;
     }
     @include for-narrow-layout {
-        left: 0 !important;
-        top: 0 !important;
+        left: 120px !important;
+        top: 70px !important;
     }
     @include for-normal-layout {
-        left: 120px !important;
+        left: 250px !important;
+        top: 125px !important;
     }
     @include for-wide-layout {
-        left: 120px !important;
+        left: 177px !important;
     }
     h1 {
         font-size: 20px;
@@ -198,7 +211,7 @@
             border: 1px solid rgb(221, 221, 221);
             border-radius: 10px;
             margin-inline: 5px;
-            margin: 20px 0px;
+            margin: 5px 0px;
             display: flex;
             justify-content: flex-start;
             flex-direction: column;
@@ -209,7 +222,7 @@
                 width: 130px;
                 height: 50px;
                 border: none;
-                top: 200px;
+                top: 185px;
                 background-color: transparent;
             }
             .margin-left {
@@ -350,14 +363,13 @@
 .diagram {
     margin-top: 10px;
     margin-left: 60px;
-  
 }
-.irs--round.irs-with-grid{
+
+.irs--round.irs-with-grid {
     height: 50px !important;
     // right: 40px !important;
-
 }
+
 // .irs-bar{
 //     width:100% !important;
-
 // }
