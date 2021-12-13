@@ -40,7 +40,8 @@
 
     <button @click="openReviews"  class="show-more" v-if="stay.reviews.length>6" >Show all {{stay.reviews.length}} reviews</button>
 
-    <div class="reviews-modal" v-if="showAllReviews">
+    <div :class="{'open-modal':showAllReviews}" class="reviews-modal" v-if="showAllReviews">
+      <button @click="closeReviews"> X </button>
        <h1>
       <svg
         aria-hidden="true"
@@ -140,6 +141,10 @@ export default {
     },
     openReviews(){
       this.showAllReviews = true
+
+    },
+    closeReviews(){
+            this.showAllReviews = false
 
     }
   },

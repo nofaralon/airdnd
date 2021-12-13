@@ -288,6 +288,12 @@ input::-webkit-calendar-picker-indicator {
         margin-top: 10px;
         background-color: transparent;
         // padding-left: 30px;
+        @include for-normal-layout {
+            left: 230px;
+        }
+        @include for-wide-layout {
+            left: 290px !important;
+        }
         >* {
             background-color: transparent;
             z-index: 2;
@@ -314,6 +320,12 @@ input::-webkit-calendar-picker-indicator {
             opacity: 0;
             padding: 46px;
             width: 2px;
+            @include for-normal-layout {
+                padding: 25px;
+            }
+            @include for-wide-layout {
+                padding: 46px !important;
+            }
         }
         .el-range-editor {
             margin-top: 13px;

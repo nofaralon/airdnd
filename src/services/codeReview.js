@@ -1,7 +1,7 @@
 // // FRONTEND // 
 
 // // details- page
-
+// metohd
 // async function check() {
 //     const order = await this.$store.dispatch({
 //         type: "addOrder",
@@ -36,10 +36,8 @@
 //         })
 //         socket.on('addOrder', order => {
 //             console.log('sending new order to the host', order);
-//             // emits to all sockets:
 //             gIo.emit('hostOrders', order)
-//             // emits only to sockets in the same room
-//             // gIo.to(socket.myTopic).emit('chat addMsg', msg)
+
 //         })
 
 
@@ -52,16 +50,15 @@
 // // app-haeder
 
 // const created = () => {
-
-//     if (this.user) this.createOrderSocket()
-// },
-
-
-//     createOrderSocket() {
-//         socketService.on('hostOrders', this.orderNotification)
+//         if (this.user) this.createOrderSocket()
 //     },
 
-//         orderNotification(order) {
+
+//     function createOrderSocket() {
+//         socketService.on('hostOrders', this.orderNotification)
+//     }
+
+// function orderNotification(order) {
 //     if (order.hostId === this.user._id) {
 //         this.newNotification = true
 //     }

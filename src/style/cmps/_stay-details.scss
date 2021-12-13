@@ -182,7 +182,8 @@
         }
     }
     .reviews-modal {
-        border: solid;
+        border: none;
+        border: 1px solid rgb(127, 127, 127);
         border-radius: 7px;
         padding-left: 40px;
         width: 75%;
@@ -191,9 +192,18 @@
         overflow: scroll;
         position: absolute;
         background-color: #fff;
+        & button {
+            position: fixed;
+            top: 10px;
+            right: 15px;
+            border: none;
+            background: #0000;
+            font-size: 20px;
+            cursor: pointer;
+        }
     }
     .open-modal {
-        top: 1399px;
+        top: 1338px;
         transform: translate(4%, 58%);
     }
     .show-more {
