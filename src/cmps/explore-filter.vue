@@ -29,8 +29,8 @@
        :barGap="3"
        :barWidth="6"
        :block="false"
-       labelColor="#d2d2d2"
-       primaryColor="#d2d2d2"
+       labelColor="#b0b0b0"
+       primaryColor="#b0b0b0"
        @finish="start"
       :updateColorOnChange="true"
        />
@@ -230,7 +230,6 @@ export default {
       return this.$store.getters.filterBy
     },
     stays(){
-
       return this.$store.getters.tempStays
     },
     allPrices(){
