@@ -201,7 +201,7 @@ this.search=false
     goTo(here) {
       this.$router.push(here);
     },
-    toggleFilter() {
+    toggleFilter() { 
       this.open = true;
     },
     handleScroll(e) {
