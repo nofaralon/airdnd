@@ -2,7 +2,7 @@
 
 // // details- page
 
-// async check() {
+// async function check() {
 //     const order = await this.$store.dispatch({
 //         type: "addOrder",
 //         order: JSON.parse(JSON.stringify(this.order)),
@@ -38,8 +38,8 @@
 //             console.log('sending new order to the host', order);
 //             // emits to all sockets:
 //             gIo.emit('hostOrders', order)
-//                 // emits only to sockets in the same room
-//                 // gIo.to(socket.myTopic).emit('chat addMsg', msg)
+//             // emits only to sockets in the same room
+//             // gIo.to(socket.myTopic).emit('chat addMsg', msg)
 //         })
 
 
@@ -51,18 +51,18 @@
 
 // // app-haeder
 
-// created() {
+// const created = () => {
 
-//         if (this.user) this.createOrderSocket()
-//     },
+//     if (this.user) this.createOrderSocket()
+// },
 
 
 //     createOrderSocket() {
 //         socketService.on('hostOrders', this.orderNotification)
 //     },
 
-//     orderNotification(order) {
-//         if (order.hostId === this.user._id) {
-//             this.newNotification = true
-//         }
-//     },
+//         orderNotification(order) {
+//     if (order.hostId === this.user._id) {
+//         this.newNotification = true
+//     }
+// }

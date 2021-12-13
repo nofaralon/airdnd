@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'go-big': open }">
+  <div :class="{ 'go': open }">
     <div class="header-container" >
       <div
         class="narrow-mobile-container main-layout full"
@@ -69,7 +69,7 @@
             v-show="open || (user !== 'home' && !isScroll)"
             class="changing-middle-container filter-open"
           >
-            <stay-filter :order="order" />
+            <stay-filter :class="{white:isWhite}" :order="order" />
           </div>
           <div class="user-options">
             <button class="wrapping-btn small explore-btn">

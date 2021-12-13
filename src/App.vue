@@ -15,22 +15,8 @@ import appFooter from "./cmps/app-footer.vue";
 export default {
   name: "App",
   data() {
-    // return {
-    //   url: null,
-    //   filterBy:{
-    //     country:'',
-    //     type:'',
-    //     ailments:'',
-    //     guests:0,
-    //     Dates:"",
-    //     type:[],
-    //     fromPrice: 45,
-    //     toPrice: 250,
-    //     beds: 0,
-    //     bedrooms: 0,
-    //     bathrooms: 0,
-    //   },
-    // };
+    return {
+    };
   },
   async created() {
     await this.$store.dispatch({ type: "loadStays" });

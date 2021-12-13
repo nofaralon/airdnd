@@ -1,57 +1,58 @@
-// .go-big {
-//     background-color: white;
-//     z-index: 1;
-//     box-shadow: 0 6px 16px -2px #e9e7e7;
-//     height: 150px;
-//     @include for-mobile-layout {
-//         height: 80px;
-//     }
-//     @include for-narrow-layout {
-//         height: 80px;
-//     }
-//     @include for-normal-layout {
-//         height: 150px;
-//     }
-//     @include for-wide-layout {
-//         height: 150px;
-//     }
-//     &.open {
-//         height: 180px;
-//         @include for-mobile-layout {
-//             height: 80px;
-//         }
-//         @include for-narrow-layout {
-//             height: 80px;
-//         }
-//         @include for-normal-layout {
-//             height: 180px;
-//         }
-//         @include for-wide-layout {
-//             height: 180px;
-//         }
-//     }
-//     &.fixed {
-//         position: fixed;
-//     }
-//     width: 100%;
-//     .mobile-filter {
-//         @include for-mobile-layout {
-//             display: flex !important;
-//         }
-//         @include for-narrow-layout {
-//             display: flex !important;
-//         }
-//         @include for-normal-layout {
-//             display: none !important;
-//         }
-//         @include for-wide-layout {
-//             display: none !important;
-//         }
-//     }
-//     .filter-options {
-//         margin-top: 6px;
-//     }
-// }
+.go-big {
+    background-color: white;
+    z-index: 1;
+    box-shadow: 0 6px 16px -2px #e9e7e7;
+    height: 150px;
+    @include for-mobile-layout {
+        height: 80px;
+    }
+    @include for-narrow-layout {
+        height: 80px;
+    }
+    @include for-normal-layout {
+        height: 150px;
+    }
+    @include for-wide-layout {
+        height: 150px;
+    }
+    &.open {
+        height: 180px;
+        @include for-mobile-layout {
+            height: 80px;
+        }
+        @include for-narrow-layout {
+            height: 80px;
+        }
+        @include for-normal-layout {
+            height: 180px;
+        }
+        @include for-wide-layout {
+            height: 180px;
+        }
+    }
+    &.fixed {
+        position: fixed;
+    }
+    width: 100%;
+    .mobile-filter {
+        @include for-mobile-layout {
+            display: flex !important;
+        }
+        @include for-narrow-layout {
+            display: flex !important;
+        }
+        @include for-normal-layout {
+            display: none !important;
+        }
+        @include for-wide-layout {
+            display: none !important;
+        }
+    }
+    .filter-options {
+        margin-top: 6px;
+    }
+}
+
 .small-filter {
     margin-top: 0;
     margin-bottom: 0;

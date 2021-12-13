@@ -301,12 +301,16 @@ export default {
     },
     ordersToShow(){
       this.incommingOrders = this.incommingOrders.map((order) => {
+        console.log(order);
         order.totalPrice = order.totalPrice.toLocaleString("en-US", {currency: "USD",style: "currency",maximumFractionDigits: 0,})
         order.createdAt = order.createdAt.toString()
         order.Dates =  order.Dates[0].slice(0,10) +' - '+ order.Dates[1].slice(0,10)
 
         return order
       });
+      //  this.incommingOrders.push(this.incommingOrders.map((order) => {
+      //    return order
+      // }))
          return this.incommingOrders
     },
     myOrdersToShow(){
