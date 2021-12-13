@@ -1,7 +1,7 @@
 // // FRONTEND // 
 
 // // details- page
-// metohd
+
 // async function check() {
 //     const order = await this.$store.dispatch({
 //         type: "addOrder",
@@ -54,7 +54,7 @@
 //     },
 
 
-//     function createOrderSocket() {
+// function createOrderSocket() {
 //         socketService.on('hostOrders', this.orderNotification)
 //     }
 

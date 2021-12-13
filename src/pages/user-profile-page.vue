@@ -284,7 +284,9 @@ export default {
         console.log(order);
         order.totalPrice = order.totalPrice.toLocaleString("en-US", {currency: "USD",style: "currency",maximumFractionDigits: 0,})
         order.createdAt = order.createdAt.toString()
-        order.Dates =  order.Dates[0].slice(0,10) +' - '+ order.Dates[1].slice(0,10)
+        order.Dates[0]=new Date(Date.parse(order.Dates[0])+24*60*60)
+        order.Dates[1]=new Date(Date.parse(order.Dates[1])+24*60*60)
+        order.Dates =  order.Dates[0].toString().slice(3,10) +' - '+ order.Dates[1].toString().slice(3,15)
 
         return order
       });
@@ -297,6 +299,7 @@ export default {
       this.userOrders = this.userOrders.map((order) => {
         order.totalPrice = order.totalPrice.toLocaleString("en-US", {currency: "USD",style: "currency",maximumFractionDigits: 0,})
         order.createdAt = order.createdAt.toString()
+        console.log('date',Date.parse(order.Dates[0]))
         order.Dates =  order.Dates[0].slice(0,10) +' - '+ order.Dates[1].slice(0,10)
 
         return order
