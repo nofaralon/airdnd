@@ -7,6 +7,19 @@
       <div></div>
     </div>
     <section v-else>
+       <el-carousel
+      class="img-carousel details"
+      arrow="always"
+      indicator-position="none"
+      :autoplay="false"
+      :trigger="'click'"
+      :loop="false"
+    >
+      <el-carousel-item v-for="(imgUrl, index) in stay.imgUrls" :key="index">
+        <img class="card-img" :src="`${imgUrl}`" />
+      </el-carousel-item>
+    </el-carousel>
+    
       <h1>{{ stay.name }}</h1>
 
       <div class="detsils-header">
