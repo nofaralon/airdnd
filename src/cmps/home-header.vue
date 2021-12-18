@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ 'go': open }">
+  <div>
     <div class="header-container" >
       <div
         class="narrow-mobile-container main-layout full"
