@@ -108,6 +108,9 @@ header {
     text-align: center;
     .logo {
         flex-basis: 41.2%;
+        &.details{
+        flex-basis: 37%;
+        }
         display: flex;
         gap: 4px;
         font-size: 1.2rem;
