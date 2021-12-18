@@ -33,7 +33,7 @@
             </div>
           </div>
 
-          <p>{{ review.txt }}</p>
+          <p>{{review.txt }}</p>
         </div>
       </div>
     </div>
@@ -131,7 +131,7 @@ export default {
 
   data() {
     return {
-      showAllReviews:false
+      showAllReviews:false,
     };
   },
   created() {},
@@ -147,8 +147,10 @@ export default {
             this.showAllReviews = false
 
     }
+  
   },
   computed: {
+     
     setReviews() {
       if (this.stay.reviews.length > 1) return "reviews";
       else return "review";

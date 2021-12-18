@@ -7,19 +7,6 @@
       <div></div>
     </div>
     <section v-else>
-       <el-carousel
-      class="img-carousel details"
-      arrow="always"
-      indicator-position="none"
-      :autoplay="false"
-      :trigger="'click'"
-      :loop="false"
-    >
-      <el-carousel-item v-for="(imgUrl, index) in stay.imgUrls" :key="index">
-        <img class="card-img" :src="`${imgUrl}`" />
-      </el-carousel-item>
-    </el-carousel>
-    
       <h1>{{ stay.name }}</h1>
 
       <div class="detsils-header">
@@ -64,6 +51,18 @@
         >
         <a href="#anchor-map">{{ stay.loc.address }}</a>
       </div>
+      <el-carousel
+        class="img-carousel imgs-details"
+        arrow="always"
+        indicator-position="none"
+        :autoplay="false"
+        :trigger="'click'"
+        :loop="false"
+      >
+        <el-carousel-item v-for="(imgUrl, index) in stay.imgUrls" :key="index">
+          <img class="card-img" :src="`${imgUrl}`" />
+        </el-carousel-item>
+        </el-carousel>
 
       <div class="img-container">
         <img v-for="(img, index) in imgs" :key="index" :src="img" alt="" />
@@ -75,7 +74,9 @@
             <div>
               <h2>
                 <span class="stay-name">{{ stay.type }}</span>
-                <span v-if="stay.type.toLowerCase() === 'outdoors'"> accommodation</span>
+                <span v-if="stay.type.toLowerCase() === 'outdoors'">
+                  accommodation</span
+                >
                 hosted by
                 {{ stay.host.fullname }}
               </h2>
@@ -162,11 +163,9 @@ export default {
     this.user = this.loadUser();
     this.review = stayService.getEmptyReview();
     this.review.by = this.user;
-
   },
   methods: {
     async loadStay(stayId) {
-      
       this.stay = await this.$store.dispatch({ type: "getStay", stayId });
       if (this.stay) {
         this.imgForDisplay();
@@ -189,26 +188,25 @@ export default {
     loadOrder() {
       this.order = JSON.parse(JSON.stringify(this.$store.getters.order));
     },
-     async  check() {
+    async check() {
       const { _id, name, price } = this.stay;
       this.order.stay = { _id, name, price };
       this.order.buyer._id = this.user._id;
       this.order.buyer.fullname = this.user.fullname;
       this.order.hostId = this.stay.host._id;
       this.order.totalPrice =
-      this.order.cleaning +
-      this.order.service +
-      this.order.totalDays * this.stay.price;
-      this.order.createdAt = new Date().toLocaleDateString('en-US')
+        this.order.cleaning +
+        this.order.service +
+        this.order.totalDays * this.stay.price;
+      this.order.createdAt = new Date().toLocaleDateString("en-US");
       const order = await this.$store.dispatch({
         type: "addOrder",
         order: JSON.parse(JSON.stringify(this.order)),
       });
-      socketService.emit('addOrder', order )
-
+      socketService.emit("addOrder", order);
     },
     async addReview() {
-      this.review.date = new Date().toString().slice(3, 15)
+      this.review.date = new Date().toString().slice(3, 15);
       const details = {
         stayId: this.stay._id,
         review: JSON.parse(JSON.stringify(this.review)),

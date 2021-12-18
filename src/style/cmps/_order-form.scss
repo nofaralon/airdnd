@@ -141,15 +141,13 @@
             cursor: pointer;
             background-image: linear-gradient( 45deg, #d70466 0, #c92f62 30%, #e61e4d);
             color: white !important;
-      
         }
-
     }
-    .el-button.is-plain:focus, .el-button.is-plain:hover{
+    .el-button.is-plain:focus,
+    .el-button.is-plain:hover {
         background-image: linear-gradient( 90deg, #e61e4d 0, #e31c5f 50%, #d70466);
         color: #fff;
     }
-    
     .guest-modal {
         // position: sticky;
         padding: 10px;
@@ -215,15 +213,15 @@
         }
     }
 }
-.el-message{
-    top: 10.5% !important;
-    left:79% !important;
-    i::before{
-    font-size: 20px !important;
 
+.el-message {
+    top: 10.5% !important;
+    left: 79% !important;
+    i::before {
+        font-size: 20px !important;
     }
-    
 }
-.el-message--success .el-message__content{
+
+.el-message--success .el-message__content {
     font-size: 18px !important;
 }
