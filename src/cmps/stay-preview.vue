@@ -69,7 +69,11 @@
         >
       </div>
       <div class="card-type-loc">
-        <span class="type">{{ stay.type }}</span> <span v-if="stay.type.toLowerCase()==='outdoors'"> accommodation</span> in
+        <span class="type">{{ stay.type }}</span>
+        <span v-if="stay.type.toLowerCase() === 'outdoors'">
+          accommodation</span
+        >
+        in
         <span class="location"> {{ stay.loc.address }} </span>
       </div>
       <span class="stay-name">{{ stay.name }}</span>
@@ -103,6 +107,12 @@ export default {
     };
   },
   created() {
+    const wasLiked = this.stay.likedByUsers.findIndex(
+      (reviewer) => reviewer._id === this.user._id
+    );
+    if (wasLiked >= 0) {
+      this.isLiked = true;
+    }
     // this.getDistanceFromLatLonInKm(32.0853,34.7818,this.stay.loc.lat,this.stay.loc.lng)
   },
   methods: {
